@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     public class TelephonyxtendedsrvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction Raw([WorkflowExpression] Func<string> bodyuserID, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodypayload = null, [WorkflowExpression] Func<acceptInput> accept = null)
+        public IWorkflowAction Raw([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodypayload = null, [WorkflowExpression] Func<acceptInput> accept = null)
         {
-            SourceExpression.Validate(bodyuserID, nameof(bodyuserID), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
             SourceExpression.Validate(bodypath, nameof(bodypath), required: true);
             SourceExpression.Validate(bodypayload, nameof(bodypayload), required: false);
             SourceExpression.Validate(accept, nameof(accept), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserID);
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
                 body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
                 if (bodypayload != null)
@@ -126,10 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction ToggleAgentACDState([WorkflowExpression] Func<string> bodyagentACDState, [WorkflowExpression] Func<string> bodyuserID = null)
+        public IWorkflowAction ToggleAgentACDState([WorkflowExpression] Func<string> bodyagentACDState, [WorkflowExpression] Func<string> bodyuserId = null)
         {
             SourceExpression.Validate(bodyagentACDState, nameof(bodyagentACDState), required: true);
-            SourceExpression.Validate(bodyuserID, nameof(bodyuserID), required: false);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/ACD-Toggle";
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["agentACDState"] = SourceExpressionConverter.ConvertToken(bodyagentACDState);
-                if (bodyuserID != null)
+                if (bodyuserId != null)
                 {
-                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserID);
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                     bodypropCount++;
                 }
 
@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallNew([WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserID = null)
+        public IWorkflowAction CallNew([WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserId = null)
         {
             SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
-            SourceExpression.Validate(bodyuserID, nameof(bodyuserID), required: false);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Call-New";
@@ -168,9 +168,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyuserID != null)
+                if (bodyuserId != null)
                 {
-                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserID);
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                     bodypropCount++;
                 }
 

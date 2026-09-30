@@ -129,6 +129,37 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
+        public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> sessionToken = null)
+        {
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(containerId, nameof(containerId), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
+            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["databaseId"] = SourceExpressionConverter.ConvertToken(databaseId);
+                serviceProviderParameters["containerId"] = SourceExpressionConverter.ConvertToken(containerId);
+                serviceProviderParameters["itemId"] = SourceExpressionConverter.ConvertToken(itemId);
+                serviceProviderParameters["partitionKey"] = SourceExpressionConverter.ConvertToken(partitionKey);
+                if (sessionToken != null)
+                {
+                    serviceProviderParameters["sessionToken"] = SourceExpressionConverter.ConvertToken(sessionToken);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "ReadDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ReadDocumentOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<QueryDocumentsOutput> QueryDocuments([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> queryText, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> maxItemCount = null, [WorkflowExpression] Func<string> sessionToken = null)
         {
             SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
@@ -173,37 +204,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
             }
 
             return new ServiceProviderAction<QueryDocumentsOutput>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
-        public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument([WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> sessionToken = null)
-        {
-            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
-            SourceExpression.Validate(containerId, nameof(containerId), required: true);
-            SourceExpression.Validate(itemId, nameof(itemId), required: true);
-            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: true);
-            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["databaseId"] = SourceExpressionConverter.ConvertToken(databaseId);
-                serviceProviderParameters["containerId"] = SourceExpressionConverter.ConvertToken(containerId);
-                serviceProviderParameters["itemId"] = SourceExpressionConverter.ConvertToken(itemId);
-                serviceProviderParameters["partitionKey"] = SourceExpressionConverter.ConvertToken(partitionKey);
-                if (sessionToken != null)
-                {
-                    serviceProviderParameters["sessionToken"] = SourceExpressionConverter.ConvertToken(sessionToken);
-                }
-
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureCosmosDB", operationId: "ReadDocument", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<ReadDocumentOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
@@ -289,21 +289,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         }
     }
 
-    public class WhenADocumentIsCreatedOrModifiedOutputItem
-    {
-        [JsonProperty("content")]
-        public string Content { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("_etag")]
-        public string Etag { get; set; }
-
-        [JsonProperty("_ts")]
-        public string Ts { get; set; }
-    }
-
     public class BulkCreateOrUpdateDocumentOutputItem
     {
         [JsonProperty("activityId")]
@@ -367,27 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         public string SessionToken { get; set; }
     }
 
-    public class QueryDocumentsOutput
-    {
-        [JsonProperty("continuationToken")]
-        public string ContinuationToken { get; set; }
-
-        [JsonProperty("requestCharge")]
-        public string RequestCharge { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("activityId")]
-        public string ActivityId { get; set; }
-
-        [JsonProperty("items")]
-        public JToken[] Items { get; set; }
-
-        [JsonProperty("sessionToken")]
-        public string SessionToken { get; set; }
-    }
-
     public class ReadDocumentOutput
     {
         [JsonProperty("activityId")]
@@ -407,6 +371,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
 
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; }
+
+        [JsonProperty("sessionToken")]
+        public string SessionToken { get; set; }
+    }
+
+    public class QueryDocumentsOutput
+    {
+        [JsonProperty("continuationToken")]
+        public string ContinuationToken { get; set; }
+
+        [JsonProperty("requestCharge")]
+        public string RequestCharge { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("activityId")]
+        public string ActivityId { get; set; }
+
+        [JsonProperty("items")]
+        public JToken[] Items { get; set; }
 
         [JsonProperty("sessionToken")]
         public string SessionToken { get; set; }
@@ -457,6 +442,21 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         Set,
         Increment,
         Move
+    }
+
+    public class WhenADocumentIsCreatedOrModifiedOutputItem
+    {
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("_etag")]
+        public string Etag { get; set; }
+
+        [JsonProperty("_ts")]
+        public string Ts { get; set; }
     }
 }
 

@@ -12,23 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
     public class DocumentaikonfuzioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate([WorkflowExpression] Func<object> dataFile, [WorkflowExpression] Func<int> project, [WorkflowExpression] Func<bool> sync = null)
-        {
-            SourceExpression.Validate(dataFile, nameof(dataFile), required: true);
-            SourceExpression.Validate(project, nameof(project), required: true);
-            SourceExpression.Validate(sync, nameof(sync), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v2/docs/";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<V2DocsCreateResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsDelete([WorkflowExpression] Func<string> doc)
         {
             SourceExpression.Validate(doc, nameof(doc), required: true);
@@ -76,30 +59,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
 
     public class DocumentaikonfuzioTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class V2DocsCreateResponse
-    {
-        [JsonProperty("data_file")]
-        public string DataFile { get; set; }
-
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        [JsonProperty("project")]
-        public int Project { get; set; }
-
-        [JsonProperty("data_file_name")]
-        public string DataFileName { get; set; }
-
-        [JsonProperty("callback_url")]
-        public string CallbackUrl { get; set; }
-
-        [JsonProperty("sync")]
-        public bool Sync { get; set; }
-
-        [JsonProperty("extraction_url")]
-        public string ExtractionUrl { get; set; }
     }
 }
 

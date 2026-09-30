@@ -211,20 +211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public enum bodyoutputsInputItemPptxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemDocxOptionsType
@@ -235,20 +228,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public enum bodyoutputsInputItemDocxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemPdfOptionsType

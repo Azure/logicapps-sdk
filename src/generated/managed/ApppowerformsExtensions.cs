@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddFormField([WorkflowExpression] Func<string> bodyformID, [WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyfieldName, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldConfiguration = null)
+        public IBodyWorkflowAction<JToken> AddFormField([WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyfieldName, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldConfiguration = null)
         {
-            SourceExpression.Validate(bodyformID, nameof(bodyformID), required: true);
+            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
             SourceExpression.Validate(bodyformName, nameof(bodyformName), required: true);
             SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: true);
             SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["instanceId"] = SourceExpressionConverter.ConvertToken(bodyformID);
+                body["instanceId"] = SourceExpressionConverter.ConvertToken(bodyformId);
                 bodypropCount++;
                 body["formName"] = SourceExpressionConverter.ConvertToken(bodyformName);
                 bodypropCount++;

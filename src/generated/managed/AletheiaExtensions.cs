@@ -618,10 +618,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
     public enum periodInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public class FinancialFactTrendResponseItem
@@ -799,54 +797,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
     public enum bodytransactionTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "17")]
-        _17,
-        [EnumMember(Value = "18")]
-        _18,
-        [EnumMember(Value = "19")]
-        _19
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _16 = 16,
+        _17 = 17,
+        _18 = 18,
+        _19 = 19
     }
 
     public enum bodysecurityTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 }
 

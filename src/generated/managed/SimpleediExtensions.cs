@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
     public class SimpleediActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -26,8 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (bodylogFileName != null)
                 {
                     body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);
@@ -45,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -59,8 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (bodylogFileName != null)
                 {
                     body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);

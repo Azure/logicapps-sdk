@@ -249,52 +249,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentClassify([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<object> file = null)
-        {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(file, nameof(file), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/Document/Classify";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (stpdId != null)
-                    callPayload.Queries["stpdId"] = SourceExpressionConverter.ConvertO(stpdId);
-                if (projectId != null)
-                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
-                callPayload.Headers["X-Api-Version"] = SourceExpressionConverter.ConvertO(xApiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel> DocumentExtractAndVerify([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<object> file = null)
-        {
-            SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
-            SourceExpression.Validate(stpdId, nameof(stpdId), required: false);
-            SourceExpression.Validate(projectId, nameof(projectId), required: false);
-            SourceExpression.Validate(file, nameof(file), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/Document/ExtractAndVerify";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (stpdId != null)
-                    callPayload.Queries["stpdId"] = SourceExpressionConverter.ConvertO(stpdId);
-                if (projectId != null)
-                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
-                callPayload.Headers["X-Api-Version"] = SourceExpressionConverter.ConvertO(xApiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AIForgedViewModelsDocumentViewModel>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
         public IBodyWorkflowAction<AIForgedViewModelsClassesViewModel> DocumentGetClassification([WorkflowExpression] Func<string> xApiVersion, [WorkflowExpression] Func<int> stpdId = null, [WorkflowExpression] Func<int> projectId = null, [WorkflowExpression] Func<int> docId = null)
         {
             SourceExpression.Validate(xApiVersion, nameof(xApiVersion), required: true);
@@ -1125,12 +1079,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALClassType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class AIForgedViewModelsDocumentViewModel
@@ -1231,84 +1182,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALDocumentStatus
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "81")]
-        _81,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "108")]
-        _108,
-        [EnumMember(Value = "109")]
-        _109,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "190")]
-        _190
+        _0 = 0,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _81 = 81,
+        _90 = 90,
+        _98 = 98,
+        _99 = 99,
+        _103 = 103,
+        _108 = 108,
+        _109 = 109,
+        _110 = 110,
+        _190 = 190
     }
 
     public enum AIForgedDALUsageType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _10 = 10,
+        _90 = 90,
+        _98 = 98,
+        _99 = 99
     }
 
     public enum AIForgedDALAvailability
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _9 = 9,
+        _99 = 99
     }
 
     public class AIForgedViewModelsDocumentParameterViewModel
@@ -1430,58 +1346,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALVerificationType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8
     }
 
     public enum AIForgedDALVerificationStatus
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384
     }
 
     public class AIForgedViewModelsDocumentDataViewModel
@@ -1534,16 +1426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALDocumentDataType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _10 = 10,
+        _11 = 11
     }
 
     public class AIForgedViewModelsParameterDefViewModel
@@ -1644,144 +1531,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALParameterDefinitionStatus
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _99 = 99
     }
 
     public enum AIForgedDALParameterDefinitionCategory
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "40")]
-        _40
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _20 = 20,
+        _21 = 21,
+        _22 = 22,
+        _40 = 40
     }
 
     public enum AIForgedDALGroupingType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _99 = 99
     }
 
     public enum AIForgedDALValueType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "17")]
-        _17,
-        [EnumMember(Value = "18")]
-        _18,
-        [EnumMember(Value = "19")]
-        _19,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _17 = 17,
+        _18 = 18,
+        _19 = 19,
+        _20 = 20,
+        _90 = 90,
+        _91 = 91,
+        _98 = 98,
+        _99 = 99
     }
 
     public enum AIForgedDALRequiredOption
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256
     }
 
     public class AIForgedDALModelsParameterDefSettingViewModel
@@ -1891,148 +1717,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALSettingType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _9 = 9,
+        _10 = 10
     }
 
     public enum AIForgedDALSettingStatus
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _99 = 99
     }
 
     public enum AIForgedDALOrientation
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum AIForgedDALMarkingType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8
     }
 
     public enum AIForgedDALOptionStatusFlags
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024
     }
 
     public enum categoryInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "40")]
-        _40
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _20 = 20,
+        _21 = 21,
+        _22 = 22,
+        _40 = 40
     }
 
     public enum groupingInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _99 = 99
     }
 
     public class AIForgedViewModelsDocParamSummary
@@ -2208,22 +1975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALProjectStatus
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _10 = 10,
+        _11 = 11,
+        _20 = 20,
+        _90 = 90,
+        _99 = 99
     }
 
     public class AIForgedViewModelsDataTypeViewModel
@@ -2252,26 +2011,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALDataTypeCategory
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512
     }
 
     public class AIForgedViewModelsEnumDataViewModel
@@ -2306,104 +2055,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum AIForgedDALEnumType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "17")]
-        _17,
-        [EnumMember(Value = "18")]
-        _18,
-        [EnumMember(Value = "19")]
-        _19,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "24")]
-        _24,
-        [EnumMember(Value = "26")]
-        _26,
-        [EnumMember(Value = "27")]
-        _27,
-        [EnumMember(Value = "29")]
-        _29,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "31")]
-        _31,
-        [EnumMember(Value = "35")]
-        _35,
-        [EnumMember(Value = "41")]
-        _41,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "51")]
-        _51,
-        [EnumMember(Value = "52")]
-        _52,
-        [EnumMember(Value = "55")]
-        _55,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "61")]
-        _61,
-        [EnumMember(Value = "62")]
-        _62,
-        [EnumMember(Value = "63")]
-        _63,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "72")]
-        _72,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "81")]
-        _81,
-        [EnumMember(Value = "85")]
-        _85,
-        [EnumMember(Value = "86")]
-        _86,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "95")]
-        _95,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "1000")]
-        _1000,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001
+        _0 = 0,
+        _1 = 1,
+        _10 = 10,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _16 = 16,
+        _17 = 17,
+        _18 = 18,
+        _19 = 19,
+        _21 = 21,
+        _22 = 22,
+        _24 = 24,
+        _26 = 26,
+        _27 = 27,
+        _29 = 29,
+        _30 = 30,
+        _31 = 31,
+        _35 = 35,
+        _41 = 41,
+        _50 = 50,
+        _51 = 51,
+        _52 = 52,
+        _55 = 55,
+        _60 = 60,
+        _61 = 61,
+        _62 = 62,
+        _63 = 63,
+        _70 = 70,
+        _71 = 71,
+        _72 = 72,
+        _80 = 80,
+        _81 = 81,
+        _85 = 85,
+        _86 = 86,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _95 = 95,
+        _96 = 96,
+        _100 = 100,
+        _101 = 101,
+        _110 = 110,
+        _200 = 200,
+        _201 = 201,
+        _1000 = 1000,
+        _1001 = 1001,
+        _2000 = 2000,
+        _2001 = 2001
     }
 
     public class AIForgedViewModelsVerificationSummary
@@ -2531,116 +2231,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
 
     public enum SystemDayOfWeek
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6
     }
 
     public enum typeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _10 = 10,
+        _11 = 11
     }
 
     public enum usageInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _10 = 10,
+        _90 = 90,
+        _98 = 98,
+        _99 = 99
     }
 
     public enum statusInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "81")]
-        _81,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "108")]
-        _108,
-        [EnumMember(Value = "109")]
-        _109,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "190")]
-        _190
+        _0 = 0,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _81 = 81,
+        _90 = 90,
+        _98 = 98,
+        _99 = 99,
+        _103 = 103,
+        _108 = 108,
+        _109 = 109,
+        _110 = 110,
+        _190 = 190
     }
 
     public enum sortFieldInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public enum sortDirectionInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 }
 

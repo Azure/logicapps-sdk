@@ -147,12 +147,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger3/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -161,12 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger5/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;

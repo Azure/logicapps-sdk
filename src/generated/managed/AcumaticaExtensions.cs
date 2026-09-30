@@ -130,15 +130,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> CreatesOrUpdatesAnExistingCustomer([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycustomerIDvalue = null, [WorkflowExpression] Func<string> bodycustomerNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyaccountRefvalue = null, [WorkflowExpression] Func<string> bodycurrencyIDvalue = null, [WorkflowExpression] Func<string> bodycustomerClassvalue = null, [WorkflowExpression] Func<string> bodytermsvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> CreatesOrUpdatesAnExistingCustomer([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycustomerIdvalue = null, [WorkflowExpression] Func<string> bodycustomerNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyaccountRefvalue = null, [WorkflowExpression] Func<string> bodycurrencyIdvalue = null, [WorkflowExpression] Func<string> bodycustomerClassvalue = null, [WorkflowExpression] Func<string> bodytermsvalue = null)
         {
             SourceExpression.Validate(accept, nameof(accept), required: true);
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodycustomerIDvalue, nameof(bodycustomerIDvalue), required: false);
+            SourceExpression.Validate(bodycustomerIdvalue, nameof(bodycustomerIdvalue), required: false);
             SourceExpression.Validate(bodycustomerNamevalue, nameof(bodycustomerNamevalue), required: false);
             SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
             SourceExpression.Validate(bodyaccountRefvalue, nameof(bodyaccountRefvalue), required: false);
-            SourceExpression.Validate(bodycurrencyIDvalue, nameof(bodycurrencyIDvalue), required: false);
+            SourceExpression.Validate(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
             SourceExpression.Validate(bodycustomerClassvalue, nameof(bodycustomerClassvalue), required: false);
             SourceExpression.Validate(bodytermsvalue, nameof(bodytermsvalue), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -150,17 +150,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var customerIDObject = new JObject();
-                var customerIDObjectpropCount = 0;
-                if (bodycustomerIDvalue != null)
+                var customerIdObject = new JObject();
+                var customerIdObjectpropCount = 0;
+                if (bodycustomerIdvalue != null)
                 {
-                    customerIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycustomerIDvalue);
-                    customerIDObjectpropCount++;
+                    customerIdObject["value"] = SourceExpressionConverter.ConvertToken(bodycustomerIdvalue);
+                    customerIdObjectpropCount++;
                 }
 
-                if (customerIDObjectpropCount > 0)
+                if (customerIdObjectpropCount > 0)
                 {
-                    body["CustomerID"] = customerIDObject;
+                    body["CustomerID"] = customerIdObject;
                     bodypropCount++;
                 }
 
@@ -206,17 +206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                     bodypropCount++;
                 }
 
-                var currencyIDObject = new JObject();
-                var currencyIDObjectpropCount = 0;
-                if (bodycurrencyIDvalue != null)
+                var currencyIdObject = new JObject();
+                var currencyIdObjectpropCount = 0;
+                if (bodycurrencyIdvalue != null)
                 {
-                    currencyIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIDvalue);
-                    currencyIDObjectpropCount++;
+                    currencyIdObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIdvalue);
+                    currencyIdObjectpropCount++;
                 }
 
-                if (currencyIDObjectpropCount > 0)
+                if (currencyIdObjectpropCount > 0)
                 {
-                    body["CurrencyID"] = currencyIDObject;
+                    body["CurrencyID"] = currencyIdObject;
                     bodypropCount++;
                 }
 
@@ -287,15 +287,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> CreatesOrUpdatesAnExistingOpportunity([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyopportunityIDvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodystagevalue = null, [WorkflowExpression] Func<string> bodycurrencyIDvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<double> bodyamountvalue = null, [WorkflowExpression] Func<double> bodydiscountvalue = null, [WorkflowExpression] Func<double> bodytotalvalue = null, [WorkflowExpression] Func<string> bodysourcevalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyprojectvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> CreatesOrUpdatesAnExistingOpportunity([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyopportunityIdvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodystagevalue = null, [WorkflowExpression] Func<string> bodycurrencyIdvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<double> bodyamountvalue = null, [WorkflowExpression] Func<double> bodydiscountvalue = null, [WorkflowExpression] Func<double> bodytotalvalue = null, [WorkflowExpression] Func<string> bodysourcevalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyprojectvalue = null)
         {
             SourceExpression.Validate(accept, nameof(accept), required: true);
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodyopportunityIDvalue, nameof(bodyopportunityIDvalue), required: false);
+            SourceExpression.Validate(bodyopportunityIdvalue, nameof(bodyopportunityIdvalue), required: false);
             SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
             SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
             SourceExpression.Validate(bodystagevalue, nameof(bodystagevalue), required: false);
-            SourceExpression.Validate(bodycurrencyIDvalue, nameof(bodycurrencyIDvalue), required: false);
+            SourceExpression.Validate(bodycurrencyIdvalue, nameof(bodycurrencyIdvalue), required: false);
             SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
             SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
             SourceExpression.Validate(bodyamountvalue, nameof(bodyamountvalue), required: false);
@@ -313,17 +313,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var opportunityIDObject = new JObject();
-                var opportunityIDObjectpropCount = 0;
-                if (bodyopportunityIDvalue != null)
+                var opportunityIdObject = new JObject();
+                var opportunityIdObjectpropCount = 0;
+                if (bodyopportunityIdvalue != null)
                 {
-                    opportunityIDObject["value"] = SourceExpressionConverter.ConvertToken(bodyopportunityIDvalue);
-                    opportunityIDObjectpropCount++;
+                    opportunityIdObject["value"] = SourceExpressionConverter.ConvertToken(bodyopportunityIdvalue);
+                    opportunityIdObjectpropCount++;
                 }
 
-                if (opportunityIDObjectpropCount > 0)
+                if (opportunityIdObjectpropCount > 0)
                 {
-                    body["OpportunityID"] = opportunityIDObject;
+                    body["OpportunityID"] = opportunityIdObject;
                     bodypropCount++;
                 }
 
@@ -369,17 +369,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                     bodypropCount++;
                 }
 
-                var currencyIDObject = new JObject();
-                var currencyIDObjectpropCount = 0;
-                if (bodycurrencyIDvalue != null)
+                var currencyIdObject = new JObject();
+                var currencyIdObjectpropCount = 0;
+                if (bodycurrencyIdvalue != null)
                 {
-                    currencyIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIDvalue);
-                    currencyIDObjectpropCount++;
+                    currencyIdObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIdvalue);
+                    currencyIdObjectpropCount++;
                 }
 
-                if (currencyIDObjectpropCount > 0)
+                if (currencyIdObjectpropCount > 0)
                 {
-                    body["CurrencyID"] = currencyIDObject;
+                    body["CurrencyID"] = currencyIdObject;
                     bodypropCount++;
                 }
 
@@ -534,13 +534,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> CreatesOrUpdatesAnExistingCase([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycaseIDvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodyclassIDvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodydescriptionvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyseverityvalue = null, [WorkflowExpression] Func<string> bodypriorityvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> CreatesOrUpdatesAnExistingCase([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycaseIdvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodyclassIdvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodydescriptionvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyseverityvalue = null, [WorkflowExpression] Func<string> bodypriorityvalue = null)
         {
             SourceExpression.Validate(accept, nameof(accept), required: true);
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(bodycaseIDvalue, nameof(bodycaseIDvalue), required: false);
+            SourceExpression.Validate(bodycaseIdvalue, nameof(bodycaseIdvalue), required: false);
             SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
-            SourceExpression.Validate(bodyclassIDvalue, nameof(bodyclassIDvalue), required: false);
+            SourceExpression.Validate(bodyclassIdvalue, nameof(bodyclassIdvalue), required: false);
             SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
             SourceExpression.Validate(bodydescriptionvalue, nameof(bodydescriptionvalue), required: false);
             SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
@@ -557,17 +557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var caseIDObject = new JObject();
-                var caseIDObjectpropCount = 0;
-                if (bodycaseIDvalue != null)
+                var caseIdObject = new JObject();
+                var caseIdObjectpropCount = 0;
+                if (bodycaseIdvalue != null)
                 {
-                    caseIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycaseIDvalue);
-                    caseIDObjectpropCount++;
+                    caseIdObject["value"] = SourceExpressionConverter.ConvertToken(bodycaseIdvalue);
+                    caseIdObjectpropCount++;
                 }
 
-                if (caseIDObjectpropCount > 0)
+                if (caseIdObjectpropCount > 0)
                 {
-                    body["CaseID"] = caseIDObject;
+                    body["CaseID"] = caseIdObject;
                     bodypropCount++;
                 }
 
@@ -585,17 +585,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
                     bodypropCount++;
                 }
 
-                var classIDObject = new JObject();
-                var classIDObjectpropCount = 0;
-                if (bodyclassIDvalue != null)
+                var classIdObject = new JObject();
+                var classIdObjectpropCount = 0;
+                if (bodyclassIdvalue != null)
                 {
-                    classIDObject["value"] = SourceExpressionConverter.ConvertToken(bodyclassIDvalue);
-                    classIDObjectpropCount++;
+                    classIdObject["value"] = SourceExpressionConverter.ConvertToken(bodyclassIdvalue);
+                    classIdObjectpropCount++;
                 }
 
-                if (classIDObjectpropCount > 0)
+                if (classIdObjectpropCount > 0)
                 {
-                    body["ClassID"] = classIDObject;
+                    body["ClassID"] = classIdObject;
                     bodypropCount++;
                 }
 
@@ -714,16 +714,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesCustomerUsingCustomeridResponse
     {
-        public RetrievesCustomerUsingCustomeridResponseCustomerIDType CustomerID { get; set; }
+        public RetrievesCustomerUsingCustomeridResponseCustomerIdType CustomerID { get; set; }
         public RetrievesCustomerUsingCustomeridResponseCustomerNameType CustomerName { get; set; }
         public RetrievesCustomerUsingCustomeridResponseStatusType Status { get; set; }
         public RetrievesCustomerUsingCustomeridResponseAccountRefType AccountRef { get; set; }
-        public RetrievesCustomerUsingCustomeridResponseCurrencyIDType CurrencyID { get; set; }
+        public RetrievesCustomerUsingCustomeridResponseCurrencyIdType CurrencyID { get; set; }
         public RetrievesCustomerUsingCustomeridResponseCustomerClassType CustomerClass { get; set; }
         public RetrievesCustomerUsingCustomeridResponseTermsType Terms { get; set; }
     }
 
-    public class RetrievesCustomerUsingCustomeridResponseCustomerIDType
+    public class RetrievesCustomerUsingCustomeridResponseCustomerIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesCustomerUsingCustomeridResponseCurrencyIDType
+    public class RetrievesCustomerUsingCustomeridResponseCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -767,11 +767,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesOpportunityUsingOpportunityidResponse
     {
-        public RetrievesOpportunityUsingOpportunityidResponseOpportunityIDType OpportunityID { get; set; }
+        public RetrievesOpportunityUsingOpportunityidResponseOpportunityIdType OpportunityID { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseSubjectType Subject { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseStatusType Status { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseStageType Stage { get; set; }
-        public RetrievesOpportunityUsingOpportunityidResponseCurrencyIDType CurrencyID { get; set; }
+        public RetrievesOpportunityUsingOpportunityidResponseCurrencyIdType CurrencyID { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseBusinessAccountType BusinessAccount { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseContactDisplayNameType ContactDisplayName { get; set; }
         public RetrievesOpportunityUsingOpportunityidResponseAmountType Amount { get; set; }
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public RetrievesOpportunityUsingOpportunityidResponseProjectType Project { get; set; }
     }
 
-    public class RetrievesOpportunityUsingOpportunityidResponseOpportunityIDType
+    public class RetrievesOpportunityUsingOpportunityidResponseOpportunityIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesOpportunityUsingOpportunityidResponseCurrencyIDType
+    public class RetrievesOpportunityUsingOpportunityidResponseCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -862,10 +862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesCaseUsingCaseidResponse
     {
-        public RetrievesCaseUsingCaseidResponseCaseIDType CaseID { get; set; }
+        public RetrievesCaseUsingCaseidResponseCaseIdType CaseID { get; set; }
         public RetrievesCaseUsingCaseidResponseSubjectType Subject { get; set; }
         public RetrievesCaseUsingCaseidResponseDateReportedType DateReported { get; set; }
-        public RetrievesCaseUsingCaseidResponseClassIDType ClassID { get; set; }
+        public RetrievesCaseUsingCaseidResponseClassIdType ClassID { get; set; }
         public RetrievesCaseUsingCaseidResponseBusinessAccountType BusinessAccount { get; set; }
         public RetrievesCaseUsingCaseidResponseDescriptionType Description { get; set; }
         public RetrievesCaseUsingCaseidResponseContactDisplayNameType ContactDisplayName { get; set; }
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public RetrievesCaseUsingCaseidResponseLastActivityDateType LastActivityDate { get; set; }
     }
 
-    public class RetrievesCaseUsingCaseidResponseCaseIDType
+    public class RetrievesCaseUsingCaseidResponseCaseIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesCaseUsingCaseidResponseClassIDType
+    public class RetrievesCaseUsingCaseidResponseClassIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -950,16 +950,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem
     {
-        public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerIDType CustomerID { get; set; }
+        public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerIdType CustomerID { get; set; }
         public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerNameType CustomerName { get; set; }
         public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemStatusType Status { get; set; }
         public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemAccountRefType AccountRef { get; set; }
-        public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIDType CurrencyID { get; set; }
+        public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIdType CurrencyID { get; set; }
         public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerClassType CustomerClass { get; set; }
         public RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemTermsType Terms { get; set; }
     }
 
-    public class RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerIDType
+    public class RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCustomerIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIDType
+    public class RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1003,16 +1003,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class CreatesOrUpdatesAnExistingCustomerResponse
     {
-        public CreatesOrUpdatesAnExistingCustomerResponseCustomerIDType CustomerID { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerResponseCustomerIdType CustomerID { get; set; }
         public CreatesOrUpdatesAnExistingCustomerResponseCustomerNameType CustomerName { get; set; }
         public CreatesOrUpdatesAnExistingCustomerResponseStatusType Status { get; set; }
         public CreatesOrUpdatesAnExistingCustomerResponseAccountRefType AccountRef { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerResponseCurrencyIDType CurrencyID { get; set; }
+        public CreatesOrUpdatesAnExistingCustomerResponseCurrencyIdType CurrencyID { get; set; }
         public CreatesOrUpdatesAnExistingCustomerResponseCustomerClassType CustomerClass { get; set; }
         public CreatesOrUpdatesAnExistingCustomerResponseTermsType Terms { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerResponseCustomerIDType
+    public class CreatesOrUpdatesAnExistingCustomerResponseCustomerIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerResponseCurrencyIDType
+    public class CreatesOrUpdatesAnExistingCustomerResponseCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1056,11 +1056,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem
     {
-        public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemOpportunityIDType OpportunityID { get; set; }
+        public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemOpportunityIdType OpportunityID { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemSubjectType Subject { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemStatusType Status { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemStageType Stage { get; set; }
-        public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIDType CurrencyID { get; set; }
+        public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIdType CurrencyID { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemBusinessAccountType BusinessAccount { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemContactDisplayNameType ContactDisplayName { get; set; }
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemAmountType Amount { get; set; }
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemProjectType Project { get; set; }
     }
 
-    public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemOpportunityIDType
+    public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemOpportunityIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1095,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIDType
+    public class RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItemCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1151,11 +1151,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class CreatesOrUpdatesAnExistingOpportunityResponse
     {
-        public CreatesOrUpdatesAnExistingOpportunityResponseOpportunityIDType OpportunityID { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityResponseOpportunityIdType OpportunityID { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseSubjectType Subject { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseStatusType Status { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseStageType Stage { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityResponseCurrencyIDType CurrencyID { get; set; }
+        public CreatesOrUpdatesAnExistingOpportunityResponseCurrencyIdType CurrencyID { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseBusinessAccountType BusinessAccount { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseContactDisplayNameType ContactDisplayName { get; set; }
         public CreatesOrUpdatesAnExistingOpportunityResponseAmountType Amount { get; set; }
@@ -1166,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public CreatesOrUpdatesAnExistingOpportunityResponseProjectType Project { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityResponseOpportunityIDType
+    public class CreatesOrUpdatesAnExistingOpportunityResponseOpportunityIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityResponseCurrencyIDType
+    public class CreatesOrUpdatesAnExistingOpportunityResponseCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1246,10 +1246,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem
     {
-        public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemCaseIDType CaseID { get; set; }
+        public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemCaseIdType CaseID { get; set; }
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemSubjectType Subject { get; set; }
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemDateReportedType DateReported { get; set; }
-        public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemClassIDType ClassID { get; set; }
+        public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemClassIdType ClassID { get; set; }
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemBusinessAccountType BusinessAccount { get; set; }
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemDescriptionType Description { get; set; }
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemContactDisplayNameType ContactDisplayName { get; set; }
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemLastActivityDateType LastActivityDate { get; set; }
     }
 
-    public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemCaseIDType
+    public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemCaseIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1278,7 +1278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemClassIDType
+    public class RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItemClassIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1334,10 +1334,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
 
     public class CreatesOrUpdatesAnExistingCaseResponse
     {
-        public CreatesOrUpdatesAnExistingCaseResponseCaseIDType CaseID { get; set; }
+        public CreatesOrUpdatesAnExistingCaseResponseCaseIdType CaseID { get; set; }
         public CreatesOrUpdatesAnExistingCaseResponseSubjectType Subject { get; set; }
         public CreatesOrUpdatesAnExistingCaseResponseDateReportedType DateReported { get; set; }
-        public CreatesOrUpdatesAnExistingCaseResponseClassIDType ClassID { get; set; }
+        public CreatesOrUpdatesAnExistingCaseResponseClassIdType ClassID { get; set; }
         public CreatesOrUpdatesAnExistingCaseResponseBusinessAccountType BusinessAccount { get; set; }
         public CreatesOrUpdatesAnExistingCaseResponseDescriptionType Description { get; set; }
         public CreatesOrUpdatesAnExistingCaseResponseContactDisplayNameType ContactDisplayName { get; set; }
@@ -1348,7 +1348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public CreatesOrUpdatesAnExistingCaseResponseLastActivityDateType LastActivityDate { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseResponseCaseIDType
+    public class CreatesOrUpdatesAnExistingCaseResponseCaseIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseResponseClassIDType
+    public class CreatesOrUpdatesAnExistingCaseResponseClassIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }

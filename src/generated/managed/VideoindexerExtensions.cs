@@ -50,43 +50,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string> UploadVideoFileContent([WorkflowExpression] Func<string> fileContent, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<privacyInput> privacy, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> partition = null, [WorkflowExpression] Func<string> callbackUrl = null)
-        {
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(privacy, nameof(privacy), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(externalId, nameof(externalId), required: false);
-            SourceExpression.Validate(metadata, nameof(metadata), required: false);
-            SourceExpression.Validate(description, nameof(description), required: false);
-            SourceExpression.Validate(partition, nameof(partition), required: false);
-            SourceExpression.Validate(callbackUrl, nameof(callbackUrl), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (language != null)
-                    callPayload.Queries["language"] = SourceExpressionConverter.Convert(language);
-                if (externalId != null)
-                    callPayload.Queries["externalId"] = SourceExpressionConverter.ConvertO(externalId);
-                if (metadata != null)
-                    callPayload.Queries["metadata"] = SourceExpressionConverter.ConvertO(metadata);
-                if (description != null)
-                    callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
-                if (partition != null)
-                    callPayload.Queries["partition"] = SourceExpressionConverter.ConvertO(partition);
-                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
-                callPayload.Queries["privacy"] = SourceExpressionConverter.Convert(privacy);
-                if (callbackUrl != null)
-                    callPayload.Queries["callbackUrl"] = SourceExpressionConverter.ConvertO(callbackUrl);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);

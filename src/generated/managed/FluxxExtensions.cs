@@ -46,26 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<object> content, [WorkflowExpression] Func<string> dataOwnerModelModelType, [WorkflowExpression] Func<int> dataOwnerModelId, [WorkflowExpression] Func<string> dataContentType, [WorkflowExpression] Func<int> dataCreatedById)
-        {
-            SourceExpression.Validate(content, nameof(content), required: true);
-            SourceExpression.Validate(dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
-            SourceExpression.Validate(dataOwnerModelId, nameof(dataOwnerModelId), required: true);
-            SourceExpression.Validate(dataContentType, nameof(dataContentType), required: true);
-            SourceExpression.Validate(dataCreatedById, nameof(dataCreatedById), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/rest/v2/model_document";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["cols"] = Convert.ToString("[\"document_file_name\",\"document_content_type\",\"doc_label\"]");
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadDocumentResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> CreateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null)
         {
             SourceExpression.Validate(typeId, nameof(typeId), required: true);
@@ -230,18 +210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         GET,
         PUT,
         POST
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("document_file_name")]
-        public string DocumentFileName { get; set; }
-
-        [JsonProperty("document_content_type")]
-        public string DocumentContentType { get; set; }
-
-        [JsonProperty("doc_label")]
-        public string DocLabel { get; set; }
     }
 
     public class ModelResponse

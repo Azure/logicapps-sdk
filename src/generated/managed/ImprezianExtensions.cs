@@ -2872,15 +2872,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
             return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(promotionID, nameof(promotionID), required: true);
+            SourceExpression.Validate(promotionId, nameof(promotionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger/api/new_members_leads";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["PromotionID"] = SourceExpressionConverter.ConvertO(promotionID);
+                callPayload.Queries["PromotionID"] = SourceExpressionConverter.ConvertO(promotionId);
                 return callPayload;
             }
 

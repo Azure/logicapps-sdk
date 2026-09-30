@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserResponse> GetUserByID([WorkflowExpression] Func<string> userid)
+        public IBodyWorkflowAction<UserResponse> GetUserById([WorkflowExpression] Func<string> userid)
         {
             SourceExpression.Validate(userid, nameof(userid), required: true);
             ApiConnectionActionInput BuildSourceInput()

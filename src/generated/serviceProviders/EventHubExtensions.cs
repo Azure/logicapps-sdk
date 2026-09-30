@@ -140,13 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         }
     }
 
-    public class ReceiveEventsOutputItem
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-        public JToken Properties { get; set; }
-    }
-
     public class SendEventInputEventDataType
     {
         [JsonProperty("contentData")]
@@ -155,6 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     }
 
     public class SendEventsInputEventDatasTypeItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+        public JToken Properties { get; set; }
+    }
+
+    public class ReceiveEventsOutputItem
     {
         [JsonProperty("contentData")]
         public JToken ContentData { get; set; }

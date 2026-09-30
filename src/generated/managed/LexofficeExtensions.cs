@@ -623,22 +623,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> type)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(type, nameof(type), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ResponseFilesPost>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<object> DownloadFileLexoffice([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<acceptInput> accept = null)
         {
             SourceExpression.Validate(fileId, nameof(fileId), required: true);
@@ -1222,22 +1206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             }
 
             return new ApiConnectionAction<ResponseVouchersIdPut>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction UploadFileVoucherLexoffice([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> file)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vouchers/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -2684,12 +2652,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
         [JsonProperty("callbackUrl")]
         public string CallbackUrl { get; set; }
-    }
-
-    public class ResponseFilesPost
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public enum acceptInput

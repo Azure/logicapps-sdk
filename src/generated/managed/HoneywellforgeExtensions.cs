@@ -87,15 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IWorkflowAction SendEventToForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycorrelationID, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodyconnectorID = null)
+        public IWorkflowAction SendEventToForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodyconnectorId = null)
         {
             SourceExpression.Validate(projectId, nameof(projectId), required: true);
             SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
             SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
             SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
-            SourceExpression.Validate(bodycorrelationID, nameof(bodycorrelationID), required: true);
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
             SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
-            SourceExpression.Validate(bodyconnectorID, nameof(bodyconnectorID), required: false);
+            SourceExpression.Validate(bodyconnectorId, nameof(bodyconnectorId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/transactionEvent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
@@ -110,10 +110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                 bodypropCount++;
                 body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
-                body["corelationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationID);
-                if (bodyconnectorID != null)
+                body["corelationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodyconnectorId != null)
                 {
-                    body["connectorId"] = SourceExpressionConverter.ConvertToken(bodyconnectorID);
+                    body["connectorId"] = SourceExpressionConverter.ConvertToken(bodyconnectorId);
                     bodypropCount++;
                 }
 

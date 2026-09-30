@@ -46,50 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(actionType, nameof(actionType), required: false);
-            SourceExpression.Validate(id, nameof(id), required: false);
-            SourceExpression.Validate(requestactionBody, nameof(requestactionBody), required: false);
-            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
-            SourceExpression.Validate(sendToAll, nameof(sendToAll), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (actionType != null)
-                    callPayload.Queries["actionType"] = SourceExpressionConverter.Convert(actionType);
-                if (id != null)
-                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
-                if (sendToAll != null)
-                    callPayload.Queries["sendToAll"] = SourceExpressionConverter.Convert(sendToAll);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestactionBody != null)
-                {
-                    request["actionBody"] = SourceExpressionConverter.ConvertToken(requestactionBody);
-                    requestpropCount++;
-                }
-
-                if (requestsubscribers != null)
-                {
-                    request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SendActionResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActionReminder([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<object> requestactionId = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
@@ -419,21 +375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent([WorkflowExpression] Func<object> fileContent)
-        {
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v1/media";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL([WorkflowExpression] Func<string> mediaUrlmediaUrl)
         {
             SourceExpression.Validate(mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
@@ -497,6 +438,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             }
 
             return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(actionType, nameof(actionType), required: false);
+            SourceExpression.Validate(requestactionBody, nameof(requestactionBody), required: false);
+            SourceExpression.Validate(requestsubscribers, nameof(requestsubscribers), required: false);
+            SourceExpression.Validate(sendToAll, nameof(sendToAll), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["actionType"] = Convert.ToString("Action Package");
+                if (actionType != null)
+                    callPayload.Queries["actionType"] = SourceExpressionConverter.Convert(actionType);
+                if (sendToAll != null)
+                    callPayload.Queries["sendToAll"] = SourceExpressionConverter.Convert(sendToAll);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestactionBody != null)
+                {
+                    request["actionBody"] = SourceExpressionConverter.ConvertToken(requestactionBody);
+                    requestpropCount++;
+                }
+
+                if (requestsubscribers != null)
+                {
+                    request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendActionResponse>(BuildSourceInput);
         }
     }
 

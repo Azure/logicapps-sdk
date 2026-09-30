@@ -577,14 +577,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptionidOCFormatInput> subscriptionidOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIdOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(gatewayHost, nameof(gatewayHost), required: true);
             SourceExpression.Validate(gatewayService, nameof(gatewayService), required: true);
             SourceExpression.Validate(programId, nameof(programId), required: true);
             SourceExpression.Validate(subscriptionsapActions, nameof(subscriptionsapActions), required: false);
-            SourceExpression.Validate(subscriptioniDOCFormat, nameof(subscriptioniDOCFormat), required: false);
-            SourceExpression.Validate(subscriptionreceiveIDOCsWithUnreleasedSegments, nameof(subscriptionreceiveIDOCsWithUnreleasedSegments), required: false);
+            SourceExpression.Validate(subscriptionidOCFormat, nameof(subscriptionidOCFormat), required: false);
+            SourceExpression.Validate(subscriptionreceiveIdOCsWithUnreleasedSegments, nameof(subscriptionreceiveIdOCsWithUnreleasedSegments), required: false);
             SourceExpression.Validate(sncPartnerNames, nameof(sncPartnerNames), required: false);
             SourceExpression.Validate(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -608,15 +608,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     subscriptionpropCount++;
                 }
 
-                if (subscriptioniDOCFormat != null)
+                if (subscriptionidOCFormat != null)
                 {
-                    subscription["IdocFormat"] = SourceExpressionConverter.Convert(subscriptioniDOCFormat);
+                    subscription["IdocFormat"] = SourceExpressionConverter.Convert(subscriptionidOCFormat);
                     subscriptionpropCount++;
                 }
 
-                if (subscriptionreceiveIDOCsWithUnreleasedSegments != null)
+                if (subscriptionreceiveIdOCsWithUnreleasedSegments != null)
                 {
-                    subscription["ReceiveIdocsWithUnreleasedSegments"] = SourceExpressionConverter.ConvertToken(subscriptionreceiveIDOCsWithUnreleasedSegments);
+                    subscription["ReceiveIdocsWithUnreleasedSegments"] = SourceExpressionConverter.ConvertToken(subscriptionreceiveIdOCsWithUnreleasedSegments);
                     subscriptionpropCount++;
                 }
 
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         HttpVersionNotSupported
     }
 
-    public enum subscriptioniDOCFormatInput
+    public enum subscriptionidOCFormatInput
     {
         MicrosoftLobNamespaceXml,
         SapPlainXml,

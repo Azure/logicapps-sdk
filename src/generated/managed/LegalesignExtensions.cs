@@ -907,18 +907,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public enum PermissionsEnum
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6
     }
 
     public class AttachmentResponse
@@ -1167,16 +1161,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public enum DocumentStatusEnum
     {
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "40")]
-        _40,
-        [EnumMember(Value = "50")]
-        _50
+        _10 = 10,
+        _20 = 20,
+        _30 = 30,
+        _40 = 40,
+        _50 = 50
     }
 
     public class SignerResponse
@@ -1208,28 +1197,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public enum SignerStatusEnum
     {
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "35")]
-        _35,
-        [EnumMember(Value = "39")]
-        _39,
-        [EnumMember(Value = "40")]
-        _40,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60
+        _4 = 4,
+        _5 = 5,
+        _10 = 10,
+        _15 = 15,
+        _20 = 20,
+        _30 = 30,
+        _35 = 35,
+        _39 = 39,
+        _40 = 40,
+        _50 = 50,
+        _60 = 60
     }
 
     public class GetSignerFieldsResponseItem
@@ -1345,10 +1323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public enum DocumentListResponseObjectsTypeItemSignersInOrderType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public class DocumentSignerPost
@@ -1404,10 +1380,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public enum bodypdfPasswordTypeInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _1 = 1,
+        _2 = 2
     }
 
     public class TemplatePdfResponse

@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtoparentID, [WorkflowExpression] Func<string> documentDtofilefileName, [WorkflowExpression] Func<string> documentDtofilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
+        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtoparentId, [WorkflowExpression] Func<string> documentDtoFilefileName, [WorkflowExpression] Func<string> documentDtoFilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
         {
             SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
-            SourceExpression.Validate(documentDtoparentID, nameof(documentDtoparentID), required: true);
-            SourceExpression.Validate(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            SourceExpression.Validate(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            SourceExpression.Validate(documentDtoparentId, nameof(documentDtoparentId), required: true);
+            SourceExpression.Validate(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
+            SourceExpression.Validate(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
             SourceExpression.Validate(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
             SourceExpression.Validate(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
             SourceExpression.Validate(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
@@ -118,16 +118,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
                 var documentDto = new JObject();
                 var documentDtopropCount = 0;
                 documentDtopropCount++;
-                documentDto["parentId"] = SourceExpressionConverter.ConvertToken(documentDtoparentID);
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(documentDtofilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(documentDtofilefileContent);
-                if (fileObjectpropCount > 0)
+                documentDto["parentId"] = SourceExpressionConverter.ConvertToken(documentDtoparentId);
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(documentDtoFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(documentDtoFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    documentDto["file"] = fileObject;
+                    documentDto["file"] = @fileObject;
                     documentDtopropCount++;
                 }
 
@@ -160,12 +160,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtofilefileName, [WorkflowExpression] Func<string> documentDtofilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
+        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationSet, [WorkflowExpression] Func<string> documentDtoFilefileName, [WorkflowExpression] Func<string> documentDtoFilefileContent, [WorkflowExpression] Func<string> documentDtometadatadisplayName, [WorkflowExpression] Func<object> documentDtometadatafields, [WorkflowExpression] Func<string> documentDtometadatadescription = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(configurationSet, nameof(configurationSet), required: true);
-            SourceExpression.Validate(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            SourceExpression.Validate(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            SourceExpression.Validate(documentDtoFilefileName, nameof(documentDtoFilefileName), required: true);
+            SourceExpression.Validate(documentDtoFilefileContent, nameof(documentDtoFilefileContent), required: true);
             SourceExpression.Validate(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
             SourceExpression.Validate(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
             SourceExpression.Validate(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
@@ -176,15 +176,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var documentDto = new JObject();
                 var documentDtopropCount = 0;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(documentDtofilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(documentDtofilefileContent);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(documentDtoFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(documentDtoFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    documentDto["file"] = fileObject;
+                    documentDto["file"] = @fileObject;
                     documentDtopropCount++;
                 }
 

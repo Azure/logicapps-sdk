@@ -24,23 +24,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
             return new ApiConnectionAction<GetStoresResponseItem[]>(BuildSourceInput);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        public IWorkflowAction UploadDocument([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> storeId, [WorkflowExpression] Func<object> document)
-        {
-            SourceExpression.Validate(brandId, nameof(brandId), required: true);
-            SourceExpression.Validate(storeId, nameof(storeId), required: true);
-            SourceExpression.Validate(document, nameof(document), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storeId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
     }
 
     public class ZreportsTriggers([ConnectionName] string connectionId)

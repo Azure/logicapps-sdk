@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<DeleteOTPResponse> DeleteOTP([WorkflowExpression] Func<string> otpID)
+        public IBodyWorkflowAction<DeleteOTPResponse> DeleteOTP([WorkflowExpression] Func<string> otpId)
         {
-            SourceExpression.Validate(otpID, nameof(otpID), required: true);
+            SourceExpression.Validate(otpId, nameof(otpId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpId, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -71,15 +71,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<ResendOTPResponse> ResendOTP([WorkflowExpression] Func<string> otpID, [WorkflowExpression] Func<viaInput> via = null, [WorkflowExpression] Func<string> sender = null, [WorkflowExpression] Func<string> caller = null)
+        public IBodyWorkflowAction<ResendOTPResponse> ResendOTP([WorkflowExpression] Func<string> otpId, [WorkflowExpression] Func<viaInput> via = null, [WorkflowExpression] Func<string> sender = null, [WorkflowExpression] Func<string> caller = null)
         {
-            SourceExpression.Validate(otpID, nameof(otpID), required: true);
+            SourceExpression.Validate(otpId, nameof(otpId), required: true);
             SourceExpression.Validate(via, nameof(via), required: false);
             SourceExpression.Validate(sender, nameof(sender), required: false);
             SourceExpression.Validate(caller, nameof(caller), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["via"] = Convert.ToString("AUTO");
@@ -96,12 +96,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<StatusOTPResponse> StatusOTP([WorkflowExpression] Func<string> otpID)
+        public IBodyWorkflowAction<StatusOTPResponse> StatusOTP([WorkflowExpression] Func<string> otpId)
         {
-            SourceExpression.Validate(otpID, nameof(otpID), required: true);
+            SourceExpression.Validate(otpId, nameof(otpId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -111,13 +111,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<VerifyOTPResponse> VerifyOTP([WorkflowExpression] Func<string> otpID, [WorkflowExpression] Func<int> otpCode = null)
+        public IBodyWorkflowAction<VerifyOTPResponse> VerifyOTP([WorkflowExpression] Func<string> otpId, [WorkflowExpression] Func<int> otpCode = null)
         {
-            SourceExpression.Validate(otpID, nameof(otpID), required: true);
+            SourceExpression.Validate(otpId, nameof(otpId), required: true);
             SourceExpression.Validate(otpCode, nameof(otpCode), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}/check", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}/check", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(otpId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (otpCode != null)

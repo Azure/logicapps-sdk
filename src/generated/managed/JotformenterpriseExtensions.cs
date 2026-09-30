@@ -15,16 +15,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceID, [WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(workspaceID, nameof(workspaceID), required: true);
-            SourceExpression.Validate(formID, nameof(formID), required: true);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["workspaceID"] = SourceExpressionConverter.ConvertO(workspaceID);
+                callPayload.Headers["workspaceID"] = SourceExpressionConverter.ConvertO(workspaceId);
                 var body = new JObject();
                 var bodypropCount = 0;
                 body["callbackURL"] = "#{listCallbackUrl()}";

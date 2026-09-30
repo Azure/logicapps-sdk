@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction ApiAnalyze([WorkflowExpression] Func<string> analysisRequestfile, [WorkflowExpression] Func<string> analysisRequestfileName, [WorkflowExpression] Func<string> analysisRequestlicense = null)
+        public IWorkflowAction ApiAnalyze([WorkflowExpression] Func<string> analysisRequestFile, [WorkflowExpression] Func<string> analysisRequestfileName, [WorkflowExpression] Func<string> analysisRequestlicense = null)
         {
-            SourceExpression.Validate(analysisRequestfile, nameof(analysisRequestfile), required: true);
+            SourceExpression.Validate(analysisRequestFile, nameof(analysisRequestFile), required: true);
             SourceExpression.Validate(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
             SourceExpression.Validate(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
                 var analysisRequest = new JObject();
                 var analysisRequestpropCount = 0;
                 analysisRequestpropCount++;
-                analysisRequest["file"] = SourceExpressionConverter.ConvertToken(analysisRequestfile);
+                analysisRequest["file"] = SourceExpressionConverter.ConvertToken(analysisRequestFile);
                 analysisRequestpropCount++;
                 analysisRequest["fileName"] = SourceExpressionConverter.ConvertToken(analysisRequestfileName);
                 if (analysisRequestlicense != null)

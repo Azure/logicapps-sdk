@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet([WorkflowExpression] Func<string> bodyarticleID = null)
+        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet([WorkflowExpression] Func<string> bodyarticleId = null)
         {
-            SourceExpression.Validate(bodyarticleID, nameof(bodyarticleID), required: false);
+            SourceExpression.Validate(bodyarticleId, nameof(bodyarticleId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/get_article";
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyarticleID != null)
+                if (bodyarticleId != null)
                 {
-                    body["articleID"] = SourceExpressionConverter.ConvertToken(bodyarticleID);
+                    body["articleID"] = SourceExpressionConverter.ConvertToken(bodyarticleId);
                     bodypropCount++;
                 }
 

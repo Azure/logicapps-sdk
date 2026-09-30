@@ -897,9 +897,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate([WorkflowExpression] Func<string> bodytransactionID)
+        public IBodyWorkflowAction<ConvertEstimateResponse> ConvertEstimate([WorkflowExpression] Func<string> bodytransactionId)
         {
-            SourceExpression.Validate(bodytransactionID, nameof(bodytransactionID), required: true);
+            SourceExpression.Validate(bodytransactionId, nameof(bodytransactionId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/purchases";
@@ -908,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["transaction_ID"] = SourceExpressionConverter.ConvertToken(bodytransactionID);
+                body["transaction_ID"] = SourceExpressionConverter.ConvertToken(bodytransactionId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

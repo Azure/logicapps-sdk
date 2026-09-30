@@ -532,12 +532,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> parametersobject, [WorkflowExpression] Func<parametersoperationInput> parametersoperation, [WorkflowExpression] Func<string> parameterscolumnDelimiter = null, [WorkflowExpression] Func<string> parametersexternalIDFieldName = null, [WorkflowExpression] Func<string> parameterslineEnding = null, [WorkflowExpression] Func<string> parameterscontentType = null)
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> parametersObject, [WorkflowExpression] Func<parametersoperationInput> parametersoperation, [WorkflowExpression] Func<string> parameterscolumnDelimiter = null, [WorkflowExpression] Func<string> parametersexternalIdFieldName = null, [WorkflowExpression] Func<string> parameterslineEnding = null, [WorkflowExpression] Func<string> parameterscontentType = null)
         {
-            SourceExpression.Validate(parametersobject, nameof(parametersobject), required: true);
+            SourceExpression.Validate(parametersObject, nameof(parametersObject), required: true);
             SourceExpression.Validate(parametersoperation, nameof(parametersoperation), required: true);
             SourceExpression.Validate(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
-            SourceExpression.Validate(parametersexternalIDFieldName, nameof(parametersexternalIDFieldName), required: false);
+            SourceExpression.Validate(parametersexternalIdFieldName, nameof(parametersexternalIdFieldName), required: false);
             SourceExpression.Validate(parameterslineEnding, nameof(parameterslineEnding), required: false);
             SourceExpression.Validate(parameterscontentType, nameof(parameterscontentType), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                 var parameters = new JObject();
                 var parameterspropCount = 0;
                 parameterspropCount++;
-                parameters["object"] = SourceExpressionConverter.ConvertToken(parametersobject);
+                parameters["object"] = SourceExpressionConverter.ConvertToken(parametersObject);
                 parameterspropCount++;
                 parameters["operation"] = SourceExpressionConverter.Convert(parametersoperation);
                 if (parameterscolumnDelimiter != null)
@@ -557,9 +557,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     parameterspropCount++;
                 }
 
-                if (parametersexternalIDFieldName != null)
+                if (parametersexternalIdFieldName != null)
                 {
-                    parameters["externalIdFieldName"] = SourceExpressionConverter.ConvertToken(parametersexternalIDFieldName);
+                    parameters["externalIdFieldName"] = SourceExpressionConverter.ConvertToken(parametersexternalIdFieldName);
                     parameterspropCount++;
                 }
 

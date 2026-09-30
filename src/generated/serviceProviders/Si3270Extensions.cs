@@ -35,6 +35,82 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
 
             return new ServiceProviderAction<JToken>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
+        public IOutputWorkflowAction<JToken[]> GetHidxs()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "getHidxs", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
+        public IOutputWorkflowAction<JToken[]> GetMethods([WorkflowExpression] Func<string> hidx)
+        {
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "getMethods", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
+        public IOutputWorkflowAction<JToken> GetInputSwagger([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method)
+        {
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "getInputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
+        public IOutputWorkflowAction<JToken> GetOutputSwagger([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method)
+        {
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "getOutputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
     }
 }
 

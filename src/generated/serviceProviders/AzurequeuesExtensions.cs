@@ -200,27 +200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
         }
     }
 
-    public class ReceiveQueueMessagesOutput
-    {
-        [JsonProperty("messageText")]
-        public JToken MessageText { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("insertedOn")]
-        public string InsertedOn { get; set; }
-
-        [JsonProperty("expiresOn")]
-        public string ExpiresOn { get; set; }
-
-        [JsonProperty("popReceipt")]
-        public string PopReceipt { get; set; }
-
-        [JsonProperty("nextVisibleOn")]
-        public string NextVisibleOn { get; set; }
-    }
-
     public class PutMessageOutput
     {
         [JsonProperty("content")]
@@ -270,6 +249,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
 
         [JsonProperty("continuationToken")]
         public string ContinuationToken { get; set; }
+    }
+
+    public class ReceiveQueueMessagesOutput
+    {
+        [JsonProperty("messageText")]
+        public JToken MessageText { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("insertedOn")]
+        public string InsertedOn { get; set; }
+
+        [JsonProperty("expiresOn")]
+        public string ExpiresOn { get; set; }
+
+        [JsonProperty("popReceipt")]
+        public string PopReceipt { get; set; }
+
+        [JsonProperty("nextVisibleOn")]
+        public string NextVisibleOn { get; set; }
     }
 }
 

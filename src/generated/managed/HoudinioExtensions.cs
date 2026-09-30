@@ -42,15 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResult> RetrieveScan([WorkflowExpression] Func<string> scanID)
+        public IBodyWorkflowAction<ScanResult> RetrieveScan([WorkflowExpression] Func<string> scanId)
         {
-            SourceExpression.Validate(scanID, nameof(scanID), required: true);
+            SourceExpression.Validate(scanId, nameof(scanId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/scan/result";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["scanID"] = SourceExpressionConverter.ConvertO(scanID);
+                callPayload.Queries["scanID"] = SourceExpressionConverter.ConvertO(scanId);
                 return callPayload;
             }
 

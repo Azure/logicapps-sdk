@@ -27,21 +27,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile([WorkflowExpression] Func<object> file)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/v3/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<FilesReport>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport([WorkflowExpression] Func<string> domain)
         {
             SourceExpression.Validate(domain, nameof(domain), required: true);
@@ -54,21 +39,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
             }
 
             return new ApiConnectionAction<DomainResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl([WorkflowExpression] Func<string> url)
-        {
-            SourceExpression.Validate(url, nameof(url), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/v3/urls";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UrlReport>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
@@ -232,18 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         public int Malicious { get; set; }
     }
 
-    public class FilesReport
-    {
-        [JsonProperty("data")]
-        public FilesReportDataType Data { get; set; }
-    }
-
-    public class FilesReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class DomainResult
     {
         [JsonProperty("data")]
@@ -335,18 +293,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
 
         [JsonProperty("malicious")]
         public int Malicious { get; set; }
-    }
-
-    public class UrlReport
-    {
-        [JsonProperty("data")]
-        public UrlReportDataType Data { get; set; }
-    }
-
-    public class UrlReportDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class Ip

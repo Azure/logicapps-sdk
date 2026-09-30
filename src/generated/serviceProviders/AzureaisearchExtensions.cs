@@ -144,6 +144,74 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
+        public IOutputWorkflowAction<JToken[]> GetIndexes()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "getIndexes", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
+        public IOutputWorkflowAction<JToken[]> GetIndexesForIntegratedVector()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "getIndexesForIntegratedVector", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
+        public IOutputWorkflowAction<JToken> GetIndexSchema([WorkflowExpression] Func<string> indexName)
+        {
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = SourceExpressionConverter.ConvertToken(indexName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "getIndexSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
+        public IOutputWorkflowAction<string[]> GetEmbeddingFields([WorkflowExpression] Func<string> indexName)
+        {
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["indexName"] = SourceExpressionConverter.ConvertToken(indexName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "getEmbeddingFields", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<string[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocument([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<object> document)
         {
             SourceExpression.Validate(indexName, nameof(indexName), required: true);
@@ -227,6 +295,21 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
             }
 
             return new ServiceProviderAction<KnowledgeAgentRetrievalOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
+        public IOutputWorkflowAction<JToken[]> GetAgentNameForAgentRetrieval()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureaisearch", operationId: "getAgentNameForAgentRetrieval", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
         }
     }
 

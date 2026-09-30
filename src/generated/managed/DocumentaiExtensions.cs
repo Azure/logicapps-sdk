@@ -108,45 +108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractTextResponse> ExtractText([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/text";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractTextResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsResponse> ExtractFields([WorkflowExpression] Func<string> fieldNames = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(fieldNames, nameof(fieldNames), required: false);
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/fields";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (fieldNames != null)
-                    callPayload.Headers["FieldNames"] = SourceExpressionConverter.ConvertO(fieldNames);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractFieldsResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> ExtractFieldsAdvanced([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
             SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
@@ -209,84 +170,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
             }
 
             return new ApiConnectionAction<ExtractFieldsAdvancedResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractTablesResponse> ExtractTables([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/tables";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractTablesResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractBarcodesAiResponse> ExtractBarcodes([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/barcodes";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractBarcodesAiResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsAndTablesResponse> ExtractAllFieldsAndTables([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> preprocessing = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(preprocessing, nameof(preprocessing), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/all";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                if (preprocessing != null)
-                    callPayload.Headers["preprocessing"] = SourceExpressionConverter.ConvertO(preprocessing);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractFieldsAndTablesResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentClassificationResult> ExtractClassification([WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/classify";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (categories != null)
-                    callPayload.Headers["Categories"] = SourceExpressionConverter.ConvertO(categories);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<DocumentClassificationResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
@@ -355,42 +238,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<SummarizeDocumentResponse> ExtractSummary([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/extract/summary";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SummarizeDocumentResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractTextFromDocumentBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/batch-job/extract/text";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractFieldsFromDocumentAdvancedBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
             SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
@@ -456,55 +303,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractAllFieldsAndTablesFromDocumentBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
+        public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus([WorkflowExpression] Func<string> asyncJobId = null)
         {
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/batch-job/extract/all";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractClassificationFromDocumentBatchJob([WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
-        {
-            SourceExpression.Validate(categories, nameof(categories), required: false);
-            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document-ai/document/batch-job/extract/classify";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (categories != null)
-                    callPayload.Headers["Categories"] = SourceExpressionConverter.ConvertO(categories);
-                if (recognitionMode != null)
-                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus([WorkflowExpression] Func<string> asyncJobID = null)
-        {
-            SourceExpression.Validate(asyncJobID, nameof(asyncJobID), required: false);
+            SourceExpression.Validate(asyncJobId, nameof(asyncJobId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/document-ai/document/batch-job/batch-job/status";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (asyncJobID != null)
-                    callPayload.Queries["AsyncJobID"] = SourceExpressionConverter.ConvertO(asyncJobID);
+                if (asyncJobId != null)
+                    callPayload.Queries["AsyncJobID"] = SourceExpressionConverter.ConvertO(asyncJobId);
                 return callPayload;
             }
 
@@ -577,31 +385,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public string QuestionText { get; set; }
     }
 
-    public class ExtractTextResponse
-    {
-        public bool Successful { get; set; }
-        public ExtractedTextPage[] PageResults { get; set; }
-    }
-
-    public class ExtractedTextPage
-    {
-        public int PageNumber { get; set; }
-        public string TextResult { get; set; }
-    }
-
-    public class ExtractFieldsResponse
-    {
-        public bool Successful { get; set; }
-        public FieldValue[] Results { get; set; }
-    }
-
-    public class FieldValue
-    {
-        public string FieldName { get; set; }
-        public string FieldStringValue { get; set; }
-        public string[] AdditionalFieldStringValues { get; set; }
-    }
-
     public class ExtractFieldsAdvancedResponse
     {
         public bool Successful { get; set; }
@@ -623,10 +406,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public string FieldExample { get; set; }
     }
 
-    public class ExtractTablesResponse
+    public class DocumentAdvancedClassificationResult
     {
         public bool Successful { get; set; }
+        public string DocumentCategoryResult { get; set; }
+        public double ConfidenceScore { get; set; }
+    }
+
+    public class DocumentCategories
+    {
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
+    }
+
+    public class ExtractDocumentBatchJobResult
+    {
+        public bool Successful { get; set; }
+        public string AsyncJobID { get; set; }
+    }
+
+    public class ExtractDocumentJobStatusResult
+    {
+        public bool Successful { get; set; }
+        public string AsyncJobStatus { get; set; }
+        public string AsyncJobID { get; set; }
+        public ExtractTextResponse ExtractTextResult { get; set; }
+        public ExtractFieldsAndTablesResponse ExtractFieldsAndTablesResult { get; set; }
+        public ExtractFieldsResponse ExtractFieldsResult { get; set; }
+        public DocumentClassificationResult ExtractClassificationResult { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
+    public class ExtractTextResponse
+    {
+        public bool Successful { get; set; }
+        public ExtractedTextPage[] PageResults { get; set; }
+    }
+
+    public class ExtractedTextPage
+    {
+        public int PageNumber { get; set; }
+        public string TextResult { get; set; }
+    }
+
+    public class ExtractFieldsAndTablesResponse
+    {
+        public bool Successful { get; set; }
+        public FieldValue[] FieldResults { get; set; }
         public TableResult[] TableResults { get; set; }
+    }
+
+    public class FieldValue
+    {
+        public string FieldName { get; set; }
+        public string FieldStringValue { get; set; }
+        public string[] AdditionalFieldStringValues { get; set; }
     }
 
     public class TableResult
@@ -646,66 +480,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public string CellValue { get; set; }
     }
 
-    public class ExtractBarcodesAiResponse
+    public class ExtractFieldsResponse
     {
         public bool Successful { get; set; }
-        public ExtractedBarcodeItem[] BarcodeResults { get; set; }
-    }
-
-    public class ExtractedBarcodeItem
-    {
-        public string BarcodeType { get; set; }
-        public string BarcodeValue { get; set; }
-    }
-
-    public class ExtractFieldsAndTablesResponse
-    {
-        public bool Successful { get; set; }
-        public FieldValue[] FieldResults { get; set; }
-        public TableResult[] TableResults { get; set; }
+        public FieldValue[] Results { get; set; }
     }
 
     public class DocumentClassificationResult
     {
         public bool Successful { get; set; }
         public string DocumentCategoryResult { get; set; }
-    }
-
-    public class DocumentAdvancedClassificationResult
-    {
-        public bool Successful { get; set; }
-        public string DocumentCategoryResult { get; set; }
-        public double ConfidenceScore { get; set; }
-    }
-
-    public class DocumentCategories
-    {
-        public string CategoryName { get; set; }
-        public string CategoryDescription { get; set; }
-    }
-
-    public class SummarizeDocumentResponse
-    {
-        public bool Successful { get; set; }
-        public string DocumentSummaryText { get; set; }
-    }
-
-    public class ExtractDocumentBatchJobResult
-    {
-        public bool Successful { get; set; }
-        public string AsyncJobID { get; set; }
-    }
-
-    public class ExtractDocumentJobStatusResult
-    {
-        public bool Successful { get; set; }
-        public string AsyncJobStatus { get; set; }
-        public string AsyncJobID { get; set; }
-        public ExtractTextResponse ExtractTextResult { get; set; }
-        public ExtractFieldsAndTablesResponse ExtractFieldsAndTablesResult { get; set; }
-        public ExtractFieldsResponse ExtractFieldsResult { get; set; }
-        public DocumentClassificationResult ExtractClassificationResult { get; set; }
-        public string ErrorMessage { get; set; }
     }
 }
 

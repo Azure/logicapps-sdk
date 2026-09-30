@@ -44,15 +44,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/watermark_text";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
-                filepropCount++;
-                file["watermarkText"] = SourceExpressionConverter.ConvertToken(filewatermarkText);
-                if (filepropCount > 0)
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
+                @filepropCount++;
+                @file["watermarkText"] = SourceExpressionConverter.ConvertToken(filewatermarkText);
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
                 return callPayload;
             }
@@ -70,15 +70,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/password";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
-                filepropCount++;
-                file["password"] = SourceExpressionConverter.ConvertToken(filepassword);
-                if (filepropCount > 0)
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
+                @filepropCount++;
+                @file["password"] = SourceExpressionConverter.ConvertToken(filepassword);
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
                 return callPayload;
             }
@@ -101,33 +101,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
                 var apiCallPath = "/image";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var file = new JObject();
-                var filepropCount = 0;
-                filepropCount++;
-                file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
-                filepropCount++;
-                file["imageContent"] = SourceExpressionConverter.ConvertToken(fileimageContent);
-                filepropCount++;
-                file["positionX"] = SourceExpressionConverter.ConvertToken(filepositionX);
-                filepropCount++;
-                file["positionY"] = SourceExpressionConverter.ConvertToken(filepositionY);
-                filepropCount++;
-                file["addType"] = SourceExpressionConverter.ConvertToken(fileaddType);
+                var @file = new JObject();
+                var @filepropCount = 0;
+                @filepropCount++;
+                @file["fileContent"] = SourceExpressionConverter.ConvertToken(filefileContent);
+                @filepropCount++;
+                @file["imageContent"] = SourceExpressionConverter.ConvertToken(fileimageContent);
+                @filepropCount++;
+                @file["positionX"] = SourceExpressionConverter.ConvertToken(filepositionX);
+                @filepropCount++;
+                @file["positionY"] = SourceExpressionConverter.ConvertToken(filepositionY);
+                @filepropCount++;
+                @file["addType"] = SourceExpressionConverter.ConvertToken(fileaddType);
                 if (filefromPage != null)
                 {
-                    file["fromPage"] = SourceExpressionConverter.ConvertToken(filefromPage);
-                    filepropCount++;
+                    @file["fromPage"] = SourceExpressionConverter.ConvertToken(filefromPage);
+                    @filepropCount++;
                 }
 
                 if (filetoPage != null)
                 {
-                    file["toPage"] = SourceExpressionConverter.ConvertToken(filetoPage);
-                    filepropCount++;
+                    @file["toPage"] = SourceExpressionConverter.ConvertToken(filetoPage);
+                    @filepropCount++;
                 }
 
-                if (filepropCount > 0)
+                if (@filepropCount > 0)
                 {
-                    callPayload.Body = file;
+                    callPayload.Body = @file;
                 }
                 return callPayload;
             }

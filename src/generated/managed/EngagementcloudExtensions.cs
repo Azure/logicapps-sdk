@@ -121,10 +121,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignID, [WorkflowExpression] Func<int[]> bodyaddressBookIDs = null, [WorkflowExpression] Func<int[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodysendDate = null)
+        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<int[]> bodyaddressBookIDs = null, [WorkflowExpression] Func<int[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodysendDate = null)
         {
             SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodycampaignID, nameof(bodycampaignID), required: true);
+            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
             SourceExpression.Validate(bodyaddressBookIDs, nameof(bodyaddressBookIDs), required: false);
             SourceExpression.Validate(bodycontactIDs, nameof(bodycontactIDs), required: false);
             SourceExpression.Validate(bodysendDate, nameof(bodysendDate), required: false);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 }
 
                 bodypropCount++;
-                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignID);
+                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignId);
                 if (bodycontactIDs != null)
                 {
                     body["ContactIDs"] = SourceExpressionConverter.ConvertToken(bodycontactIDs);
@@ -167,10 +167,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignID, [WorkflowExpression] Func<string[]> bodytoAddresses, [WorkflowExpression] Func<bodypersonalizationValuesInputItem[]> bodypersonalizationValues = null)
+        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<string[]> bodytoAddresses, [WorkflowExpression] Func<bodypersonalizationValuesInputItem[]> bodypersonalizationValues = null)
         {
             SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodycampaignID, nameof(bodycampaignID), required: true);
+            SourceExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: true);
             SourceExpression.Validate(bodytoAddresses, nameof(bodytoAddresses), required: true);
             SourceExpression.Validate(bodypersonalizationValues, nameof(bodypersonalizationValues), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignID);
+                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignId);
                 if (bodypersonalizationValues != null)
                 {
                     body["PersonalizationValues"] = SourceExpressionConverter.ConvertToken(bodypersonalizationValues);
@@ -202,10 +202,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodyprogramID, [WorkflowExpression] Func<int[]> bodyaddressBooks = null, [WorkflowExpression] Func<int[]> bodycontacts = null)
+        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodyprogramId, [WorkflowExpression] Func<int[]> bodyaddressBooks = null, [WorkflowExpression] Func<int[]> bodycontacts = null)
         {
             SourceExpression.Validate(region, nameof(region), required: true);
-            SourceExpression.Validate(bodyprogramID, nameof(bodyprogramID), required: true);
+            SourceExpression.Validate(bodyprogramId, nameof(bodyprogramId), required: true);
             SourceExpression.Validate(bodyaddressBooks, nameof(bodyaddressBooks), required: false);
             SourceExpression.Validate(bodycontacts, nameof(bodycontacts), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 }
 
                 bodypropCount++;
-                body["ProgramID"] = SourceExpressionConverter.ConvertToken(bodyprogramID);
+                body["ProgramID"] = SourceExpressionConverter.ConvertToken(bodyprogramId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -260,22 +260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
                 {
                     callPayload.Body = body;
                 }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction BulkContactsImport([WorkflowExpression] Func<string> addressBook, [WorkflowExpression] Func<object> filedata)
-        {
-            SourceExpression.Validate(addressBook, nameof(addressBook), required: true);
-            SourceExpression.Validate(filedata, nameof(filedata), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/address-books/{0}/contacts/import", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(addressBook, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
             }
 
@@ -334,12 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public enum regionInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyvisibilityInput

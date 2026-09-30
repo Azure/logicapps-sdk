@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodychannelID = null, [WorkflowExpression] Func<string[]> bodyblocks = null)
+        public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodychannelId = null, [WorkflowExpression] Func<string[]> bodyblocks = null)
         {
             SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
-            SourceExpression.Validate(bodychannelID, nameof(bodychannelID), required: false);
+            SourceExpression.Validate(bodychannelId, nameof(bodychannelId), required: false);
             SourceExpression.Validate(bodyblocks, nameof(bodyblocks), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                     bodypropCount++;
                 }
 
-                if (bodychannelID != null)
+                if (bodychannelId != null)
                 {
-                    body["channelID"] = SourceExpressionConverter.ConvertToken(bodychannelID);
+                    body["channelID"] = SourceExpressionConverter.ConvertToken(bodychannelId);
                     bodypropCount++;
                 }
 
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> bodythreadID)
+        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> bodythreadId)
         {
-            SourceExpression.Validate(bodythreadID, nameof(bodythreadID), required: true);
+            SourceExpression.Validate(bodythreadId, nameof(bodythreadId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteThread";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["threadID"] = SourceExpressionConverter.ConvertToken(bodythreadID);
+                body["threadID"] = SourceExpressionConverter.ConvertToken(bodythreadId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodychat = null, [WorkflowExpression] Func<string> bodychatID = null, [WorkflowExpression] Func<string> bodybody = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodychat = null, [WorkflowExpression] Func<string> bodychatId = null, [WorkflowExpression] Func<string> bodybody = null)
         {
             SourceExpression.Validate(bodychat, nameof(bodychat), required: false);
-            SourceExpression.Validate(bodychatID, nameof(bodychatID), required: false);
+            SourceExpression.Validate(bodychatId, nameof(bodychatId), required: false);
             SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                     bodypropCount++;
                 }
 
-                if (bodychatID != null)
+                if (bodychatId != null)
                 {
-                    body["chatID"] = SourceExpressionConverter.ConvertToken(bodychatID);
+                    body["chatID"] = SourceExpressionConverter.ConvertToken(bodychatId);
                     bodypropCount++;
                 }
 
@@ -131,9 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete([WorkflowExpression] Func<string> bodymessageID = null)
+        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete([WorkflowExpression] Func<string> bodymessageId = null)
         {
-            SourceExpression.Validate(bodymessageID, nameof(bodymessageID), required: false);
+            SourceExpression.Validate(bodymessageId, nameof(bodymessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/deleteChatMessage";
@@ -141,9 +141,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessageID != null)
+                if (bodymessageId != null)
                 {
-                    body["messageID"] = SourceExpressionConverter.ConvertToken(bodymessageID);
+                    body["messageID"] = SourceExpressionConverter.ConvertToken(bodymessageId);
                     bodypropCount++;
                 }
 
@@ -155,21 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
             }
 
             return new ApiConnectionAction<ChatDeleteResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<object> data = null)
-        {
-            SourceExpression.Validate(data, nameof(data), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/uploadFile";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<FilePostResponse>(BuildSourceInput);
         }
     }
 
@@ -241,21 +226,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     {
         [JsonProperty("ok")]
         public bool Ok { get; set; }
-    }
-
-    public class FilePostResponse
-    {
-        [JsonProperty("ok")]
-        public bool Ok { get; set; }
-
-        [JsonProperty("result")]
-        public FilePostResponseResultType Result { get; set; }
-    }
-
-    public class FilePostResponseResultType
-    {
-        [JsonProperty("fileID")]
-        public string FileID { get; set; }
     }
 }
 

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public class EmfluencempActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchSimpleResponse> ContactsSearchSimple([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<int> groupID = null, [WorkflowExpression] Func<bool> suppressed = null, [WorkflowExpression] Func<bool> held = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
+        public IBodyWorkflowAction<ContactsSearchSimpleResponse> ContactsSearchSimple([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<int> groupId = null, [WorkflowExpression] Func<bool> suppressed = null, [WorkflowExpression] Func<bool> held = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
         {
             SourceExpression.Validate(email, nameof(email), required: false);
-            SourceExpression.Validate(groupID, nameof(groupID), required: false);
+            SourceExpression.Validate(groupId, nameof(groupId), required: false);
             SourceExpression.Validate(suppressed, nameof(suppressed), required: false);
             SourceExpression.Validate(held, nameof(held), required: false);
             SourceExpression.Validate(page, nameof(page), required: false);
@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (email != null)
                     callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
-                if (groupID != null)
-                    callPayload.Queries["groupID"] = SourceExpressionConverter.ConvertO(groupID);
+                if (groupId != null)
+                    callPayload.Queries["groupID"] = SourceExpressionConverter.ConvertO(groupId);
                 if (suppressed != null)
                     callPayload.Queries["suppressed"] = SourceExpressionConverter.ConvertO(suppressed);
                 if (held != null)
@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchResponse> ContactsSearch([WorkflowExpression] Func<int> bodygroupID = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<JToken[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserID = null, [WorkflowExpression] Func<string> bodycustomerID = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodyfields = null, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<int> bodyrpp = null, [WorkflowExpression] Func<bodysortFieldInput> bodysortField = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null)
+        public IBodyWorkflowAction<ContactsSearchResponse> ContactsSearch([WorkflowExpression] Func<int> bodygroupId = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<JToken[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodyfields = null, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<int> bodyrpp = null, [WorkflowExpression] Func<bodysortFieldInput> bodysortField = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null)
         {
-            SourceExpression.Validate(bodygroupID, nameof(bodygroupID), required: false);
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
             SourceExpression.Validate(bodysuppressed, nameof(bodysuppressed), required: false);
             SourceExpression.Validate(bodyheld, nameof(bodyheld), required: false);
             SourceExpression.Validate(bodycontactIDs, nameof(bodycontactIDs), required: false);
             SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyuserID, nameof(bodyuserID), required: false);
-            SourceExpression.Validate(bodycustomerID, nameof(bodycustomerID), required: false);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
             SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
             SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
             SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodygroupID != null)
+                if (bodygroupId != null)
                 {
-                    body["groupID"] = SourceExpressionConverter.ConvertToken(bodygroupID);
+                    body["groupID"] = SourceExpressionConverter.ConvertToken(bodygroupId);
                     bodypropCount++;
                 }
 
@@ -108,15 +108,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                     bodypropCount++;
                 }
 
-                if (bodyuserID != null)
+                if (bodyuserId != null)
                 {
-                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserID);
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodycustomerID != null)
+                if (bodycustomerId != null)
                 {
-                    body["customerID"] = SourceExpressionConverter.ConvertToken(bodycustomerID);
+                    body["customerID"] = SourceExpressionConverter.ConvertToken(bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -243,12 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSaveResponse> ContactsSave([WorkflowExpression] Func<int> bodycontactID = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserID = null, [WorkflowExpression] Func<string> bodycustomerID = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<string> bodyoriginalSource = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodydateOfBirth = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<int[]> bodygroupIDs = null, [WorkflowExpression] Func<int[]> bodyremoveGroupIDs = null)
+        public IBodyWorkflowAction<ContactsSaveResponse> ContactsSave([WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<int> bodyuserId = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<bool> bodysuppressed = null, [WorkflowExpression] Func<bool> bodyheld = null, [WorkflowExpression] Func<string> bodyoriginalSource = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodypurl = null, [WorkflowExpression] Func<string> bodydateOfBirth = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<int[]> bodygroupIDs = null, [WorkflowExpression] Func<int[]> bodyremoveGroupIDs = null)
         {
-            SourceExpression.Validate(bodycontactID, nameof(bodycontactID), required: false);
+            SourceExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
             SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyuserID, nameof(bodyuserID), required: false);
-            SourceExpression.Validate(bodycustomerID, nameof(bodycustomerID), required: false);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            SourceExpression.Validate(bodycustomerId, nameof(bodycustomerId), required: false);
             SourceExpression.Validate(bodysuppressed, nameof(bodysuppressed), required: false);
             SourceExpression.Validate(bodyheld, nameof(bodyheld), required: false);
             SourceExpression.Validate(bodyoriginalSource, nameof(bodyoriginalSource), required: false);
@@ -278,9 +278,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodycontactID != null)
+                if (bodycontactId != null)
                 {
-                    body["contactID"] = SourceExpressionConverter.ConvertToken(bodycontactID);
+                    body["contactID"] = SourceExpressionConverter.ConvertToken(bodycontactId);
                     bodypropCount++;
                 }
 
@@ -290,15 +290,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
                     bodypropCount++;
                 }
 
-                if (bodyuserID != null)
+                if (bodyuserId != null)
                 {
-                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserID);
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                     bodypropCount++;
                 }
 
-                if (bodycustomerID != null)
+                if (bodycustomerId != null)
                 {
-                    body["customerID"] = SourceExpressionConverter.ConvertToken(bodycustomerID);
+                    body["customerID"] = SourceExpressionConverter.ConvertToken(bodycustomerId);
                     bodypropCount++;
                 }
 
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public enum sortFieldInput
     {
         [EnumMember(Value = "contactID")]
-        ContactID,
+        ContactId,
         [EnumMember(Value = "email")]
         Email,
         [EnumMember(Value = "dateModified")]
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public enum bodysortFieldInput
     {
         [EnumMember(Value = "contactID")]
-        ContactID,
+        ContactId,
         [EnumMember(Value = "email")]
         Email,
         [EnumMember(Value = "dateModified")]

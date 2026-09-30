@@ -12,16 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     public class RecordedfuturesandboActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetReportResponse> GetReport([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> sampleID)
+        public IBodyWorkflowAction<GetReportResponse> GetReport([WorkflowExpression] Func<string> sampleId, [WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null)
         {
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            SourceExpression.Validate(sampleID, nameof(sampleID), required: true);
+            SourceExpression.Validate(sampleId, nameof(sampleId), required: true);
+            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
+            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                if (sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (region != null)
+                    callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
                 return callPayload;
             }
 
@@ -29,16 +34,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetSummaryResponse> GetSummary([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> sampleID)
+        public IBodyWorkflowAction<GetSummaryResponse> GetSummary([WorkflowExpression] Func<string> sampleId, [WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null)
         {
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            SourceExpression.Validate(sampleID, nameof(sampleID), required: true);
+            SourceExpression.Validate(sampleId, nameof(sampleId), required: true);
+            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
+            SourceExpression.Validate(region, nameof(region), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/samples/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sampleId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                if (sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (region != null)
+                    callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
                 return callPayload;
             }
 
@@ -46,16 +56,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<string> bodyurl = null)
+        public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample([WorkflowExpression] Func<string> sandboxToken = null, [WorkflowExpression] Func<regionInput> region = null, [WorkflowExpression] Func<string> bodyurl = null)
         {
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
+            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: false);
+            SourceExpression.Validate(region, nameof(region), required: false);
             SourceExpression.Validate(bodyurl, nameof(bodyurl), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/samples/url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                if (sandboxToken != null)
+                    callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
+                callPayload.Headers["Region"] = Convert.ToString("eu");
+                if (region != null)
+                    callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
                 var body = new JObject();
                 var bodypropCount = 0;
                 if (bodyurl != null)
@@ -72,25 +87,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
             }
 
             return new ApiConnectionAction<SubmitUrlSampleResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitFileSampleResponse> SubmitFileSample([WorkflowExpression] Func<string> sandboxToken, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> userTags = null)
-        {
-            SourceExpression.Validate(sandboxToken, nameof(sandboxToken), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(password, nameof(password), required: false);
-            SourceExpression.Validate(userTags, nameof(userTags), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/samples/file";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["SandboxToken"] = SourceExpressionConverter.ConvertO(sandboxToken);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SubmitFileSampleResponse>(BuildSourceInput);
         }
     }
 
@@ -206,6 +202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         public string[] Ttp { get; set; }
     }
 
+    public enum regionInput
+    {
+        [EnumMember(Value = "us")]
+        Us,
+        [EnumMember(Value = "eu")]
+        Eu,
+        [EnumMember(Value = "apj")]
+        Apj
+    }
+
     public class GetSummaryResponse
     {
         [JsonProperty("id")]
@@ -228,27 +234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     }
 
     public class SubmitUrlSampleResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("kind")]
-        public string Kind { get; set; }
-
-        [JsonProperty("private")]
-        public bool Private { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("submitted")]
-        public string Submitted { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    public class SubmitFileSampleResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }

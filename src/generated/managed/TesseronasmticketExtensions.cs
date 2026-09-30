@@ -487,22 +487,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyurgencyTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum bodyeffectsTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class bodyfieldGroupsInputItem
@@ -542,22 +536,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyticketPositionTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyticketPositionVisibilityInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public class bodyfieldGroupsInputItem2
@@ -580,26 +568,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyparkTicketparkingReasonInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyparkTicketafterParkingActionInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class AddAssetRelationResponse

@@ -29,9 +29,87 @@ var actionResult = await context.GetActionResults("Compose_customer");
 var customer = actionResult.GetOutputs<CustomerSummary>();
 ```
 
-## Generated managed connectors
+## Generated connectors
 
-The connector wrappers in `generated\managed` and `generated\serviceProviders` are committed generated output. Their generator and templates are maintained outside this repository; this is separate from user-authored workflow files. After refreshing generated output, run `node eng\Migrate-SourceExpressions.cjs` from the repository root. The pass is idempotent; equivalent changes should also be applied to the external generator.
+The wrappers in `generated\managed` and `generated\serviceProviders` are committed
+output from BPM's `src\tools\CodefulSdkGenerator`. The active C# targets are
+`ManagedConnectorSdk\CSharpTargetGenerator.cs` and
+`ServiceProviderSdk\LogicAppsSdkServiceProviderTargetGenerator.cs`; the legacy
+service-provider/DurableTask target does not generate these SDK wrappers.
+
+Use a generator revision that emits `[WorkflowExpression] Func<T>` parameters,
+immediate `SourceExpression.Validate` calls, the appropriate
+`SourceExpressionConverter` methods, and deferred `BuildSourceInput` factories.
+These sources compile into the SDK assembly and can use its internal APIs.
+This connector generation is separate from the consuming project's workflow
+source-expression compiler.
+
+Pin the generator revision and Swagger/service-provider manifest inputs.
+Generate into a separate directory, review operation inventories, skipped
+operations and API differences, and compile fresh output against this SDK before
+replacing committed sources. Do not replace the complete managed navigator
+registry with output from a filtered connector run. Input-schema changes and
+emitter changes must be reviewed separately.
+
+Check per-operation errors and explicit skip diagnostics as well as per-connector
+results: a generated file can omit operations even when generation returned
+successfully. The managed C# target deliberately excludes unsupported multipart
+operations, and internal/deprecated operations can disappear during a refresh.
+Review those API losses rather than treating successful file generation as
+complete operation coverage.
+
+Preserve existing files for which no replacement was generated, and report them
+as retained rather than regenerated. Keeping an older wrapper instead of a
+partially generated replacement is a separate compatibility decision; an approved
+full refresh applies the available generated files, including reviewed operation
+removals. New catalog connectors are separate additions and must be included in
+the SDK compilation check, not just compared with existing paths.
+Runtime-static service-provider metadata must be identified as such; it does not
+certify the catalog of a deployed Standard app.
+
+The active managed and modern service-provider C# targets use deterministic LF
+line endings and omit the extra blank line before a deferred factory's final
+return. This formatting policy preserves comments and tokens and does not change
+other generator targets. Older committed files may still have CRLF line endings.
+
+Use the [generated connector parity test](../tests/GeneratedConnectorParity/README.md)
+to compare fresh output with these sources. It reports managed/provider coverage,
+API and implementation-syntax differences separately, and includes an isolated
+actual-SDK compilation hook. Missing inputs are reported as untested coverage,
+not assumed matches.
+
+Regeneration must preserve public model-property names and serialized defaults,
+not just method signatures. The managed C# target retains the SDK's model-property
+acronym casing without changing the shared naming policy for other targets.
+Hidden query defaults remain strings except for the explicit typed
+`Sharepointonline.GetFileMetadataByPath` / `queryParametersSingleEncoded`
+compatibility rule. Generated managed object bodies retain the historical
+`propCount > 0` omission check: no populated properties means no body, even if
+the Swagger body parameter is marked required. Required argument validation
+still runs before the deferred payload factory; it is separate from this
+body-presence check. Public operation version selection must not let an
+internal-only newer version erase an existing public method; internal operations
+must still be retained for subscription and metadata references.
+
+Hidden path defaults use descriptor-backed `SourceExpression.Literal(1, value)`
+arguments and the declared path encoding, not undeclared public parameters or
+ordinary lambdas. Required hidden parameters without usable defaults still fail
+generation. Public parameter identifiers and nested body locals must be allocated
+without collisions while preserving their original serialized wire names.
+
+Full-catalog generation needs managed API **export** documents and expanded
+service-provider operation manifests for the intended subscription/region and
+Standard runtime. Raw API-test Swagger files are not interchangeable with those
+inputs. Preserve the original cache and request/input inventory when possible;
+a new live capture is a new schema snapshot, not proof of historical parity.
+The generator CLI's cache can fetch on misses, so a cache path alone is not a
+fail-closed offline mode.
+
+`eng\Migrate-SourceExpressions.cjs` remains a temporary bridge for earlier
+CSharpExpressionConverter-based output, not a required regeneration step or a
+complete migration from the original ExpressionConverter. It does not supply
+all path, callback, base64 and typed-default adaptations. Current generator
+output must satisfy the SDK contract without this postprocessing pass.
 
 ## Source-preserving workflow expressions
 

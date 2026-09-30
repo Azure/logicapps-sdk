@@ -386,22 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkSpaceFile([WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<object> content = null)
-        {
-            SourceExpression.Validate(metadata, nameof(metadata), required: false);
-            SourceExpression.Validate(content, nameof(content), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/integration/v2/workspace/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> GetWorkspaceFileDetails([WorkflowExpression] Func<string> workspaceContentId)
         {
             SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
@@ -511,22 +495,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
             }
 
             return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkspaceFileVersion([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<object> content = null)
-        {
-            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
-            SourceExpression.Validate(content, nameof(content), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]

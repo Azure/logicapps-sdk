@@ -38,68 +38,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryTypeId = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<queryFormatInput> queryFormat = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<bool> myFavQueriesOnly = null, [WorkflowExpression] Func<bool> myQueriesOnly = null, [WorkflowExpression] Func<bool> mergedQueriesOnly = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> addedBy = null, [WorkflowExpression] Func<bool> sortDescending = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> CancelJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<string> jobId)
         {
             SourceExpression.Validate(module, nameof(module), required: true);
-            SourceExpression.Validate(queryTypeId, nameof(queryTypeId), required: false);
-            SourceExpression.Validate(category, nameof(category), required: false);
-            SourceExpression.Validate(queryFormat, nameof(queryFormat), required: false);
-            SourceExpression.Validate(searchText, nameof(searchText), required: false);
-            SourceExpression.Validate(myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
-            SourceExpression.Validate(myQueriesOnly, nameof(myQueriesOnly), required: false);
-            SourceExpression.Validate(mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
-            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
-            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
-            SourceExpression.Validate(addedBy, nameof(addedBy), required: false);
-            SourceExpression.Validate(sortDescending, nameof(sortDescending), required: false);
-            SourceExpression.Validate(limit, nameof(limit), required: false);
-            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(jobId, nameof(jobId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/query/queries";
-                var apiCallHttpMethod = "get";
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["product"] = Convert.ToString("FE");
                 callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
-                if (queryTypeId != null)
-                    callPayload.Queries["query_type_id"] = SourceExpressionConverter.ConvertO(queryTypeId);
-                if (category != null)
-                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
-                if (queryFormat != null)
-                    callPayload.Queries["query_format"] = SourceExpressionConverter.Convert(queryFormat);
-                if (searchText != null)
-                    callPayload.Queries["search_text"] = SourceExpressionConverter.ConvertO(searchText);
-                if (myFavQueriesOnly != null)
-                    callPayload.Queries["my_fav_queries_only"] = SourceExpressionConverter.ConvertO(myFavQueriesOnly);
-                if (myQueriesOnly != null)
-                    callPayload.Queries["my_queries_only"] = SourceExpressionConverter.ConvertO(myQueriesOnly);
-                if (mergedQueriesOnly != null)
-                    callPayload.Queries["merged_queries_only"] = SourceExpressionConverter.ConvertO(mergedQueriesOnly);
-                if (sortColumn != null)
-                    callPayload.Queries["sort_column"] = SourceExpressionConverter.Convert(sortColumn);
-                if (dateAdded != null)
-                    callPayload.Queries["date_added"] = SourceExpressionConverter.ConvertO(dateAdded);
-                if (addedBy != null)
-                    callPayload.Queries["added_by"] = SourceExpressionConverter.ConvertO(addedBy);
-                if (sortDescending != null)
-                    callPayload.Queries["sort_descending"] = SourceExpressionConverter.ConvertO(sortDescending);
-                if (limit != null)
-                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
-                if (offset != null)
-                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<QueryApiQuerySummaryCollection>(BuildSourceInput);
+            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<string> bodyfilename = null)
+        public IWorkflowAction DeleteQuery([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryId)
+        {
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(queryId, nameof(queryId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/queries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(queryId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                callPayload.Queries["perform_delete"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null)
         {
             SourceExpression.Validate(module, nameof(module), required: true);
             SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             SourceExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
             SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/execute";
@@ -155,6 +138,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                     bodypropCount++;
                 }
 
+                if (bodytimeZoneOffset != null)
+                {
+                    body["time_zone_offset_in_minutes"] = SourceExpressionConverter.ConvertToken(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
+
+                if (bodyuseLongDescriptions != null)
+                {
+                    body["display_code_table_long_description"] = SourceExpressionConverter.ConvertToken(bodyuseLongDescriptions);
+                    bodypropCount++;
+                }
+
                 body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -168,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<bodysQLGenerationModeInput> bodysQLGenerationMode = null, [WorkflowExpression] Func<bool> bodyuseStaticQuery = null, [WorkflowExpression] Func<string> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<bodysQLGenerationModeInput> bodysQLGenerationMode = null, [WorkflowExpression] Func<bool> bodyuseStaticQuery = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null, [WorkflowExpression] Func<QueryApiAskFieldInformation[]> bodyaskField = null)
         {
             SourceExpression.Validate(module, nameof(module), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
@@ -178,6 +173,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             SourceExpression.Validate(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
             SourceExpression.Validate(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
             SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
+            SourceExpression.Validate(bodyaskField, nameof(bodyaskField), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/executebyid";
@@ -251,6 +249,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                     bodypropCount++;
                 }
 
+                if (bodytimeZoneOffset != null)
+                {
+                    body["time_zone_offset_in_minutes"] = SourceExpressionConverter.ConvertToken(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
+
+                if (bodyuseLongDescriptions != null)
+                {
+                    body["display_code_table_long_description"] = SourceExpressionConverter.ConvertToken(bodyuseLongDescriptions);
+                    bodypropCount++;
+                }
+
+                if (bodyaskField != null)
+                {
+                    body["ask_fields"] = SourceExpressionConverter.ConvertToken(bodyaskField);
+                    bodypropCount++;
+                }
+
                 body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -264,11 +280,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<int> bodytimeZoneOffset = null, [WorkflowExpression] Func<bool> bodyuseLongDescriptions = null, [WorkflowExpression] Func<QueryApiAskFieldInformation[]> bodyaskField = null)
         {
             SourceExpression.Validate(module, nameof(module), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            SourceExpression.Validate(bodyuseLongDescriptions, nameof(bodyuseLongDescriptions), required: false);
+            SourceExpression.Validate(bodyaskField, nameof(bodyaskField), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/query/queries/refreshstaticquery";
@@ -282,6 +301,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
                 body["v_query_type_id"] = SourceExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
                 body["id"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                if (bodytimeZoneOffset != null)
+                {
+                    body["time_zone_offset_in_minutes"] = SourceExpressionConverter.ConvertToken(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
+
+                if (bodyuseLongDescriptions != null)
+                {
+                    body["display_code_table_long_description"] = SourceExpressionConverter.ConvertToken(bodyuseLongDescriptions);
+                    bodypropCount++;
+                }
+
+                if (bodyaskField != null)
+                {
+                    body["ask_fields"] = SourceExpressionConverter.ConvertToken(bodyaskField);
+                    bodypropCount++;
+                }
+
                 body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -292,6 +329,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
             }
 
             return new ApiConnectionAction<QueryApiExecuteQueryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
+        public IBodyWorkflowAction<QueryApiQuerySummaryV2Collection> ListQueries([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryTypeIds = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<queryFormatInput> queryFormat = null, [WorkflowExpression] Func<resultLayoutInput> resultLayout = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<bool> myFavQueriesOnly = null, [WorkflowExpression] Func<bool> myQueriesOnly = null, [WorkflowExpression] Func<bool> mergedQueriesOnly = null, [WorkflowExpression] Func<listQueriesInput> listQueries = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<bool> sortDescending = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> addedBy = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(queryTypeIds, nameof(queryTypeIds), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(queryFormat, nameof(queryFormat), required: false);
+            SourceExpression.Validate(resultLayout, nameof(resultLayout), required: false);
+            SourceExpression.Validate(searchText, nameof(searchText), required: false);
+            SourceExpression.Validate(myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
+            SourceExpression.Validate(myQueriesOnly, nameof(myQueriesOnly), required: false);
+            SourceExpression.Validate(mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
+            SourceExpression.Validate(listQueries, nameof(listQueries), required: false);
+            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
+            SourceExpression.Validate(sortDescending, nameof(sortDescending), required: false);
+            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
+            SourceExpression.Validate(addedBy, nameof(addedBy), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/query/v2/queries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                if (queryTypeIds != null)
+                    callPayload.Queries["query_type_ids"] = SourceExpressionConverter.ConvertO(queryTypeIds);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (queryFormat != null)
+                    callPayload.Queries["query_format"] = SourceExpressionConverter.Convert(queryFormat);
+                if (resultLayout != null)
+                    callPayload.Queries["result_layout"] = SourceExpressionConverter.Convert(resultLayout);
+                if (searchText != null)
+                    callPayload.Queries["search_text"] = SourceExpressionConverter.ConvertO(searchText);
+                if (myFavQueriesOnly != null)
+                    callPayload.Queries["my_fav_queries_only"] = SourceExpressionConverter.ConvertO(myFavQueriesOnly);
+                if (myQueriesOnly != null)
+                    callPayload.Queries["my_queries_only"] = SourceExpressionConverter.ConvertO(myQueriesOnly);
+                if (mergedQueriesOnly != null)
+                    callPayload.Queries["merged_queries_only"] = SourceExpressionConverter.ConvertO(mergedQueriesOnly);
+                if (listQueries != null)
+                    callPayload.Queries["list_queries"] = SourceExpressionConverter.Convert(listQueries);
+                if (sortColumn != null)
+                    callPayload.Queries["sort_column"] = SourceExpressionConverter.Convert(sortColumn);
+                if (sortDescending != null)
+                    callPayload.Queries["sort_descending"] = SourceExpressionConverter.ConvertO(sortDescending);
+                if (dateAdded != null)
+                    callPayload.Queries["date_added"] = SourceExpressionConverter.ConvertO(dateAdded);
+                if (addedBy != null)
+                    callPayload.Queries["added_by"] = SourceExpressionConverter.ConvertO(addedBy);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (continuationToken != null)
+                    callPayload.Queries["continuation_token"] = SourceExpressionConverter.ConvertO(continuationToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryApiQuerySummaryV2Collection>(BuildSourceInput);
         }
     }
 
@@ -347,10 +446,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Attachment
     }
 
-    public class QueryApiQuerySummaryCollection
+    public class QueryApiExecuteQueryResponse
+    {
+        [JsonProperty("id")]
+        public string JobID { get; set; }
+
+        [JsonProperty("status")]
+        public QueryApiExecuteQueryResponseStatusType Status { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
+    public enum QueryApiExecuteQueryResponseStatusType
+    {
+        Pending,
+        Running,
+        Completed,
+        Failed,
+        Cancelling,
+        Cancelled,
+        Throttled
+    }
+
+    public enum bodyoutputFormatInput
+    {
+        Csv,
+        Json,
+        Jsonl,
+        Xlsx
+    }
+
+    public enum bodyformattingModeInput
+    {
+        None,
+        UI,
+        Export
+    }
+
+    public enum bodysQLGenerationModeInput
+    {
+        Query,
+        Export,
+        Report
+    }
+
+    public class QueryApiAskFieldInformation
+    {
+        [JsonProperty("operator")]
+        public QueryApiAskFieldInformationOperatorType Operator { get; set; }
+
+        [JsonProperty("filter_values")]
+        public JToken[] Values { get; set; }
+    }
+
+    public enum QueryApiAskFieldInformationOperatorType
+    {
+        Equals,
+        DoesNotEqual,
+        GreaterThan,
+        GreaterThanOrEqualTo,
+        LessThan,
+        LessThanOrEqualTo,
+        OneOf,
+        NotOneOf,
+        Between,
+        NotBetween,
+        BeginsWith,
+        DoesNotBeginWith,
+        Contains,
+        DoesNotContain,
+        Like,
+        NotLike,
+        Blank,
+        NotBlank,
+        Ask,
+        SoundsLike,
+        Any,
+        OneOfEach
+    }
+
+    public class QueryApiQuerySummaryV2Collection
     {
         [JsonProperty("queries")]
         public QueryApiQuerySummary[] Queries { get; set; }
+
+        [JsonProperty("any_query_types")]
+        public bool AnyQueryTypes { get; set; }
+
+        [JsonProperty("limit")]
+        public int Limit { get; set; }
+
+        [JsonProperty("continuation_token")]
+        public string ContinuationToken { get; set; }
     }
 
     public class QueryApiQuerySummary
@@ -412,6 +600,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         [JsonProperty("suppress_duplicates")]
         public bool SuppressDuplicates { get; set; }
 
+        [JsonProperty("output_limit")]
+        public QueryApiQuerySummaryOutputLimitType OutputLimit { get; set; }
+
+        [JsonProperty("result_layout")]
+        public QueryApiQuerySummaryResultLayoutType ResultLayout { get; set; }
+
         [JsonProperty("select_from_query_name")]
         public string SelectFromQueryName { get; set; }
 
@@ -454,10 +648,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Both
     }
 
+    public class QueryApiQuerySummaryOutputLimitType
+    {
+        [JsonProperty("type")]
+        public QueryApiQuerySummaryOutputLimitTypeTypeType Type { get; set; }
+
+        [JsonProperty("limit")]
+        public int Value { get; set; }
+    }
+
+    public enum QueryApiQuerySummaryOutputLimitTypeTypeType
+    {
+        RandomSampling,
+        TopNumberRows,
+        TopPercentRows
+    }
+
+    public enum QueryApiQuerySummaryResultLayoutType
+    {
+        MultiRow,
+        SingleRow
+    }
+
     public enum queryFormatInput
     {
         Dynamic,
         Static
+    }
+
+    public enum resultLayoutInput
+    {
+        MultiRow,
+        SingleRow
+    }
+
+    public enum listQueriesInput
+    {
+        Unset,
+        NoListQueries
     }
 
     public enum sortColumnInput
@@ -470,50 +698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         AddedBy,
         LastChangedBy,
         Records
-    }
-
-    public class QueryApiExecuteQueryResponse
-    {
-        [JsonProperty("id")]
-        public string JobID { get; set; }
-
-        [JsonProperty("status")]
-        public QueryApiExecuteQueryResponseStatusType Status { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-    }
-
-    public enum QueryApiExecuteQueryResponseStatusType
-    {
-        Pending,
-        Running,
-        Completed,
-        Failed,
-        Cancelling,
-        Cancelled,
-        Throttled
-    }
-
-    public enum bodyoutputFormatInput
-    {
-        Csv,
-        Json,
-        Jsonl
-    }
-
-    public enum bodyformattingModeInput
-    {
-        None,
-        UI,
-        Export
-    }
-
-    public enum bodysQLGenerationModeInput
-    {
-        Query,
-        Export,
-        Report
     }
 }
 

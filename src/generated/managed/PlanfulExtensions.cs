@@ -26,26 +26,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad([WorkflowExpression] Func<string> columnDelimiter, [WorkflowExpression] Func<string> dataLoadRuleName = null, [WorkflowExpression] Func<object> file = null)
-        {
-            SourceExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: true);
-            SourceExpression.Validate(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
-            SourceExpression.Validate(file, nameof(file), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/financemodel/data/transferfile";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (dataLoadRuleName != null)
-                    callPayload.Queries["DataLoadRuleName"] = SourceExpressionConverter.ConvertO(dataLoadRuleName);
-                callPayload.Queries["ColumnDelimiter"] = SourceExpressionConverter.ConvertO(columnDelimiter);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<FileLoadResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
         {
             SourceExpression.Validate(scenario, nameof(scenario), required: true);
@@ -76,21 +56,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         public int DataLoadRuleId { get; set; }
         public string Name { get; set; }
         public string LoadItem { get; set; }
-    }
-
-    public class FileLoadResponse
-    {
-        public int DataLoadRuleId { get; set; }
-        public string ExcecutionId { get; set; }
-        public bool RunAsynchronously { get; set; }
-        public int Attempts { get; set; }
-        public FileLoadResponseTransferResponseType TransferResponse { get; set; }
-    }
-
-    public class FileLoadResponseTransferResponseType
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
     }
 
     public class GetGLdataResponseItem

@@ -120,30 +120,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> bodybEFORELOANDEPARTMENTID = null, [WorkflowExpression] Func<string> bodybEFORELOANEMPLOYEEID = null, [WorkflowExpression] Func<string> bodybEFORELOANLOCATIONID = null, [WorkflowExpression] Func<string> bodybILLINGPERIODICITYINMONTH = null, [WorkflowExpression] Func<string> bodybUYBACKVALUE = null, [WorkflowExpression] Func<string> bodybUYBACKVALUECURID = null, [WorkflowExpression] Func<string> bodycATALOGID = null, [WorkflowExpression] Func<string> bodycHARGEBACK = null, [WorkflowExpression] Func<string> bodycHARGEBACKCURID = null, [WorkflowExpression] Func<string> bodycISTATUSID = null, [WorkflowExpression] Func<string> bodycIVERSION = null, [WorkflowExpression] Func<string> bodycMDEFAULTCHANGEID = null, [WorkflowExpression] Func<string> bodycONFIGURATIONID = null, [WorkflowExpression] Func<string> bodycRITICALLEVELID = null, [WorkflowExpression] Func<string> bodydELIVERYDATE = null, [WorkflowExpression] Func<string> bodydELIVERYNUMBER = null, [WorkflowExpression] Func<string> bodydEPARTMENTID = null, [WorkflowExpression] Func<string> bodydEPRECIATIONRULEID = null, [WorkflowExpression] Func<string> bodydHARDWAREGUID = null, [WorkflowExpression] Func<string> bodyeMPLOYEEID = null, [WorkflowExpression] Func<string> bodyeNDOFWARANTY = null, [WorkflowExpression] Func<string> bodyeNTRYDATE = null, [WorkflowExpression] Func<string> bodyeSTIMATEDPERCENTAGEUSE = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDLENDDATE = null, [WorkflowExpression] Func<string> bodyeXPECTEDRETURNDATE = null, [WorkflowExpression] Func<string> bodyfALLENTERM = null, [WorkflowExpression] Func<string> bodyfIXEDASSETNUMBER = null, [WorkflowExpression] Func<string> bodyiNITIALSTART = null, [WorkflowExpression] Func<string> bodyiNSTALLATIONDATE = null, [WorkflowExpression] Func<string> bodyiNTERNALDELIVERYDATE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodyiSDML = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTPHYSICALINVENTORY = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylICENSEVERSION = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodymAINTENANCECOST = null, [WorkflowExpression] Func<string> bodymAINTENANCECOSTCURID = null, [WorkflowExpression] Func<string> bodymAINUSAGEID = null, [WorkflowExpression] Func<string> bodymAXINSTALLS = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOST = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOSTCURID = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTAL = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTALCURID = null, [WorkflowExpression] Func<string> bodymONTHDURATION = null, [WorkflowExpression] Func<string> bodynETWORKIDENTIFIER = null, [WorkflowExpression] Func<string> bodynEXTDEPARTMENTID = null, [WorkflowExpression] Func<string> bodynEXTMAINTENANCEDATE = null, [WorkflowExpression] Func<string> bodynEXTSTATUSID = null, [WorkflowExpression] Func<string> bodynEXTUSERAPPLICATIONDATE = null, [WorkflowExpression] Func<string> bodynEXTUSERID = null, [WorkflowExpression] Func<string> bodynOTICE = null, [WorkflowExpression] Func<string> bodyoRDERDETAILSID = null, [WorkflowExpression] Func<string> bodyoRDERNUMBER = null, [WorkflowExpression] Func<string> bodypIPELINESTATUSID = null, [WorkflowExpression] Func<string> bodypOWERCONSUMPTIONWH = null, [WorkflowExpression] Func<string> bodypROCESSORCOUNT = null, [WorkflowExpression] Func<string> bodypROCESSORSOCKETCOUNT = null, [WorkflowExpression] Func<string> bodypURCHASEDATE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICECURID = null, [WorkflowExpression] Func<string> bodypURCHASERATEID = null, [WorkflowExpression] Func<string> bodyrECYCLEDDATE = null, [WorkflowExpression] Func<string> bodyrECYCLINGPROVIDERID = null, [WorkflowExpression] Func<string> bodyrEFORMNUMBER = null, [WorkflowExpression] Func<string> bodyrEMOVEDDATE = null, [WorkflowExpression] Func<string> bodyrENEWALDECISIONID = null, [WorkflowExpression] Func<string> bodyrENEWALVALUE = null, [WorkflowExpression] Func<string> bodyrENEWALVALUECURID = null, [WorkflowExpression] Func<string> bodyrEPAIREDBYID = null, [WorkflowExpression] Func<string> bodyrESALESVALUE = null, [WorkflowExpression] Func<string> bodysCHEDULEDEND = null, [WorkflowExpression] Func<string> bodysDCATALOGID = null, [WorkflowExpression] Func<string> bodysERIALNUMBER = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodysTATUSID = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodytERM = null, [WorkflowExpression] Func<string> bodyuPDATECOVERAGETERM = null, [WorkflowExpression] Func<string> bodywARANTYTYPEID = null, [WorkflowExpression] Func<string> bodyassetLabel = null, [WorkflowExpression] Func<string> bodyassetTag = null, [WorkflowExpression] Func<string> bodyautomaticRenewal = null, [WorkflowExpression] Func<string> bodyavailabilitySlaId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycommentAsset = null)
+        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> bodybEFORELOANDEPARTMENTId = null, [WorkflowExpression] Func<string> bodybEFORELOANEMPLOYEEId = null, [WorkflowExpression] Func<string> bodybEFORELOANLOCATIONId = null, [WorkflowExpression] Func<string> bodybILLINGPERIODICITYINMONTH = null, [WorkflowExpression] Func<string> bodybUYBACKVALUE = null, [WorkflowExpression] Func<string> bodybUYBACKVALUECURId = null, [WorkflowExpression] Func<string> bodycATALOGId = null, [WorkflowExpression] Func<string> bodycHARGEBACK = null, [WorkflowExpression] Func<string> bodycHARGEBACKCURId = null, [WorkflowExpression] Func<string> bodycISTATUSId = null, [WorkflowExpression] Func<string> bodycIVERSION = null, [WorkflowExpression] Func<string> bodycMDEFAULTCHANGEId = null, [WorkflowExpression] Func<string> bodycONFIGURATIONId = null, [WorkflowExpression] Func<string> bodycRITICALLEVELId = null, [WorkflowExpression] Func<string> bodydELIVERYDATE = null, [WorkflowExpression] Func<string> bodydELIVERYNUMBER = null, [WorkflowExpression] Func<string> bodydEPARTMENTId = null, [WorkflowExpression] Func<string> bodydEPRECIATIONRULEId = null, [WorkflowExpression] Func<string> bodydHARDWAREGUID = null, [WorkflowExpression] Func<string> bodyeMPLOYEEId = null, [WorkflowExpression] Func<string> bodyeNDOFWARANTY = null, [WorkflowExpression] Func<string> bodyeNTRYDATE = null, [WorkflowExpression] Func<string> bodyeSTIMATEDPERCENTAGEUSE = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDLENDDATE = null, [WorkflowExpression] Func<string> bodyeXPECTEDRETURNDATE = null, [WorkflowExpression] Func<string> bodyfALLENTERM = null, [WorkflowExpression] Func<string> bodyfIXEDASSETNUMBER = null, [WorkflowExpression] Func<string> bodyiNITIALSTART = null, [WorkflowExpression] Func<string> bodyiNSTALLATIONDATE = null, [WorkflowExpression] Func<string> bodyiNTERNALDELIVERYDATE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodyiSDML = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTPHYSICALINVENTORY = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylICENSEVERSION = null, [WorkflowExpression] Func<string> bodylOCATIONId = null, [WorkflowExpression] Func<string> bodymAINTENANCECOST = null, [WorkflowExpression] Func<string> bodymAINTENANCECOSTCURId = null, [WorkflowExpression] Func<string> bodymAINUSAGEId = null, [WorkflowExpression] Func<string> bodymAXINSTALLS = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOST = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOSTCURId = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTAL = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTALCURId = null, [WorkflowExpression] Func<string> bodymONTHDURATION = null, [WorkflowExpression] Func<string> bodynETWORKIdENTIFIER = null, [WorkflowExpression] Func<string> bodynEXTDEPARTMENTId = null, [WorkflowExpression] Func<string> bodynEXTMAINTENANCEDATE = null, [WorkflowExpression] Func<string> bodynEXTSTATUSId = null, [WorkflowExpression] Func<string> bodynEXTUSERAPPLICATIONDATE = null, [WorkflowExpression] Func<string> bodynEXTUSERId = null, [WorkflowExpression] Func<string> bodynOTICE = null, [WorkflowExpression] Func<string> bodyoRDERDETAILSId = null, [WorkflowExpression] Func<string> bodyoRDERNUMBER = null, [WorkflowExpression] Func<string> bodypIPELINESTATUSId = null, [WorkflowExpression] Func<string> bodypOWERCONSUMPTIONWH = null, [WorkflowExpression] Func<string> bodypROCESSORCOUNT = null, [WorkflowExpression] Func<string> bodypROCESSORSOCKETCOUNT = null, [WorkflowExpression] Func<string> bodypURCHASEDATE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICECURId = null, [WorkflowExpression] Func<string> bodypURCHASERATEId = null, [WorkflowExpression] Func<string> bodyrECYCLEDDATE = null, [WorkflowExpression] Func<string> bodyrECYCLINGPROVIdERId = null, [WorkflowExpression] Func<string> bodyrEFORMNUMBER = null, [WorkflowExpression] Func<string> bodyrEMOVEDDATE = null, [WorkflowExpression] Func<string> bodyrENEWALDECISIONId = null, [WorkflowExpression] Func<string> bodyrENEWALVALUE = null, [WorkflowExpression] Func<string> bodyrENEWALVALUECURId = null, [WorkflowExpression] Func<string> bodyrEPAIREDBYId = null, [WorkflowExpression] Func<string> bodyrESALESVALUE = null, [WorkflowExpression] Func<string> bodysCHEDULEDEND = null, [WorkflowExpression] Func<string> bodysDCATALOGId = null, [WorkflowExpression] Func<string> bodysERIALNUMBER = null, [WorkflowExpression] Func<string> bodysLAId = null, [WorkflowExpression] Func<string> bodysTATUSId = null, [WorkflowExpression] Func<string> bodysUPPLIERId = null, [WorkflowExpression] Func<string> bodytERM = null, [WorkflowExpression] Func<string> bodyuPDATECOVERAGETERM = null, [WorkflowExpression] Func<string> bodywARANTYTYPEId = null, [WorkflowExpression] Func<string> bodyassetLabel = null, [WorkflowExpression] Func<string> bodyassetTag = null, [WorkflowExpression] Func<string> bodyautomaticRenewal = null, [WorkflowExpression] Func<string> bodyavailabilitySlaId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycommentAsset = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(assetId, nameof(assetId), required: true);
-            SourceExpression.Validate(bodybEFORELOANDEPARTMENTID, nameof(bodybEFORELOANDEPARTMENTID), required: false);
-            SourceExpression.Validate(bodybEFORELOANEMPLOYEEID, nameof(bodybEFORELOANEMPLOYEEID), required: false);
-            SourceExpression.Validate(bodybEFORELOANLOCATIONID, nameof(bodybEFORELOANLOCATIONID), required: false);
+            SourceExpression.Validate(bodybEFORELOANDEPARTMENTId, nameof(bodybEFORELOANDEPARTMENTId), required: false);
+            SourceExpression.Validate(bodybEFORELOANEMPLOYEEId, nameof(bodybEFORELOANEMPLOYEEId), required: false);
+            SourceExpression.Validate(bodybEFORELOANLOCATIONId, nameof(bodybEFORELOANLOCATIONId), required: false);
             SourceExpression.Validate(bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
             SourceExpression.Validate(bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
-            SourceExpression.Validate(bodybUYBACKVALUECURID, nameof(bodybUYBACKVALUECURID), required: false);
-            SourceExpression.Validate(bodycATALOGID, nameof(bodycATALOGID), required: false);
+            SourceExpression.Validate(bodybUYBACKVALUECURId, nameof(bodybUYBACKVALUECURId), required: false);
+            SourceExpression.Validate(bodycATALOGId, nameof(bodycATALOGId), required: false);
             SourceExpression.Validate(bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
-            SourceExpression.Validate(bodycHARGEBACKCURID, nameof(bodycHARGEBACKCURID), required: false);
-            SourceExpression.Validate(bodycISTATUSID, nameof(bodycISTATUSID), required: false);
+            SourceExpression.Validate(bodycHARGEBACKCURId, nameof(bodycHARGEBACKCURId), required: false);
+            SourceExpression.Validate(bodycISTATUSId, nameof(bodycISTATUSId), required: false);
             SourceExpression.Validate(bodycIVERSION, nameof(bodycIVERSION), required: false);
-            SourceExpression.Validate(bodycMDEFAULTCHANGEID, nameof(bodycMDEFAULTCHANGEID), required: false);
-            SourceExpression.Validate(bodycONFIGURATIONID, nameof(bodycONFIGURATIONID), required: false);
-            SourceExpression.Validate(bodycRITICALLEVELID, nameof(bodycRITICALLEVELID), required: false);
+            SourceExpression.Validate(bodycMDEFAULTCHANGEId, nameof(bodycMDEFAULTCHANGEId), required: false);
+            SourceExpression.Validate(bodycONFIGURATIONId, nameof(bodycONFIGURATIONId), required: false);
+            SourceExpression.Validate(bodycRITICALLEVELId, nameof(bodycRITICALLEVELId), required: false);
             SourceExpression.Validate(bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
             SourceExpression.Validate(bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
-            SourceExpression.Validate(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
-            SourceExpression.Validate(bodydEPRECIATIONRULEID, nameof(bodydEPRECIATIONRULEID), required: false);
+            SourceExpression.Validate(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
+            SourceExpression.Validate(bodydEPRECIATIONRULEId, nameof(bodydEPRECIATIONRULEId), required: false);
             SourceExpression.Validate(bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
-            SourceExpression.Validate(bodyeMPLOYEEID, nameof(bodyeMPLOYEEID), required: false);
+            SourceExpression.Validate(bodyeMPLOYEEId, nameof(bodyeMPLOYEEId), required: false);
             SourceExpression.Validate(bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
             SourceExpression.Validate(bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
             SourceExpression.Validate(bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
@@ -160,51 +160,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
             SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             SourceExpression.Validate(bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
-            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            SourceExpression.Validate(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
             SourceExpression.Validate(bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
-            SourceExpression.Validate(bodymAINTENANCECOSTCURID, nameof(bodymAINTENANCECOSTCURID), required: false);
-            SourceExpression.Validate(bodymAINUSAGEID, nameof(bodymAINUSAGEID), required: false);
+            SourceExpression.Validate(bodymAINTENANCECOSTCURId, nameof(bodymAINTENANCECOSTCURId), required: false);
+            SourceExpression.Validate(bodymAINUSAGEId, nameof(bodymAINUSAGEId), required: false);
             SourceExpression.Validate(bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
             SourceExpression.Validate(bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
-            SourceExpression.Validate(bodymONTHLYFIXEDCOSTCURID, nameof(bodymONTHLYFIXEDCOSTCURID), required: false);
+            SourceExpression.Validate(bodymONTHLYFIXEDCOSTCURId, nameof(bodymONTHLYFIXEDCOSTCURId), required: false);
             SourceExpression.Validate(bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
-            SourceExpression.Validate(bodymONTHLYNETRENTALCURID, nameof(bodymONTHLYNETRENTALCURID), required: false);
+            SourceExpression.Validate(bodymONTHLYNETRENTALCURId, nameof(bodymONTHLYNETRENTALCURId), required: false);
             SourceExpression.Validate(bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
-            SourceExpression.Validate(bodynETWORKIDENTIFIER, nameof(bodynETWORKIDENTIFIER), required: false);
-            SourceExpression.Validate(bodynEXTDEPARTMENTID, nameof(bodynEXTDEPARTMENTID), required: false);
+            SourceExpression.Validate(bodynETWORKIdENTIFIER, nameof(bodynETWORKIdENTIFIER), required: false);
+            SourceExpression.Validate(bodynEXTDEPARTMENTId, nameof(bodynEXTDEPARTMENTId), required: false);
             SourceExpression.Validate(bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
-            SourceExpression.Validate(bodynEXTSTATUSID, nameof(bodynEXTSTATUSID), required: false);
+            SourceExpression.Validate(bodynEXTSTATUSId, nameof(bodynEXTSTATUSId), required: false);
             SourceExpression.Validate(bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
-            SourceExpression.Validate(bodynEXTUSERID, nameof(bodynEXTUSERID), required: false);
+            SourceExpression.Validate(bodynEXTUSERId, nameof(bodynEXTUSERId), required: false);
             SourceExpression.Validate(bodynOTICE, nameof(bodynOTICE), required: false);
-            SourceExpression.Validate(bodyoRDERDETAILSID, nameof(bodyoRDERDETAILSID), required: false);
+            SourceExpression.Validate(bodyoRDERDETAILSId, nameof(bodyoRDERDETAILSId), required: false);
             SourceExpression.Validate(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
-            SourceExpression.Validate(bodypIPELINESTATUSID, nameof(bodypIPELINESTATUSID), required: false);
+            SourceExpression.Validate(bodypIPELINESTATUSId, nameof(bodypIPELINESTATUSId), required: false);
             SourceExpression.Validate(bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
             SourceExpression.Validate(bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
             SourceExpression.Validate(bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
             SourceExpression.Validate(bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
             SourceExpression.Validate(bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
-            SourceExpression.Validate(bodypURCHASEPRICECURID, nameof(bodypURCHASEPRICECURID), required: false);
-            SourceExpression.Validate(bodypURCHASERATEID, nameof(bodypURCHASERATEID), required: false);
+            SourceExpression.Validate(bodypURCHASEPRICECURId, nameof(bodypURCHASEPRICECURId), required: false);
+            SourceExpression.Validate(bodypURCHASERATEId, nameof(bodypURCHASERATEId), required: false);
             SourceExpression.Validate(bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
-            SourceExpression.Validate(bodyrECYCLINGPROVIDERID, nameof(bodyrECYCLINGPROVIDERID), required: false);
+            SourceExpression.Validate(bodyrECYCLINGPROVIdERId, nameof(bodyrECYCLINGPROVIdERId), required: false);
             SourceExpression.Validate(bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
             SourceExpression.Validate(bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
-            SourceExpression.Validate(bodyrENEWALDECISIONID, nameof(bodyrENEWALDECISIONID), required: false);
+            SourceExpression.Validate(bodyrENEWALDECISIONId, nameof(bodyrENEWALDECISIONId), required: false);
             SourceExpression.Validate(bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
-            SourceExpression.Validate(bodyrENEWALVALUECURID, nameof(bodyrENEWALVALUECURID), required: false);
-            SourceExpression.Validate(bodyrEPAIREDBYID, nameof(bodyrEPAIREDBYID), required: false);
+            SourceExpression.Validate(bodyrENEWALVALUECURId, nameof(bodyrENEWALVALUECURId), required: false);
+            SourceExpression.Validate(bodyrEPAIREDBYId, nameof(bodyrEPAIREDBYId), required: false);
             SourceExpression.Validate(bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
             SourceExpression.Validate(bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
-            SourceExpression.Validate(bodysDCATALOGID, nameof(bodysDCATALOGID), required: false);
+            SourceExpression.Validate(bodysDCATALOGId, nameof(bodysDCATALOGId), required: false);
             SourceExpression.Validate(bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
-            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
-            SourceExpression.Validate(bodysTATUSID, nameof(bodysTATUSID), required: false);
-            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            SourceExpression.Validate(bodysLAId, nameof(bodysLAId), required: false);
+            SourceExpression.Validate(bodysTATUSId, nameof(bodysTATUSId), required: false);
+            SourceExpression.Validate(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
             SourceExpression.Validate(bodytERM, nameof(bodytERM), required: false);
             SourceExpression.Validate(bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
-            SourceExpression.Validate(bodywARANTYTYPEID, nameof(bodywARANTYTYPEID), required: false);
+            SourceExpression.Validate(bodywARANTYTYPEId, nameof(bodywARANTYTYPEId), required: false);
             SourceExpression.Validate(bodyassetLabel, nameof(bodyassetLabel), required: false);
             SourceExpression.Validate(bodyassetTag, nameof(bodyassetTag), required: false);
             SourceExpression.Validate(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
@@ -223,21 +223,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodybEFORELOANDEPARTMENTID != null)
+                if (bodybEFORELOANDEPARTMENTId != null)
                 {
-                    body["BEFORE_LOAN_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANDEPARTMENTID);
+                    body["BEFORE_LOAN_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANDEPARTMENTId);
                     bodypropCount++;
                 }
 
-                if (bodybEFORELOANEMPLOYEEID != null)
+                if (bodybEFORELOANEMPLOYEEId != null)
                 {
-                    body["BEFORE_LOAN_EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANEMPLOYEEID);
+                    body["BEFORE_LOAN_EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANEMPLOYEEId);
                     bodypropCount++;
                 }
 
-                if (bodybEFORELOANLOCATIONID != null)
+                if (bodybEFORELOANLOCATIONId != null)
                 {
-                    body["BEFORE_LOAN_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANLOCATIONID);
+                    body["BEFORE_LOAN_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANLOCATIONId);
                     bodypropCount++;
                 }
 
@@ -253,15 +253,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodybUYBACKVALUECURID != null)
+                if (bodybUYBACKVALUECURId != null)
                 {
-                    body["BUY_BACK_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodybUYBACKVALUECURID);
+                    body["BUY_BACK_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodybUYBACKVALUECURId);
                     bodypropCount++;
                 }
 
-                if (bodycATALOGID != null)
+                if (bodycATALOGId != null)
                 {
-                    body["CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodycATALOGID);
+                    body["CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodycATALOGId);
                     bodypropCount++;
                 }
 
@@ -271,15 +271,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycHARGEBACKCURID != null)
+                if (bodycHARGEBACKCURId != null)
                 {
-                    body["CHARGE_BACK_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycHARGEBACKCURID);
+                    body["CHARGE_BACK_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycHARGEBACKCURId);
                     bodypropCount++;
                 }
 
-                if (bodycISTATUSID != null)
+                if (bodycISTATUSId != null)
                 {
-                    body["CI_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycISTATUSID);
+                    body["CI_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycISTATUSId);
                     bodypropCount++;
                 }
 
@@ -289,21 +289,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycMDEFAULTCHANGEID != null)
+                if (bodycMDEFAULTCHANGEId != null)
                 {
-                    body["CM_DEFAULT_CHANGE_ID"] = SourceExpressionConverter.ConvertToken(bodycMDEFAULTCHANGEID);
+                    body["CM_DEFAULT_CHANGE_ID"] = SourceExpressionConverter.ConvertToken(bodycMDEFAULTCHANGEId);
                     bodypropCount++;
                 }
 
-                if (bodycONFIGURATIONID != null)
+                if (bodycONFIGURATIONId != null)
                 {
-                    body["CONFIGURATION_ID"] = SourceExpressionConverter.ConvertToken(bodycONFIGURATIONID);
+                    body["CONFIGURATION_ID"] = SourceExpressionConverter.ConvertToken(bodycONFIGURATIONId);
                     bodypropCount++;
                 }
 
-                if (bodycRITICALLEVELID != null)
+                if (bodycRITICALLEVELId != null)
                 {
-                    body["CRITICAL_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodycRITICALLEVELID);
+                    body["CRITICAL_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodycRITICALLEVELId);
                     bodypropCount++;
                 }
 
@@ -319,15 +319,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodydEPARTMENTID != null)
+                if (bodydEPARTMENTId != null)
                 {
-                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTID);
+                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTId);
                     bodypropCount++;
                 }
 
-                if (bodydEPRECIATIONRULEID != null)
+                if (bodydEPRECIATIONRULEId != null)
                 {
-                    body["DEPRECIATION_RULE_ID"] = SourceExpressionConverter.ConvertToken(bodydEPRECIATIONRULEID);
+                    body["DEPRECIATION_RULE_ID"] = SourceExpressionConverter.ConvertToken(bodydEPRECIATIONRULEId);
                     bodypropCount++;
                 }
 
@@ -337,9 +337,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyeMPLOYEEID != null)
+                if (bodyeMPLOYEEId != null)
                 {
-                    body["EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodyeMPLOYEEID);
+                    body["EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodyeMPLOYEEId);
                     bodypropCount++;
                 }
 
@@ -439,9 +439,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodylOCATIONID != null)
+                if (bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONId);
                     bodypropCount++;
                 }
 
@@ -451,15 +451,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodymAINTENANCECOSTCURID != null)
+                if (bodymAINTENANCECOSTCURId != null)
                 {
-                    body["MAINTENANCE_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymAINTENANCECOSTCURID);
+                    body["MAINTENANCE_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymAINTENANCECOSTCURId);
                     bodypropCount++;
                 }
 
-                if (bodymAINUSAGEID != null)
+                if (bodymAINUSAGEId != null)
                 {
-                    body["MAIN_USAGE_ID"] = SourceExpressionConverter.ConvertToken(bodymAINUSAGEID);
+                    body["MAIN_USAGE_ID"] = SourceExpressionConverter.ConvertToken(bodymAINUSAGEId);
                     bodypropCount++;
                 }
 
@@ -475,9 +475,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodymONTHLYFIXEDCOSTCURID != null)
+                if (bodymONTHLYFIXEDCOSTCURId != null)
                 {
-                    body["MONTHLY_FIXED_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOSTCURID);
+                    body["MONTHLY_FIXED_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOSTCURId);
                     bodypropCount++;
                 }
 
@@ -487,9 +487,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodymONTHLYNETRENTALCURID != null)
+                if (bodymONTHLYNETRENTALCURId != null)
                 {
-                    body["MONTHLY_NET_RENTAL_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYNETRENTALCURID);
+                    body["MONTHLY_NET_RENTAL_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYNETRENTALCURId);
                     bodypropCount++;
                 }
 
@@ -499,15 +499,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodynETWORKIDENTIFIER != null)
+                if (bodynETWORKIdENTIFIER != null)
                 {
-                    body["NETWORK_IDENTIFIER"] = SourceExpressionConverter.ConvertToken(bodynETWORKIDENTIFIER);
+                    body["NETWORK_IDENTIFIER"] = SourceExpressionConverter.ConvertToken(bodynETWORKIdENTIFIER);
                     bodypropCount++;
                 }
 
-                if (bodynEXTDEPARTMENTID != null)
+                if (bodynEXTDEPARTMENTId != null)
                 {
-                    body["NEXT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTDEPARTMENTID);
+                    body["NEXT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTDEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -517,9 +517,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodynEXTSTATUSID != null)
+                if (bodynEXTSTATUSId != null)
                 {
-                    body["NEXT_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTSTATUSID);
+                    body["NEXT_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTSTATUSId);
                     bodypropCount++;
                 }
 
@@ -529,9 +529,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodynEXTUSERID != null)
+                if (bodynEXTUSERId != null)
                 {
-                    body["NEXT_USER_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTUSERID);
+                    body["NEXT_USER_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTUSERId);
                     bodypropCount++;
                 }
 
@@ -541,9 +541,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyoRDERDETAILSID != null)
+                if (bodyoRDERDETAILSId != null)
                 {
-                    body["ORDER_DETAILS_ID"] = SourceExpressionConverter.ConvertToken(bodyoRDERDETAILSID);
+                    body["ORDER_DETAILS_ID"] = SourceExpressionConverter.ConvertToken(bodyoRDERDETAILSId);
                     bodypropCount++;
                 }
 
@@ -553,9 +553,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodypIPELINESTATUSID != null)
+                if (bodypIPELINESTATUSId != null)
                 {
-                    body["PIPELINE_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodypIPELINESTATUSID);
+                    body["PIPELINE_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodypIPELINESTATUSId);
                     bodypropCount++;
                 }
 
@@ -589,15 +589,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodypURCHASEPRICECURID != null)
+                if (bodypURCHASEPRICECURId != null)
                 {
-                    body["PURCHASE_PRICE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASEPRICECURID);
+                    body["PURCHASE_PRICE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASEPRICECURId);
                     bodypropCount++;
                 }
 
-                if (bodypURCHASERATEID != null)
+                if (bodypURCHASERATEId != null)
                 {
-                    body["PURCHASE_RATE_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASERATEID);
+                    body["PURCHASE_RATE_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASERATEId);
                     bodypropCount++;
                 }
 
@@ -607,9 +607,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyrECYCLINGPROVIDERID != null)
+                if (bodyrECYCLINGPROVIdERId != null)
                 {
-                    body["RECYCLING_PROVIDER_ID"] = SourceExpressionConverter.ConvertToken(bodyrECYCLINGPROVIDERID);
+                    body["RECYCLING_PROVIDER_ID"] = SourceExpressionConverter.ConvertToken(bodyrECYCLINGPROVIdERId);
                     bodypropCount++;
                 }
 
@@ -625,9 +625,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyrENEWALDECISIONID != null)
+                if (bodyrENEWALDECISIONId != null)
                 {
-                    body["RENEWAL_DECISION_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALDECISIONID);
+                    body["RENEWAL_DECISION_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALDECISIONId);
                     bodypropCount++;
                 }
 
@@ -637,15 +637,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyrENEWALVALUECURID != null)
+                if (bodyrENEWALVALUECURId != null)
                 {
-                    body["RENEWAL_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALVALUECURID);
+                    body["RENEWAL_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALVALUECURId);
                     bodypropCount++;
                 }
 
-                if (bodyrEPAIREDBYID != null)
+                if (bodyrEPAIREDBYId != null)
                 {
-                    body["REPAIRED_BY_ID"] = SourceExpressionConverter.ConvertToken(bodyrEPAIREDBYID);
+                    body["REPAIRED_BY_ID"] = SourceExpressionConverter.ConvertToken(bodyrEPAIREDBYId);
                     bodypropCount++;
                 }
 
@@ -661,9 +661,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysDCATALOGID != null)
+                if (bodysDCATALOGId != null)
                 {
-                    body["SD_CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodysDCATALOGID);
+                    body["SD_CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodysDCATALOGId);
                     bodypropCount++;
                 }
 
@@ -673,21 +673,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysLAID != null)
+                if (bodysLAId != null)
                 {
-                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAId);
                     bodypropCount++;
                 }
 
-                if (bodysTATUSID != null)
+                if (bodysTATUSId != null)
                 {
-                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSID);
+                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSId);
                     bodypropCount++;
                 }
 
-                if (bodysUPPLIERID != null)
+                if (bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERId);
                     bodypropCount++;
                 }
 
@@ -703,9 +703,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodywARANTYTYPEID != null)
+                if (bodywARANTYTYPEId != null)
                 {
-                    body["WARANTY_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodywARANTYTYPEID);
+                    body["WARANTY_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodywARANTYTYPEId);
                     bodypropCount++;
                 }
 
@@ -1129,12 +1129,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyrelationTypeID, [WorkflowExpression] Func<string> bodyblocking = null)
+        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyrelationTypeId, [WorkflowExpression] Func<string> bodyblocking = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
             SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
-            SourceExpression.Validate(bodyrelationTypeID, nameof(bodyrelationTypeID), required: true);
+            SourceExpression.Validate(bodyrelationTypeId, nameof(bodyrelationTypeId), required: true);
             SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 }
 
                 bodypropCount++;
-                body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeID);
+                body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1162,13 +1162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyblocking = null, [WorkflowExpression] Func<string> bodyrelationTypeID = null)
+        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyblocking = null, [WorkflowExpression] Func<string> bodyrelationTypeId = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
             SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
             SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
-            SourceExpression.Validate(bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
+            SourceExpression.Validate(bodyrelationTypeId, nameof(bodyrelationTypeId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
@@ -1182,9 +1182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyrelationTypeID != null)
+                if (bodyrelationTypeId != null)
                 {
-                    body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeID);
+                    body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeId);
                     bodypropCount++;
                 }
 
@@ -1242,11 +1242,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateDepartmentResponse> UpdateDepartment([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> departmentId, [WorkflowExpression] Func<string> bodypARENTDEPARTMENTID = null, [WorkflowExpression] Func<string> bodydEPARTMENTEN = null, [WorkflowExpression] Func<string> bodydEPARTMENTFR = null, [WorkflowExpression] Func<string> bodydEPARTMENTSP = null, [WorkflowExpression] Func<string> bodydEPARTMENTGE = null, [WorkflowExpression] Func<string> bodydEPARTMENTIT = null, [WorkflowExpression] Func<string> bodydEPARTMENTPO = null, [WorkflowExpression] Func<string> bodydEPARTMENTLABEL = null, [WorkflowExpression] Func<string> bodycOMMENTDEPARTMENT = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERID = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydEPARTMENTCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodycURRENCYID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodydEPARTMENTL1 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL2 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL3 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL4 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL5 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL6 = null)
+        public IBodyWorkflowAction<UpdateDepartmentResponse> UpdateDepartment([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> departmentId, [WorkflowExpression] Func<string> bodypARENTDEPARTMENTId = null, [WorkflowExpression] Func<string> bodydEPARTMENTEN = null, [WorkflowExpression] Func<string> bodydEPARTMENTFR = null, [WorkflowExpression] Func<string> bodydEPARTMENTSP = null, [WorkflowExpression] Func<string> bodydEPARTMENTGE = null, [WorkflowExpression] Func<string> bodydEPARTMENTIT = null, [WorkflowExpression] Func<string> bodydEPARTMENTPO = null, [WorkflowExpression] Func<string> bodydEPARTMENTLABEL = null, [WorkflowExpression] Func<string> bodycOMMENTDEPARTMENT = null, [WorkflowExpression] Func<string> bodymANAGERId = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERId = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydEPARTMENTCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodycURRENCYId = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAId = null, [WorkflowExpression] Func<string> bodydEPARTMENTL1 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL2 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL3 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL4 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL5 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL6 = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(departmentId, nameof(departmentId), required: true);
-            SourceExpression.Validate(bodypARENTDEPARTMENTID, nameof(bodypARENTDEPARTMENTID), required: false);
+            SourceExpression.Validate(bodypARENTDEPARTMENTId, nameof(bodypARENTDEPARTMENTId), required: false);
             SourceExpression.Validate(bodydEPARTMENTEN, nameof(bodydEPARTMENTEN), required: false);
             SourceExpression.Validate(bodydEPARTMENTFR, nameof(bodydEPARTMENTFR), required: false);
             SourceExpression.Validate(bodydEPARTMENTSP, nameof(bodydEPARTMENTSP), required: false);
@@ -1255,22 +1255,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodydEPARTMENTPO, nameof(bodydEPARTMENTPO), required: false);
             SourceExpression.Validate(bodydEPARTMENTLABEL, nameof(bodydEPARTMENTLABEL), required: false);
             SourceExpression.Validate(bodycOMMENTDEPARTMENT, nameof(bodycOMMENTDEPARTMENT), required: false);
-            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
-            SourceExpression.Validate(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            SourceExpression.Validate(bodymANAGERId, nameof(bodymANAGERId), required: false);
+            SourceExpression.Validate(bodydEFAULTCOSTCENTERId, nameof(bodydEFAULTCOSTCENTERId), required: false);
             SourceExpression.Validate(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
             SourceExpression.Validate(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
             SourceExpression.Validate(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
             SourceExpression.Validate(bodydEPARTMENTCODE, nameof(bodydEPARTMENTCODE), required: false);
             SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            SourceExpression.Validate(bodycURRENCYID, nameof(bodycURRENCYID), required: false);
+            SourceExpression.Validate(bodycURRENCYId, nameof(bodycURRENCYId), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
+            SourceExpression.Validate(bodysLAId, nameof(bodysLAId), required: false);
             SourceExpression.Validate(bodydEPARTMENTL1, nameof(bodydEPARTMENTL1), required: false);
             SourceExpression.Validate(bodydEPARTMENTL2, nameof(bodydEPARTMENTL2), required: false);
             SourceExpression.Validate(bodydEPARTMENTL3, nameof(bodydEPARTMENTL3), required: false);
@@ -1284,9 +1284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypARENTDEPARTMENTID != null)
+                if (bodypARENTDEPARTMENTId != null)
                 {
-                    body["PARENT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTDEPARTMENTID);
+                    body["PARENT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTDEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -1338,15 +1338,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodymANAGERID != null)
+                if (bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERId);
                     bodypropCount++;
                 }
 
-                if (bodydEFAULTCOSTCENTERID != null)
+                if (bodydEFAULTCOSTCENTERId != null)
                 {
-                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
+                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERId);
                     bodypropCount++;
                 }
 
@@ -1386,9 +1386,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycURRENCYID != null)
+                if (bodycURRENCYId != null)
                 {
-                    body["CURRENCY_ID"] = SourceExpressionConverter.ConvertToken(bodycURRENCYID);
+                    body["CURRENCY_ID"] = SourceExpressionConverter.ConvertToken(bodycURRENCYId);
                     bodypropCount++;
                 }
 
@@ -1428,9 +1428,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysLAID != null)
+                if (bodysLAId != null)
                 {
-                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAId);
                     bodypropCount++;
                 }
 
@@ -1552,12 +1552,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> bodyaPPROVEDTOVALIDATE = null, [WorkflowExpression] Func<string> bodyaVAILABILITYSTATUSID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodybEGINOFCONTRACT = null, [WorkflowExpression] Func<string> bodycELLULARNUMBER = null, [WorkflowExpression] Func<string> bodycHATLOGIN = null, [WorkflowExpression] Func<string> bodycIVILSTATUSID = null, [WorkflowExpression] Func<string> bodycOMMENTEMPLOYEE = null, [WorkflowExpression] Func<string> bodycOSTPERHOUR = null, [WorkflowExpression] Func<string> bodycOSTPERHOURCURID = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERID = null, [WorkflowExpression] Func<string> bodydELEGATIONFROM = null, [WorkflowExpression] Func<string> bodydELEGATIONID = null, [WorkflowExpression] Func<string> bodydELEGATIONTO = null, [WorkflowExpression] Func<string> bodydEPARTMENTID = null, [WorkflowExpression] Func<string> bodyeNDOFCONTRACT = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyfAXNUMBER = null, [WorkflowExpression] Func<string> bodyfUNCTIONID = null, [WorkflowExpression] Func<string> bodyiCQNUMBER = null, [WorkflowExpression] Func<string> bodyiDENTIFICATION = null, [WorkflowExpression] Func<string> bodyiSAUTOMATICSTATUS = null, [WorkflowExpression] Func<string> bodyiTCORRESPONDENT = null, [WorkflowExpression] Func<string> bodylANGUAGEID = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTNAME = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodylOGIN = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodymESSENGERSIGNNAME = null, [WorkflowExpression] Func<string> bodynOTIFICATIONTYPEID = null, [WorkflowExpression] Func<string> bodypASSWDLASTUPDATEUT = null, [WorkflowExpression] Func<string> bodypHONENUMBER = null, [WorkflowExpression] Func<string> bodypICTUREPATH = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodyvALIDATORID = null, [WorkflowExpression] Func<string> bodyvIPLEVELID = null, [WorkflowExpression] Func<string> bodywAVEADDRESS = null)
+        public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> bodyaPPROVEDTOVALIdATE = null, [WorkflowExpression] Func<string> bodyaVAILABILITYSTATUSId = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodybEGINOFCONTRACT = null, [WorkflowExpression] Func<string> bodycELLULARNUMBER = null, [WorkflowExpression] Func<string> bodycHATLOGIN = null, [WorkflowExpression] Func<string> bodycIVILSTATUSId = null, [WorkflowExpression] Func<string> bodycOMMENTEMPLOYEE = null, [WorkflowExpression] Func<string> bodycOSTPERHOUR = null, [WorkflowExpression] Func<string> bodycOSTPERHOURCURId = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERId = null, [WorkflowExpression] Func<string> bodydELEGATIONFROM = null, [WorkflowExpression] Func<string> bodydELEGATIONId = null, [WorkflowExpression] Func<string> bodydELEGATIONTO = null, [WorkflowExpression] Func<string> bodydEPARTMENTId = null, [WorkflowExpression] Func<string> bodyeNDOFCONTRACT = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyfAXNUMBER = null, [WorkflowExpression] Func<string> bodyfUNCTIONId = null, [WorkflowExpression] Func<string> bodyiCQNUMBER = null, [WorkflowExpression] Func<string> bodyidENTIFICATION = null, [WorkflowExpression] Func<string> bodyiSAUTOMATICSTATUS = null, [WorkflowExpression] Func<string> bodyiTCORRESPONDENT = null, [WorkflowExpression] Func<string> bodylANGUAGEId = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTNAME = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylOCATIONId = null, [WorkflowExpression] Func<string> bodylOGIN = null, [WorkflowExpression] Func<string> bodymANAGERId = null, [WorkflowExpression] Func<string> bodymESSENGERSIGNNAME = null, [WorkflowExpression] Func<string> bodynOTIFICATIONTYPEId = null, [WorkflowExpression] Func<string> bodypASSWDLASTUPDATEUT = null, [WorkflowExpression] Func<string> bodypHONENUMBER = null, [WorkflowExpression] Func<string> bodypICTUREPATH = null, [WorkflowExpression] Func<string> bodysUPPLIERId = null, [WorkflowExpression] Func<string> bodyvALIdATORId = null, [WorkflowExpression] Func<string> bodyvIPLEVELId = null, [WorkflowExpression] Func<string> bodywAVEADDRESS = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
-            SourceExpression.Validate(bodyaPPROVEDTOVALIDATE, nameof(bodyaPPROVEDTOVALIDATE), required: false);
-            SourceExpression.Validate(bodyaVAILABILITYSTATUSID, nameof(bodyaVAILABILITYSTATUSID), required: false);
+            SourceExpression.Validate(bodyaPPROVEDTOVALIdATE, nameof(bodyaPPROVEDTOVALIdATE), required: false);
+            SourceExpression.Validate(bodyaVAILABILITYSTATUSId, nameof(bodyaVAILABILITYSTATUSId), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
@@ -1567,38 +1567,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
             SourceExpression.Validate(bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
             SourceExpression.Validate(bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
-            SourceExpression.Validate(bodycIVILSTATUSID, nameof(bodycIVILSTATUSID), required: false);
+            SourceExpression.Validate(bodycIVILSTATUSId, nameof(bodycIVILSTATUSId), required: false);
             SourceExpression.Validate(bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
             SourceExpression.Validate(bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
-            SourceExpression.Validate(bodycOSTPERHOURCURID, nameof(bodycOSTPERHOURCURID), required: false);
-            SourceExpression.Validate(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            SourceExpression.Validate(bodycOSTPERHOURCURId, nameof(bodycOSTPERHOURCURId), required: false);
+            SourceExpression.Validate(bodydEFAULTCOSTCENTERId, nameof(bodydEFAULTCOSTCENTERId), required: false);
             SourceExpression.Validate(bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
-            SourceExpression.Validate(bodydELEGATIONID, nameof(bodydELEGATIONID), required: false);
+            SourceExpression.Validate(bodydELEGATIONId, nameof(bodydELEGATIONId), required: false);
             SourceExpression.Validate(bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
-            SourceExpression.Validate(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            SourceExpression.Validate(bodydEPARTMENTId, nameof(bodydEPARTMENTId), required: false);
             SourceExpression.Validate(bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
             SourceExpression.Validate(bodyeMAIL, nameof(bodyeMAIL), required: false);
             SourceExpression.Validate(bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
-            SourceExpression.Validate(bodyfUNCTIONID, nameof(bodyfUNCTIONID), required: false);
+            SourceExpression.Validate(bodyfUNCTIONId, nameof(bodyfUNCTIONId), required: false);
             SourceExpression.Validate(bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
-            SourceExpression.Validate(bodyiDENTIFICATION, nameof(bodyiDENTIFICATION), required: false);
+            SourceExpression.Validate(bodyidENTIFICATION, nameof(bodyidENTIFICATION), required: false);
             SourceExpression.Validate(bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
             SourceExpression.Validate(bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
-            SourceExpression.Validate(bodylANGUAGEID, nameof(bodylANGUAGEID), required: false);
+            SourceExpression.Validate(bodylANGUAGEId, nameof(bodylANGUAGEId), required: false);
             SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
             SourceExpression.Validate(bodylASTNAME, nameof(bodylASTNAME), required: false);
             SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            SourceExpression.Validate(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
             SourceExpression.Validate(bodylOGIN, nameof(bodylOGIN), required: false);
-            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            SourceExpression.Validate(bodymANAGERId, nameof(bodymANAGERId), required: false);
             SourceExpression.Validate(bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
-            SourceExpression.Validate(bodynOTIFICATIONTYPEID, nameof(bodynOTIFICATIONTYPEID), required: false);
+            SourceExpression.Validate(bodynOTIFICATIONTYPEId, nameof(bodynOTIFICATIONTYPEId), required: false);
             SourceExpression.Validate(bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
             SourceExpression.Validate(bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
             SourceExpression.Validate(bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
-            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            SourceExpression.Validate(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
-            SourceExpression.Validate(bodyvIPLEVELID, nameof(bodyvIPLEVELID), required: false);
+            SourceExpression.Validate(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
+            SourceExpression.Validate(bodyvALIdATORId, nameof(bodyvALIdATORId), required: false);
+            SourceExpression.Validate(bodyvIPLEVELId, nameof(bodyvIPLEVELId), required: false);
             SourceExpression.Validate(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -1607,15 +1607,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyaPPROVEDTOVALIDATE != null)
+                if (bodyaPPROVEDTOVALIdATE != null)
                 {
-                    body["APPROVED_TO_VALIDATE"] = SourceExpressionConverter.ConvertToken(bodyaPPROVEDTOVALIDATE);
+                    body["APPROVED_TO_VALIDATE"] = SourceExpressionConverter.ConvertToken(bodyaPPROVEDTOVALIdATE);
                     bodypropCount++;
                 }
 
-                if (bodyaVAILABILITYSTATUSID != null)
+                if (bodyaVAILABILITYSTATUSId != null)
                 {
-                    body["AVAILABILITY_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodyaVAILABILITYSTATUSID);
+                    body["AVAILABILITY_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodyaVAILABILITYSTATUSId);
                     bodypropCount++;
                 }
 
@@ -1673,9 +1673,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycIVILSTATUSID != null)
+                if (bodycIVILSTATUSId != null)
                 {
-                    body["CIVIL_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycIVILSTATUSID);
+                    body["CIVIL_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycIVILSTATUSId);
                     bodypropCount++;
                 }
 
@@ -1691,15 +1691,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycOSTPERHOURCURID != null)
+                if (bodycOSTPERHOURCURId != null)
                 {
-                    body["COST_PER_HOUR_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycOSTPERHOURCURID);
+                    body["COST_PER_HOUR_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycOSTPERHOURCURId);
                     bodypropCount++;
                 }
 
-                if (bodydEFAULTCOSTCENTERID != null)
+                if (bodydEFAULTCOSTCENTERId != null)
                 {
-                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
+                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERId);
                     bodypropCount++;
                 }
 
@@ -1709,9 +1709,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodydELEGATIONID != null)
+                if (bodydELEGATIONId != null)
                 {
-                    body["DELEGATION_ID"] = SourceExpressionConverter.ConvertToken(bodydELEGATIONID);
+                    body["DELEGATION_ID"] = SourceExpressionConverter.ConvertToken(bodydELEGATIONId);
                     bodypropCount++;
                 }
 
@@ -1721,9 +1721,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodydEPARTMENTID != null)
+                if (bodydEPARTMENTId != null)
                 {
-                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTID);
+                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTId);
                     bodypropCount++;
                 }
 
@@ -1745,9 +1745,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyfUNCTIONID != null)
+                if (bodyfUNCTIONId != null)
                 {
-                    body["FUNCTION_ID"] = SourceExpressionConverter.ConvertToken(bodyfUNCTIONID);
+                    body["FUNCTION_ID"] = SourceExpressionConverter.ConvertToken(bodyfUNCTIONId);
                     bodypropCount++;
                 }
 
@@ -1757,9 +1757,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyiDENTIFICATION != null)
+                if (bodyidENTIFICATION != null)
                 {
-                    body["IDENTIFICATION"] = SourceExpressionConverter.ConvertToken(bodyiDENTIFICATION);
+                    body["IDENTIFICATION"] = SourceExpressionConverter.ConvertToken(bodyidENTIFICATION);
                     bodypropCount++;
                 }
 
@@ -1775,9 +1775,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodylANGUAGEID != null)
+                if (bodylANGUAGEId != null)
                 {
-                    body["LANGUAGE_ID"] = SourceExpressionConverter.ConvertToken(bodylANGUAGEID);
+                    body["LANGUAGE_ID"] = SourceExpressionConverter.ConvertToken(bodylANGUAGEId);
                     bodypropCount++;
                 }
 
@@ -1799,9 +1799,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodylOCATIONID != null)
+                if (bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONId);
                     bodypropCount++;
                 }
 
@@ -1811,9 +1811,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodymANAGERID != null)
+                if (bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERId);
                     bodypropCount++;
                 }
 
@@ -1823,9 +1823,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodynOTIFICATIONTYPEID != null)
+                if (bodynOTIFICATIONTYPEId != null)
                 {
-                    body["NOTIFICATION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodynOTIFICATIONTYPEID);
+                    body["NOTIFICATION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodynOTIFICATIONTYPEId);
                     bodypropCount++;
                 }
 
@@ -1847,21 +1847,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysUPPLIERID != null)
+                if (bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERId);
                     bodypropCount++;
                 }
 
-                if (bodyvALIDATORID != null)
+                if (bodyvALIdATORId != null)
                 {
-                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIDATORID);
+                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIdATORId);
                     bodypropCount++;
                 }
 
-                if (bodyvIPLEVELID != null)
+                if (bodyvIPLEVELId != null)
                 {
-                    body["VIP_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodyvIPLEVELID);
+                    body["VIP_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodyvIPLEVELId);
                     bodypropCount++;
                 }
 
@@ -1968,12 +1968,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateLocationResponse> UpdateLocation([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<string> bodypARENTLOCATIONID = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodylOCATIONEN = null, [WorkflowExpression] Func<string> bodylOCATIONFR = null, [WorkflowExpression] Func<string> bodylOCATIONGE = null, [WorkflowExpression] Func<string> bodylOCATIONSP = null, [WorkflowExpression] Func<string> bodylOCATIONIT = null, [WorkflowExpression] Func<string> bodylOCATIONPO = null, [WorkflowExpression] Func<string> bodysTREETADDRESS1 = null, [WorkflowExpression] Func<string> bodysTREETADDRESS2 = null, [WorkflowExpression] Func<string> bodycITY = null, [WorkflowExpression] Func<string> bodypHONE = null, [WorkflowExpression] Func<string> bodyzIPCODE = null, [WorkflowExpression] Func<string> bodyfAX = null, [WorkflowExpression] Func<string> bodycOMMENTLOCATION = null, [WorkflowExpression] Func<string> bodyrEGIONZONEID = null, [WorkflowExpression] Func<string> bodycOUNTRYID = null, [WorkflowExpression] Func<string> bodysTATEID = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydISCOVERYNAME = null, [WorkflowExpression] Func<string> bodylOCATIONCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodyiSDELIVERYADDRESS = null, [WorkflowExpression] Func<string> bodytIMEZONEID = null, [WorkflowExpression] Func<string> bodysTATUSID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodygMAPLAT = null, [WorkflowExpression] Func<string> bodygMAPLNG = null, [WorkflowExpression] Func<string> bodylOCATIONL1 = null, [WorkflowExpression] Func<string> bodylOCATIONL2 = null, [WorkflowExpression] Func<string> bodylOCATIONL3 = null, [WorkflowExpression] Func<string> bodylOCATIONL4 = null, [WorkflowExpression] Func<string> bodylOCATIONL5 = null, [WorkflowExpression] Func<string> bodylOCATIONL6 = null, [WorkflowExpression] Func<string> bodyeISMEETINGROOM = null, [WorkflowExpression] Func<string> bodyeCAPACITY = null, [WorkflowExpression] Func<string> bodyeWIFILOGIN = null)
+        public IBodyWorkflowAction<UpdateLocationResponse> UpdateLocation([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<string> bodypARENTLOCATIONId = null, [WorkflowExpression] Func<string> bodymANAGERId = null, [WorkflowExpression] Func<string> bodylOCATIONEN = null, [WorkflowExpression] Func<string> bodylOCATIONFR = null, [WorkflowExpression] Func<string> bodylOCATIONGE = null, [WorkflowExpression] Func<string> bodylOCATIONSP = null, [WorkflowExpression] Func<string> bodylOCATIONIT = null, [WorkflowExpression] Func<string> bodylOCATIONPO = null, [WorkflowExpression] Func<string> bodysTREETADDRESS1 = null, [WorkflowExpression] Func<string> bodysTREETADDRESS2 = null, [WorkflowExpression] Func<string> bodycITY = null, [WorkflowExpression] Func<string> bodypHONE = null, [WorkflowExpression] Func<string> bodyzIPCODE = null, [WorkflowExpression] Func<string> bodyfAX = null, [WorkflowExpression] Func<string> bodycOMMENTLOCATION = null, [WorkflowExpression] Func<string> bodyrEGIONZONEId = null, [WorkflowExpression] Func<string> bodycOUNTRYId = null, [WorkflowExpression] Func<string> bodysTATEId = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydISCOVERYNAME = null, [WorkflowExpression] Func<string> bodylOCATIONCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodyiSDELIVERYADDRESS = null, [WorkflowExpression] Func<string> bodytIMEZONEId = null, [WorkflowExpression] Func<string> bodysTATUSId = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAId = null, [WorkflowExpression] Func<string> bodygMAPLAT = null, [WorkflowExpression] Func<string> bodygMAPLNG = null, [WorkflowExpression] Func<string> bodylOCATIONL1 = null, [WorkflowExpression] Func<string> bodylOCATIONL2 = null, [WorkflowExpression] Func<string> bodylOCATIONL3 = null, [WorkflowExpression] Func<string> bodylOCATIONL4 = null, [WorkflowExpression] Func<string> bodylOCATIONL5 = null, [WorkflowExpression] Func<string> bodylOCATIONL6 = null, [WorkflowExpression] Func<string> bodyeISMEETINGROOM = null, [WorkflowExpression] Func<string> bodyeCAPACITY = null, [WorkflowExpression] Func<string> bodyeWIFILOGIN = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(locationId, nameof(locationId), required: true);
-            SourceExpression.Validate(bodypARENTLOCATIONID, nameof(bodypARENTLOCATIONID), required: false);
-            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            SourceExpression.Validate(bodypARENTLOCATIONId, nameof(bodypARENTLOCATIONId), required: false);
+            SourceExpression.Validate(bodymANAGERId, nameof(bodymANAGERId), required: false);
             SourceExpression.Validate(bodylOCATIONEN, nameof(bodylOCATIONEN), required: false);
             SourceExpression.Validate(bodylOCATIONFR, nameof(bodylOCATIONFR), required: false);
             SourceExpression.Validate(bodylOCATIONGE, nameof(bodylOCATIONGE), required: false);
@@ -1987,9 +1987,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodyzIPCODE, nameof(bodyzIPCODE), required: false);
             SourceExpression.Validate(bodyfAX, nameof(bodyfAX), required: false);
             SourceExpression.Validate(bodycOMMENTLOCATION, nameof(bodycOMMENTLOCATION), required: false);
-            SourceExpression.Validate(bodyrEGIONZONEID, nameof(bodyrEGIONZONEID), required: false);
-            SourceExpression.Validate(bodycOUNTRYID, nameof(bodycOUNTRYID), required: false);
-            SourceExpression.Validate(bodysTATEID, nameof(bodysTATEID), required: false);
+            SourceExpression.Validate(bodyrEGIONZONEId, nameof(bodyrEGIONZONEId), required: false);
+            SourceExpression.Validate(bodycOUNTRYId, nameof(bodycOUNTRYId), required: false);
+            SourceExpression.Validate(bodysTATEId, nameof(bodysTATEId), required: false);
             SourceExpression.Validate(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
             SourceExpression.Validate(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
             SourceExpression.Validate(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
@@ -1998,15 +1998,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
             SourceExpression.Validate(bodyiSDELIVERYADDRESS, nameof(bodyiSDELIVERYADDRESS), required: false);
-            SourceExpression.Validate(bodytIMEZONEID, nameof(bodytIMEZONEID), required: false);
-            SourceExpression.Validate(bodysTATUSID, nameof(bodysTATUSID), required: false);
+            SourceExpression.Validate(bodytIMEZONEId, nameof(bodytIMEZONEId), required: false);
+            SourceExpression.Validate(bodysTATUSId, nameof(bodysTATUSId), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
+            SourceExpression.Validate(bodysLAId, nameof(bodysLAId), required: false);
             SourceExpression.Validate(bodygMAPLAT, nameof(bodygMAPLAT), required: false);
             SourceExpression.Validate(bodygMAPLNG, nameof(bodygMAPLNG), required: false);
             SourceExpression.Validate(bodylOCATIONL1, nameof(bodylOCATIONL1), required: false);
@@ -2025,15 +2025,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodypARENTLOCATIONID != null)
+                if (bodypARENTLOCATIONId != null)
                 {
-                    body["PARENT_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTLOCATIONID);
+                    body["PARENT_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTLOCATIONId);
                     bodypropCount++;
                 }
 
-                if (bodymANAGERID != null)
+                if (bodymANAGERId != null)
                 {
-                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERId);
                     bodypropCount++;
                 }
 
@@ -2115,21 +2115,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyrEGIONZONEID != null)
+                if (bodyrEGIONZONEId != null)
                 {
-                    body["REGION_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodyrEGIONZONEID);
+                    body["REGION_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodyrEGIONZONEId);
                     bodypropCount++;
                 }
 
-                if (bodycOUNTRYID != null)
+                if (bodycOUNTRYId != null)
                 {
-                    body["COUNTRY_ID"] = SourceExpressionConverter.ConvertToken(bodycOUNTRYID);
+                    body["COUNTRY_ID"] = SourceExpressionConverter.ConvertToken(bodycOUNTRYId);
                     bodypropCount++;
                 }
 
-                if (bodysTATEID != null)
+                if (bodysTATEId != null)
                 {
-                    body["STATE_ID"] = SourceExpressionConverter.ConvertToken(bodysTATEID);
+                    body["STATE_ID"] = SourceExpressionConverter.ConvertToken(bodysTATEId);
                     bodypropCount++;
                 }
 
@@ -2181,15 +2181,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodytIMEZONEID != null)
+                if (bodytIMEZONEId != null)
                 {
-                    body["TIME_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodytIMEZONEID);
+                    body["TIME_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodytIMEZONEId);
                     bodypropCount++;
                 }
 
-                if (bodysTATUSID != null)
+                if (bodysTATUSId != null)
                 {
-                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSID);
+                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSId);
                     bodypropCount++;
                 }
 
@@ -2229,9 +2229,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysLAID != null)
+                if (bodysLAId != null)
                 {
-                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAId);
                     bodypropCount++;
                 }
 
@@ -3535,7 +3535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse> CreateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTID = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREID = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
+        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse> CreateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTId = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREId = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLId = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(requestId, nameof(requestId), required: true);
@@ -3558,12 +3558,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
             SourceExpression.Validate(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
             SourceExpression.Validate(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
-            SourceExpression.Validate(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            SourceExpression.Validate(bodydOCUMENTId, nameof(bodydOCUMENTId), required: false);
             SourceExpression.Validate(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
             SourceExpression.Validate(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
             SourceExpression.Validate(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
-            SourceExpression.Validate(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
-            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodysYSQUESTIONNAIREId, nameof(bodysYSQUESTIONNAIREId), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             SourceExpression.Validate(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -3680,9 +3680,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodydOCUMENTID != null)
+                if (bodydOCUMENTId != null)
                 {
-                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTID);
+                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTId);
                     bodypropCount++;
                 }
 
@@ -3704,15 +3704,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysYSQUESTIONNAIREID != null)
+                if (bodysYSQUESTIONNAIREId != null)
                 {
-                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
+                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREId);
                     bodypropCount++;
                 }
 
-                if (bodyoRIGINTOOLID != null)
+                if (bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -3733,7 +3733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse> UpdateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTID = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREID = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
+        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse> UpdateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTId = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREId = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLId = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(requestId, nameof(requestId), required: true);
@@ -3756,12 +3756,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
             SourceExpression.Validate(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
             SourceExpression.Validate(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
-            SourceExpression.Validate(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            SourceExpression.Validate(bodydOCUMENTId, nameof(bodydOCUMENTId), required: false);
             SourceExpression.Validate(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
             SourceExpression.Validate(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
             SourceExpression.Validate(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
-            SourceExpression.Validate(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
-            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodysYSQUESTIONNAIREId, nameof(bodysYSQUESTIONNAIREId), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             SourceExpression.Validate(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -3878,9 +3878,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodydOCUMENTID != null)
+                if (bodydOCUMENTId != null)
                 {
-                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTID);
+                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTId);
                     bodypropCount++;
                 }
 
@@ -3902,15 +3902,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysYSQUESTIONNAIREID != null)
+                if (bodysYSQUESTIONNAIREId != null)
                 {
-                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
+                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREId);
                     bodypropCount++;
                 }
 
-                if (bodyoRIGINTOOLID != null)
+                if (bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -4070,16 +4070,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateActionTicketResponse> CreateActionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyaCTIONNUMBER = null, [WorkflowExpression] Func<string> bodyaSSETID = null, [WorkflowExpression] Func<string> bodypARENTACTIONID = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodydONEBYID = null, [WorkflowExpression] Func<string> bodyvALIDATORID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELEN = null, [WorkflowExpression] Func<string> bodytABLENAME = null, [WorkflowExpression] Func<string> bodyfIELDNAME = null, [WorkflowExpression] Func<string> bodyoLDVALUE = null, [WorkflowExpression] Func<string> bodynEWVALUE = null, [WorkflowExpression] Func<string> bodydELETEACTION = null, [WorkflowExpression] Func<string> bodyaUTOMATICACTION = null, [WorkflowExpression] Func<string> bodypROCESSSTEPID = null, [WorkflowExpression] Func<string> bodyrEQUESTID = null, [WorkflowExpression] Func<string> bodydESCRIPTION = null, [WorkflowExpression] Func<string> bodynETCHARGE = null, [WorkflowExpression] Func<string> bodynETCHARGECURID = null, [WorkflowExpression] Func<string> bodyrESOLUTION = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodysUPPORTSTAFFID = null, [WorkflowExpression] Func<string> bodycONTACTID = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDDATEUT = null, [WorkflowExpression] Func<string> bodycOMMENT = null, [WorkflowExpression] Func<string> bodysTARTDATEUT = null, [WorkflowExpression] Func<string> bodyeNDDATEUT = null, [WorkflowExpression] Func<string> bodyrENEWALDATEUT = null, [WorkflowExpression] Func<string> bodyeXPECTEDSTARTDATEUT = null, [WorkflowExpression] Func<string> bodycREATIONDATEUT = null, [WorkflowExpression] Func<string> bodyaPPLICATIONDATEUT = null, [WorkflowExpression] Func<string> bodywIZARDGUID = null, [WorkflowExpression] Func<string> bodygROUPID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELFR = null, [WorkflowExpression] Func<string> bodyaCTIONLABELSP = null, [WorkflowExpression] Func<string> bodyaCTIONLABELGE = null, [WorkflowExpression] Func<string> bodyaCTIONLABELIT = null, [WorkflowExpression] Func<string> bodyaCTIONLABELPO = null, [WorkflowExpression] Func<string> bodykNOWNPROBLEMID = null, [WorkflowExpression] Func<string> bodymAXINTERVENTIONDATEUT = null, [WorkflowExpression] Func<string> bodyeLAPSEDTIME = null, [WorkflowExpression] Func<string> bodypRIORITYID = null, [WorkflowExpression] Func<string> bodytAXID = null, [WorkflowExpression] Func<string> bodysTATUSIDONCREATE = null, [WorkflowExpression] Func<string> bodysTATUSIDONTERMINATE = null, [WorkflowExpression] Func<string> bodyaCTIONTYPEID = null, [WorkflowExpression] Func<string> bodydELAY = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodytIMEUSEDTOCOMPLETEACTION = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOST = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOSTCURID = null, [WorkflowExpression] Func<string> bodytIMECOST = null, [WorkflowExpression] Func<string> bodytIMECOSTCURID = null, [WorkflowExpression] Func<string> bodyoRIGINACTIONID = null, [WorkflowExpression] Func<string> bodywORKFLOWVALUE = null, [WorkflowExpression] Func<string> bodycONTINUITYPLANID = null, [WorkflowExpression] Func<string> bodycATEGORYTESTID = null, [WorkflowExpression] Func<string> bodywORKFLOWID = null, [WorkflowExpression] Func<string> bodyeXITVALUE = null, [WorkflowExpression] Func<string> bodymAXRESOLUTIONDATEUT = null, [WorkflowExpression] Func<string> bodypERCENTCOMPLETE = null, [WorkflowExpression] Func<string> bodyeXPECTEDDURATION = null, [WorkflowExpression] Func<string> bodywBSTASK = null, [WorkflowExpression] Func<string> bodytASKPERSONCOSTPERHOUR = null, [WorkflowExpression] Func<string> bodytASKPLANNEDBUDGET = null, [WorkflowExpression] Func<string> bodyeSTIMATEDNETCHARGE = null, [WorkflowExpression] Func<string> bodypREVIOUSSIBLINGID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL1 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL2 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL3 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL4 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL5 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL6 = null, [WorkflowExpression] Func<string> bodyhISTORYID = null, [WorkflowExpression] Func<string> bodytOTRUNC = null, [WorkflowExpression] Func<string> bodysTAGEID = null, [WorkflowExpression] Func<string> bodyiSLOCKEDPROGRESSPOINT = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodyeLASTDATESUPDATE = null, [WorkflowExpression] Func<string> bodybILLEDTIME = null, [WorkflowExpression] Func<string> bodyiSBILLINGREVIEWED = null)
+        public IBodyWorkflowAction<CreateActionTicketResponse> CreateActionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyaCTIONNUMBER = null, [WorkflowExpression] Func<string> bodyaSSETId = null, [WorkflowExpression] Func<string> bodypARENTACTIONId = null, [WorkflowExpression] Func<string> bodysUPPLIERId = null, [WorkflowExpression] Func<string> bodydONEBYId = null, [WorkflowExpression] Func<string> bodyvALIdATORId = null, [WorkflowExpression] Func<string> bodyaCTIONLABELEN = null, [WorkflowExpression] Func<string> bodytABLENAME = null, [WorkflowExpression] Func<string> bodyfIELDNAME = null, [WorkflowExpression] Func<string> bodyoLDVALUE = null, [WorkflowExpression] Func<string> bodynEWVALUE = null, [WorkflowExpression] Func<string> bodydELETEACTION = null, [WorkflowExpression] Func<string> bodyaUTOMATICACTION = null, [WorkflowExpression] Func<string> bodypROCESSSTEPId = null, [WorkflowExpression] Func<string> bodyrEQUESTId = null, [WorkflowExpression] Func<string> bodydESCRIPTION = null, [WorkflowExpression] Func<string> bodynETCHARGE = null, [WorkflowExpression] Func<string> bodynETCHARGECURId = null, [WorkflowExpression] Func<string> bodyrESOLUTION = null, [WorkflowExpression] Func<string> bodylOCATIONId = null, [WorkflowExpression] Func<string> bodysUPPORTSTAFFId = null, [WorkflowExpression] Func<string> bodycONTACTId = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDDATEUT = null, [WorkflowExpression] Func<string> bodycOMMENT = null, [WorkflowExpression] Func<string> bodysTARTDATEUT = null, [WorkflowExpression] Func<string> bodyeNDDATEUT = null, [WorkflowExpression] Func<string> bodyrENEWALDATEUT = null, [WorkflowExpression] Func<string> bodyeXPECTEDSTARTDATEUT = null, [WorkflowExpression] Func<string> bodycREATIONDATEUT = null, [WorkflowExpression] Func<string> bodyaPPLICATIONDATEUT = null, [WorkflowExpression] Func<string> bodywIZARDGUID = null, [WorkflowExpression] Func<string> bodygROUPId = null, [WorkflowExpression] Func<string> bodyaCTIONLABELFR = null, [WorkflowExpression] Func<string> bodyaCTIONLABELSP = null, [WorkflowExpression] Func<string> bodyaCTIONLABELGE = null, [WorkflowExpression] Func<string> bodyaCTIONLABELIT = null, [WorkflowExpression] Func<string> bodyaCTIONLABELPO = null, [WorkflowExpression] Func<string> bodykNOWNPROBLEMId = null, [WorkflowExpression] Func<string> bodymAXINTERVENTIONDATEUT = null, [WorkflowExpression] Func<string> bodyeLAPSEDTIME = null, [WorkflowExpression] Func<string> bodypRIORITYId = null, [WorkflowExpression] Func<string> bodytAXId = null, [WorkflowExpression] Func<string> bodysTATUSIdONCREATE = null, [WorkflowExpression] Func<string> bodysTATUSIdONTERMINATE = null, [WorkflowExpression] Func<string> bodyaCTIONTYPEId = null, [WorkflowExpression] Func<string> bodydELAY = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodytIMEUSEDTOCOMPLETEACTION = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOST = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOSTCURId = null, [WorkflowExpression] Func<string> bodytIMECOST = null, [WorkflowExpression] Func<string> bodytIMECOSTCURId = null, [WorkflowExpression] Func<string> bodyoRIGINACTIONId = null, [WorkflowExpression] Func<string> bodywORKFLOWVALUE = null, [WorkflowExpression] Func<string> bodycONTINUITYPLANId = null, [WorkflowExpression] Func<string> bodycATEGORYTESTId = null, [WorkflowExpression] Func<string> bodywORKFLOWId = null, [WorkflowExpression] Func<string> bodyeXITVALUE = null, [WorkflowExpression] Func<string> bodymAXRESOLUTIONDATEUT = null, [WorkflowExpression] Func<string> bodypERCENTCOMPLETE = null, [WorkflowExpression] Func<string> bodyeXPECTEDDURATION = null, [WorkflowExpression] Func<string> bodywBSTASK = null, [WorkflowExpression] Func<string> bodytASKPERSONCOSTPERHOUR = null, [WorkflowExpression] Func<string> bodytASKPLANNEDBUDGET = null, [WorkflowExpression] Func<string> bodyeSTIMATEDNETCHARGE = null, [WorkflowExpression] Func<string> bodypREVIOUSSIBLINGId = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL1 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL2 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL3 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL4 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL5 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL6 = null, [WorkflowExpression] Func<string> bodyhISTORYId = null, [WorkflowExpression] Func<string> bodytOTRUNC = null, [WorkflowExpression] Func<string> bodysTAGEId = null, [WorkflowExpression] Func<string> bodyiSLOCKEDPROGRESSPOINT = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLId = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodyeLASTDATESUPDATE = null, [WorkflowExpression] Func<string> bodybILLEDTIME = null, [WorkflowExpression] Func<string> bodyiSBILLINGREVIEWED = null)
         {
             SourceExpression.Validate(account, nameof(account), required: true);
             SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
             SourceExpression.Validate(bodyaCTIONNUMBER, nameof(bodyaCTIONNUMBER), required: false);
-            SourceExpression.Validate(bodyaSSETID, nameof(bodyaSSETID), required: false);
-            SourceExpression.Validate(bodypARENTACTIONID, nameof(bodypARENTACTIONID), required: false);
-            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            SourceExpression.Validate(bodydONEBYID, nameof(bodydONEBYID), required: false);
-            SourceExpression.Validate(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
+            SourceExpression.Validate(bodyaSSETId, nameof(bodyaSSETId), required: false);
+            SourceExpression.Validate(bodypARENTACTIONId, nameof(bodypARENTACTIONId), required: false);
+            SourceExpression.Validate(bodysUPPLIERId, nameof(bodysUPPLIERId), required: false);
+            SourceExpression.Validate(bodydONEBYId, nameof(bodydONEBYId), required: false);
+            SourceExpression.Validate(bodyvALIdATORId, nameof(bodyvALIdATORId), required: false);
             SourceExpression.Validate(bodyaCTIONLABELEN, nameof(bodyaCTIONLABELEN), required: false);
             SourceExpression.Validate(bodytABLENAME, nameof(bodytABLENAME), required: false);
             SourceExpression.Validate(bodyfIELDNAME, nameof(bodyfIELDNAME), required: false);
@@ -4087,15 +4087,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodynEWVALUE, nameof(bodynEWVALUE), required: false);
             SourceExpression.Validate(bodydELETEACTION, nameof(bodydELETEACTION), required: false);
             SourceExpression.Validate(bodyaUTOMATICACTION, nameof(bodyaUTOMATICACTION), required: false);
-            SourceExpression.Validate(bodypROCESSSTEPID, nameof(bodypROCESSSTEPID), required: false);
-            SourceExpression.Validate(bodyrEQUESTID, nameof(bodyrEQUESTID), required: false);
+            SourceExpression.Validate(bodypROCESSSTEPId, nameof(bodypROCESSSTEPId), required: false);
+            SourceExpression.Validate(bodyrEQUESTId, nameof(bodyrEQUESTId), required: false);
             SourceExpression.Validate(bodydESCRIPTION, nameof(bodydESCRIPTION), required: false);
             SourceExpression.Validate(bodynETCHARGE, nameof(bodynETCHARGE), required: false);
-            SourceExpression.Validate(bodynETCHARGECURID, nameof(bodynETCHARGECURID), required: false);
+            SourceExpression.Validate(bodynETCHARGECURId, nameof(bodynETCHARGECURId), required: false);
             SourceExpression.Validate(bodyrESOLUTION, nameof(bodyrESOLUTION), required: false);
-            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
-            SourceExpression.Validate(bodysUPPORTSTAFFID, nameof(bodysUPPORTSTAFFID), required: false);
-            SourceExpression.Validate(bodycONTACTID, nameof(bodycONTACTID), required: false);
+            SourceExpression.Validate(bodylOCATIONId, nameof(bodylOCATIONId), required: false);
+            SourceExpression.Validate(bodysUPPORTSTAFFId, nameof(bodysUPPORTSTAFFId), required: false);
+            SourceExpression.Validate(bodycONTACTId, nameof(bodycONTACTId), required: false);
             SourceExpression.Validate(bodyeXPECTEDENDDATEUT, nameof(bodyeXPECTEDENDDATEUT), required: false);
             SourceExpression.Validate(bodycOMMENT, nameof(bodycOMMENT), required: false);
             SourceExpression.Validate(bodysTARTDATEUT, nameof(bodysTARTDATEUT), required: false);
@@ -4105,20 +4105,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodycREATIONDATEUT, nameof(bodycREATIONDATEUT), required: false);
             SourceExpression.Validate(bodyaPPLICATIONDATEUT, nameof(bodyaPPLICATIONDATEUT), required: false);
             SourceExpression.Validate(bodywIZARDGUID, nameof(bodywIZARDGUID), required: false);
-            SourceExpression.Validate(bodygROUPID, nameof(bodygROUPID), required: false);
+            SourceExpression.Validate(bodygROUPId, nameof(bodygROUPId), required: false);
             SourceExpression.Validate(bodyaCTIONLABELFR, nameof(bodyaCTIONLABELFR), required: false);
             SourceExpression.Validate(bodyaCTIONLABELSP, nameof(bodyaCTIONLABELSP), required: false);
             SourceExpression.Validate(bodyaCTIONLABELGE, nameof(bodyaCTIONLABELGE), required: false);
             SourceExpression.Validate(bodyaCTIONLABELIT, nameof(bodyaCTIONLABELIT), required: false);
             SourceExpression.Validate(bodyaCTIONLABELPO, nameof(bodyaCTIONLABELPO), required: false);
-            SourceExpression.Validate(bodykNOWNPROBLEMID, nameof(bodykNOWNPROBLEMID), required: false);
+            SourceExpression.Validate(bodykNOWNPROBLEMId, nameof(bodykNOWNPROBLEMId), required: false);
             SourceExpression.Validate(bodymAXINTERVENTIONDATEUT, nameof(bodymAXINTERVENTIONDATEUT), required: false);
             SourceExpression.Validate(bodyeLAPSEDTIME, nameof(bodyeLAPSEDTIME), required: false);
-            SourceExpression.Validate(bodypRIORITYID, nameof(bodypRIORITYID), required: false);
-            SourceExpression.Validate(bodytAXID, nameof(bodytAXID), required: false);
-            SourceExpression.Validate(bodysTATUSIDONCREATE, nameof(bodysTATUSIDONCREATE), required: false);
-            SourceExpression.Validate(bodysTATUSIDONTERMINATE, nameof(bodysTATUSIDONTERMINATE), required: false);
-            SourceExpression.Validate(bodyaCTIONTYPEID, nameof(bodyaCTIONTYPEID), required: false);
+            SourceExpression.Validate(bodypRIORITYId, nameof(bodypRIORITYId), required: false);
+            SourceExpression.Validate(bodytAXId, nameof(bodytAXId), required: false);
+            SourceExpression.Validate(bodysTATUSIdONCREATE, nameof(bodysTATUSIdONCREATE), required: false);
+            SourceExpression.Validate(bodysTATUSIdONTERMINATE, nameof(bodysTATUSIdONTERMINATE), required: false);
+            SourceExpression.Validate(bodyaCTIONTYPEId, nameof(bodyaCTIONTYPEId), required: false);
             SourceExpression.Validate(bodydELAY, nameof(bodydELAY), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
             SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
@@ -4128,14 +4128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
             SourceExpression.Validate(bodytIMEUSEDTOCOMPLETEACTION, nameof(bodytIMEUSEDTOCOMPLETEACTION), required: false);
             SourceExpression.Validate(bodycONTRACTUALCOST, nameof(bodycONTRACTUALCOST), required: false);
-            SourceExpression.Validate(bodycONTRACTUALCOSTCURID, nameof(bodycONTRACTUALCOSTCURID), required: false);
+            SourceExpression.Validate(bodycONTRACTUALCOSTCURId, nameof(bodycONTRACTUALCOSTCURId), required: false);
             SourceExpression.Validate(bodytIMECOST, nameof(bodytIMECOST), required: false);
-            SourceExpression.Validate(bodytIMECOSTCURID, nameof(bodytIMECOSTCURID), required: false);
-            SourceExpression.Validate(bodyoRIGINACTIONID, nameof(bodyoRIGINACTIONID), required: false);
+            SourceExpression.Validate(bodytIMECOSTCURId, nameof(bodytIMECOSTCURId), required: false);
+            SourceExpression.Validate(bodyoRIGINACTIONId, nameof(bodyoRIGINACTIONId), required: false);
             SourceExpression.Validate(bodywORKFLOWVALUE, nameof(bodywORKFLOWVALUE), required: false);
-            SourceExpression.Validate(bodycONTINUITYPLANID, nameof(bodycONTINUITYPLANID), required: false);
-            SourceExpression.Validate(bodycATEGORYTESTID, nameof(bodycATEGORYTESTID), required: false);
-            SourceExpression.Validate(bodywORKFLOWID, nameof(bodywORKFLOWID), required: false);
+            SourceExpression.Validate(bodycONTINUITYPLANId, nameof(bodycONTINUITYPLANId), required: false);
+            SourceExpression.Validate(bodycATEGORYTESTId, nameof(bodycATEGORYTESTId), required: false);
+            SourceExpression.Validate(bodywORKFLOWId, nameof(bodywORKFLOWId), required: false);
             SourceExpression.Validate(bodyeXITVALUE, nameof(bodyeXITVALUE), required: false);
             SourceExpression.Validate(bodymAXRESOLUTIONDATEUT, nameof(bodymAXRESOLUTIONDATEUT), required: false);
             SourceExpression.Validate(bodypERCENTCOMPLETE, nameof(bodypERCENTCOMPLETE), required: false);
@@ -4144,18 +4144,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
             SourceExpression.Validate(bodytASKPERSONCOSTPERHOUR, nameof(bodytASKPERSONCOSTPERHOUR), required: false);
             SourceExpression.Validate(bodytASKPLANNEDBUDGET, nameof(bodytASKPLANNEDBUDGET), required: false);
             SourceExpression.Validate(bodyeSTIMATEDNETCHARGE, nameof(bodyeSTIMATEDNETCHARGE), required: false);
-            SourceExpression.Validate(bodypREVIOUSSIBLINGID, nameof(bodypREVIOUSSIBLINGID), required: false);
+            SourceExpression.Validate(bodypREVIOUSSIBLINGId, nameof(bodypREVIOUSSIBLINGId), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL1, nameof(bodyaCTIONLABELL1), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL2, nameof(bodyaCTIONLABELL2), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL3, nameof(bodyaCTIONLABELL3), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL4, nameof(bodyaCTIONLABELL4), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL5, nameof(bodyaCTIONLABELL5), required: false);
             SourceExpression.Validate(bodyaCTIONLABELL6, nameof(bodyaCTIONLABELL6), required: false);
-            SourceExpression.Validate(bodyhISTORYID, nameof(bodyhISTORYID), required: false);
+            SourceExpression.Validate(bodyhISTORYId, nameof(bodyhISTORYId), required: false);
             SourceExpression.Validate(bodytOTRUNC, nameof(bodytOTRUNC), required: false);
-            SourceExpression.Validate(bodysTAGEID, nameof(bodysTAGEID), required: false);
+            SourceExpression.Validate(bodysTAGEId, nameof(bodysTAGEId), required: false);
             SourceExpression.Validate(bodyiSLOCKEDPROGRESSPOINT, nameof(bodyiSLOCKEDPROGRESSPOINT), required: false);
-            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLId, nameof(bodyoRIGINTOOLId), required: false);
             SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
             SourceExpression.Validate(bodyeLASTDATESUPDATE, nameof(bodyeLASTDATESUPDATE), required: false);
             SourceExpression.Validate(bodybILLEDTIME, nameof(bodybILLEDTIME), required: false);
@@ -4173,33 +4173,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyaSSETID != null)
+                if (bodyaSSETId != null)
                 {
-                    body["ASSET_ID"] = SourceExpressionConverter.ConvertToken(bodyaSSETID);
+                    body["ASSET_ID"] = SourceExpressionConverter.ConvertToken(bodyaSSETId);
                     bodypropCount++;
                 }
 
-                if (bodypARENTACTIONID != null)
+                if (bodypARENTACTIONId != null)
                 {
-                    body["PARENT_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTACTIONID);
+                    body["PARENT_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTACTIONId);
                     bodypropCount++;
                 }
 
-                if (bodysUPPLIERID != null)
+                if (bodysUPPLIERId != null)
                 {
-                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERId);
                     bodypropCount++;
                 }
 
-                if (bodydONEBYID != null)
+                if (bodydONEBYId != null)
                 {
-                    body["DONE_BY_ID"] = SourceExpressionConverter.ConvertToken(bodydONEBYID);
+                    body["DONE_BY_ID"] = SourceExpressionConverter.ConvertToken(bodydONEBYId);
                     bodypropCount++;
                 }
 
-                if (bodyvALIDATORID != null)
+                if (bodyvALIdATORId != null)
                 {
-                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIDATORID);
+                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIdATORId);
                     bodypropCount++;
                 }
 
@@ -4245,15 +4245,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodypROCESSSTEPID != null)
+                if (bodypROCESSSTEPId != null)
                 {
-                    body["PROCESS_STEP_ID"] = SourceExpressionConverter.ConvertToken(bodypROCESSSTEPID);
+                    body["PROCESS_STEP_ID"] = SourceExpressionConverter.ConvertToken(bodypROCESSSTEPId);
                     bodypropCount++;
                 }
 
-                if (bodyrEQUESTID != null)
+                if (bodyrEQUESTId != null)
                 {
-                    body["REQUEST_ID"] = SourceExpressionConverter.ConvertToken(bodyrEQUESTID);
+                    body["REQUEST_ID"] = SourceExpressionConverter.ConvertToken(bodyrEQUESTId);
                     bodypropCount++;
                 }
 
@@ -4269,9 +4269,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodynETCHARGECURID != null)
+                if (bodynETCHARGECURId != null)
                 {
-                    body["NET_CHARGE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodynETCHARGECURID);
+                    body["NET_CHARGE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodynETCHARGECURId);
                     bodypropCount++;
                 }
 
@@ -4281,21 +4281,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodylOCATIONID != null)
+                if (bodylOCATIONId != null)
                 {
-                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONId);
                     bodypropCount++;
                 }
 
-                if (bodysUPPORTSTAFFID != null)
+                if (bodysUPPORTSTAFFId != null)
                 {
-                    body["SUPPORT_STAFF_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPORTSTAFFID);
+                    body["SUPPORT_STAFF_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPORTSTAFFId);
                     bodypropCount++;
                 }
 
-                if (bodycONTACTID != null)
+                if (bodycONTACTId != null)
                 {
-                    body["CONTACT_ID"] = SourceExpressionConverter.ConvertToken(bodycONTACTID);
+                    body["CONTACT_ID"] = SourceExpressionConverter.ConvertToken(bodycONTACTId);
                     bodypropCount++;
                 }
 
@@ -4353,9 +4353,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodygROUPID != null)
+                if (bodygROUPId != null)
                 {
-                    body["GROUP_ID"] = SourceExpressionConverter.ConvertToken(bodygROUPID);
+                    body["GROUP_ID"] = SourceExpressionConverter.ConvertToken(bodygROUPId);
                     bodypropCount++;
                 }
 
@@ -4389,9 +4389,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodykNOWNPROBLEMID != null)
+                if (bodykNOWNPROBLEMId != null)
                 {
-                    body["KNOWN_PROBLEM_ID"] = SourceExpressionConverter.ConvertToken(bodykNOWNPROBLEMID);
+                    body["KNOWN_PROBLEM_ID"] = SourceExpressionConverter.ConvertToken(bodykNOWNPROBLEMId);
                     bodypropCount++;
                 }
 
@@ -4407,33 +4407,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodypRIORITYID != null)
+                if (bodypRIORITYId != null)
                 {
-                    body["PRIORITY_ID"] = SourceExpressionConverter.ConvertToken(bodypRIORITYID);
+                    body["PRIORITY_ID"] = SourceExpressionConverter.ConvertToken(bodypRIORITYId);
                     bodypropCount++;
                 }
 
-                if (bodytAXID != null)
+                if (bodytAXId != null)
                 {
-                    body["TAX_ID"] = SourceExpressionConverter.ConvertToken(bodytAXID);
+                    body["TAX_ID"] = SourceExpressionConverter.ConvertToken(bodytAXId);
                     bodypropCount++;
                 }
 
-                if (bodysTATUSIDONCREATE != null)
+                if (bodysTATUSIdONCREATE != null)
                 {
-                    body["STATUS_ID_ON_CREATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIDONCREATE);
+                    body["STATUS_ID_ON_CREATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIdONCREATE);
                     bodypropCount++;
                 }
 
-                if (bodysTATUSIDONTERMINATE != null)
+                if (bodysTATUSIdONTERMINATE != null)
                 {
-                    body["STATUS_ID_ON_TERMINATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIDONTERMINATE);
+                    body["STATUS_ID_ON_TERMINATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIdONTERMINATE);
                     bodypropCount++;
                 }
 
-                if (bodyaCTIONTYPEID != null)
+                if (bodyaCTIONTYPEId != null)
                 {
-                    body["ACTION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodyaCTIONTYPEID);
+                    body["ACTION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodyaCTIONTYPEId);
                     bodypropCount++;
                 }
 
@@ -4491,9 +4491,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycONTRACTUALCOSTCURID != null)
+                if (bodycONTRACTUALCOSTCURId != null)
                 {
-                    body["CONTRACTUAL_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycONTRACTUALCOSTCURID);
+                    body["CONTRACTUAL_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycONTRACTUALCOSTCURId);
                     bodypropCount++;
                 }
 
@@ -4503,15 +4503,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodytIMECOSTCURID != null)
+                if (bodytIMECOSTCURId != null)
                 {
-                    body["TIME_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodytIMECOSTCURID);
+                    body["TIME_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodytIMECOSTCURId);
                     bodypropCount++;
                 }
 
-                if (bodyoRIGINACTIONID != null)
+                if (bodyoRIGINACTIONId != null)
                 {
-                    body["ORIGIN_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINACTIONID);
+                    body["ORIGIN_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINACTIONId);
                     bodypropCount++;
                 }
 
@@ -4521,21 +4521,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodycONTINUITYPLANID != null)
+                if (bodycONTINUITYPLANId != null)
                 {
-                    body["CONTINUITY_PLAN_ID"] = SourceExpressionConverter.ConvertToken(bodycONTINUITYPLANID);
+                    body["CONTINUITY_PLAN_ID"] = SourceExpressionConverter.ConvertToken(bodycONTINUITYPLANId);
                     bodypropCount++;
                 }
 
-                if (bodycATEGORYTESTID != null)
+                if (bodycATEGORYTESTId != null)
                 {
-                    body["CATEGORY_TEST_ID"] = SourceExpressionConverter.ConvertToken(bodycATEGORYTESTID);
+                    body["CATEGORY_TEST_ID"] = SourceExpressionConverter.ConvertToken(bodycATEGORYTESTId);
                     bodypropCount++;
                 }
 
-                if (bodywORKFLOWID != null)
+                if (bodywORKFLOWId != null)
                 {
-                    body["WORKFLOW_ID"] = SourceExpressionConverter.ConvertToken(bodywORKFLOWID);
+                    body["WORKFLOW_ID"] = SourceExpressionConverter.ConvertToken(bodywORKFLOWId);
                     bodypropCount++;
                 }
 
@@ -4587,9 +4587,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodypREVIOUSSIBLINGID != null)
+                if (bodypREVIOUSSIBLINGId != null)
                 {
-                    body["PREVIOUS_SIBLING_ID"] = SourceExpressionConverter.ConvertToken(bodypREVIOUSSIBLINGID);
+                    body["PREVIOUS_SIBLING_ID"] = SourceExpressionConverter.ConvertToken(bodypREVIOUSSIBLINGId);
                     bodypropCount++;
                 }
 
@@ -4629,9 +4629,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyhISTORYID != null)
+                if (bodyhISTORYId != null)
                 {
-                    body["HISTORY_ID"] = SourceExpressionConverter.ConvertToken(bodyhISTORYID);
+                    body["HISTORY_ID"] = SourceExpressionConverter.ConvertToken(bodyhISTORYId);
                     bodypropCount++;
                 }
 
@@ -4641,9 +4641,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodysTAGEID != null)
+                if (bodysTAGEId != null)
                 {
-                    body["STAGE_ID"] = SourceExpressionConverter.ConvertToken(bodysTAGEID);
+                    body["STAGE_ID"] = SourceExpressionConverter.ConvertToken(bodysTAGEId);
                     bodypropCount++;
                 }
 
@@ -4653,9 +4653,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
                     bodypropCount++;
                 }
 
-                if (bodyoRIGINTOOLID != null)
+                if (bodyoRIGINTOOLId != null)
                 {
-                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLId);
                     bodypropCount++;
                 }
 
@@ -10683,7 +10683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string CONSTRAINTMESSAGESP { get; set; }
 
         [JsonProperty("CONSTRAINT_VALIDATION")]
-        public ViewQuestionnaireResponseCONSTRAINTVALIDATIONType CONSTRAINTVALIDATION { get; set; }
+        public ViewQuestionnaireResponseCONSTRAINTVALIdATIONType CONSTRAINTVALIDATION { get; set; }
         public string DISABLED { get; set; }
 
         [JsonProperty("DISPLAY_ORDER")]
@@ -10716,7 +10716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
         public string HREF { get; set; }
     }
 
-    public class ViewQuestionnaireResponseCONSTRAINTVALIDATIONType
+    public class ViewQuestionnaireResponseCONSTRAINTVALIdATIONType
     {
         public string HREF { get; set; }
     }

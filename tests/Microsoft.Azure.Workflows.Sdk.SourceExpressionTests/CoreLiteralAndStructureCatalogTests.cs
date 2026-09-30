@@ -58,7 +58,7 @@ public sealed class CoreLiteralAndStructureCatalogTests
     {
         EqualSource("#{triggerBody()}", Input("managedTrigger.TriggerBody", """
             var managedTrigger = WorkflowTriggers.Managed.Azurequeues("connection")
-                .OnMessages(storageAccountName: () => "account", queueName: () => "queue");
+                .OnMessagesV2(storageAccountName: () => "account", queueName: () => "queue");
             """)!.Value<string>()!);
     }
 

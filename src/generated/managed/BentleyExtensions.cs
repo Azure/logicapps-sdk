@@ -12,27 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
     public class BentleyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
-        public IBodyWorkflowAction<BadRequestObjectResult> UploadFile([WorkflowExpression] Func<string> connectedProjectId, [WorkflowExpression] Func<string> federatedRepositoryId, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<string> xBsFileName, [WorkflowExpression] Func<string> fileContent = null)
-        {
-            SourceExpression.Validate(connectedProjectId, nameof(connectedProjectId), required: true);
-            SourceExpression.Validate(federatedRepositoryId, nameof(federatedRepositoryId), required: true);
-            SourceExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
-            SourceExpression.Validate(xBsFileName, nameof(xBsFileName), required: true);
-            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectedProjectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(federatedRepositoryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["x-bs-file-name"] = SourceExpressionConverter.ConvertO(xBsFileName);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(fileContent);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<BadRequestObjectResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes([WorkflowExpression] Func<string> connection, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<attributeSynchronizationModeldirectionInput> attributeSynchronizationModeldirection)
         {
             SourceExpression.Validate(connection, nameof(connection), required: true);
@@ -51,6 +30,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
                 {
                     callPayload.Body = attributeSynchronizationModel;
                 }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BadRequestObjectResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
+        public IBodyWorkflowAction<BadRequestObjectResult> UploadFile([WorkflowExpression] Func<string> connection, [WorkflowExpression] Func<string> documentIdentifier, [WorkflowExpression] Func<string> xBsFileName, [WorkflowExpression] Func<string> fileContent = null)
+        {
+            SourceExpression.Validate(connection, nameof(connection), required: true);
+            SourceExpression.Validate(documentIdentifier, nameof(documentIdentifier), required: true);
+            SourceExpression.Validate(xBsFileName, nameof(xBsFileName), required: true);
+            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connection, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentIdentifier, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-bs-file-name"] = SourceExpressionConverter.ConvertO(xBsFileName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fileContent);
                 return callPayload;
             }
 

@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     public class ChatterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<CreatePostInGroupResponse> CreatePostInGroup([WorkflowExpression] Func<string> bodygroupID, [WorkflowExpression] Func<string> createPostInGroupText)
+        public IBodyWorkflowAction<CreatePostInGroupResponse> CreatePostInGroup([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> createPostInGroupText)
         {
-            SourceExpression.Validate(bodygroupID, nameof(bodygroupID), required: true);
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
             SourceExpression.Validate(createPostInGroupText, nameof(createPostInGroupText), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["subjectId"] = SourceExpressionConverter.ConvertToken(bodygroupID);
+                body["subjectId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodysalesforceUserID)
+        public IBodyWorkflowAction<GroupMemberResponse> AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodysalesforceUserId)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodysalesforceUserID, nameof(bodysalesforceUserID), required: true);
+            SourceExpression.Validate(bodysalesforceUserId, nameof(bodysalesforceUserId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["userId"] = SourceExpressionConverter.ConvertToken(bodysalesforceUserID);
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodysalesforceUserId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

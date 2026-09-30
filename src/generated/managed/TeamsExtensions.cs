@@ -276,11 +276,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
+        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodymembershipTypeInput> bodymembershipType = null)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodymembershipType, nameof(bodymembershipType), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
@@ -296,6 +297,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
                 bodypropCount++;
                 body["displayName"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodymembershipType != null)
+                {
+                    if (bodymembershipType != null)
+                    {
+                        body["membershipType"] = SourceExpressionConverter.Convert(bodymembershipType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["membershipType"] = "standard";
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -320,6 +337,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             }
 
             return new ApiConnectionAction<GetChannelResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction UpdateChannelProperties([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodydescription = null)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(channelId, nameof(channelId), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<AsyncOperationResponse> ArchiveChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<bool> bodysetSharePointSiteToReadOnlyForMembers = null)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(channelId, nameof(channelId), required: true);
+            SourceExpression.Validate(bodysetSharePointSiteToReadOnlyForMembers, nameof(bodysetSharePointSiteToReadOnlyForMembers), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysetSharePointSiteToReadOnlyForMembers != null)
+                {
+                    body["shouldSetSpoSiteReadOnlyForMembers"] = SourceExpressionConverter.ConvertToken(bodysetSharePointSiteToReadOnlyForMembers);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AsyncOperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
@@ -360,106 +442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetTagsResponseSchema> GetTags([WorkflowExpression] Func<string> groupId)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<GetTagsResponseSchema>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodymembersIDs)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodymembersIDs, nameof(bodymembersIDs), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
-                bodypropCount++;
-                body["members"] = SourceExpressionConverter.ConvertToken(bodymembersIDs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<CreateTagResponseSchema>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyuserSID)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(bodyuserSID, nameof(bodyuserSID), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserSID);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AddMemberToTagResponseSchema>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<GetTagMembersResponseSchema>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction DeleteTagMember([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> tagMemberId)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            SourceExpression.Validate(tagMemberId, nameof(tagMemberId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagMemberId, 1));
-                var apiCallHttpMethod = "delete";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction PostFeedNotification([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<notificationTypeInput> notificationType, [WorkflowExpression] Func<object> body = null)
         {
             SourceExpression.Validate(poster, nameof(poster), required: true);
@@ -494,23 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
-        {
-            SourceExpression.Validate(groupId, nameof(groupId), required: true);
-            SourceExpression.Validate(tagId, nameof(tagId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-                var apiCallHttpMethod = "delete";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetMessagesFromChannelResponse> GetMessagesFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
+        public IBodyWorkflowAction<GetMessagesFromConversationResponse> GetMessagesFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
             SourceExpression.Validate(channelId, nameof(channelId), required: true);
@@ -522,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 return callPayload;
             }
 
-            return new ApiConnectionAction<GetMessagesFromChannelResponse>(BuildSourceInput);
+            return new ApiConnectionAction<GetMessagesFromConversationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
@@ -565,15 +531,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<object> body = null)
         {
             SourceExpression.Validate(threadType, nameof(threadType), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
             SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/listmembers/threadType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadType, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(body);
                 return callPayload;
             }
@@ -658,6 +627,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<GetMessagesFromConversationResponse> GetMessagesFromChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> top = null)
+        {
+            SourceExpression.Validate(chatId, nameof(chatId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/chats/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMessagesFromConversationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<ChatMessage> PostMessageToSelf([WorkflowExpression] Func<bodybodycontentTypeInput> bodybodycontentType = null, [WorkflowExpression] Func<string> bodybodycontent = null)
+        {
+            SourceExpression.Validate(bodybodycontentType, nameof(bodybodycontentType), required: false);
+            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1.0/chats/48:notes/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodybodycontentType != null)
+                {
+                    if (bodybodycontentType != null)
+                    {
+                        bodyObject["contentType"] = SourceExpressionConverter.Convert(bodybodycontentType);
+                        bodyObjectpropCount++;
+                    }
+
+                    bodyObjectpropCount++;
+                }
+                else
+                {
+                    bodyObject["contentType"] = "text";
+                    bodyObjectpropCount++;
+                }
+
+                if (bodybodycontent != null)
+                {
+                    bodyObject["content"] = SourceExpressionConverter.ConvertToken(bodybodycontent);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ChatMessage>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IBodyWorkflowAction<CreateATeamResponse> CreateATeam([WorkflowExpression] Func<string> bodyteamName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility = null)
         {
             SourceExpression.Validate(bodyteamName, nameof(bodyteamName), required: true);
@@ -701,6 +746,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<ListMembersResponseSchema> ListTeamMembers([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> top = null)
+        {
+            SourceExpression.Validate(teamId, nameof(teamId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMembersResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
         public IWorkflowAction AddMemberToTeam([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsTeamOwner = null)
         {
             SourceExpression.Validate(teamId, nameof(teamId), required: true);
@@ -708,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             SourceExpression.Validate(bodysetUserAsTeamOwner, nameof(bodysetUserAsTeamOwner), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -725,6 +791,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 {
                     callPayload.Body = body;
                 }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction RemoveMemberFromTeam([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> membershipId)
+        {
+            SourceExpression.Validate(teamId, nameof(teamId), required: true);
+            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction AddMemberToChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsChannelOwner = null)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(channelId, nameof(channelId), required: true);
+            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
+            SourceExpression.Validate(bodysetUserAsChannelOwner, nameof(bodysetUserAsChannelOwner), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuser);
+                if (bodysetUserAsChannelOwner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodysetUserAsChannelOwner);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction RemoveMemberFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> membershipId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(channelId, nameof(channelId), required: true);
+            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
             }
 
@@ -922,11 +1053,736 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
             return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction AddMemberToChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsChatOwner = null, [WorkflowExpression] Func<string> bodyvisibleHistoryStartDateTime = null)
+        {
+            SourceExpression.Validate(chatId, nameof(chatId), required: true);
+            SourceExpression.Validate(bodyuser, nameof(bodyuser), required: true);
+            SourceExpression.Validate(bodysetUserAsChatOwner, nameof(bodysetUserAsChatOwner), required: false);
+            SourceExpression.Validate(bodyvisibleHistoryStartDateTime, nameof(bodyvisibleHistoryStartDateTime), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/chats/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuser);
+                if (bodysetUserAsChatOwner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodysetUserAsChatOwner);
+                    bodypropCount++;
+                }
+
+                if (bodyvisibleHistoryStartDateTime != null)
+                {
+                    body["visibleHistoryStartDateTime"] = SourceExpressionConverter.ConvertToken(bodyvisibleHistoryStartDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction RemoveMemberFromChat([WorkflowExpression] Func<string> chatId, [WorkflowExpression] Func<string> membershipId)
+        {
+            SourceExpression.Validate(chatId, nameof(chatId), required: true);
+            SourceExpression.Validate(membershipId, nameof(membershipId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/chats/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(membershipId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<GetOnlineMeetingResponse> GetOnlineMeeting([WorkflowExpression] Func<lookupTypeInput> lookupType, [WorkflowExpression] Func<string> lookupValue)
+        {
+            SourceExpression.Validate(lookupType, nameof(lookupType), required: true);
+            SourceExpression.Validate(lookupValue, nameof(lookupValue), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1.0/me/onlineMeetings/lookup";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lookupType"] = SourceExpressionConverter.Convert(lookupType);
+                callPayload.Queries["lookupValue"] = SourceExpressionConverter.ConvertO(lookupValue);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOnlineMeetingResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallTranscriptCollectionResponse> ListMeetingTranscripts([WorkflowExpression] Func<string> meetingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallTranscriptCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallTranscriptResponse> GetMeetingTranscript([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> transcriptId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallTranscriptResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<string> GetMeetingTranscriptContent([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> transcriptId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/transcripts/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallRecordingCollectionResponse> ListMeetingRecordings([WorkflowExpression] Func<string> meetingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRecordingCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallRecordingResponse> GetMeetingRecording([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> recordingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRecordingResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<object> GetMeetingRecordingContent([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> recordingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/onlineMeetings/{0}/recordings/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<ListSectionsResponse> ListSections()
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/me/teamwork/sections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSectionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<SectionResponse> CreateSection([WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodydisplayIconiconType = null, [WorkflowExpression] Func<bool> bodyisExpanded = null, [WorkflowExpression] Func<bodysortTypeInput> bodysortType = null)
+        {
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            SourceExpression.Validate(bodydisplayIconiconType, nameof(bodydisplayIconiconType), required: false);
+            SourceExpression.Validate(bodyisExpanded, nameof(bodyisExpanded), required: false);
+            SourceExpression.Validate(bodysortType, nameof(bodysortType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/me/teamwork/sections";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                var displayIconObject = new JObject();
+                var displayIconObjectpropCount = 0;
+                if (bodydisplayIconiconType != null)
+                {
+                    displayIconObject["iconType"] = SourceExpressionConverter.ConvertToken(bodydisplayIconiconType);
+                    displayIconObjectpropCount++;
+                }
+
+                if (displayIconObjectpropCount > 0)
+                {
+                    body["displayIcon"] = displayIconObject;
+                    bodypropCount++;
+                }
+
+                if (bodyisExpanded != null)
+                {
+                    body["isExpanded"] = SourceExpressionConverter.ConvertToken(bodyisExpanded);
+                    bodypropCount++;
+                }
+
+                if (bodysortType != null)
+                {
+                    body["sortType"] = SourceExpressionConverter.Convert(bodysortType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<SectionResponse> GetSection([WorkflowExpression] Func<string> sectionId)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<SectionResponse> UpdateSection([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodydisplayIconiconType = null, [WorkflowExpression] Func<bool> bodyisExpanded = null, [WorkflowExpression] Func<bodysortTypeInput> bodysortType = null)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodydisplayIconiconType, nameof(bodydisplayIconiconType), required: false);
+            SourceExpression.Validate(bodyisExpanded, nameof(bodyisExpanded), required: false);
+            SourceExpression.Validate(bodysortType, nameof(bodysortType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                var displayIconObject = new JObject();
+                var displayIconObjectpropCount = 0;
+                if (bodydisplayIconiconType != null)
+                {
+                    displayIconObject["iconType"] = SourceExpressionConverter.ConvertToken(bodydisplayIconiconType);
+                    displayIconObjectpropCount++;
+                }
+
+                if (displayIconObjectpropCount > 0)
+                {
+                    body["displayIcon"] = displayIconObject;
+                    bodypropCount++;
+                }
+
+                if (bodyisExpanded != null)
+                {
+                    body["isExpanded"] = SourceExpressionConverter.ConvertToken(bodyisExpanded);
+                    bodypropCount++;
+                }
+
+                if (bodysortType != null)
+                {
+                    body["sortType"] = SourceExpressionConverter.Convert(bodysortType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction DeleteSection([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> ifMatch)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<ListSectionItemsResponse> ListSectionItems([WorkflowExpression] Func<string> sectionId)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSectionItemsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction RemoveSectionItem([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> sectionItemId, [WorkflowExpression] Func<string> ifMatch)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            SourceExpression.Validate(sectionItemId, nameof(sectionItemId), required: true);
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionItemId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<SectionItemResponse> MoveSectionItem([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> sectionItemId, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> bodytargetSectionId)
+        {
+            SourceExpression.Validate(sectionId, nameof(sectionId), required: true);
+            SourceExpression.Validate(sectionItemId, nameof(sectionItemId), required: true);
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: true);
+            SourceExpression.Validate(bodytargetSectionId, nameof(bodytargetSectionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/me/teamwork/sections/{0}/items/{1}/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionItemId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["targetSectionId"] = SourceExpressionConverter.ConvertToken(bodytargetSectionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionItemResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<GetTagsResponseSchema> GetTags([WorkflowExpression] Func<string> groupId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTagsResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodymembersIDs)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            SourceExpression.Validate(bodymembersIDs, nameof(bodymembersIDs), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                bodypropCount++;
+                body["members"] = SourceExpressionConverter.ConvertToken(bodymembersIDs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateTagResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CreateTagResponseSchema> GetTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateTagResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CreateTagResponseSchema> UpdateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodydisplayName)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateTagResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyuserSId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            SourceExpression.Validate(bodyuserSId, nameof(bodyuserSId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserSId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddMemberToTagResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTagMembersResponseSchema>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IWorkflowAction DeleteTagMember([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> tagMemberId)
+        {
+            SourceExpression.Validate(groupId, nameof(groupId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            SourceExpression.Validate(tagMemberId, nameof(tagMemberId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/tags/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagMemberId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallRecordingCollectionResponse> ListCallRecordings([WorkflowExpression] Func<string> callId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRecordingCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallRecordingResponse> GetCallRecording([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> recordingId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRecordingResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<object> GetCallRecordingContent([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> recordingId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            SourceExpression.Validate(recordingId, nameof(recordingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/recordings/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallTranscriptCollectionResponse> ListCallTranscripts([WorkflowExpression] Func<string> callId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallTranscriptCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallTranscriptResponse> GetCallTranscript([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> transcriptId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallTranscriptResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<string> GetCallTranscriptContent([WorkflowExpression] Func<string> callId, [WorkflowExpression] Func<string> transcriptId)
+        {
+            SourceExpression.Validate(callId, nameof(callId), required: true);
+            SourceExpression.Validate(transcriptId, nameof(transcriptId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/me/adhocCalls/{0}/transcripts/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transcriptId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallRecordingCollectionResponse> GetAllAdhocCallRecordings([WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> deltatoken = null)
+        {
+            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
+            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(deltatoken, nameof(deltatoken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1.0/me/adhocCalls/getAllRecordings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDateTime != null)
+                    callPayload.Queries["startDateTime"] = SourceExpressionConverter.ConvertO(startDateTime);
+                if (endDateTime != null)
+                    callPayload.Queries["endDateTime"] = SourceExpressionConverter.ConvertO(endDateTime);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (deltatoken != null)
+                    callPayload.Queries["$deltatoken"] = SourceExpressionConverter.ConvertO(deltatoken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRecordingCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<CallTranscriptCollectionResponse> GetAllAdhocCallTranscripts([WorkflowExpression] Func<string> startDateTime = null, [WorkflowExpression] Func<string> endDateTime = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> deltatoken = null)
+        {
+            SourceExpression.Validate(startDateTime, nameof(startDateTime), required: false);
+            SourceExpression.Validate(endDateTime, nameof(endDateTime), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(deltatoken, nameof(deltatoken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1.0/me/adhocCalls/getAllTranscripts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDateTime != null)
+                    callPayload.Queries["startDateTime"] = SourceExpressionConverter.ConvertO(startDateTime);
+                if (endDateTime != null)
+                    callPayload.Queries["endDateTime"] = SourceExpressionConverter.ConvertO(endDateTime);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (deltatoken != null)
+                    callPayload.Queries["$deltatoken"] = SourceExpressionConverter.ConvertO(deltatoken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallTranscriptCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<AiInsightCollectionResponse> ListAiInsights([WorkflowExpression] Func<string> meetingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/copilot/me/onlineMeetings/{0}/aiInsights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AiInsightCollectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        public IBodyWorkflowAction<AiInsightDetailResponse> GetAiInsight([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> aiInsightId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(aiInsightId, nameof(aiInsightId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/copilot/me/onlineMeetings/{0}/aiInsights/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiInsightId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AiInsightDetailResponse>(BuildSourceInput);
+        }
     }
 
     public class TeamsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ChatMessage[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
             SourceExpression.Validate(channelId, nameof(channelId), required: true);
@@ -939,10 +1795,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 return callPayload;
             }
 
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(BuildSourceInput, triggerName, recurrence);
+            return new ApiConnectionTrigger<ChatMessage[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ChatMessage[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(groupId, nameof(groupId), required: true);
             SourceExpression.Validate(channelId, nameof(channelId), required: true);
@@ -955,7 +1811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 return callPayload;
             }
 
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(BuildSourceInput, triggerName, recurrence);
+            return new ApiConnectionTrigger<ChatMessage[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger WebhookAtMentionTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
@@ -990,6 +1846,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 callPayload.Queries["frequency"] = SourceExpressionConverter.Convert(frequency);
                 callPayload.Queries["runningPolicy"] = SourceExpressionConverter.Convert(runningPolicy);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(requestBody);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger TranscriptTrigger([WorkflowExpression] Func<scopeTypeInput> scopeType, [WorkflowExpression] Func<object> bodyscope, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(scopeType, nameof(scopeType), required: true);
+            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/subscriptions/transcripttrigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["scopeType"] = SourceExpressionConverter.Convert(scopeType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["notificationUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["scope"] = SourceExpressionConverter.ConvertToken(bodyscope);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger RecordingTrigger([WorkflowExpression] Func<scopeTypeInput> scopeType, [WorkflowExpression] Func<object> bodyscope, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(scopeType, nameof(scopeType), required: true);
+            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/subscriptions/recordingtrigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["scopeType"] = SourceExpressionConverter.Convert(scopeType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["notificationUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["scope"] = SourceExpressionConverter.ConvertToken(bodyscope);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
                 return callPayload;
             }
 
@@ -1440,6 +2348,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         [JsonProperty("id")]
         public string ID { get; set; }
+
+        [JsonProperty("membershipType")]
+        public string MembershipType { get; set; }
+    }
+
+    public enum bodymembershipTypeInput
+    {
+        [EnumMember(Value = "standard")]
+        Standard,
+        [EnumMember(Value = "private")]
+        Private,
+        [EnumMember(Value = "shared")]
+        Shared
+    }
+
+    public class AsyncOperationResponse
+    {
+        [JsonProperty("status")]
+        public AsyncOperationResponseStatusType Status { get; set; }
+    }
+
+    public enum AsyncOperationResponseStatusType
+    {
+        [EnumMember(Value = "invalid")]
+        Invalid,
+        [EnumMember(Value = "notStarted")]
+        NotStarted,
+        [EnumMember(Value = "inProgress")]
+        InProgress,
+        [EnumMember(Value = "succeeded")]
+        Succeeded,
+        [EnumMember(Value = "failed")]
+        Failed
     }
 
     public class GetAllChannelsForTeamResponse
@@ -1497,75 +2438,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         IsNotDefined
     }
 
-    public class GetTagsResponseSchema
-    {
-        [JsonProperty("@odata.context")]
-        public string Context { get; set; }
-
-        [JsonProperty("value")]
-        public GetTagsResponseSchemaValueTypeItem[] Value { get; set; }
-    }
-
-    public class GetTagsResponseSchemaValueTypeItem
-    {
-        [JsonProperty("id")]
-        public string ID { get; set; }
-
-        [JsonProperty("teamId")]
-        public string TeamID { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("memberCount")]
-        public int MemberCount { get; set; }
-    }
-
-    public class CreateTagResponseSchema
-    {
-        [JsonProperty("@odata.type")]
-        public string Type { get; set; }
-
-        [JsonProperty("id")]
-        public string ID { get; set; }
-
-        [JsonProperty("teamId")]
-        public string TeamID { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("memberCount")]
-        public int MemberCount { get; set; }
-    }
-
-    public class AddMemberToTagResponseSchema
-    {
-        [JsonProperty("userId")]
-        public string ID { get; set; }
-    }
-
-    public class GetTagMembersResponseSchema
-    {
-        [JsonProperty("value")]
-        public GetTagMembersResponseSchemaValueTypeItem[] Value { get; set; }
-    }
-
-    public class GetTagMembersResponseSchemaValueTypeItem
-    {
-        [JsonProperty("id")]
-        public string TagMemberID { get; set; }
-
-        [JsonProperty("tenantId")]
-        public string TenantID { get; set; }
-
-        [JsonProperty("displayName")]
-        public string UserDisplayName { get; set; }
-
-        [JsonProperty("userId")]
-        public string UserID { get; set; }
-    }
-
     public enum posterInput
     {
         [EnumMember(Value = "Flow bot")]
@@ -1587,7 +2459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string MentionTag { get; set; }
     }
 
-    public class GetMessagesFromChannelResponse
+    public class GetMessagesFromConversationResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -1599,16 +2471,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string NextLink { get; set; }
 
         [JsonProperty("value")]
-        public OnNewChannelMessageResponseItem[] Value { get; set; }
+        public ChatMessage[] Value { get; set; }
     }
 
-    public class OnNewChannelMessageResponseItem
+    public class ChatMessage
     {
         [JsonProperty("attachments")]
         public JToken[] Attachments { get; set; }
 
         [JsonProperty("body")]
-        public OnNewChannelMessageResponseItemBodyType Body { get; set; }
+        public ChatMessageBodyType Body { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreationTimestamp { get; set; }
@@ -1620,7 +2492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Etag { get; set; }
 
         [JsonProperty("from")]
-        public OnNewChannelMessageResponseItemFromType From { get; set; }
+        public ChatMessageFromType From { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1653,7 +2525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Summary { get; set; }
     }
 
-    public class OnNewChannelMessageResponseItemBodyType
+    public class ChatMessageBodyType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -1662,7 +2534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ContentType { get; set; }
     }
 
-    public class OnNewChannelMessageResponseItemFromType
+    public class ChatMessageFromType
     {
         [JsonProperty("application")]
         public JToken Application { get; set; }
@@ -1671,10 +2543,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Device { get; set; }
 
         [JsonProperty("user")]
-        public OnNewChannelMessageResponseItemFromTypeUserType User { get; set; }
+        public ChatMessageFromTypeUserType User { get; set; }
     }
 
-    public class OnNewChannelMessageResponseItemFromTypeUserType
+    public class ChatMessageFromTypeUserType
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -1832,7 +2704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string EMail { get; set; }
 
         [JsonProperty("id")]
-        public string ID { get; set; }
+        public string MembershipID { get; set; }
 
         [JsonProperty("roles")]
         public string[] Roles { get; set; }
@@ -1961,6 +2833,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationID { get; set; }
     }
 
+    public enum bodybodycontentTypeInput
+    {
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "html")]
+        Html
+    }
+
     public class CreateATeamResponse
     {
         [JsonProperty("newTeamId")]
@@ -1994,6 +2874,533 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         DELETE
     }
 
+    public class GetOnlineMeetingResponse
+    {
+        [JsonProperty("id")]
+        public string MeetingID { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+
+        [JsonProperty("startDateTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endDateTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("creationDateTime")]
+        public string CreationTime { get; set; }
+
+        [JsonProperty("joinWebUrl")]
+        public string JoinWebURL { get; set; }
+
+        [JsonProperty("joinMeetingIdSettings")]
+        public GetOnlineMeetingResponseJoinMeetingIdSettingsType JoinMeetingIDSettings { get; set; }
+
+        [JsonProperty("participants")]
+        public GetOnlineMeetingResponseParticipantsType Participants { get; set; }
+
+        [JsonProperty("audioConferencing")]
+        public GetOnlineMeetingResponseAudioConferencingType AudioConferencing { get; set; }
+
+        [JsonProperty("isEntryExitAnnounced")]
+        public bool AnnounceOnEntryExit { get; set; }
+
+        [JsonProperty("allowedPresenters")]
+        public string AllowedPresenters { get; set; }
+
+        [JsonProperty("lobbyBypassSettings")]
+        public GetOnlineMeetingResponseLobbyBypassSettingsType LobbyBypassSettings { get; set; }
+
+        [JsonProperty("recordAutomatically")]
+        public bool RecordAutomatically { get; set; }
+
+        [JsonProperty("allowMeetingChat")]
+        public string AllowMeetingChat { get; set; }
+
+        [JsonProperty("meetingOptionsWebUrl")]
+        public string MeetingOptionsWebURL { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseJoinMeetingIdSettingsType
+    {
+        [JsonProperty("joinMeetingId")]
+        public string JoinMeetingID { get; set; }
+
+        [JsonProperty("isPasscodeRequired")]
+        public bool IsPasscodeRequired { get; set; }
+
+        [JsonProperty("passcode")]
+        public string Passcode { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseParticipantsType
+    {
+        [JsonProperty("organizer")]
+        public GetOnlineMeetingResponseParticipantsTypeOrganizerType Organizer { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseParticipantsTypeOrganizerType
+    {
+        [JsonProperty("upn")]
+        public string UPN { get; set; }
+
+        [JsonProperty("identity")]
+        public GetOnlineMeetingResponseParticipantsTypeOrganizerTypeIdentityType Identity { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseParticipantsTypeOrganizerTypeIdentityType
+    {
+        [JsonProperty("user")]
+        public GetOnlineMeetingResponseParticipantsTypeOrganizerTypeIdentityTypeUserType User { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseParticipantsTypeOrganizerTypeIdentityTypeUserType
+    {
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseAudioConferencingType
+    {
+        [JsonProperty("conferenceId")]
+        public string ConferenceID { get; set; }
+
+        [JsonProperty("tollNumber")]
+        public string TollNumber { get; set; }
+
+        [JsonProperty("tollFreeNumber")]
+        public string TollFreeNumber { get; set; }
+
+        [JsonProperty("dialinUrl")]
+        public string DialInURL { get; set; }
+    }
+
+    public class GetOnlineMeetingResponseLobbyBypassSettingsType
+    {
+        [JsonProperty("scope")]
+        public string Scope { get; set; }
+
+        [JsonProperty("isDialInBypassEnabled")]
+        public bool DialInBypass { get; set; }
+    }
+
+    public enum lookupTypeInput
+    {
+        [EnumMember(Value = "meetingId")]
+        MeetingId,
+        [EnumMember(Value = "joinWebUrl")]
+        JoinWebURL,
+        [EnumMember(Value = "joinMeetingId")]
+        JoinMeetingIdMeetingCode
+    }
+
+    public class CallTranscriptCollectionResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("value")]
+        public CallTranscriptResponse[] Transcripts { get; set; }
+    }
+
+    public class CallTranscriptResponse
+    {
+        [JsonProperty("id")]
+        public string TranscriptID { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("transcriptContentUrl")]
+        public string TranscriptContentURL { get; set; }
+
+        [JsonProperty("meetingId")]
+        public string MeetingID { get; set; }
+
+        [JsonProperty("meetingOrganizerId")]
+        public string MeetingOrganizerID { get; set; }
+
+        [JsonProperty("callId")]
+        public string CallID { get; set; }
+    }
+
+    public class CallRecordingCollectionResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("value")]
+        public CallRecordingResponse[] Recordings { get; set; }
+    }
+
+    public class CallRecordingResponse
+    {
+        [JsonProperty("id")]
+        public string RecordingID { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("recordingContentUrl")]
+        public string RecordingContentURL { get; set; }
+
+        [JsonProperty("meetingId")]
+        public string MeetingID { get; set; }
+
+        [JsonProperty("meetingOrganizerId")]
+        public string MeetingOrganizerID { get; set; }
+
+        [JsonProperty("callId")]
+        public string CallID { get; set; }
+    }
+
+    public class ListSectionsResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("@microsoft.graph.sectionsVersion")]
+        public string SectionsVersion { get; set; }
+
+        [JsonProperty("value")]
+        public SectionResponse[] Sections { get; set; }
+    }
+
+    public class SectionResponse
+    {
+        [JsonProperty("@odata.etag")]
+        public string ETag { get; set; }
+
+        [JsonProperty("id")]
+        public string SectionID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("displayIcon")]
+        public SectionResponseDisplayIconType DisplayIcon { get; set; }
+
+        [JsonProperty("isExpanded")]
+        public bool IsExpanded { get; set; }
+
+        [JsonProperty("sortType")]
+        public SectionResponseSortTypeType SortType { get; set; }
+
+        [JsonProperty("sectionType")]
+        public SectionResponseSectionTypeType SectionType { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedDateTime { get; set; }
+    }
+
+    public class SectionResponseDisplayIconType
+    {
+        [JsonProperty("iconType")]
+        public string IconType { get; set; }
+
+        [JsonProperty("displayName")]
+        public string IconDisplayName { get; set; }
+
+        [JsonProperty("skinTone")]
+        public SectionResponseDisplayIconTypeSkinToneType SkinTone { get; set; }
+    }
+
+    public enum SectionResponseDisplayIconTypeSkinToneType
+    {
+        [EnumMember(Value = "light")]
+        Light,
+        [EnumMember(Value = "mediumLight")]
+        MediumLight,
+        [EnumMember(Value = "medium")]
+        Medium,
+        [EnumMember(Value = "mediumDark")]
+        MediumDark,
+        [EnumMember(Value = "dark")]
+        Dark
+    }
+
+    public enum SectionResponseSortTypeType
+    {
+        [EnumMember(Value = "mostRecent")]
+        MostRecent,
+        [EnumMember(Value = "unreadThenMostRecent")]
+        UnreadThenMostRecent,
+        [EnumMember(Value = "nameAlphabetical")]
+        NameAlphabetical,
+        [EnumMember(Value = "userDefinedCustomOrder")]
+        UserDefinedCustomOrder
+    }
+
+    public enum SectionResponseSectionTypeType
+    {
+        [EnumMember(Value = "userDefined")]
+        UserDefined,
+        [EnumMember(Value = "systemDefined")]
+        SystemDefined
+    }
+
+    public enum bodysortTypeInput
+    {
+        [EnumMember(Value = "mostRecent")]
+        MostRecent,
+        [EnumMember(Value = "unreadThenMostRecent")]
+        UnreadThenMostRecent,
+        [EnumMember(Value = "nameAlphabetical")]
+        NameAlphabetical,
+        [EnumMember(Value = "userDefinedCustomOrder")]
+        UserDefinedCustomOrder
+    }
+
+    public class ListSectionItemsResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("value")]
+        public SectionItemResponse[] SectionItems { get; set; }
+    }
+
+    public class SectionItemResponse
+    {
+        [JsonProperty("@odata.etag")]
+        public string ETag { get; set; }
+
+        [JsonProperty("id")]
+        public string ItemID { get; set; }
+
+        [JsonProperty("itemType")]
+        public SectionItemResponseItemTypeType ItemType { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedDateTime { get; set; }
+    }
+
+    public enum SectionItemResponseItemTypeType
+    {
+        [EnumMember(Value = "chat")]
+        Chat,
+        [EnumMember(Value = "channel")]
+        Channel,
+        [EnumMember(Value = "meeting")]
+        Meeting,
+        [EnumMember(Value = "community")]
+        Community
+    }
+
+    public class GetTagsResponseSchema
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("value")]
+        public GetTagsResponseSchemaValueTypeItem[] Value { get; set; }
+    }
+
+    public class GetTagsResponseSchemaValueTypeItem
+    {
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        [JsonProperty("teamId")]
+        public string TeamID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("memberCount")]
+        public int MemberCount { get; set; }
+    }
+
+    public class CreateTagResponseSchema
+    {
+        [JsonProperty("@odata.type")]
+        public string Type { get; set; }
+
+        [JsonProperty("id")]
+        public string ID { get; set; }
+
+        [JsonProperty("teamId")]
+        public string TeamID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("memberCount")]
+        public int MemberCount { get; set; }
+    }
+
+    public class AddMemberToTagResponseSchema
+    {
+        [JsonProperty("userId")]
+        public string ID { get; set; }
+    }
+
+    public class GetTagMembersResponseSchema
+    {
+        [JsonProperty("value")]
+        public GetTagMembersResponseSchemaValueTypeItem[] Value { get; set; }
+    }
+
+    public class GetTagMembersResponseSchemaValueTypeItem
+    {
+        [JsonProperty("id")]
+        public string TagMemberID { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string UserDisplayName { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserID { get; set; }
+    }
+
+    public class AiInsightCollectionResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("value")]
+        public AiInsightResponse[] AIInsights { get; set; }
+    }
+
+    public class AiInsightResponse
+    {
+        [JsonProperty("id")]
+        public string AIInsightID { get; set; }
+
+        [JsonProperty("callId")]
+        public string CallID { get; set; }
+
+        [JsonProperty("contentCorrelationId")]
+        public string ContentCorrelationID { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("endDateTime")]
+        public string EndDateTime { get; set; }
+    }
+
+    public class AiInsightDetailResponse
+    {
+        [JsonProperty("@odata.context")]
+        public string Context { get; set; }
+
+        [JsonProperty("id")]
+        public string AIInsightID { get; set; }
+
+        [JsonProperty("callId")]
+        public string CallID { get; set; }
+
+        [JsonProperty("contentCorrelationId")]
+        public string ContentCorrelationID { get; set; }
+
+        [JsonProperty("createdDateTime")]
+        public string CreatedDateTime { get; set; }
+
+        [JsonProperty("endDateTime")]
+        public string EndDateTime { get; set; }
+
+        [JsonProperty("recapUrl")]
+        public string RecapURL { get; set; }
+
+        [JsonProperty("meetingNotes")]
+        public AiInsightMeetingNote[] MeetingNotes { get; set; }
+
+        [JsonProperty("actionItems")]
+        public AiInsightActionItem[] ActionItems { get; set; }
+
+        [JsonProperty("viewpoint")]
+        public AiInsightViewpoint Viewpoint { get; set; }
+    }
+
+    public class AiInsightMeetingNote
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("subpoints")]
+        public AiInsightMeetingNoteSubpoint[] Subpoints { get; set; }
+    }
+
+    public class AiInsightMeetingNoteSubpoint
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class AiInsightActionItem
+    {
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("ownerDisplayName")]
+        public string OwnerDisplayName { get; set; }
+    }
+
+    public class AiInsightViewpoint
+    {
+        [JsonProperty("mentionEvents")]
+        public AiInsightMentionEvent[] MentionEvents { get; set; }
+    }
+
+    public class AiInsightMentionEvent
+    {
+        [JsonProperty("eventDateTime")]
+        public string EventDateTime { get; set; }
+
+        [JsonProperty("transcriptUtterance")]
+        public string TranscriptUtterance { get; set; }
+
+        [JsonProperty("speaker")]
+        public AiInsightMentionEventSpeakerType Speaker { get; set; }
+    }
+
+    public class AiInsightMentionEventSpeakerType
+    {
+        [JsonProperty("user")]
+        public AiInsightMentionEventSpeakerTypeUserType User { get; set; }
+    }
+
+    public class AiInsightMentionEventSpeakerTypeUserType
+    {
+        [JsonProperty("@odata.type")]
+        public string ODataType { get; set; }
+
+        [JsonProperty("id")]
+        public string UserID { get; set; }
+
+        [JsonProperty("displayName")]
+        public string UserDisplayName { get; set; }
+
+        [JsonProperty("userIdentityType")]
+        public string UserIdentityType { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantID { get; set; }
+    }
+
     public enum frequencyInput
     {
         [EnumMember(Value = "Multiple")]
@@ -2006,6 +3413,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     {
         Myself,
         Everyone
+    }
+
+    public enum scopeTypeInput
+    {
+        [EnumMember(Value = "user")]
+        MeetingsThatYouOrganized,
+        [EnumMember(Value = "meeting")]
+        ASpecificMeetingYouOrganized,
+        [EnumMember(Value = "adhocCallUser")]
+        AdHocCallsYouReIn
     }
 
     public class OnGroupMemberChangeResponseItem

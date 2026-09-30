@@ -110,9 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal[]> GetGoals([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> selectedLabels = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<Goal[]> GetGoals([WorkflowExpression] Func<string> userOId = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> selectedLabels = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(userOID, nameof(userOID), required: false);
+            SourceExpression.Validate(userOId, nameof(userOId), required: false);
             SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
             SourceExpression.Validate(search, nameof(search), required: false);
             SourceExpression.Validate(selectedLabels, nameof(selectedLabels), required: false);
@@ -125,8 +125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var apiCallPath = "/goal/getGoals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userOID != null)
-                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOID);
+                if (userOId != null)
+                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOId);
                 if (userUPN != null)
                     callPayload.Queries["userUPN"] = SourceExpressionConverter.ConvertO(userUPN);
                 if (search != null)
@@ -148,9 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> UpdateGoal([WorkflowExpression] Func<string> bodygoalID, [WorkflowExpression] Func<string> bodynewProgressValue, [WorkflowExpression] Func<bodyupdaterTypeInput> bodyupdaterType, [WorkflowExpression] Func<string> bodysystemName, [WorkflowExpression] Func<string> bodyupdateComment = null, [WorkflowExpression] Func<string> bodynewStatus = null)
+        public IBodyWorkflowAction<Goal> UpdateGoal([WorkflowExpression] Func<string> bodygoalId, [WorkflowExpression] Func<string> bodynewProgressValue, [WorkflowExpression] Func<bodyupdaterTypeInput> bodyupdaterType, [WorkflowExpression] Func<string> bodysystemName, [WorkflowExpression] Func<string> bodyupdateComment = null, [WorkflowExpression] Func<string> bodynewStatus = null)
         {
-            SourceExpression.Validate(bodygoalID, nameof(bodygoalID), required: true);
+            SourceExpression.Validate(bodygoalId, nameof(bodygoalId), required: true);
             SourceExpression.Validate(bodynewProgressValue, nameof(bodynewProgressValue), required: true);
             SourceExpression.Validate(bodyupdaterType, nameof(bodyupdaterType), required: true);
             SourceExpression.Validate(bodysystemName, nameof(bodysystemName), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["goalId"] = SourceExpressionConverter.ConvertToken(bodygoalID);
+                body["goalId"] = SourceExpressionConverter.ConvertToken(bodygoalId);
                 bodypropCount++;
                 body["newValue"] = SourceExpressionConverter.ConvertToken(bodynewProgressValue);
                 if (bodyupdateComment != null)
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> CreateGoal([WorkflowExpression] Func<string> bodygoalTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<string> bodygoalType, [WorkflowExpression] Func<object> bodygoalOwner, [WorkflowExpression] Func<string> bodygoalCreator, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyprogressFormat, [WorkflowExpression] Func<string> bodycurrencyCode, [WorkflowExpression] Func<double> bodyinitialValue, [WorkflowExpression] Func<double> bodytargetValue, [WorkflowExpression] Func<string> bodyparentGoalID, [WorkflowExpression] Func<bool> bodynotifyOwner)
+        public IBodyWorkflowAction<Goal> CreateGoal([WorkflowExpression] Func<string> bodygoalTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<string> bodygoalType, [WorkflowExpression] Func<object> bodygoalOwner, [WorkflowExpression] Func<string> bodygoalCreator, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyprogressFormat, [WorkflowExpression] Func<string> bodycurrencyCode, [WorkflowExpression] Func<double> bodyinitialValue, [WorkflowExpression] Func<double> bodytargetValue, [WorkflowExpression] Func<string> bodyparentGoalId, [WorkflowExpression] Func<bool> bodynotifyOwner)
         {
             SourceExpression.Validate(bodygoalTitle, nameof(bodygoalTitle), required: true);
             SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
             SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
             SourceExpression.Validate(bodyinitialValue, nameof(bodyinitialValue), required: true);
             SourceExpression.Validate(bodytargetValue, nameof(bodytargetValue), required: true);
-            SourceExpression.Validate(bodyparentGoalID, nameof(bodyparentGoalID), required: true);
+            SourceExpression.Validate(bodyparentGoalId, nameof(bodyparentGoalId), required: true);
             SourceExpression.Validate(bodynotifyOwner, nameof(bodynotifyOwner), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 bodypropCount++;
                 body["targetValue"] = SourceExpressionConverter.ConvertToken(bodytargetValue);
                 bodypropCount++;
-                body["parentGoalId"] = SourceExpressionConverter.ConvertToken(bodyparentGoalID);
+                body["parentGoalId"] = SourceExpressionConverter.ConvertToken(bodyparentGoalId);
                 bodypropCount++;
                 body["sendNotificationToOwner"] = SourceExpressionConverter.ConvertToken(bodynotifyOwner);
                 if (bodypropCount > 0)
@@ -382,9 +382,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject[]> GetTasks([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        public IBodyWorkflowAction<TaskObject[]> GetTasks([WorkflowExpression] Func<string> userOId = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            SourceExpression.Validate(userOID, nameof(userOID), required: false);
+            SourceExpression.Validate(userOId, nameof(userOId), required: false);
             SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
             SourceExpression.Validate(search, nameof(search), required: false);
             SourceExpression.Validate(limit, nameof(limit), required: false);
@@ -396,8 +396,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var apiCallPath = "/task";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (userOID != null)
-                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOID);
+                if (userOId != null)
+                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOId);
                 if (userUPN != null)
                     callPayload.Queries["userUPN"] = SourceExpressionConverter.ConvertO(userUPN);
                 if (search != null)

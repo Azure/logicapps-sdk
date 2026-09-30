@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem2[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodyloginId = null)
+        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem22[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodyloginId = null)
         {
             SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
             SourceExpression.Validate(bodycabinetName, nameof(bodycabinetName), required: false);
@@ -708,35 +708,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
             }
 
             return new ApiConnectionAction<SetUserDocSecurityResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo([WorkflowExpression] Func<string> bodyloginName, [WorkflowExpression] Func<string> bodyuserType, [WorkflowExpression] Func<string> xAuthorization = null)
-        {
-            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: true);
-            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: true);
-            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/v1/administration/user/getuser";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (xAuthorization != null)
-                    callPayload.Headers["X-Authorization"] = SourceExpressionConverter.ConvertO(xAuthorization);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["LoginName"] = SourceExpressionConverter.ConvertToken(bodyloginName);
-                bodypropCount++;
-                body["UserType"] = SourceExpressionConverter.ConvertToken(bodyuserType);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<GetUserInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
@@ -3024,6 +2995,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        public IBodyWorkflowAction<GetUserInfoV2Response> GetUserInfo([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodyuserType = null)
+        {
+            SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            SourceExpression.Validate(bodyloginName, nameof(bodyloginName), required: false);
+            SourceExpression.Validate(bodyuserType, nameof(bodyuserType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/administration/user/getuser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = SourceExpressionConverter.ConvertO(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyloginName != null)
+                {
+                    body["LoginName"] = SourceExpressionConverter.ConvertToken(bodyloginName);
+                    bodypropCount++;
+                }
+
+                if (bodyuserType != null)
+                {
+                    body["UserType"] = SourceExpressionConverter.ConvertToken(bodyuserType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserInfoV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int[]> bodyfilingId = null, [WorkflowExpression] Func<string[]> bodycurrentStep = null, [WorkflowExpression] Func<bool> bodycomplete = null, [WorkflowExpression] Func<string> bodycompletedDate = null, [WorkflowExpression] Func<string> bodynextStep = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedDate = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyroutingNote = null, [WorkflowExpression] Func<bool> bodyemailNotify = null)
         {
             SourceExpression.Validate(xAuthorization, nameof(xAuthorization), required: false);
@@ -3652,111 +3660,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetUserDocSecurityException { get; set; }
     }
 
-    public class bodydocumentSecurityInputItem2
+    public class bodydocumentSecurityInputItem22
     {
         public bodydocumentSecurityInputItemDocSecurityTypeType DocSecurityType { get; set; }
         public string IndexName { get; set; }
         public bodydocumentSecurityInputItemOperationType Operation { get; set; }
         public string[] Values { get; set; }
-    }
-
-    public class GetUserInfoResponse
-    {
-        [JsonProperty("createDate")]
-        public string CreateDate { get; set; }
-
-        [JsonProperty("createdBy")]
-        public string CreatedBy { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("disabled")]
-        public int Disabled { get; set; }
-
-        [JsonProperty("disabledByAdmin")]
-        public bool DisabledByAdmin { get; set; }
-
-        [JsonProperty("emailNotify")]
-        public bool EmailNotify { get; set; }
-
-        [JsonProperty("emailNotifyEventMgmtGroups")]
-        public bool EmailNotifyEventMgmtGroups { get; set; }
-
-        [JsonProperty("emailNotifyEventMgmtUsers")]
-        public bool EmailNotifyEventMgmtUsers { get; set; }
-
-        [JsonProperty("emailNotifyGroup")]
-        public bool EmailNotifyGroup { get; set; }
-
-        [JsonProperty("forcePasswordChange")]
-        public bool ForcePasswordChange { get; set; }
-
-        [JsonProperty("fullName")]
-        public string FullName { get; set; }
-
-        [JsonProperty("hasDrawerSetupRights")]
-        public string HasDrawerSetupRights { get; set; }
-
-        [JsonProperty("isAdmin")]
-        public int IsAdmin { get; set; }
-
-        [JsonProperty("isManager")]
-        public int IsManager { get; set; }
-
-        [JsonProperty("licenseType")]
-        public string LicenseType { get; set; }
-
-        [JsonProperty("locationID")]
-        public string LocationID { get; set; }
-
-        [JsonProperty("loginID")]
-        public string LoginID { get; set; }
-
-        [JsonProperty("managerFullName")]
-        public string ManagerFullName { get; set; }
-
-        [JsonProperty("managerId")]
-        public string ManagerId { get; set; }
-
-        [JsonProperty("managerLoginId")]
-        public string ManagerLoginId { get; set; }
-
-        [JsonProperty("oberonUser")]
-        public int OberonUser { get; set; }
-
-        [JsonProperty("offline")]
-        public bool Offline { get; set; }
-
-        [JsonProperty("passwordChangeDate")]
-        public string PasswordChangeDate { get; set; }
-
-        [JsonProperty("passwordChangeInterval")]
-        public int PasswordChangeInterval { get; set; }
-
-        [JsonProperty("passwordExpireDate")]
-        public string PasswordExpireDate { get; set; }
-
-        [JsonProperty("reports")]
-        public bool Reports { get; set; }
-
-        [JsonProperty("signature")]
-        public string Signature { get; set; }
-
-        [JsonProperty("systemAdmin")]
-        public bool SystemAdmin { get; set; }
-
-        [JsonProperty("taxFlow")]
-        public bool TaxFlow { get; set; }
-
-        [JsonProperty("userAdministration")]
-        public int UserAdministration { get; set; }
-
-        [JsonProperty("userID")]
-        public string UserID { get; set; }
-
-        [JsonProperty("workflowManagerUser")]
-        public bool WorkflowManagerUser { get; set; }
     }
 
     public class GetLicensesResponse
@@ -4494,30 +4403,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
     public enum bodyactionTypeInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6
     }
 
     public enum bodysearchTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class GetListTypeIndexDataResponseItem
@@ -4887,6 +4786,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
         [JsonProperty("responseMessage")]
         public string ResponseMessage { get; set; }
+    }
+
+    public class GetUserInfoV2Response
+    {
+        [JsonProperty("userID")]
+        public string UserID { get; set; }
+
+        [JsonProperty("loginID")]
+        public string LoginID { get; set; }
+
+        [JsonProperty("fullName")]
+        public string FullName { get; set; }
+
+        [JsonProperty("createDate")]
+        public string CreateDate { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("disabled")]
+        public int Disabled { get; set; }
+
+        [JsonProperty("disabledByAdmin")]
+        public bool DisabledByAdmin { get; set; }
+
+        [JsonProperty("passwordExpireDate")]
+        public string PasswordExpireDate { get; set; }
+
+        [JsonProperty("forcePasswordChange")]
+        public bool ForcePasswordChange { get; set; }
+
+        [JsonProperty("passwordChangeDate")]
+        public string PasswordChangeDate { get; set; }
+
+        [JsonProperty("passwordChangeInterval")]
+        public int PasswordChangeInterval { get; set; }
+
+        [JsonProperty("licenseType")]
+        public string LicenseType { get; set; }
+
+        [JsonProperty("offline")]
+        public bool Offline { get; set; }
+
+        [JsonProperty("reports")]
+        public bool Reports { get; set; }
+
+        [JsonProperty("systemAdmin")]
+        public bool SystemAdmin { get; set; }
+
+        [JsonProperty("signature")]
+        public string Signature { get; set; }
+
+        [JsonProperty("locationID")]
+        public string LocationID { get; set; }
+
+        [JsonProperty("hasDrawerSetupRights")]
+        public string HasDrawerSetupRights { get; set; }
+
+        [JsonProperty("taxFlow")]
+        public bool TaxFlow { get; set; }
+
+        [JsonProperty("emailNotify")]
+        public bool EmailNotify { get; set; }
+
+        [JsonProperty("emailNotifyGroup")]
+        public bool EmailNotifyGroup { get; set; }
+
+        [JsonProperty("emailNotifyEventMgmtUsers")]
+        public bool EmailNotifyEventMgmtUsers { get; set; }
+
+        [JsonProperty("emailNotifyEventMgmtGroups")]
+        public bool EmailNotifyEventMgmtGroups { get; set; }
+
+        [JsonProperty("portalUserAdministration")]
+        public bool PortalUserAdministration { get; set; }
+
+        [JsonProperty("internalUserAdministration")]
+        public bool InternalUserAdministration { get; set; }
+
+        [JsonProperty("workflowManagerUser")]
+        public bool WorkflowManagerUser { get; set; }
+
+        [JsonProperty("managerId")]
+        public string ManagerId { get; set; }
+
+        [JsonProperty("managerLoginId")]
+        public string ManagerLoginId { get; set; }
+
+        [JsonProperty("managerFullName")]
+        public string ManagerFullName { get; set; }
+
+        [JsonProperty("isManager")]
+        public int IsManager { get; set; }
+
+        [JsonProperty("oberonUser")]
+        public int OberonUser { get; set; }
+
+        [JsonProperty("isAdmin")]
+        public int IsAdmin { get; set; }
+
+        [JsonProperty("lastLogin")]
+        public string LastLogin { get; set; }
+
+        [JsonProperty("groups")]
+        public string[] Groups { get; set; }
     }
 
     public class RouteWorkflowV2Response

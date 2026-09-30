@@ -12,25 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     public class Powerform7Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IWorkflowAction SubmitForm([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> query = null)
-        {
-            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
-            SourceExpression.Validate(formId, nameof(formId), required: true);
-            SourceExpression.Validate(query, nameof(query), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(query);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms([WorkflowExpression] Func<string> wPSITEURL)
         {
             SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);

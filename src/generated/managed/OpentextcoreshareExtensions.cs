@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
     public class OpentextcoreshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> bodyparentID, [WorkflowExpression] Func<string> bodyfilefileName, [WorkflowExpression] Func<string> bodyfilefileContent)
+        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent)
         {
-            SourceExpression.Validate(bodyparentID, nameof(bodyparentID), required: true);
-            SourceExpression.Validate(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            SourceExpression.Validate(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
+            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/document/create";
@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentID);
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyfilefileContent);
-                if (fileObjectpropCount > 0)
+                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    body["file"] = fileObject;
+                    body["file"] = @fileObject;
                     bodypropCount++;
                 }
 
@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfilefileName, [WorkflowExpression] Func<string> bodyfilefileContent)
+        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            SourceExpression.Validate(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/update/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -61,15 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyfilefileContent);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
                 {
-                    body["file"] = fileObject;
+                    body["file"] = @fileObject;
                     bodypropCount++;
                 }
 
@@ -207,10 +207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcoreshare")]
-        public IBodyWorkflowAction<string> CreateFolder([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentID)
+        public IBodyWorkflowAction<string> CreateFolder([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId)
         {
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyparentID, nameof(bodyparentID), required: true);
+            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/folder/create";
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
                 bodypropCount++;
                 body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentID);
+                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

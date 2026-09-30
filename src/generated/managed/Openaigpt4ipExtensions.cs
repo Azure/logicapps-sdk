@@ -381,43 +381,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<double> temperature = null)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(language, nameof(language), required: false);
-            SourceExpression.Validate(prompt, nameof(prompt), required: false);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v1/audio/transcriptions";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AudioTranscriptionPostResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<double> temperature = null)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(model, nameof(model), required: true);
-            SourceExpression.Validate(prompt, nameof(prompt), required: false);
-            SourceExpression.Validate(temperature, nameof(temperature), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v1/audio/translations";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AudioTranslationPostResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImagePostResponse> Image([WorkflowExpression] Func<string> bodyprompt, [WorkflowExpression] Func<bodymodelInput> bodymodel = null, [WorkflowExpression] Func<int> bodyn = null, [WorkflowExpression] Func<bodyqualityInput> bodyquality = null, [WorkflowExpression] Func<bodysizeInput> bodysize = null, [WorkflowExpression] Func<bodystyleInput> bodystyle = null, [WorkflowExpression] Func<string> bodyuser = null)
         {
             SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
@@ -512,46 +475,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
             }
 
             return new ApiConnectionAction<ImagePostResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit([WorkflowExpression] Func<object> image, [WorkflowExpression] Func<string> prompt = null, [WorkflowExpression] Func<object> mask = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<string> user = null)
-        {
-            SourceExpression.Validate(image, nameof(image), required: true);
-            SourceExpression.Validate(prompt, nameof(prompt), required: false);
-            SourceExpression.Validate(mask, nameof(mask), required: false);
-            SourceExpression.Validate(model, nameof(model), required: false);
-            SourceExpression.Validate(n, nameof(n), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(user, nameof(user), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v1/images/edits";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ImageEditPostResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
-        public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation([WorkflowExpression] Func<object> image, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<string> user = null)
-        {
-            SourceExpression.Validate(image, nameof(image), required: true);
-            SourceExpression.Validate(model, nameof(model), required: false);
-            SourceExpression.Validate(n, nameof(n), required: false);
-            SourceExpression.Validate(size, nameof(size), required: false);
-            SourceExpression.Validate(user, nameof(user), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v1/images/variations";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ImageVariationPostResponse>(BuildSourceInput);
         }
     }
 
@@ -1038,18 +961,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Flac
     }
 
-    public class AudioTranscriptionPostResponse
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class AudioTranslationPostResponse
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
     public class ImagePostResponse
     {
         [JsonProperty("created")]
@@ -1096,52 +1007,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Vivid,
         [EnumMember(Value = "natural")]
         Natural
-    }
-
-    public class ImageEditPostResponse
-    {
-        [JsonProperty("created")]
-        public int Created { get; set; }
-
-        [JsonProperty("data")]
-        public ImageEditPostResponseDataTypeItem[] Data { get; set; }
-    }
-
-    public class ImageEditPostResponseDataTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("revised_prompt")]
-        public string RevisedPrompt { get; set; }
-    }
-
-    public enum sizeInput
-    {
-        [EnumMember(Value = "1024x1024")]
-        _1024x1024,
-        [EnumMember(Value = "256x256")]
-        _256x256,
-        [EnumMember(Value = "512x512")]
-        _512x512
-    }
-
-    public class ImageVariationPostResponse
-    {
-        [JsonProperty("created")]
-        public int Created { get; set; }
-
-        [JsonProperty("data")]
-        public ImageVariationPostResponseDataTypeItem[] Data { get; set; }
-    }
-
-    public class ImageVariationPostResponseDataTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("revised_prompt")]
-        public string RevisedPrompt { get; set; }
     }
 }
 

@@ -444,13 +444,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyinputFormat, [WorkflowExpression] Func<string> bodyoutputFormat, [WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodytimezone = null)
+        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyinputFormat, [WorkflowExpression] Func<string> bodyoutputFormat, [WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodytimezone = null)
         {
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
             SourceExpression.Validate(accept, nameof(accept), required: true);
             SourceExpression.Validate(bodyinputFormat, nameof(bodyinputFormat), required: true);
             SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 bodypropCount++;
                 body["outputFormat"] = SourceExpressionConverter.ConvertToken(bodyoutputFormat);
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodytimezone != null)
                 {
                     body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
@@ -484,9 +484,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile([WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<bodyoemInput> bodyoem, [WorkflowExpression] Func<bodypsmInput> bodypsm, [WorkflowExpression] Func<bool> bodytrim, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodylanguage = null)
+        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile([WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<bodyoemInput> bodyoem, [WorkflowExpression] Func<bodypsmInput> bodypsm, [WorkflowExpression] Func<bool> bodytrim, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodylanguage = null)
         {
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
             SourceExpression.Validate(bodyoem, nameof(bodyoem), required: true);
             SourceExpression.Validate(bodypsm, nameof(bodypsm), required: true);
             SourceExpression.Validate(bodytrim, nameof(bodytrim), required: true);
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                 if (bodylanguage != null)
                 {
                     if (bodylanguage != null)
@@ -886,42 +886,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public enum bodyoemInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum bodypsmInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13
     }
 
     public enum bodytypeInput

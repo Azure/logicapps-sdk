@@ -61,31 +61,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
-        public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
-        {
-            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
-            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
-            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
-            SourceExpression.Validate(jobId, nameof(jobId), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["subscriptionId"] = SourceExpressionConverter.ConvertToken(subscriptionId);
-                serviceProviderParameters["resourceGroup"] = SourceExpressionConverter.ConvertToken(resourceGroup);
-                serviceProviderParameters["automationAccount"] = SourceExpressionConverter.ConvertToken(automationAccount);
-                serviceProviderParameters["jobId"] = SourceExpressionConverter.ConvertToken(jobId);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<GetJobStatusOutput>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<string> GetJobOutput([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
         {
             SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
@@ -108,6 +83,31 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
             }
 
             return new ServiceProviderAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
+        public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
+        {
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
+            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
+            SourceExpression.Validate(jobId, nameof(jobId), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["subscriptionId"] = SourceExpressionConverter.ConvertToken(subscriptionId);
+                serviceProviderParameters["resourceGroup"] = SourceExpressionConverter.ConvertToken(resourceGroup);
+                serviceProviderParameters["automationAccount"] = SourceExpressionConverter.ConvertToken(automationAccount);
+                serviceProviderParameters["jobId"] = SourceExpressionConverter.ConvertToken(jobId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetJobStatusOutput>(BuildSourceInput);
         }
     }
 

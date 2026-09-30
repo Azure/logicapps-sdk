@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse> Events([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
+        public IBodyWorkflowAction<EventsResponse> Events([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magId = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
             SourceExpression.Validate(source, nameof(source), required: false);
             SourceExpression.Validate(category, nameof(category), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             SourceExpression.Validate(days, nameof(days), required: false);
             SourceExpression.Validate(start, nameof(start), required: false);
             SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(magID, nameof(magID), required: false);
+            SourceExpression.Validate(magId, nameof(magId), required: false);
             SourceExpression.Validate(magMin, nameof(magMin), required: false);
             SourceExpression.Validate(magMax, nameof(magMax), required: false);
             SourceExpression.Validate(bbox, nameof(bbox), required: false);
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
                     callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
                 if (end != null)
                     callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
-                if (magID != null)
-                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magID);
+                if (magId != null)
+                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magId);
                 if (magMin != null)
                     callPayload.Queries["magMin"] = SourceExpressionConverter.ConvertO(magMin);
                 if (magMax != null)
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magId = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
             SourceExpression.Validate(source, nameof(source), required: false);
             SourceExpression.Validate(category, nameof(category), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             SourceExpression.Validate(days, nameof(days), required: false);
             SourceExpression.Validate(start, nameof(start), required: false);
             SourceExpression.Validate(end, nameof(end), required: false);
-            SourceExpression.Validate(magID, nameof(magID), required: false);
+            SourceExpression.Validate(magId, nameof(magId), required: false);
             SourceExpression.Validate(magMin, nameof(magMin), required: false);
             SourceExpression.Validate(magMax, nameof(magMax), required: false);
             SourceExpression.Validate(bbox, nameof(bbox), required: false);
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
                     callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
                 if (end != null)
                     callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
-                if (magID != null)
-                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magID);
+                if (magId != null)
+                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magId);
                 if (magMin != null)
                     callPayload.Queries["magMin"] = SourceExpressionConverter.ConvertO(magMin);
                 if (magMax != null)

@@ -11,36 +11,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 
     public class HarnesspdfxActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
-        public IBodyWorkflowAction<PostPdfResponse> PostPdf([WorkflowExpression] Func<object> fileToProcess = null)
-        {
-            SourceExpression.Validate(fileToProcess, nameof(fileToProcess), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/pdfs";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<PostPdfResponse>(BuildSourceInput);
-        }
     }
 
     public class HarnesspdfxTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class PostPdfResponse
-    {
-        [JsonProperty("data")]
-        public PostPdfResponseDataType Data { get; set; }
-    }
-
-    public class PostPdfResponseDataType
-    {
-        [JsonProperty("job_token")]
-        public string JobToken { get; set; }
     }
 }
 

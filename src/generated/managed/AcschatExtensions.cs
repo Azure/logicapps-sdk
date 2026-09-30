@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acschat")]
-        public IWorkflowAction RemoveParticipant([WorkflowExpression] Func<string> accessToken, [WorkflowExpression] Func<string> chatThreadId, [WorkflowExpression] Func<string> bodycommunicationUseruserID = null)
+        public IWorkflowAction RemoveParticipant([WorkflowExpression] Func<string> accessToken, [WorkflowExpression] Func<string> chatThreadId, [WorkflowExpression] Func<string> bodycommunicationUseruserId = null)
         {
             SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
             SourceExpression.Validate(chatThreadId, nameof(chatThreadId), required: true);
-            SourceExpression.Validate(bodycommunicationUseruserID, nameof(bodycommunicationUseruserID), required: false);
+            SourceExpression.Validate(bodycommunicationUseruserId, nameof(bodycommunicationUseruserId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/chat/threads/{0}/participants/:remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chatThreadId, 1));
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acschat
                 var bodypropCount = 0;
                 var communicationUserObject = new JObject();
                 var communicationUserObjectpropCount = 0;
-                if (bodycommunicationUseruserID != null)
+                if (bodycommunicationUseruserId != null)
                 {
-                    communicationUserObject["id"] = SourceExpressionConverter.ConvertToken(bodycommunicationUseruserID);
+                    communicationUserObject["id"] = SourceExpressionConverter.ConvertToken(bodycommunicationUseruserId);
                     communicationUserObjectpropCount++;
                 }
 

@@ -37,6 +37,21 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 
             return new ServiceProviderAction<AnalyzeDocumentOutput>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
+        public IOutputWorkflowAction<string> GetOutputContentTypes()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "getOutputContentTypes", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<string>(BuildSourceInput);
+        }
     }
 
     public class AnalyzeDocumentOutput

@@ -1623,16 +1623,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodyaccountClassInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public class AccountsCreateResponse
@@ -1985,14 +1980,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodygenderInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class bodyaccountRelationsInputItem
@@ -2954,26 +2945,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodypriorityInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodystatusInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public class bodyaccountRelationsInputItem2

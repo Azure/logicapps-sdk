@@ -644,9 +644,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/capitalize";
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -667,9 +667,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse> StringTrim([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimResponse> StringTrim([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodycharacters != null)
                 {
                     body["characters"] = SourceExpressionConverter.ConvertToken(bodycharacters);
@@ -697,9 +697,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodycharacters != null)
                 {
                     body["characters"] = SourceExpressionConverter.ConvertToken(bodycharacters);
@@ -727,9 +727,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodycharacters = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodycharacters, nameof(bodycharacters), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodycharacters != null)
                 {
                     body["characters"] = SourceExpressionConverter.ConvertToken(bodycharacters);
@@ -757,9 +757,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/slugify";
@@ -768,7 +768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -780,9 +780,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse> StringWords([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordsResponse> StringWords([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodydelimiter != null)
                 {
                     body["delimiter"] = SourceExpressionConverter.ConvertToken(bodydelimiter);
@@ -810,9 +810,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodydelimiter != null)
                 {
                     body["delimiter"] = SourceExpressionConverter.ConvertToken(bodydelimiter);
@@ -840,9 +840,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/stripHtml";
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -863,9 +863,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse> StringClean([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringCleanResponse> StringClean([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/clean";
@@ -874,7 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -886,9 +886,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/cleanDiacritics";
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -909,9 +909,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/escapeHtml";
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -932,9 +932,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml([WorkflowExpression] Func<string> bodystring)
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml([WorkflowExpression] Func<string> bodyString)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/string/unescapeHtml";
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -955,9 +955,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodysubstring, [WorkflowExpression] Func<bool> bodyignoreCase = null)
+        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodysubstring, [WorkflowExpression] Func<bool> bodyignoreCase = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodysubstring, nameof(bodysubstring), required: true);
             SourceExpression.Validate(bodyignoreCase, nameof(bodyignoreCase), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -968,7 +968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 bodypropCount++;
                 body["substring"] = SourceExpressionConverter.ConvertToken(bodysubstring);
                 if (bodyignoreCase != null)
@@ -998,9 +998,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse> StringChop([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<int> bodyinterval)
+        public IBodyWorkflowAction<StringChopResponse> StringChop([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<int> bodyinterval)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodyinterval, nameof(bodyinterval), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 bodypropCount++;
                 body["interval"] = SourceExpressionConverter.ConvertToken(bodyinterval);
                 if (bodypropCount > 0)
@@ -1165,9 +1165,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodypattern)
+        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<string> bodypattern)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodypattern, nameof(bodypattern), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 bodypropCount++;
                 body["pattern"] = SourceExpressionConverter.ConvertToken(bodypattern);
                 if (bodypropCount > 0)

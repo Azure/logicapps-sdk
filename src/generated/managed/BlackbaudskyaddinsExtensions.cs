@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationID)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationId)
         {
             SourceExpression.Validate(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
-            SourceExpression.Validate(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            SourceExpression.Validate(bodyapplicationId, nameof(bodyapplicationId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
                 bodypropCount++;
                 body["uit"] = SourceExpressionConverter.ConvertToken(bodyuserIdentityToken);
                 bodypropCount++;
-                body["application_id"] = SourceExpressionConverter.ConvertToken(bodyapplicationID);
+                body["application_id"] = SourceExpressionConverter.ConvertToken(bodyapplicationId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

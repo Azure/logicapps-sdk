@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse> Hash([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
+        public IBodyWorkflowAction<HashResponse> Hash([WorkflowExpression] Func<string> bodyString, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
         {
-            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodyString, nameof(bodyString), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
+                body["string"] = SourceExpressionConverter.ConvertToken(bodyString);
                 if (bodytype != null)
                 {
                     if (bodytype != null)

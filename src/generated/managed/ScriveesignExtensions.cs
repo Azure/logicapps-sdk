@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction UpdatePartiesFields([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateSchema = null)
+        public IWorkflowAction UpdatePartiesFields([WorkflowExpression] Func<string> templateIdDynamic, [WorkflowExpression] Func<object> dynamicTemplateSchema = null)
         {
-            SourceExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
             SourceExpression.Validate(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicTemplateSchema);
@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction UpdatePartiesProperties([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateMetaSchema = null)
+        public IWorkflowAction UpdatePartiesProperties([WorkflowExpression] Func<string> templateIdDynamic, [WorkflowExpression] Func<object> dynamicTemplateMetaSchema = null)
         {
-            SourceExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            SourceExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
             SourceExpression.Validate(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateIdDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicTemplateMetaSchema);
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction AddParty([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyEmail, [WorkflowExpression] Func<bodypartyRoleInput> bodypartyRole, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodypersonalNumber = null, [WorkflowExpression] Func<double> bodysignOrder = null, [WorkflowExpression] Func<bodydeliveryMethodInput> bodydeliveryMethod = null, [WorkflowExpression] Func<bodyauthenticationToViewInput> bodyauthenticationToView = null, [WorkflowExpression] Func<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, [WorkflowExpression] Func<bodyauthenticationToSignInput> bodyauthenticationToSign = null, [WorkflowExpression] Func<bodyconfirmationInput> bodyconfirmation = null)
+        public IWorkflowAction AddParty([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyEmail, [WorkflowExpression] Func<bodypartyRoleInput> bodypartyRole, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodypersonalNumber = null, [WorkflowExpression] Func<double> bodysignOrder = null, [WorkflowExpression] Func<bodydeliveryMethodInput> bodydeliveryMethod = null, [WorkflowExpression] Func<string> bodyauthenticationToView = null, [WorkflowExpression] Func<string> bodyauthenticationToViewArchived = null, [WorkflowExpression] Func<string> bodyauthenticationToSign = null, [WorkflowExpression] Func<bodyconfirmationInput> bodyconfirmation = null)
         {
             SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             SourceExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 {
                     if (bodyauthenticationToView != null)
                     {
-                        body["authenticationToView"] = SourceExpressionConverter.Convert(bodyauthenticationToView);
+                        body["authenticationToView"] = SourceExpressionConverter.ConvertToken(bodyauthenticationToView);
                         bodypropCount++;
                     }
 
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 {
                     if (bodyauthenticationToViewArchived != null)
                     {
-                        body["authenticationToViewArchived"] = SourceExpressionConverter.Convert(bodyauthenticationToViewArchived);
+                        body["authenticationToViewArchived"] = SourceExpressionConverter.ConvertToken(bodyauthenticationToViewArchived);
                         bodypropCount++;
                     }
 
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 {
                     if (bodyauthenticationToSign != null)
                     {
-                        body["authenticationToSign"] = SourceExpressionConverter.Convert(bodyauthenticationToSign);
+                        body["authenticationToSign"] = SourceExpressionConverter.ConvertToken(bodyauthenticationToSign);
                         bodypropCount++;
                     }
 
@@ -527,11 +527,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction SetAuthorAttachment([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyattachmentName, [WorkflowExpression] Func<bodyrequiredInput> bodyrequired, [WorkflowExpression] Func<bodyaddToSealedFileInput> bodyaddToSealedFile, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodypdfContent = null)
+        public IWorkflowAction SetAuthorAttachment([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyattachmentName, [WorkflowExpression] Func<bodyRequiredInput> bodyRequired, [WorkflowExpression] Func<bodyaddToSealedFileInput> bodyaddToSealedFile, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodypdfContent = null)
         {
             SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             SourceExpression.Validate(bodyattachmentName, nameof(bodyattachmentName), required: true);
-            SourceExpression.Validate(bodyrequired, nameof(bodyrequired), required: true);
+            SourceExpression.Validate(bodyRequired, nameof(bodyRequired), required: true);
             SourceExpression.Validate(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
             SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
             SourceExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: false);
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 bodypropCount++;
                 body["attachmentName"] = SourceExpressionConverter.ConvertToken(bodyattachmentName);
                 bodypropCount++;
-                body["required"] = SourceExpressionConverter.Convert(bodyrequired);
+                body["required"] = SourceExpressionConverter.Convert(bodyRequired);
                 bodypropCount++;
                 body["addToSealedFile"] = SourceExpressionConverter.Convert(bodyaddToSealedFile);
                 if (bodypdfContent != null)
@@ -628,7 +628,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var apiCallPath = "/trigger/polling/signed";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["pollTime"] = Convert.ToString("init");
                 return callPayload;
             }
 
@@ -668,66 +667,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         Api
     }
 
-    public enum bodyauthenticationToViewInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "verimi")]
-        Verimi,
-        [EnumMember(Value = "nl_idin")]
-        NlIdin
-    }
-
-    public enum bodyauthenticationToViewArchivedInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "verimi")]
-        Verimi,
-        [EnumMember(Value = "nl_idin")]
-        NlIdin
-    }
-
-    public enum bodyauthenticationToSignInput
-    {
-        [EnumMember(Value = "standard")]
-        Standard,
-        [EnumMember(Value = "sms_pin")]
-        SmsPin,
-        [EnumMember(Value = "se_bankid")]
-        SeBankid,
-        [EnumMember(Value = "no_bankid")]
-        NoBankid,
-        [EnumMember(Value = "dk_nemid")]
-        DkNemid,
-        [EnumMember(Value = "fi_tupas")]
-        FiTupas,
-        [EnumMember(Value = "onfido_document_check")]
-        OnfidoDocumentCheck,
-        [EnumMember(Value = "onfido_document_and_photo_check")]
-        OnfidoDocumentAndPhotoCheck
-    }
-
     public enum bodyconfirmationInput
     {
         [EnumMember(Value = "email")]
@@ -744,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         None
     }
 
-    public enum bodyrequiredInput
+    public enum bodyRequiredInput
     {
         Yes,
         No
@@ -758,15 +697,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class PollSignedDocumentsResponse
     {
-        [JsonProperty("pollTime")]
-        public string PollTime { get; set; }
-
         [JsonProperty("documents")]
         public PollSignedDocumentsResponseDocumentsTypeItem[] Documents { get; set; }
     }
 
     public class PollSignedDocumentsResponseDocumentsTypeItem
     {
+        [JsonProperty("mtime")]
+        public string Mtime { get; set; }
+
         [JsonProperty("documentId")]
         public string DocumentId { get; set; }
     }

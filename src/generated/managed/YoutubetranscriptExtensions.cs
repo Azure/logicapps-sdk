@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoID)
+        public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoId)
         {
-            SourceExpression.Validate(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            SourceExpression.Validate(bodyyouTubeVideoId, nameof(bodyyouTubeVideoId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
                 }
 
                 bodypropCount++;
-                body["externalVideoId"] = SourceExpressionConverter.ConvertToken(bodyyouTubeVideoID);
+                body["externalVideoId"] = SourceExpressionConverter.ConvertToken(bodyyouTubeVideoId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

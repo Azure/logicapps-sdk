@@ -12,15 +12,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
     public class WmataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses([WorkflowExpression] Func<string> stopID)
+        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses([WorkflowExpression] Func<string> stopId)
         {
-            SourceExpression.Validate(stopID, nameof(stopID), required: true);
+            SourceExpression.Validate(stopId, nameof(stopId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/NextBusService.svc/json/jPredictions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopID);
+                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopId);
                 return callPayload;
             }
 
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions([WorkflowExpression] Func<string> routeID = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
+        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions([WorkflowExpression] Func<string> routeId = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            SourceExpression.Validate(routeID, nameof(routeID), required: false);
+            SourceExpression.Validate(routeId, nameof(routeId), required: false);
             SourceExpression.Validate(lat, nameof(lat), required: false);
             SourceExpression.Validate(lon, nameof(lon), required: false);
             SourceExpression.Validate(radius, nameof(radius), required: false);
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
                 var apiCallPath = "/Bus.svc/json/jBusPositions";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (routeID != null)
-                    callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                if (routeId != null)
+                    callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeId);
                 if (lat != null)
                     callPayload.Queries["Lat"] = SourceExpressionConverter.ConvertO(lat);
                 if (lon != null)
@@ -54,16 +54,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(routeID, nameof(routeID), required: true);
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jRouteDetails";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeId);
                 if (date != null)
                     callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
                 return callPayload;
@@ -87,16 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(routeID, nameof(routeID), required: true);
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
             SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jRouteSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeId);
                 if (date != null)
                     callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
                 return callPayload;
@@ -106,16 +106,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule([WorkflowExpression] Func<string> stopID, [WorkflowExpression] Func<string> date = null)
+        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule([WorkflowExpression] Func<string> stopId, [WorkflowExpression] Func<string> date = null)
         {
-            SourceExpression.Validate(stopID, nameof(stopID), required: true);
+            SourceExpression.Validate(stopId, nameof(stopId), required: true);
             SourceExpression.Validate(date, nameof(date), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Bus.svc/json/jStopSchedule";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopID);
+                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopId);
                 if (date != null)
                     callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
                 return callPayload;

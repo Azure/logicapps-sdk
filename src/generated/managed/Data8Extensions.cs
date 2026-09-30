@@ -455,14 +455,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased([WorkflowExpression] Func<string> bodyrecordnamesurname, [WorkflowExpression] Func<string[]> bodyrecordaddresslines, [WorkflowExpression] Func<bool> bodymarketing, [WorkflowExpression] Func<string> bodyrecordnametitle = null, [WorkflowExpression] Func<string> bodyrecordnameforename = null, [WorkflowExpression] Func<string> bodyrecordnamemiddleName = null, [WorkflowExpression] Func<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
+        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased([WorkflowExpression] Func<string> bodyRecordnamesurname, [WorkflowExpression] Func<string[]> bodyRecordaddresslines, [WorkflowExpression] Func<bool> bodymarketing, [WorkflowExpression] Func<string> bodyRecordnametitle = null, [WorkflowExpression] Func<string> bodyRecordnameforename = null, [WorkflowExpression] Func<string> bodyRecordnamemiddleName = null, [WorkflowExpression] Func<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
         {
-            SourceExpression.Validate(bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
-            SourceExpression.Validate(bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
+            SourceExpression.Validate(bodyRecordnamesurname, nameof(bodyRecordnamesurname), required: true);
+            SourceExpression.Validate(bodyRecordaddresslines, nameof(bodyRecordaddresslines), required: true);
             SourceExpression.Validate(bodymarketing, nameof(bodymarketing), required: true);
-            SourceExpression.Validate(bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
-            SourceExpression.Validate(bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
-            SourceExpression.Validate(bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
+            SourceExpression.Validate(bodyRecordnametitle, nameof(bodyRecordnametitle), required: false);
+            SourceExpression.Validate(bodyRecordnameforename, nameof(bodyRecordnameforename), required: false);
+            SourceExpression.Validate(bodyRecordnamemiddleName, nameof(bodyRecordnamemiddleName), required: false);
             SourceExpression.Validate(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -471,49 +471,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                var recordObject = new JObject();
-                var recordObjectpropCount = 0;
+                var @recordObject = new JObject();
+                var @recordObjectpropCount = 0;
                 var nameObject = new JObject();
                 var nameObjectpropCount = 0;
-                if (bodyrecordnametitle != null)
+                if (bodyRecordnametitle != null)
                 {
-                    nameObject["Title"] = SourceExpressionConverter.ConvertToken(bodyrecordnametitle);
+                    nameObject["Title"] = SourceExpressionConverter.ConvertToken(bodyRecordnametitle);
                     nameObjectpropCount++;
                 }
 
-                if (bodyrecordnameforename != null)
+                if (bodyRecordnameforename != null)
                 {
-                    nameObject["Forename"] = SourceExpressionConverter.ConvertToken(bodyrecordnameforename);
+                    nameObject["Forename"] = SourceExpressionConverter.ConvertToken(bodyRecordnameforename);
                     nameObjectpropCount++;
                 }
 
-                if (bodyrecordnamemiddleName != null)
+                if (bodyRecordnamemiddleName != null)
                 {
-                    nameObject["MiddleName"] = SourceExpressionConverter.ConvertToken(bodyrecordnamemiddleName);
+                    nameObject["MiddleName"] = SourceExpressionConverter.ConvertToken(bodyRecordnamemiddleName);
                     nameObjectpropCount++;
                 }
 
                 nameObjectpropCount++;
-                nameObject["Surname"] = SourceExpressionConverter.ConvertToken(bodyrecordnamesurname);
+                nameObject["Surname"] = SourceExpressionConverter.ConvertToken(bodyRecordnamesurname);
                 if (nameObjectpropCount > 0)
                 {
-                    recordObject["Name"] = nameObject;
-                    recordObjectpropCount++;
+                    @recordObject["Name"] = nameObject;
+                    @recordObjectpropCount++;
                 }
 
                 var addressObject = new JObject();
                 var addressObjectpropCount = 0;
                 addressObjectpropCount++;
-                addressObject["Lines"] = SourceExpressionConverter.ConvertToken(bodyrecordaddresslines);
+                addressObject["Lines"] = SourceExpressionConverter.ConvertToken(bodyRecordaddresslines);
                 if (addressObjectpropCount > 0)
                 {
-                    recordObject["Address"] = addressObject;
-                    recordObjectpropCount++;
+                    @recordObject["Address"] = addressObject;
+                    @recordObjectpropCount++;
                 }
 
-                if (recordObjectpropCount > 0)
+                if (@recordObjectpropCount > 0)
                 {
-                    body["record"] = recordObject;
+                    body["record"] = @recordObject;
                     bodypropCount++;
                 }
 

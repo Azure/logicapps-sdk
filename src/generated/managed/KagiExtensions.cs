@@ -276,7 +276,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         FI,
         FR,
         HU,
-        ID,
+        [EnumMember(Value = "ID")]
+        Id,
         IT,
         JA,
         KO,

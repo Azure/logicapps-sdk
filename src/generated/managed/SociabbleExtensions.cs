@@ -944,72 +944,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStream([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<object> media)
-        {
-            SourceExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
-            SourceExpression.Validate(media, nameof(media), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/medias/ByStream";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrl([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> mediaUrl)
-        {
-            SourceExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
-            SourceExpression.Validate(mediaUrl, nameof(mediaUrl), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/medias/ByUrl";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStreamByFolder([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> media)
-        {
-            SourceExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(media, nameof(media), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/medias/ByStreamByFolder";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrlByFolder([WorkflowExpression] Func<mediaVisibilityInput> mediaVisibility, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> mediaUrl)
-        {
-            SourceExpression.Validate(mediaVisibility, nameof(mediaVisibility), required: true);
-            SourceExpression.Validate(folderId, nameof(folderId), required: true);
-            SourceExpression.Validate(mediaUrl, nameof(mediaUrl), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/medias/ByUrlByFolder";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders([WorkflowExpression] Func<string> culture = null)
         {
             SourceExpression.Validate(culture, nameof(culture), required: false);
@@ -1811,23 +1745,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class UploadMediaResponse
-    {
-        [JsonProperty("mediaId")]
-        public string MediaId { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    public enum mediaVisibilityInput
-    {
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "public")]
-        Public
     }
 
     public class GetFoldersResponse

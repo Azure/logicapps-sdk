@@ -662,7 +662,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         DE,
         HK,
         IN,
-        ID,
+        [EnumMember(Value = "ID")]
+        Id,
         IT,
         JP,
         KR,

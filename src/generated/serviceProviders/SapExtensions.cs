@@ -87,6 +87,52 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> GetCallRfcInputVariantSchemaSwagger([WorkflowExpression] Func<string> inputBodyType = null)
+        {
+            SourceExpression.Validate(inputBodyType, nameof(inputBodyType), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (inputBodyType != null)
+                {
+                    serviceProviderParameters["inputBodyType"] = SourceExpressionConverter.ConvertToken(inputBodyType);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getCallRfcInputVariantSchemaSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> GetCallRfcOutputVariantSchemaSwagger([WorkflowExpression] Func<string> outputBodyType = null)
+        {
+            SourceExpression.Validate(outputBodyType, nameof(outputBodyType), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (outputBodyType != null)
+                {
+                    serviceProviderParameters["outputBodyType"] = SourceExpressionConverter.ConvertToken(outputBodyType);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getCallRfcOutputVariantSchemaSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction([WorkflowExpression] Func<string> tId, [WorkflowExpression] Func<string> queueName = null)
         {
             SourceExpression.Validate(tId, nameof(tId), required: true);
@@ -251,6 +297,25 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> GetSendIDocInputSwagger([WorkflowExpression] Func<string> idocFormat)
+        {
+            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["idocFormat"] = SourceExpressionConverter.ConvertToken(idocFormat);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSendIDocInputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit, [WorkflowExpression] Func<object> body, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<bool> safeType = null)
         {
             SourceExpression.Validate(businessObject, nameof(businessObject), required: true);
@@ -285,6 +350,44 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             }
 
             return new ServiceProviderAction<BapiCallMethodOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<string[]> GetBusinessObjects()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getBusinessObjects", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<string[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<string[]> GetMethodsForBusinessObject([WorkflowExpression] Func<string> businessObject = null)
+        {
+            SourceExpression.Validate(businessObject, nameof(businessObject), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (businessObject != null)
+                {
+                    serviceProviderParameters["businessObject"] = SourceExpressionConverter.ConvertToken(businessObject);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getMethodsForBusinessObject", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
@@ -425,6 +528,66 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> ReadTableResponseDyanmicSchema([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string[]> fieldNames = null, [WorkflowExpression] Func<ReadTableResponseDyanmicSchemaInputReturnFormatType> returnFormat = null)
+        {
+            SourceExpression.Validate(tableName, nameof(tableName), required: true);
+            SourceExpression.Validate(fieldNames, nameof(fieldNames), required: false);
+            SourceExpression.Validate(returnFormat, nameof(returnFormat), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = SourceExpressionConverter.ConvertToken(tableName);
+                if (fieldNames != null)
+                {
+                    serviceProviderParameters["fieldNames"] = SourceExpressionConverter.ConvertToken(fieldNames);
+                }
+
+                if (returnFormat != null)
+                {
+                    serviceProviderParameters["returnFormat"] = SourceExpressionConverter.ConvertToken(returnFormat);
+                }
+                else
+                {
+                    serviceProviderParameters["returnFormat"] = "Json";
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "readTableResponseDyanmicSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IBodyWorkflowAction<JToken> GetSchema([WorkflowExpression] Func<GetSchemaInputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
+        {
+            SourceExpression.Validate(operationType, nameof(operationType), required: true);
+            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["operationType"] = SourceExpressionConverter.ConvertToken(operationType);
+                if (fileNamePrefix != null)
+                {
+                    serviceProviderParameters["fileNamePrefix"] = SourceExpressionConverter.ConvertToken(fileNamePrefix);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> GetSchemaV2([WorkflowExpression] Func<GetSchemaV2InputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
             SourceExpression.Validate(operationType, nameof(operationType), required: true);
@@ -447,6 +610,54 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             }
 
             return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> GetSchemaInputSwagger([WorkflowExpression] Func<string> operationType = null)
+        {
+            SourceExpression.Validate(operationType, nameof(operationType), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (operationType != null)
+                {
+                    serviceProviderParameters["operationType"] = SourceExpressionConverter.ConvertToken(operationType);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaInputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> GetSchemaResponseDyanmicSchema([WorkflowExpression] Func<GetSchemaResponseDyanmicSchemaInputOperationTypeType> operationType, [WorkflowExpression] Func<string> fileNamePrefix = null)
+        {
+            SourceExpression.Validate(operationType, nameof(operationType), required: true);
+            SourceExpression.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["operationType"] = SourceExpressionConverter.ConvertToken(operationType);
+                if (fileNamePrefix != null)
+                {
+                    serviceProviderParameters["fileNamePrefix"] = SourceExpressionConverter.ConvertToken(fileNamePrefix);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "getSchemaResponseDyanmicSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
@@ -487,6 +698,81 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             }
 
             return new ServiceProviderAction<GetIDocStatusOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IWorkflowAction ListRfcs()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "listRfcs", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IWorkflowAction ListRfcGroups()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "listRfcGroups", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IWorkflowAction ListIDocTypes()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "listIDocTypes", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IWorkflowAction ListIDocReleases()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "listIDocReleases", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IWorkflowAction ListIDocExtensions()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "listIDocExtensions", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
@@ -564,6 +850,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IBodyWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> sapAction, [WorkflowExpression] Func<string> body)
+        {
+            SourceExpression.Validate(sapAction, nameof(sapAction), required: true);
+            SourceExpression.Validate(body, nameof(body), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["sapAction"] = SourceExpressionConverter.ConvertToken(sapAction);
+                serviceProviderParameters["body"] = SourceExpressionConverter.ConvertToken(body);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> RunDiagnostics([WorkflowExpression] Func<RunDiagnosticsInputOperationTypeType> operationType)
         {
             SourceExpression.Validate(operationType, nameof(operationType), required: true);
@@ -580,6 +887,71 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
             }
 
             return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> RunDiagnosticsInputSchema([WorkflowExpression] Func<string> operationType = null)
+        {
+            SourceExpression.Validate(operationType, nameof(operationType), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (operationType != null)
+                {
+                    serviceProviderParameters["operationType"] = SourceExpressionConverter.ConvertToken(operationType);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnosticsInputSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> RunDiagnosticsOutputSchema([WorkflowExpression] Func<string> operationType = null)
+        {
+            SourceExpression.Validate(operationType, nameof(operationType), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                if (operationType != null)
+                {
+                    serviceProviderParameters["operationType"] = SourceExpressionConverter.ConvertToken(operationType);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "runDiagnosticsOutputSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
+        public IOutputWorkflowAction<JToken> SapTriggerInputSchema([WorkflowExpression] Func<SapTriggerInputSchemaInputIdocFormatType> idocFormat)
+        {
+            SourceExpression.Validate(idocFormat, nameof(idocFormat), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["idocFormat"] = SourceExpressionConverter.ConvertToken(idocFormat);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sap", operationId: "sapTriggerInputSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
     }
 
@@ -644,92 +1016,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
             return new ServiceProviderTrigger<SapTriggerOutput>(BuildSourceInput);
         }
-    }
-
-    public class SapTriggerOutput
-    {
-        [JsonProperty("content")]
-        public JToken Content { get; set; }
-
-        [JsonProperty("rfcServerContext")]
-        public SapTriggerOutputRfcServerContextType RfcServerContext { get; set; }
-    }
-
-    public class SapTriggerOutputRfcServerContextType
-    {
-        public string FunctionName { get; set; }
-        public SapTriggerOutputRfcServerContextTypeSystemAttributesType SystemAttributes { get; set; }
-        public string SessionId { get; set; }
-        public SapTriggerOutputRfcServerContextTypeTransactionIdType TransactionId { get; set; }
-        public SapTriggerOutputRfcServerContextTypeUnitIdType UnitId { get; set; }
-        public SapTriggerOutputRfcServerContextTypeUnitAttributesType UnitAttributes { get; set; }
-        public string[] QueueNames { get; set; }
-        public bool InTransaction { get; set; }
-        public bool Stateful { get; set; }
-    }
-
-    public class SapTriggerOutputRfcServerContextTypeSystemAttributesType
-    {
-        public string SystemId { get; set; }
-        public string Client { get; set; }
-        public string User { get; set; }
-        public string Language { get; set; }
-        public string IsoLanguage { get; set; }
-        public string PartnerHost { get; set; }
-        public string HostName { get; set; }
-        public string Destination { get; set; }
-        public string SystemNumber { get; set; }
-        public int PartnerReleaseNumber { get; set; }
-        public string PartnerRelease { get; set; }
-        public string KernelRelease { get; set; }
-        public string Release { get; set; }
-        public int CodePage { get; set; }
-        public int PartnerCodePage { get; set; }
-        public string PartnerType { get; set; }
-        public string RfcRole { get; set; }
-    }
-
-    public class SapTriggerOutputRfcServerContextTypeTransactionIdType
-    {
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
-        public string Tid { get; set; }
-    }
-
-    public class SapTriggerOutputRfcServerContextTypeUnitIdType
-    {
-        public SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType UnitType { get; set; }
-        public string Uuid { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType
-    {
-        Queued,
-        Transactional
-    }
-
-    public class SapTriggerOutputRfcServerContextTypeUnitAttributesType
-    {
-        public bool KernelTrace { get; set; }
-        public bool SatTrace { get; set; }
-        public bool UnitHistory { get; set; }
-        public bool Hold { get; set; }
-        public bool NoCommitCheck { get; set; }
-        public string User { get; set; }
-        public string Client { get; set; }
-        public string TCode { get; set; }
-        public string Program { get; set; }
-        public string Hostname { get; set; }
-        public string SendingDateTime { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum SapTriggerInputIdocFormatType
-    {
-        MicrosoftLobNamespaceXml,
-        SapPlainXml,
-        FlatFile
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -1015,6 +1301,24 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
+    public enum ReadTableResponseDyanmicSchemaInputReturnFormatType
+    {
+        Xml,
+        Json,
+        ExpandedJson
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GetSchemaInputOperationTypeType
+    {
+        BAPI,
+        RFC,
+        IDoc,
+        [EnumMember(Value = "tRFC")]
+        TRFC
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum GetSchemaV2InputOperationTypeType
     {
         BAPI,
@@ -1022,6 +1326,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         IDoc,
         [EnumMember(Value = "tRFC")]
         TRFC
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GetSchemaResponseDyanmicSchemaInputOperationTypeType
+    {
+        Bapi,
+        Rfc,
+        IDoc,
+        Trfc,
+        RFC
     }
 
     public class GetIDocListOutput
@@ -1060,6 +1374,100 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         CheckRFCDestination,
         [EnumMember(Value = "Get destination type")]
         GetDestinationType
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SapTriggerInputSchemaInputIdocFormatType
+    {
+        MicrosoftLobNamespaceXml,
+        SapPlainXml,
+        FlatFile
+    }
+
+    public class SapTriggerOutput
+    {
+        [JsonProperty("content")]
+        public JToken Content { get; set; }
+
+        [JsonProperty("rfcServerContext")]
+        public SapTriggerOutputRfcServerContextType RfcServerContext { get; set; }
+    }
+
+    public class SapTriggerOutputRfcServerContextType
+    {
+        public string FunctionName { get; set; }
+        public SapTriggerOutputRfcServerContextTypeSystemAttributesType SystemAttributes { get; set; }
+        public string SessionId { get; set; }
+        public SapTriggerOutputRfcServerContextTypeTransactionIdType TransactionId { get; set; }
+        public SapTriggerOutputRfcServerContextTypeUnitIdType UnitId { get; set; }
+        public SapTriggerOutputRfcServerContextTypeUnitAttributesType UnitAttributes { get; set; }
+        public string[] QueueNames { get; set; }
+        public bool InTransaction { get; set; }
+        public bool Stateful { get; set; }
+    }
+
+    public class SapTriggerOutputRfcServerContextTypeSystemAttributesType
+    {
+        public string SystemId { get; set; }
+        public string Client { get; set; }
+        public string User { get; set; }
+        public string Language { get; set; }
+        public string IsoLanguage { get; set; }
+        public string PartnerHost { get; set; }
+        public string HostName { get; set; }
+        public string Destination { get; set; }
+        public string SystemNumber { get; set; }
+        public int PartnerReleaseNumber { get; set; }
+        public string PartnerRelease { get; set; }
+        public string KernelRelease { get; set; }
+        public string Release { get; set; }
+        public int CodePage { get; set; }
+        public int PartnerCodePage { get; set; }
+        public string PartnerType { get; set; }
+        public string RfcRole { get; set; }
+    }
+
+    public class SapTriggerOutputRfcServerContextTypeTransactionIdType
+    {
+        [JsonProperty("Guid")]
+        public string Id { get; set; }
+        public string Tid { get; set; }
+    }
+
+    public class SapTriggerOutputRfcServerContextTypeUnitIdType
+    {
+        public SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType UnitType { get; set; }
+        public string Uuid { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType
+    {
+        Queued,
+        Transactional
+    }
+
+    public class SapTriggerOutputRfcServerContextTypeUnitAttributesType
+    {
+        public bool KernelTrace { get; set; }
+        public bool SatTrace { get; set; }
+        public bool UnitHistory { get; set; }
+        public bool Hold { get; set; }
+        public bool NoCommitCheck { get; set; }
+        public string User { get; set; }
+        public string Client { get; set; }
+        public string TCode { get; set; }
+        public string Program { get; set; }
+        public string Hostname { get; set; }
+        public string SendingDateTime { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SapTriggerInputIdocFormatType
+    {
+        MicrosoftLobNamespaceXml,
+        SapPlainXml,
+        FlatFile
     }
 }
 

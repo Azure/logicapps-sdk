@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
     public class WordonlinebusinessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string> CreateFileItem([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> file, [WorkflowExpression] Func<object> dynamicFileSchema = null)
+        public IBodyWorkflowAction<string> CreateFileItem([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<object> dynamicFileSchema = null)
         {
             SourceExpression.Validate(source, nameof(source), required: true);
             SourceExpression.Validate(drive, nameof(drive), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(@file, nameof(@file), required: true);
             SourceExpression.Validate(dynamicFileSchema, nameof(dynamicFileSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
                 callPayload.Queries["drive"] = SourceExpressionConverter.ConvertO(drive);
-                callPayload.Queries["file"] = SourceExpressionConverter.ConvertO(file);
+                callPayload.Queries["file"] = SourceExpressionConverter.ConvertO(@file);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicFileSchema);
                 return callPayload;
             }
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string> GetFilePDF([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> file, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<string> GetFilePDF([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> @file, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
             SourceExpression.Validate(source, nameof(source), required: true);
             SourceExpression.Validate(drive, nameof(drive), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(@file, nameof(@file), required: true);
             SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             SourceExpression.Validate(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
                 callPayload.Queries["drive"] = SourceExpressionConverter.ConvertO(drive);
-                callPayload.Queries["file"] = SourceExpressionConverter.ConvertO(file);
+                callPayload.Queries["file"] = SourceExpressionConverter.ConvertO(@file);
                 if (extractSensitivityLabel != null)
                     callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
                 if (fetchSensitivityLabelMetadata != null)

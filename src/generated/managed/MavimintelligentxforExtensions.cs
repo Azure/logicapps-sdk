@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
                 callPayload.Queries["range"] = Convert.ToString(0);
                 if (range != null)
                     callPayload.Queries["range"] = SourceExpressionConverter.ConvertO(range);
-                callPayload.Queries["dataLanguage"] = Convert.ToString("en");
+                callPayload.Queries["data-language"] = Convert.ToString("en");
                 if (dataLanguage != null)
-                    callPayload.Queries["dataLanguage"] = SourceExpressionConverter.Convert(dataLanguage);
+                    callPayload.Queries["data-language"] = SourceExpressionConverter.Convert(dataLanguage);
                 return callPayload;
             }
 

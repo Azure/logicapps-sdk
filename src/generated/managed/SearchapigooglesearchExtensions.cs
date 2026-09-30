@@ -1489,18 +1489,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
 
     public enum nfprInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum filterInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum safeInput

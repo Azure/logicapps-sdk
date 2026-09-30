@@ -176,15 +176,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileID = null, [WorkflowExpression] Func<string> requestBodytaskID = null, [WorkflowExpression] Func<string> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileId = null, [WorkflowExpression] Func<string> requestBodytaskId = null, [WorkflowExpression] Func<string> requestBodystatus = null)
         {
             SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
             SourceExpression.Validate(requestBodyassignee, nameof(requestBodyassignee), required: false);
             SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
             SourceExpression.Validate(requestBodydueDate, nameof(requestBodydueDate), required: false);
-            SourceExpression.Validate(requestBodyfileID, nameof(requestBodyfileID), required: false);
-            SourceExpression.Validate(requestBodytaskID, nameof(requestBodytaskID), required: false);
+            SourceExpression.Validate(requestBodyfileId, nameof(requestBodyfileId), required: false);
+            SourceExpression.Validate(requestBodytaskId, nameof(requestBodytaskId), required: false);
             SourceExpression.Validate(requestBodystatus, nameof(requestBodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -211,15 +211,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
                     requestBodypropCount++;
                 }
 
-                if (requestBodyfileID != null)
+                if (requestBodyfileId != null)
                 {
-                    requestBody["fileId"] = SourceExpressionConverter.ConvertToken(requestBodyfileID);
+                    requestBody["fileId"] = SourceExpressionConverter.ConvertToken(requestBodyfileId);
                     requestBodypropCount++;
                 }
 
-                if (requestBodytaskID != null)
+                if (requestBodytaskId != null)
                 {
-                    requestBody["id"] = SourceExpressionConverter.ConvertToken(requestBodytaskID);
+                    requestBody["id"] = SourceExpressionConverter.ConvertToken(requestBodytaskId);
                     requestBodypropCount++;
                 }
 

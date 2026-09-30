@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     public class BlackbaudcrmprospectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport> CreateUnplannedContactReport([WorkflowExpression] Func<string> bodyplanID, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodyactualDate, [WorkflowExpression] Func<string> bodystage, [WorkflowExpression] Func<string> bodycontactMethod, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportParticipant[]> bodyparticipants = null)
+        public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport> CreateUnplannedContactReport([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodyactualDate, [WorkflowExpression] Func<string> bodystage, [WorkflowExpression] Func<string> bodycontactMethod, [WorkflowExpression] Func<string> bodycomment, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewUnplannedContactReportParticipant[]> bodyparticipants = null)
         {
-            SourceExpression.Validate(bodyplanID, nameof(bodyplanID), required: true);
+            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
             SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
             SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: true);
             SourceExpression.Validate(bodystage, nameof(bodystage), required: true);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanID);
+                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
                 bodypropCount++;
                 body["objective"] = SourceExpressionConverter.ConvertToken(bodyobjective);
                 if (bodyowner != null)
@@ -250,9 +250,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity> CreateProspectOpportunity([WorkflowExpression] Func<string> bodyplanID, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<double> bodyexpectedAskAmount = null, [WorkflowExpression] Func<string> bodyexpectedAskDate = null, [WorkflowExpression] Func<string> bodylikelihood = null, [WorkflowExpression] Func<double> bodyaskAmount = null, [WorkflowExpression] Func<string> bodyaskDate = null, [WorkflowExpression] Func<double> bodyacceptedAmount = null, [WorkflowExpression] Func<string> bodyresponseDate = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytransactionCurrency = null)
+        public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity> CreateProspectOpportunity([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<double> bodyexpectedAskAmount = null, [WorkflowExpression] Func<string> bodyexpectedAskDate = null, [WorkflowExpression] Func<string> bodylikelihood = null, [WorkflowExpression] Func<double> bodyaskAmount = null, [WorkflowExpression] Func<string> bodyaskDate = null, [WorkflowExpression] Func<double> bodyacceptedAmount = null, [WorkflowExpression] Func<string> bodyresponseDate = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytransactionCurrency = null)
         {
-            SourceExpression.Validate(bodyplanID, nameof(bodyplanID), required: true);
+            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
             SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             SourceExpression.Validate(bodyexpectedAskAmount, nameof(bodyexpectedAskAmount), required: false);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanID);
+                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
                 bodypropCount++;
                 body["status"] = SourceExpressionConverter.Convert(bodystatus);
                 if (bodytype != null)
@@ -548,16 +548,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan> CreateMajorGivingPlan([WorkflowExpression] Func<string> bodyprospectID, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodynarrative = null, [WorkflowExpression] Func<string> bodyprimaryManagerID = null, [WorkflowExpression] Func<string> bodyprimaryStartDate = null, [WorkflowExpression] Func<string> bodysecondaryManagerID = null, [WorkflowExpression] Func<string> bodysecondaryStartDate = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanSecondaryFundraiser[]> bodyfundraisers = null)
+        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan> CreateMajorGivingPlan([WorkflowExpression] Func<string> bodyprospectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodynarrative = null, [WorkflowExpression] Func<string> bodyprimaryManagerId = null, [WorkflowExpression] Func<string> bodyprimaryStartDate = null, [WorkflowExpression] Func<string> bodysecondaryManagerId = null, [WorkflowExpression] Func<string> bodysecondaryStartDate = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanSecondaryFundraiser[]> bodyfundraisers = null)
         {
-            SourceExpression.Validate(bodyprospectID, nameof(bodyprospectID), required: true);
+            SourceExpression.Validate(bodyprospectId, nameof(bodyprospectId), required: true);
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
             SourceExpression.Validate(bodynarrative, nameof(bodynarrative), required: false);
-            SourceExpression.Validate(bodyprimaryManagerID, nameof(bodyprimaryManagerID), required: false);
+            SourceExpression.Validate(bodyprimaryManagerId, nameof(bodyprimaryManagerId), required: false);
             SourceExpression.Validate(bodyprimaryStartDate, nameof(bodyprimaryStartDate), required: false);
-            SourceExpression.Validate(bodysecondaryManagerID, nameof(bodysecondaryManagerID), required: false);
+            SourceExpression.Validate(bodysecondaryManagerId, nameof(bodysecondaryManagerId), required: false);
             SourceExpression.Validate(bodysecondaryStartDate, nameof(bodysecondaryStartDate), required: false);
             SourceExpression.Validate(bodyparticipants, nameof(bodyparticipants), required: false);
             SourceExpression.Validate(bodyfundraisers, nameof(bodyfundraisers), required: false);
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prospect_id"] = SourceExpressionConverter.ConvertToken(bodyprospectID);
+                body["prospect_id"] = SourceExpressionConverter.ConvertToken(bodyprospectId);
                 bodypropCount++;
                 body["prospect_plan_name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
@@ -586,9 +586,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                     bodypropCount++;
                 }
 
-                if (bodyprimaryManagerID != null)
+                if (bodyprimaryManagerId != null)
                 {
-                    body["primary_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodyprimaryManagerID);
+                    body["primary_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodyprimaryManagerId);
                     bodypropCount++;
                 }
 
@@ -598,9 +598,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                     bodypropCount++;
                 }
 
-                if (bodysecondaryManagerID != null)
+                if (bodysecondaryManagerId != null)
                 {
-                    body["secondary_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodysecondaryManagerID);
+                    body["secondary_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodysecondaryManagerId);
                     bodypropCount++;
                 }
 
@@ -737,10 +737,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction EditProspect([WorkflowExpression] Func<string> constituentId, [WorkflowExpression] Func<string> bodymanagerID = null, [WorkflowExpression] Func<string> bodystatus = null)
+        public IWorkflowAction EditProspect([WorkflowExpression] Func<string> constituentId, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
             SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
-            SourceExpression.Validate(bodymanagerID, nameof(bodymanagerID), required: false);
+            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
             SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -749,9 +749,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymanagerID != null)
+                if (bodymanagerId != null)
                 {
-                    body["prospect_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodymanagerID);
+                    body["prospect_manager_fundraiser_id"] = SourceExpressionConverter.ConvertToken(bodymanagerId);
                     bodypropCount++;
                 }
 
@@ -820,9 +820,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedProspectConstituency> CreateProspectConstituency([WorkflowExpression] Func<string> bodyconstituentID, [WorkflowExpression] Func<string> bodydateFrom = null, [WorkflowExpression] Func<string> bodydateTo = null)
+        public IBodyWorkflowAction<PrsmgCreatedProspectConstituency> CreateProspectConstituency([WorkflowExpression] Func<string> bodyconstituentId, [WorkflowExpression] Func<string> bodydateFrom = null, [WorkflowExpression] Func<string> bodydateTo = null)
         {
-            SourceExpression.Validate(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            SourceExpression.Validate(bodyconstituentId, nameof(bodyconstituentId), required: true);
             SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: false);
             SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = SourceExpressionConverter.ConvertToken(bodyconstituentID);
+                body["constituent_id"] = SourceExpressionConverter.ConvertToken(bodyconstituentId);
                 if (bodydateFrom != null)
                 {
                     body["date_from"] = SourceExpressionConverter.ConvertToken(bodydateFrom);
@@ -857,9 +857,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep> CreateMajorGivingPlanStep([WorkflowExpression] Func<string> bodyplanID, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodyexpectedDate, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodyexpectedStarthour = null, [WorkflowExpression] Func<int> bodyexpectedStartminute = null, [WorkflowExpression] Func<int> bodyexpectedEndhour = null, [WorkflowExpression] Func<int> bodyexpectedEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyotherLocation = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepParticipant[]> bodyparticipants = null)
+        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep> CreateMajorGivingPlanStep([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodyexpectedDate, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodyexpectedStarthour = null, [WorkflowExpression] Func<int> bodyexpectedStartminute = null, [WorkflowExpression] Func<int> bodyexpectedEndhour = null, [WorkflowExpression] Func<int> bodyexpectedEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyotherLocation = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepFundraiser[]> bodyfundraisers = null, [WorkflowExpression] Func<PrsmgNewMajorGivingPlanStepParticipant[]> bodyparticipants = null)
         {
-            SourceExpression.Validate(bodyplanID, nameof(bodyplanID), required: true);
+            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
             SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
             SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanID);
+                body["prospect_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
                 bodypropCount++;
                 body["objective"] = SourceExpressionConverter.ConvertToken(bodyobjective);
                 bodypropCount++;
@@ -1281,14 +1281,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan> CreateStewardshipPlan([WorkflowExpression] Func<string> bodyprospectID, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodysubtype = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodymanagerID = null, [WorkflowExpression] Func<string> bodymanagerStartDate = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanSteward[]> bodystewards = null)
+        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan> CreateStewardshipPlan([WorkflowExpression] Func<string> bodyprospectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodysubtype = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodymanagerId = null, [WorkflowExpression] Func<string> bodymanagerStartDate = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanSteward[]> bodystewards = null)
         {
-            SourceExpression.Validate(bodyprospectID, nameof(bodyprospectID), required: true);
+            SourceExpression.Validate(bodyprospectId, nameof(bodyprospectId), required: true);
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             SourceExpression.Validate(bodysubtype, nameof(bodysubtype), required: false);
             SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: false);
-            SourceExpression.Validate(bodymanagerID, nameof(bodymanagerID), required: false);
+            SourceExpression.Validate(bodymanagerId, nameof(bodymanagerId), required: false);
             SourceExpression.Validate(bodymanagerStartDate, nameof(bodymanagerStartDate), required: false);
             SourceExpression.Validate(bodystewards, nameof(bodystewards), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["constituent_id"] = SourceExpressionConverter.ConvertToken(bodyprospectID);
+                body["constituent_id"] = SourceExpressionConverter.ConvertToken(bodyprospectId);
                 bodypropCount++;
                 body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 if (bodytype != null)
@@ -1320,9 +1320,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                     bodypropCount++;
                 }
 
-                if (bodymanagerID != null)
+                if (bodymanagerId != null)
                 {
-                    body["manager_id"] = SourceExpressionConverter.ConvertToken(bodymanagerID);
+                    body["manager_id"] = SourceExpressionConverter.ConvertToken(bodymanagerId);
                     bodypropCount++;
                 }
 
@@ -1364,9 +1364,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep> CreateStewardshipPlanStep([WorkflowExpression] Func<string> bodyplanID, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytargetDate, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitID = null, [WorkflowExpression] Func<string> bodyeventID = null, [WorkflowExpression] Func<string> bodymailingID = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepAssociatedPlan[]> bodyassociatedPlans = null)
+        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep> CreateStewardshipPlanStep([WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> bodyobjective, [WorkflowExpression] Func<string> bodytargetDate, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitId = null, [WorkflowExpression] Func<string> bodyeventId = null, [WorkflowExpression] Func<string> bodymailingId = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepParticipant[]> bodyparticipants = null, [WorkflowExpression] Func<PrsmgNewStewardshipPlanStepAssociatedPlan[]> bodyassociatedPlans = null)
         {
-            SourceExpression.Validate(bodyplanID, nameof(bodyplanID), required: true);
+            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: true);
             SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: true);
             SourceExpression.Validate(bodytargetDate, nameof(bodytargetDate), required: true);
             SourceExpression.Validate(bodyfrequency, nameof(bodyfrequency), required: true);
@@ -1385,9 +1385,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
             SourceExpression.Validate(bodynextTargetDate, nameof(bodynextTargetDate), required: false);
             SourceExpression.Validate(bodyconnectTo, nameof(bodyconnectTo), required: false);
-            SourceExpression.Validate(bodybenefitID, nameof(bodybenefitID), required: false);
-            SourceExpression.Validate(bodyeventID, nameof(bodyeventID), required: false);
-            SourceExpression.Validate(bodymailingID, nameof(bodymailingID), required: false);
+            SourceExpression.Validate(bodybenefitId, nameof(bodybenefitId), required: false);
+            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
+            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
             SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
             SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
             SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
@@ -1403,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["stewardship_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanID);
+                body["stewardship_plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
                 bodypropCount++;
                 body["objective"] = SourceExpressionConverter.ConvertToken(bodyobjective);
                 bodypropCount++;
@@ -1516,21 +1516,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                     bodypropCount++;
                 }
 
-                if (bodybenefitID != null)
+                if (bodybenefitId != null)
                 {
-                    body["benefit_id"] = SourceExpressionConverter.ConvertToken(bodybenefitID);
+                    body["benefit_id"] = SourceExpressionConverter.ConvertToken(bodybenefitId);
                     bodypropCount++;
                 }
 
-                if (bodyeventID != null)
+                if (bodyeventId != null)
                 {
-                    body["event_id"] = SourceExpressionConverter.ConvertToken(bodyeventID);
+                    body["event_id"] = SourceExpressionConverter.ConvertToken(bodyeventId);
                     bodypropCount++;
                 }
 
-                if (bodymailingID != null)
+                if (bodymailingId != null)
                 {
-                    body["mailing_id"] = SourceExpressionConverter.ConvertToken(bodymailingID);
+                    body["mailing_id"] = SourceExpressionConverter.ConvertToken(bodymailingId);
                     bodypropCount++;
                 }
 
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction EditStewardshipPlanStep([WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<string> bodyobjective = null, [WorkflowExpression] Func<string> bodytargetDate = null, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitID = null, [WorkflowExpression] Func<string> bodyeventID = null, [WorkflowExpression] Func<string> bodymailingID = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null)
+        public IWorkflowAction EditStewardshipPlanStep([WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<string> bodyobjective = null, [WorkflowExpression] Func<string> bodytargetDate = null, [WorkflowExpression] Func<bool> bodylocked = null, [WorkflowExpression] Func<bool> bodyallDayEvent = null, [WorkflowExpression] Func<int> bodytargetStarthour = null, [WorkflowExpression] Func<int> bodytargetStartminute = null, [WorkflowExpression] Func<int> bodytargetEndhour = null, [WorkflowExpression] Func<int> bodytargetEndminute = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodycontactMethod = null, [WorkflowExpression] Func<bodyfrequencyInput> bodyfrequency = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodynextTargetDate = null, [WorkflowExpression] Func<bodyconnectToInput> bodyconnectTo = null, [WorkflowExpression] Func<string> bodybenefitId = null, [WorkflowExpression] Func<string> bodyeventId = null, [WorkflowExpression] Func<string> bodymailingId = null, [WorkflowExpression] Func<string> bodyactualDate = null, [WorkflowExpression] Func<int> bodyactualStarthour = null, [WorkflowExpression] Func<int> bodyactualStartminute = null, [WorkflowExpression] Func<int> bodyactualEndhour = null, [WorkflowExpression] Func<int> bodyactualEndminute = null)
         {
             SourceExpression.Validate(stepId, nameof(stepId), required: true);
             SourceExpression.Validate(bodyobjective, nameof(bodyobjective), required: false);
@@ -1639,9 +1639,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
             SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: false);
             SourceExpression.Validate(bodynextTargetDate, nameof(bodynextTargetDate), required: false);
             SourceExpression.Validate(bodyconnectTo, nameof(bodyconnectTo), required: false);
-            SourceExpression.Validate(bodybenefitID, nameof(bodybenefitID), required: false);
-            SourceExpression.Validate(bodyeventID, nameof(bodyeventID), required: false);
-            SourceExpression.Validate(bodymailingID, nameof(bodymailingID), required: false);
+            SourceExpression.Validate(bodybenefitId, nameof(bodybenefitId), required: false);
+            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: false);
+            SourceExpression.Validate(bodymailingId, nameof(bodymailingId), required: false);
             SourceExpression.Validate(bodyactualDate, nameof(bodyactualDate), required: false);
             SourceExpression.Validate(bodyactualStarthour, nameof(bodyactualStarthour), required: false);
             SourceExpression.Validate(bodyactualStartminute, nameof(bodyactualStartminute), required: false);
@@ -1778,21 +1778,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
                     bodypropCount++;
                 }
 
-                if (bodybenefitID != null)
+                if (bodybenefitId != null)
                 {
-                    body["benefit_id"] = SourceExpressionConverter.ConvertToken(bodybenefitID);
+                    body["benefit_id"] = SourceExpressionConverter.ConvertToken(bodybenefitId);
                     bodypropCount++;
                 }
 
-                if (bodyeventID != null)
+                if (bodyeventId != null)
                 {
-                    body["event_id"] = SourceExpressionConverter.ConvertToken(bodyeventID);
+                    body["event_id"] = SourceExpressionConverter.ConvertToken(bodyeventId);
                     bodypropCount++;
                 }
 
-                if (bodymailingID != null)
+                if (bodymailingId != null)
                 {
-                    body["mailing_id"] = SourceExpressionConverter.ConvertToken(bodymailingID);
+                    body["mailing_id"] = SourceExpressionConverter.ConvertToken(bodymailingId);
                     bodypropCount++;
                 }
 

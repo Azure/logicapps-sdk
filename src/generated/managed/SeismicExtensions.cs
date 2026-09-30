@@ -74,23 +74,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> CreateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> metadata, [WorkflowExpression] Func<object> content)
-        {
-            SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
-            SourceExpression.Validate(metadata, nameof(metadata), required: true);
-            SourceExpression.Validate(content, nameof(content), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> GetItemInformation([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
             SourceExpression.Validate(teamsiteId, nameof(teamsiteId), required: true);
@@ -238,22 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
             }
 
             return new ApiConnectionAction<V2UsersUserResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> CreateFile([WorkflowExpression] Func<string> metadata, [WorkflowExpression] Func<object> content)
-        {
-            SourceExpression.Validate(metadata, nameof(metadata), required: true);
-            SourceExpression.Validate(content, nameof(content), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/workspace/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -532,141 +499,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Name { get; set; }
     }
 
-    public class V2LibraryContentManagementModelsFileResponse
-    {
-        [JsonProperty("assignedToProfiles")]
-        public V2LibraryContentManagementModelsAssignedToProfile[] AssignedToProfiles { get; set; }
-
-        [JsonProperty("createdAt")]
-        public string CreatedAt { get; set; }
-
-        [JsonProperty("createdBy")]
-        public V2CommonCreatedUser CreatedBy { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("experts")]
-        public V2LibraryContentManagementModelsContentExperts[] Experts { get; set; }
-
-        [JsonProperty("expiresAt")]
-        public string ExpiresAt { get; set; }
-
-        [JsonProperty("externalConnectionId")]
-        public string ExternalConnectionId { get; set; }
-
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("modifiedAt")]
-        public string ModifiedAt { get; set; }
-
-        [JsonProperty("modifiedBy")]
-        public V2CommonModifiedUser ModifiedBy { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("ownerId")]
-        public string OwnerId { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-
-        [JsonProperty("properties")]
-        public V2LibraryContentManagementModelsCustomProperties[] Properties { get; set; }
-
-        [JsonProperty("repository")]
-        public string Repository { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("type")]
-        public V2LibraryContentManagementModelsFileResponseTypeType Type { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-    }
-
-    public class V2LibraryContentManagementModelsAssignedToProfile
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class V2CommonCreatedUser
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class V2LibraryContentManagementModelsContentExperts
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class V2CommonModifiedUser
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class V2LibraryContentManagementModelsCustomProperties
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public enum V2LibraryContentManagementModelsFileResponseTypeType
-    {
-        [EnumMember(Value = "unknown")]
-        Unknown,
-        [EnumMember(Value = "file")]
-        File,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "url")]
-        Url,
-        [EnumMember(Value = "youtube")]
-        Youtube,
-        [EnumMember(Value = "vimeo")]
-        Vimeo,
-        [EnumMember(Value = "datasource")]
-        Datasource,
-        [EnumMember(Value = "livedoc")]
-        Livedoc,
-        [EnumMember(Value = "article")]
-        Article,
-        [EnumMember(Value = "livecomponent")]
-        Livecomponent
-    }
-
     public class V2LibraryContentManagementModelsItemResponse
     {
         [JsonProperty("assignedToProfiles")]
@@ -734,6 +566,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
+    }
+
+    public class V2LibraryContentManagementModelsAssignedToProfile
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class V2CommonCreatedUser
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class V2LibraryContentManagementModelsContentExperts
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class V2CommonModifiedUser
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class V2LibraryContentManagementModelsCustomProperties
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
     }
 
     public enum V2LibraryContentManagementModelsItemResponseTypeType
@@ -822,20 +699,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public enum genInputReqoutputsInputItemDocxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public enum genInputReqoutputsInputItemFormatType
@@ -893,20 +763,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public enum genInputReqoutputsInputItemPptxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class genInputReqoutputsInputItemXlsxOptionsType
@@ -1033,82 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Partner
     }
 
-    public class V2WorkSpaceContentManagerModelsWsFileResp
-    {
-        [JsonProperty("applicationUrls")]
-        public V2WorkspaceApplicationUrl[] ApplicationUrls { get; set; }
-
-        [JsonProperty("createdAt")]
-        public string CreatedAt { get; set; }
-
-        [JsonProperty("createdBy")]
-        public V2WorkspaceCreatedUser CreatedBy { get; set; }
-
-        [JsonProperty("deliveryOptions")]
-        public V2WorkspaceDeliveryOption[] DeliveryOptions { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("iconUrl")]
-        public string IconUrl { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("isContextualContent")]
-        public bool IsContextualContent { get; set; }
-
-        [JsonProperty("modifiedAt")]
-        public string ModifiedAt { get; set; }
-
-        [JsonProperty("modifiedBy")]
-        public V2WorkspaceModifiedUser ModifiedBy { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-
-        [JsonProperty("repository")]
-        public string Repository { get; set; }
-
-        [JsonProperty("resourceUrl")]
-        public string ResourceUrl { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("type")]
-        public V2WorkSpaceContentManagerModelsWsFileRespTypeType Type { get; set; }
-
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-    }
-
-    public class V2WorkspaceCreatedUser
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class V2WorkspaceModifiedUser
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public enum V2WorkSpaceContentManagerModelsWsFileRespTypeType
-    {
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "url")]
-        Url,
-        [EnumMember(Value = "file")]
-        File
-    }
-
     public class V2WorkSpaceContentManagerModelsWsFolderResp
     {
         [JsonProperty("applicationUrls")]
@@ -1161,6 +948,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
+    }
+
+    public class V2WorkspaceCreatedUser
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class V2WorkspaceModifiedUser
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public enum V2WorkSpaceContentManagerModelsWsFolderRespTypeType

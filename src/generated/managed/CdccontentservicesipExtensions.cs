@@ -157,12 +157,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tAGID)
+        public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGID, nameof(tAGID), required: true);
+            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -172,12 +172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<MediaTagResponse> MediaTag([WorkflowExpression] Func<string> tAGID)
+        public IBodyWorkflowAction<MediaTagResponse> MediaTag([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGID, nameof(tAGID), required: true);
+            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -187,12 +187,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
-        public IBodyWorkflowAction<TagRelatedResponse> TagRelated([WorkflowExpression] Func<string> tAGID)
+        public IBodyWorkflowAction<TagRelatedResponse> TagRelated([WorkflowExpression] Func<string> tAGId)
         {
-            SourceExpression.Validate(tAGID, nameof(tAGID), required: true);
+            SourceExpression.Validate(tAGId, nameof(tAGId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tAGId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;

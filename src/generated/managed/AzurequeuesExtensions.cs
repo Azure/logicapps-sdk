@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Messages> OnMessages([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages> OnMessagesV2([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
             SourceExpression.Validate(queueName, nameof(queueName), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
             return new ApiConnectionTrigger<Messages>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> OnMessageThresholdReached([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> threshold, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnMessageThresholdReachedV2([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> threshold, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
             SourceExpression.Validate(queueName, nameof(queueName), required: true);
@@ -126,15 +126,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class Messages
     {
-        public MessagesQueueMessagesListType QueueMessagesList { get; set; }
+        public QueueMessagesList QueueMessagesList { get; set; }
     }
 
-    public class MessagesQueueMessagesListType
+    public class QueueMessagesList
     {
-        public MessagesQueueMessagesListTypeQueueMessageTypeItem[] QueueMessage { get; set; }
+        public QueueMessage[] QueueMessage { get; set; }
     }
 
-    public class MessagesQueueMessagesListTypeQueueMessageTypeItem
+    public class QueueMessage
     {
         [JsonProperty("MessageId")]
         public string MessageID { get; set; }
@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [JsonProperty("TimeNextVisible")]
         public string NextVisibleTime { get; set; }
         public string MessageText { get; set; }
+        public string DequeueCount { get; set; }
     }
 
     public class Queue

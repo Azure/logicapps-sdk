@@ -12,21 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile([WorkflowExpression] Func<string> inputFile)
-        {
-            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/virus/scan/file";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<VirusScanResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
         {
             SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
@@ -56,18 +41,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 
     public class CloudmersiveTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class VirusScanResult
-    {
-        public bool CleanResult { get; set; }
-        public VirusFound[] FoundViruses { get; set; }
-    }
-
-    public class VirusFound
-    {
-        public string FileName { get; set; }
-        public string VirusName { get; set; }
     }
 
     public class WebsiteScanResult

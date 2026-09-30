@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse> CreateSeal([WorkflowExpression] Func<string> bodyfile)
+        public IBodyWorkflowAction<CreateSealResponse> CreateSeal([WorkflowExpression] Func<string> bodyFile)
         {
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/CreateSeal";
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<ListSealsResponse> ListSeals([WorkflowExpression] Func<string> bodyfile = null)
+        public IBodyWorkflowAction<ListSealsResponse> ListSeals([WorkflowExpression] Func<string> bodyFile = null)
         {
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/v2/ListSeals";
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfile != null)
+                if (bodyFile != null)
                 {
-                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                     bodypropCount++;
                 }
 
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction VerifySeal([WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<string> bodysealId)
+        public IWorkflowAction VerifySeal([WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<string> bodysealId)
         {
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
             SourceExpression.Validate(bodysealId, nameof(bodysealId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                 bodypropCount++;
                 body["sealId"] = SourceExpressionConverter.ConvertToken(bodysealId);
                 if (bodypropCount > 0)

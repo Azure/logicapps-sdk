@@ -402,10 +402,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyFile, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: true);
             SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                 bodypropCount++;
                 body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -491,12 +491,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch([WorkflowExpression] Func<string> knowledgeId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyfile = null)
+        public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch([WorkflowExpression] Func<string> knowledgeId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyFile = null)
         {
             SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
             SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
@@ -532,9 +532,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
                     bodypropCount++;
                 }
 
-                if (bodyfile != null)
+                if (bodyFile != null)
                 {
-                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                     bodypropCount++;
                 }
 

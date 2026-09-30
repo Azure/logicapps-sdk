@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse> AddNote([WorkflowExpression] Func<int> ticketNumber, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodyagentEmail = null, [WorkflowExpression] Func<string> bodynotifyAgent = null, [WorkflowExpression] Func<bodyprivateInput> bodyprivate = null)
+        public IBodyWorkflowAction<AddNoteResponse> AddNote([WorkflowExpression] Func<int> ticketNumber, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string> bodyagentEmail = null, [WorkflowExpression] Func<string> bodynotifyAgent = null, [WorkflowExpression] Func<bodyPrivateInput> bodyPrivate = null)
         {
             SourceExpression.Validate(ticketNumber, nameof(ticketNumber), required: true);
             SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
             SourceExpression.Validate(bodyagentEmail, nameof(bodyagentEmail), required: false);
             SourceExpression.Validate(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
-            SourceExpression.Validate(bodyprivate, nameof(bodyprivate), required: false);
+            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
@@ -231,11 +231,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                if (bodyprivate != null)
+                if (bodyPrivate != null)
                 {
-                    if (bodyprivate != null)
+                    if (bodyPrivate != null)
                     {
-                        body["Private"] = SourceExpressionConverter.Convert(bodyprivate);
+                        body["Private"] = SourceExpressionConverter.Convert(bodyPrivate);
                         bodypropCount++;
                     }
 
@@ -386,11 +386,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddNoteWebhook([WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyprivateInput> bodyprivate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddNoteWebhook([WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyPrivateInput> bodyPrivate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(bodyagent, nameof(bodyagent), required: false);
             SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
-            SourceExpression.Validate(bodyprivate, nameof(bodyprivate), required: false);
+            SourceExpression.Validate(bodyPrivate, nameof(bodyPrivate), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/power_automate/tickets/add_note_webhook";
@@ -410,9 +410,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                if (bodyprivate != null)
+                if (bodyPrivate != null)
                 {
-                    body["Private"] = SourceExpressionConverter.Convert(bodyprivate);
+                    body["Private"] = SourceExpressionConverter.Convert(bodyPrivate);
                     bodypropCount++;
                 }
 
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Private { get; set; }
     }
 
-    public enum bodyprivateInput
+    public enum bodyPrivateInput
     {
         Yes,
         No

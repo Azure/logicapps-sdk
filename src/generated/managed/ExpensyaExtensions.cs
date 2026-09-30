@@ -1265,102 +1265,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultExportResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListExportFormatResponse
@@ -1384,102 +1336,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultListExportFormatResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListAddOrUpdateEntityResult
@@ -1499,202 +1403,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum AddOrUpdateEntityResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum BaseResultListAddOrUpdateEntityResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class AddOrUpdateProjectInput
@@ -1731,22 +1539,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum AddOrUpdateProjectInputProjectUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public class BaseResult
@@ -1757,102 +1557,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultReportResponse
@@ -1905,24 +1657,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ReportResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "50")]
-        _50
+        _0 = 0,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _50 = 50
     }
 
     public class TagResponse
@@ -1939,154 +1682,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum TagResponseTagTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _1 = 1,
+        _2 = 2
     }
 
     public enum TagResponseUseTypeType
     {
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public enum ListAndPagesCountResultReportResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum reportUpdateStatusInputoperationInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11
+        _0 = 0,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11
     }
 
     public class ListAndPagesCountResultUserResponse
@@ -2159,110 +1834,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UserResponseUserTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum UserResponseUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseManagerUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseReviewerUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseUserRoleType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class ValidatorResponse
@@ -2275,116 +1906,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ListAndPagesCountResultUserResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum quickExpenseInputexpenseUseTypeInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16
     }
 
     public class ListAndPagesCountResultCategoryResponse
@@ -2423,112 +2001,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum CategoryResponseCategoryUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4
+        _1 = 1,
+        _2 = 2,
+        _4 = 4
     }
 
     public enum ListAndPagesCountResultCategoryResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultExpenseResponse
@@ -2606,32 +2133,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ExpenseResponseUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16
     }
 
     public enum ExpenseResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _99 = 99
     }
 
     public class VATResponse
@@ -2686,22 +2202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ProjectResponseProjectUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public class PaymentInstrumentResponse
@@ -2720,32 +2228,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum PaymentInstrumentResponseInstrumentTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _99 = 99
     }
 
     public enum PaymentInstrumentResponseAccountTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class VehicleResponse
@@ -2775,68 +2272,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum VehicleResponseVehicleTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public enum VehicleResponseInternalVehicleTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum VehicleResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "-1")]
-        Negative1
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        Negative1 = -1
     }
 
     public enum VehicleResponseCreationTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum ExpenseResponsePerdiemCalculationPeriodTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum ExpenseResponsePerDiemTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class BrokenRuleResponse
@@ -2858,36 +2334,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BrokenRuleResponseRuleTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum BrokenRuleResponseRuleElementTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum BrokenRuleResponseIntervalTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class TupleStringDecimal
@@ -2906,128 +2371,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ExpenseResponseSubStatusType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024
     }
 
     public enum ListAndPagesCountResultExpenseResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultProjectResponse
@@ -3039,102 +2445,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultProjectResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultProjectResponse
@@ -3148,102 +2506,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ListAndPagesCountResultProjectResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListEventResponse
@@ -3266,334 +2576,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum EventResponseEventTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "17")]
-        _17,
-        [EnumMember(Value = "18")]
-        _18,
-        [EnumMember(Value = "19")]
-        _19,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "23")]
-        _23,
-        [EnumMember(Value = "24")]
-        _24,
-        [EnumMember(Value = "25")]
-        _25,
-        [EnumMember(Value = "26")]
-        _26,
-        [EnumMember(Value = "27")]
-        _27,
-        [EnumMember(Value = "28")]
-        _28,
-        [EnumMember(Value = "29")]
-        _29,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "31")]
-        _31,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "33")]
-        _33,
-        [EnumMember(Value = "34")]
-        _34,
-        [EnumMember(Value = "35")]
-        _35,
-        [EnumMember(Value = "36")]
-        _36,
-        [EnumMember(Value = "37")]
-        _37,
-        [EnumMember(Value = "38")]
-        _38,
-        [EnumMember(Value = "39")]
-        _39,
-        [EnumMember(Value = "41")]
-        _41,
-        [EnumMember(Value = "42")]
-        _42,
-        [EnumMember(Value = "43")]
-        _43,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "106")]
-        _106,
-        [EnumMember(Value = "107")]
-        _107,
-        [EnumMember(Value = "108")]
-        _108,
-        [EnumMember(Value = "109")]
-        _109,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "111")]
-        _111,
-        [EnumMember(Value = "112")]
-        _112,
-        [EnumMember(Value = "113")]
-        _113,
-        [EnumMember(Value = "114")]
-        _114,
-        [EnumMember(Value = "115")]
-        _115,
-        [EnumMember(Value = "116")]
-        _116,
-        [EnumMember(Value = "117")]
-        _117,
-        [EnumMember(Value = "118")]
-        _118,
-        [EnumMember(Value = "119")]
-        _119,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "121")]
-        _121,
-        [EnumMember(Value = "122")]
-        _122,
-        [EnumMember(Value = "123")]
-        _123,
-        [EnumMember(Value = "124")]
-        _124,
-        [EnumMember(Value = "125")]
-        _125,
-        [EnumMember(Value = "126")]
-        _126,
-        [EnumMember(Value = "127")]
-        _127,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "129")]
-        _129
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _16 = 16,
+        _17 = 17,
+        _18 = 18,
+        _19 = 19,
+        _20 = 20,
+        _21 = 21,
+        _22 = 22,
+        _23 = 23,
+        _24 = 24,
+        _25 = 25,
+        _26 = 26,
+        _27 = 27,
+        _28 = 28,
+        _29 = 29,
+        _30 = 30,
+        _31 = 31,
+        _32 = 32,
+        _33 = 33,
+        _34 = 34,
+        _35 = 35,
+        _36 = 36,
+        _37 = 37,
+        _38 = 38,
+        _39 = 39,
+        _41 = 41,
+        _42 = 42,
+        _43 = 43,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _106 = 106,
+        _107 = 107,
+        _108 = 108,
+        _109 = 109,
+        _110 = 110,
+        _111 = 111,
+        _112 = 112,
+        _113 = 113,
+        _114 = 114,
+        _115 = 115,
+        _116 = 116,
+        _117 = 117,
+        _118 = 118,
+        _119 = 119,
+        _120 = 120,
+        _121 = 121,
+        _122 = 122,
+        _123 = 123,
+        _124 = 124,
+        _125 = 125,
+        _126 = 126,
+        _127 = 127,
+        _128 = 128,
+        _129 = 129
     }
 
     public enum BaseResultListEventResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum userInviteInputuserTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum userInviteInputuserRoleInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class ValidatorInput
@@ -3638,180 +2790,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum LoginResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum userUpdateInputuserTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum userUpdateInputuserRoleInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class BaseResultListUpdateUserResult
@@ -3830,202 +2899,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UpdateUserResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum BaseResultListUpdateUserResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class UpdateUserStateInput
@@ -4036,12 +3009,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UpdateUserStateInputOperationType
     {
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 }
 

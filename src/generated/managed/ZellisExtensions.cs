@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyevent, [WorkflowExpression] Func<bool> bodyisEnabled, [WorkflowExpression] Func<bool> bodyeventTypecreate = null, [WorkflowExpression] Func<bool> bodyeventTypedelete = null, [WorkflowExpression] Func<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<bool> bodyisEnabled, [WorkflowExpression] Func<bool> bodyeventTypecreate = null, [WorkflowExpression] Func<bool> bodyeventTypedelete = null, [WorkflowExpression] Func<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyevent, nameof(bodyevent), required: true);
+            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             SourceExpression.Validate(bodyisEnabled, nameof(bodyisEnabled), required: true);
             SourceExpression.Validate(bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
             SourceExpression.Validate(bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["Event"] = SourceExpressionConverter.ConvertToken(bodyevent);
+                body["Event"] = SourceExpressionConverter.ConvertToken(bodyEvent);
                 var eventTypeObject = new JObject();
                 var eventTypeObjectpropCount = 0;
                 if (bodyeventTypecreate != null)

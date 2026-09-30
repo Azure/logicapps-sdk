@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
     public class SmartcommondemanddocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<bool> includeDocumentData, [WorkflowExpression] Func<string> bodytransactionData, [WorkflowExpression] Func<int> bodybatchConfigResId, [WorkflowExpression] Func<int> bodyprojectID = null, [WorkflowExpression] Func<int> bodytransactionRange = null, [WorkflowExpression] Func<bodytransactionDataTypeInput> bodytransactionDataType = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<bool> includeDocumentData, [WorkflowExpression] Func<string> bodytransactionData, [WorkflowExpression] Func<int> bodybatchConfigResId, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodytransactionRange = null, [WorkflowExpression] Func<bodytransactionDataTypeInput> bodytransactionDataType = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
         {
             SourceExpression.Validate(includeDocumentData, nameof(includeDocumentData), required: true);
             SourceExpression.Validate(bodytransactionData, nameof(bodytransactionData), required: true);
             SourceExpression.Validate(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
             SourceExpression.Validate(bodytransactionRange, nameof(bodytransactionRange), required: false);
             SourceExpression.Validate(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
             SourceExpression.Validate(bodyproperties, nameof(bodyproperties), required: false);
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyprojectID != null)
+                if (bodyprojectId != null)
                 {
-                    body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                    body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                     bodypropCount++;
                 }
 

@@ -185,9 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions([WorkflowExpression] Func<string[]> searchActionsBodyauditIDS = null, [WorkflowExpression] Func<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, [WorkflowExpression] Func<string> searchActionsBodycreatedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodycreatedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodydueafterDate = null, [WorkflowExpression] Func<string> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions([WorkflowExpression] Func<string[]> searchActionsBodyauditIdS = null, [WorkflowExpression] Func<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, [WorkflowExpression] Func<string> searchActionsBodycreatedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodycreatedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodydueafterDate = null, [WorkflowExpression] Func<string> searchActionsBodyduebeforeDate = null)
         {
-            SourceExpression.Validate(searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
+            SourceExpression.Validate(searchActionsBodyauditIdS, nameof(searchActionsBodyauditIdS), required: false);
             SourceExpression.Validate(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
             SourceExpression.Validate(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
             SourceExpression.Validate(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
@@ -202,9 +202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var searchActionsBody = new JObject();
                 var searchActionsBodypropCount = 0;
-                if (searchActionsBodyauditIDS != null)
+                if (searchActionsBodyauditIdS != null)
                 {
-                    searchActionsBody["audit_id"] = SourceExpressionConverter.ConvertToken(searchActionsBodyauditIDS);
+                    searchActionsBody["audit_id"] = SourceExpressionConverter.ConvertToken(searchActionsBodyauditIdS);
                     searchActionsBodypropCount++;
                 }
 
@@ -285,10 +285,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action> CreateAction([WorkflowExpression] Func<string> createActionBodyauditID = null, [WorkflowExpression] Func<string> createActionBodyitemID = null, [WorkflowExpression] Func<string> createActionBodytitle = null, [WorkflowExpression] Func<string> createActionBodydescription = null, [WorkflowExpression] Func<createActionBodypriorityInput> createActionBodypriority = null, [WorkflowExpression] Func<createActionBodystatusInput> createActionBodystatus = null, [WorkflowExpression] Func<string> createActionBodydueAt = null, [WorkflowExpression] Func<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action> CreateAction([WorkflowExpression] Func<string> createActionBodyauditId = null, [WorkflowExpression] Func<string> createActionBodyitemId = null, [WorkflowExpression] Func<string> createActionBodytitle = null, [WorkflowExpression] Func<string> createActionBodydescription = null, [WorkflowExpression] Func<createActionBodypriorityInput> createActionBodypriority = null, [WorkflowExpression] Func<createActionBodystatusInput> createActionBodystatus = null, [WorkflowExpression] Func<string> createActionBodydueAt = null, [WorkflowExpression] Func<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
         {
-            SourceExpression.Validate(createActionBodyauditID, nameof(createActionBodyauditID), required: false);
-            SourceExpression.Validate(createActionBodyitemID, nameof(createActionBodyitemID), required: false);
+            SourceExpression.Validate(createActionBodyauditId, nameof(createActionBodyauditId), required: false);
+            SourceExpression.Validate(createActionBodyitemId, nameof(createActionBodyitemId), required: false);
             SourceExpression.Validate(createActionBodytitle, nameof(createActionBodytitle), required: false);
             SourceExpression.Validate(createActionBodydescription, nameof(createActionBodydescription), required: false);
             SourceExpression.Validate(createActionBodypriority, nameof(createActionBodypriority), required: false);
@@ -302,15 +302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var createActionBody = new JObject();
                 var createActionBodypropCount = 0;
-                if (createActionBodyauditID != null)
+                if (createActionBodyauditId != null)
                 {
-                    createActionBody["audit_id"] = SourceExpressionConverter.ConvertToken(createActionBodyauditID);
+                    createActionBody["audit_id"] = SourceExpressionConverter.ConvertToken(createActionBodyauditId);
                     createActionBodypropCount++;
                 }
 
-                if (createActionBodyitemID != null)
+                if (createActionBodyitemId != null)
                 {
-                    createActionBody["item_id"] = SourceExpressionConverter.ConvertToken(createActionBodyitemID);
+                    createActionBody["item_id"] = SourceExpressionConverter.ConvertToken(createActionBodyitemId);
                     createActionBodypropCount++;
                 }
 
@@ -455,11 +455,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatexportFormatInput> formatexportFormat = null, [WorkflowExpression] Func<string> formatpreferenceID = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatexportFormatInput> formatexportFormat = null, [WorkflowExpression] Func<string> formatpreferenceId = null)
         {
             SourceExpression.Validate(auditId, nameof(auditId), required: true);
             SourceExpression.Validate(formatexportFormat, nameof(formatexportFormat), required: false);
-            SourceExpression.Validate(formatpreferenceID, nameof(formatpreferenceID), required: false);
+            SourceExpression.Validate(formatpreferenceId, nameof(formatpreferenceId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
@@ -483,9 +483,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
                     formatpropCount++;
                 }
 
-                if (formatpreferenceID != null)
+                if (formatpreferenceId != null)
                 {
-                    format["preference_id"] = SourceExpressionConverter.ConvertToken(formatpreferenceID);
+                    format["preference_id"] = SourceExpressionConverter.ConvertToken(formatpreferenceId);
                     formatpropCount++;
                 }
 

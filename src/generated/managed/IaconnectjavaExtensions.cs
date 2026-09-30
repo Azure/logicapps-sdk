@@ -333,9 +333,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse> JABGetWindowsAccessBridgeInfo([WorkflowExpression] Func<int> jABGetWindowsAccessBridgeInfovMID, [WorkflowExpression] Func<string> jABGetWindowsAccessBridgeInfoworkflow)
+        public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse> JABGetWindowsAccessBridgeInfo([WorkflowExpression] Func<int> jABGetWindowsAccessBridgeInfovMId, [WorkflowExpression] Func<string> jABGetWindowsAccessBridgeInfoworkflow)
         {
-            SourceExpression.Validate(jABGetWindowsAccessBridgeInfovMID, nameof(jABGetWindowsAccessBridgeInfovMID), required: true);
+            SourceExpression.Validate(jABGetWindowsAccessBridgeInfovMId, nameof(jABGetWindowsAccessBridgeInfovMId), required: true);
             SourceExpression.Validate(jABGetWindowsAccessBridgeInfoworkflow, nameof(jABGetWindowsAccessBridgeInfoworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                 var jABGetWindowsAccessBridgeInfo = new JObject();
                 var jABGetWindowsAccessBridgeInfopropCount = 0;
                 jABGetWindowsAccessBridgeInfopropCount++;
-                jABGetWindowsAccessBridgeInfo["VMID"] = SourceExpressionConverter.ConvertToken(jABGetWindowsAccessBridgeInfovMID);
+                jABGetWindowsAccessBridgeInfo["VMID"] = SourceExpressionConverter.ConvertToken(jABGetWindowsAccessBridgeInfovMId);
                 jABGetWindowsAccessBridgeInfopropCount++;
                 jABGetWindowsAccessBridgeInfo["Workflow"] = SourceExpressionConverter.ConvertToken(jABGetWindowsAccessBridgeInfoworkflow);
                 if (jABGetWindowsAccessBridgeInfopropCount > 0)
@@ -1691,11 +1691,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetDesktopElementsResponse> JABGetDesktopElements([WorkflowExpression] Func<string> jABGetDesktopElementsworkflow, [WorkflowExpression] Func<string> jABGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABGetDesktopElementssearchProcessID = null, [WorkflowExpression] Func<int> jABGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> jABGetDesktopElementssearchChildElements = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxStringLength = null, [WorkflowExpression] Func<bool> jABGetDesktopElementsincludeChildProcesses = null)
+        public IBodyWorkflowAction<JABGetDesktopElementsResponse> JABGetDesktopElements([WorkflowExpression] Func<string> jABGetDesktopElementsworkflow, [WorkflowExpression] Func<string> jABGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABGetDesktopElementssearchProcessId = null, [WorkflowExpression] Func<int> jABGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> jABGetDesktopElementssearchChildElements = null, [WorkflowExpression] Func<int> jABGetDesktopElementsmaxStringLength = null, [WorkflowExpression] Func<bool> jABGetDesktopElementsincludeChildProcesses = null)
         {
             SourceExpression.Validate(jABGetDesktopElementsworkflow, nameof(jABGetDesktopElementsworkflow), required: true);
             SourceExpression.Validate(jABGetDesktopElementssearchElementLocalizedControlType, nameof(jABGetDesktopElementssearchElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABGetDesktopElementssearchProcessID, nameof(jABGetDesktopElementssearchProcessID), required: false);
+            SourceExpression.Validate(jABGetDesktopElementssearchProcessId, nameof(jABGetDesktopElementssearchProcessId), required: false);
             SourceExpression.Validate(jABGetDesktopElementsfirstItemToReturn, nameof(jABGetDesktopElementsfirstItemToReturn), required: false);
             SourceExpression.Validate(jABGetDesktopElementsmaxItemsToReturn, nameof(jABGetDesktopElementsmaxItemsToReturn), required: false);
             SourceExpression.Validate(jABGetDesktopElementssearchChildElements, nameof(jABGetDesktopElementssearchChildElements), required: false);
@@ -1714,11 +1714,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                     jABGetDesktopElementspropCount++;
                 }
 
-                if (jABGetDesktopElementssearchProcessID != null)
+                if (jABGetDesktopElementssearchProcessId != null)
                 {
-                    if (jABGetDesktopElementssearchProcessID != null)
+                    if (jABGetDesktopElementssearchProcessId != null)
                     {
-                        jABGetDesktopElements["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABGetDesktopElementssearchProcessID);
+                        jABGetDesktopElements["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABGetDesktopElementssearchProcessId);
                         jABGetDesktopElementspropCount++;
                     }
 
@@ -1823,13 +1823,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABDoesDesktopElementExistResponse> JABDoesDesktopElementExist([WorkflowExpression] Func<string> jABDoesDesktopElementExistworkflow, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistsearchProcessID = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistsearchChildElements = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistmatchIndex = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchFilter = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsortByColumn = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistincludeChildProcesses = null)
+        public IBodyWorkflowAction<JABDoesDesktopElementExistResponse> JABDoesDesktopElementExist([WorkflowExpression] Func<string> jABDoesDesktopElementExistworkflow, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistsearchProcessId = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistsearchChildElements = null, [WorkflowExpression] Func<int> jABDoesDesktopElementExistmatchIndex = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsearchFilter = null, [WorkflowExpression] Func<string> jABDoesDesktopElementExistsortByColumn = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABDoesDesktopElementExistincludeChildProcesses = null)
         {
             SourceExpression.Validate(jABDoesDesktopElementExistworkflow, nameof(jABDoesDesktopElementExistworkflow), required: true);
             SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementName, nameof(jABDoesDesktopElementExistsearchUIAElementName), required: false);
             SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementClassName, nameof(jABDoesDesktopElementExistsearchUIAElementClassName), required: false);
             SourceExpression.Validate(jABDoesDesktopElementExistsearchUIAElementLocalizedControlType, nameof(jABDoesDesktopElementExistsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABDoesDesktopElementExistsearchProcessID, nameof(jABDoesDesktopElementExistsearchProcessID), required: false);
+            SourceExpression.Validate(jABDoesDesktopElementExistsearchProcessId, nameof(jABDoesDesktopElementExistsearchProcessId), required: false);
             SourceExpression.Validate(jABDoesDesktopElementExistsearchChildElements, nameof(jABDoesDesktopElementExistsearchChildElements), required: false);
             SourceExpression.Validate(jABDoesDesktopElementExistmatchIndex, nameof(jABDoesDesktopElementExistmatchIndex), required: false);
             SourceExpression.Validate(jABDoesDesktopElementExistsearchFilter, nameof(jABDoesDesktopElementExistsearchFilter), required: false);
@@ -1861,11 +1861,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                     jABDoesDesktopElementExistpropCount++;
                 }
 
-                if (jABDoesDesktopElementExistsearchProcessID != null)
+                if (jABDoesDesktopElementExistsearchProcessId != null)
                 {
-                    if (jABDoesDesktopElementExistsearchProcessID != null)
+                    if (jABDoesDesktopElementExistsearchProcessId != null)
                     {
-                        jABDoesDesktopElementExist["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABDoesDesktopElementExistsearchProcessID);
+                        jABDoesDesktopElementExist["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABDoesDesktopElementExistsearchProcessId);
                         jABDoesDesktopElementExistpropCount++;
                     }
 
@@ -1966,14 +1966,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementResponse> JABWaitForDesktopElement([WorkflowExpression] Func<double> jABWaitForDesktopElementsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementsearchProcessID = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementraiseExceptionIfElementNotFound = null)
+        public IBodyWorkflowAction<JABWaitForDesktopElementResponse> JABWaitForDesktopElement([WorkflowExpression] Func<double> jABWaitForDesktopElementsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementsearchProcessId = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementraiseExceptionIfElementNotFound = null)
         {
             SourceExpression.Validate(jABWaitForDesktopElementsecondsToWait, nameof(jABWaitForDesktopElementsecondsToWait), required: true);
             SourceExpression.Validate(jABWaitForDesktopElementworkflow, nameof(jABWaitForDesktopElementworkflow), required: true);
             SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementName, nameof(jABWaitForDesktopElementsearchUIAElementName), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementClassName, nameof(jABWaitForDesktopElementsearchUIAElementClassName), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementsearchUIAElementLocalizedControlType, nameof(jABWaitForDesktopElementsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementsearchProcessID, nameof(jABWaitForDesktopElementsearchProcessID), required: false);
+            SourceExpression.Validate(jABWaitForDesktopElementsearchProcessId, nameof(jABWaitForDesktopElementsearchProcessId), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementsearchChildElements, nameof(jABWaitForDesktopElementsearchChildElements), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementmatchIndex, nameof(jABWaitForDesktopElementmatchIndex), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementsearchFilter, nameof(jABWaitForDesktopElementsearchFilter), required: false);
@@ -2006,11 +2006,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                     jABWaitForDesktopElementpropCount++;
                 }
 
-                if (jABWaitForDesktopElementsearchProcessID != null)
+                if (jABWaitForDesktopElementsearchProcessId != null)
                 {
-                    if (jABWaitForDesktopElementsearchProcessID != null)
+                    if (jABWaitForDesktopElementsearchProcessId != null)
                     {
-                        jABWaitForDesktopElement["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABWaitForDesktopElementsearchProcessID);
+                        jABWaitForDesktopElement["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABWaitForDesktopElementsearchProcessId);
                         jABWaitForDesktopElementpropCount++;
                     }
 
@@ -2129,14 +2129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse> JABWaitForDesktopElementToNotExist([WorkflowExpression] Func<double> jABWaitForDesktopElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistsearchProcessID = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null)
+        public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse> JABWaitForDesktopElementToNotExist([WorkflowExpression] Func<double> jABWaitForDesktopElementToNotExistsecondsToWait, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistworkflow, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementClassName = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistsearchProcessId = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistsearchChildElements = null, [WorkflowExpression] Func<int> jABWaitForDesktopElementToNotExistmatchIndex = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsearchFilter = null, [WorkflowExpression] Func<string> jABWaitForDesktopElementToNotExistsortByColumn = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistmatchIndexAscending = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistincludeChildProcesses = null, [WorkflowExpression] Func<bool> jABWaitForDesktopElementToNotExistraiseExceptionIfElementStillExists = null)
         {
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsecondsToWait, nameof(jABWaitForDesktopElementToNotExistsecondsToWait), required: true);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistworkflow, nameof(jABWaitForDesktopElementToNotExistworkflow), required: true);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementName, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementName), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementClassName, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementClassName), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType, nameof(jABWaitForDesktopElementToNotExistsearchUIAElementLocalizedControlType), required: false);
-            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchProcessID, nameof(jABWaitForDesktopElementToNotExistsearchProcessID), required: false);
+            SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchProcessId, nameof(jABWaitForDesktopElementToNotExistsearchProcessId), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchChildElements, nameof(jABWaitForDesktopElementToNotExistsearchChildElements), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistmatchIndex, nameof(jABWaitForDesktopElementToNotExistmatchIndex), required: false);
             SourceExpression.Validate(jABWaitForDesktopElementToNotExistsearchFilter, nameof(jABWaitForDesktopElementToNotExistsearchFilter), required: false);
@@ -2169,11 +2169,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
                     jABWaitForDesktopElementToNotExistpropCount++;
                 }
 
-                if (jABWaitForDesktopElementToNotExistsearchProcessID != null)
+                if (jABWaitForDesktopElementToNotExistsearchProcessId != null)
                 {
-                    if (jABWaitForDesktopElementToNotExistsearchProcessID != null)
+                    if (jABWaitForDesktopElementToNotExistsearchProcessId != null)
                     {
-                        jABWaitForDesktopElementToNotExist["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABWaitForDesktopElementToNotExistsearchProcessID);
+                        jABWaitForDesktopElementToNotExist["SearchProcessID"] = SourceExpressionConverter.ConvertToken(jABWaitForDesktopElementToNotExistsearchProcessId);
                         jABWaitForDesktopElementToNotExistpropCount++;
                     }
 

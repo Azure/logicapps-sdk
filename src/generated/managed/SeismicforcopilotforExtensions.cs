@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
-        public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions([WorkflowExpression] Func<string> requestBodyresourceType, [WorkflowExpression] Func<string> xMsMessageId = null, [WorkflowExpression] Func<string> xMsConversationId = null, [WorkflowExpression] Func<string> requestBodyresourceDataplainTextBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatafullHTMLBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatasubject = null, [WorkflowExpression] Func<string> requestBodyresourceDatafrom = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatato = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatacC = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatabCC = null, [WorkflowExpression] Func<string> requestBodyresourceDatasentDateTime = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphMessageId = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphConversationID = null, [WorkflowExpression] Func<string> requestBodyrecordType = null, [WorkflowExpression] Func<string> requestBodyrecordID = null, [WorkflowExpression] Func<string> requestBodycRMType = null, [WorkflowExpression] Func<string> requestBodycRMOrgURL = null, [WorkflowExpression] Func<string> requestBodyinputPrompt = null, [WorkflowExpression] Func<int> requestBodytop = null, [WorkflowExpression] Func<int> requestBodyskip = null)
+        public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions([WorkflowExpression] Func<string> requestBodyresourceType, [WorkflowExpression] Func<string> xMsMessageId = null, [WorkflowExpression] Func<string> xMsConversationId = null, [WorkflowExpression] Func<string> requestBodyresourceDataplainTextBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatafullHTMLBody = null, [WorkflowExpression] Func<string> requestBodyresourceDatasubject = null, [WorkflowExpression] Func<string> requestBodyresourceDatafrom = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatato = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatacC = null, [WorkflowExpression] Func<string[]> requestBodyresourceDatabCC = null, [WorkflowExpression] Func<string> requestBodyresourceDatasentDateTime = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphMessageId = null, [WorkflowExpression] Func<string> requestBodyresourceDatatheGraphConversationId = null, [WorkflowExpression] Func<string> requestBodyrecordType = null, [WorkflowExpression] Func<string> requestBodyrecordId = null, [WorkflowExpression] Func<string> requestBodycRMType = null, [WorkflowExpression] Func<string> requestBodycRMOrgURL = null, [WorkflowExpression] Func<string> requestBodyinputPrompt = null, [WorkflowExpression] Func<int> requestBodytop = null, [WorkflowExpression] Func<int> requestBodyskip = null)
         {
             SourceExpression.Validate(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
             SourceExpression.Validate(xMsMessageId, nameof(xMsMessageId), required: false);
@@ -157,9 +157,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
             SourceExpression.Validate(requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
             SourceExpression.Validate(requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
             SourceExpression.Validate(requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
-            SourceExpression.Validate(requestBodyresourceDatatheGraphConversationID, nameof(requestBodyresourceDatatheGraphConversationID), required: false);
+            SourceExpression.Validate(requestBodyresourceDatatheGraphConversationId, nameof(requestBodyresourceDatatheGraphConversationId), required: false);
             SourceExpression.Validate(requestBodyrecordType, nameof(requestBodyrecordType), required: false);
-            SourceExpression.Validate(requestBodyrecordID, nameof(requestBodyrecordID), required: false);
+            SourceExpression.Validate(requestBodyrecordId, nameof(requestBodyrecordId), required: false);
             SourceExpression.Validate(requestBodycRMType, nameof(requestBodycRMType), required: false);
             SourceExpression.Validate(requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
             SourceExpression.Validate(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
@@ -232,9 +232,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                     resourceDataObjectpropCount++;
                 }
 
-                if (requestBodyresourceDatatheGraphConversationID != null)
+                if (requestBodyresourceDatatheGraphConversationId != null)
                 {
-                    resourceDataObject["conversationId"] = SourceExpressionConverter.ConvertToken(requestBodyresourceDatatheGraphConversationID);
+                    resourceDataObject["conversationId"] = SourceExpressionConverter.ConvertToken(requestBodyresourceDatatheGraphConversationId);
                     resourceDataObjectpropCount++;
                 }
 
@@ -252,9 +252,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
                     requestBodypropCount++;
                 }
 
-                if (requestBodyrecordID != null)
+                if (requestBodyrecordId != null)
                 {
-                    requestBody["recordId"] = SourceExpressionConverter.ConvertToken(requestBodyrecordID);
+                    requestBody["recordId"] = SourceExpressionConverter.ConvertToken(requestBodyrecordId);
                     requestBodypropCount++;
                 }
 

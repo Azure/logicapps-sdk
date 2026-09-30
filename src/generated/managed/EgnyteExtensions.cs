@@ -1132,9 +1132,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetFileContentByPath([WorkflowExpression] Func<string> bodyfilePath)
+        public IWorkflowAction GetFileContentByPath([WorkflowExpression] Func<string> bodyfilePath, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
         {
             SourceExpression.Validate(bodyfilePath, nameof(bodyfilePath), required: true);
+            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DownloadFileByPath";
@@ -1144,6 +1145,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["filePath"] = SourceExpressionConverter.ConvertToken(bodyfilePath);
+                if (bodyenableAISafeguards != null)
+                {
+                    if (bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = SourceExpressionConverter.ConvertToken(bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1155,9 +1172,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetFileContentById([WorkflowExpression] Func<string> bodyfileId)
+        public IWorkflowAction GetFileContentById([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
         {
             SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: true);
+            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/DownloadFileById";
@@ -1167,6 +1185,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["fileId"] = SourceExpressionConverter.ConvertToken(bodyfileId);
+                if (bodyenableAISafeguards != null)
+                {
+                    if (bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = SourceExpressionConverter.ConvertToken(bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1354,15 +1388,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyhelpText = null)
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodyhelpText, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodydata = null)
         {
             SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
             SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
+            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: true);
             SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
             SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
             SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
-            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
@@ -1398,12 +1432,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     bodypropCount++;
                 }
 
-                if (bodyhelpText != null)
-                {
-                    body["helpText"] = SourceExpressionConverter.ConvertToken(bodyhelpText);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["helpText"] = SourceExpressionConverter.ConvertToken(bodyhelpText);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -1804,7 +1834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem> GetProjectByRootFolderId([WorkflowExpression] Func<string> bodyrootFolderId)
+        public IBodyWorkflowAction<ProjectItem[]> GetProjectByRootFolderId([WorkflowExpression] Func<string> bodyrootFolderId)
         {
             SourceExpression.Validate(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -1823,7 +1853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 return callPayload;
             }
 
-            return new ApiConnectionAction<ProjectItem>(BuildSourceInput);
+            return new ApiConnectionAction<ProjectItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1867,14 +1897,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction CreateMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodyhelpText = null, [WorkflowExpression] Func<string[]> bodydata = null)
+        public IWorkflowAction CreateMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyhelpText, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
             SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
             SourceExpression.Validate(bodykey, nameof(bodykey), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: true);
             SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
             SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
-            SourceExpression.Validate(bodyhelpText, nameof(bodyhelpText), required: false);
             SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -1901,12 +1931,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     bodypropCount++;
                 }
 
-                if (bodyhelpText != null)
-                {
-                    body["helpText"] = SourceExpressionConverter.ConvertToken(bodyhelpText);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["helpText"] = SourceExpressionConverter.ConvertToken(bodyhelpText);
                 if (bodydata != null)
                 {
                     body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
@@ -2198,82 +2224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             }
 
             return new ApiConnectionAction<DeepLinksByPathResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksResponse> ListLinks([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodycreatedBefore = null, [WorkflowExpression] Func<string> bodycreatedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodycount = null)
-        {
-            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
-            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
-            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
-            SourceExpression.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
-            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
-            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api-proxy/ListLinks";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypath != null)
-                {
-                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
-                    bodypropCount++;
-                }
-
-                if (bodyusername != null)
-                {
-                    body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
-                    bodypropCount++;
-                }
-
-                if (bodycreatedBefore != null)
-                {
-                    body["createdBefore"] = SourceExpressionConverter.ConvertToken(bodycreatedBefore);
-                    bodypropCount++;
-                }
-
-                if (bodycreatedAfter != null)
-                {
-                    body["createdAfter"] = SourceExpressionConverter.ConvertToken(bodycreatedAfter);
-                    bodypropCount++;
-                }
-
-                if (bodytype != null)
-                {
-                    body["type"] = SourceExpressionConverter.Convert(bodytype);
-                    bodypropCount++;
-                }
-
-                if (bodyaccessibility != null)
-                {
-                    body["accessibility"] = SourceExpressionConverter.Convert(bodyaccessibility);
-                    bodypropCount++;
-                }
-
-                if (bodyoffset != null)
-                {
-                    body["offset"] = SourceExpressionConverter.ConvertToken(bodyoffset);
-                    bodypropCount++;
-                }
-
-                if (bodycount != null)
-                {
-                    body["count"] = SourceExpressionConverter.ConvertToken(bodycount);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ListLinksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -2632,9 +2582,550 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<int> bodymodifiedBefore = null, [WorkflowExpression] Func<int> bodymodifiedAfter = null, [WorkflowExpression] Func<int> bodyuploadedBefore = null, [WorkflowExpression] Func<int> bodyuploadedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodysnippetRequested = null, [WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null, [WorkflowExpression] Func<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, [WorkflowExpression] Func<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, [WorkflowExpression] Func<bodyqueryOperatorInput> bodyqueryOperator = null, [WorkflowExpression] Func<string[]> bodymlt = null, [WorkflowExpression] Func<string[]> bodymltt = null)
+        public IBodyWorkflowAction<AICopilotResponse> AskKnowledgeBase([WorkflowExpression] Func<string> bodykbId, [WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
+        {
+            SourceExpression.Validate(bodykbId, nameof(bodykbId), required: true);
+            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: false);
+            SourceExpression.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/AskKnowledgeBase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["kbId"] = SourceExpressionConverter.ConvertToken(bodykbId);
+                if (bodyquestion != null)
+                {
+                    body["question"] = SourceExpressionConverter.ConvertToken(bodyquestion);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeCitations != null)
+                {
+                    if (bodyincludeCitations != null)
+                    {
+                        body["includeCitations"] = SourceExpressionConverter.ConvertToken(bodyincludeCitations);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeCitations"] = false;
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = SourceExpressionConverter.ConvertToken(bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AICopilotResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<KnowledgeBaseListResponse> ListKnowledgeBases([WorkflowExpression] Func<bodysortByInput> bodysortBy, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<int> bodypage = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<int> bodycreatedAfter = null, [WorkflowExpression] Func<int> bodycreatedBefore = null, [WorkflowExpression] Func<bool> bodyincludePlaceholderData = null, [WorkflowExpression] Func<bool> bodyincludeProcessingStatistics = null, [WorkflowExpression] Func<bool> bodyincludePrompts = null)
+        {
+            SourceExpression.Validate(bodysortBy, nameof(bodysortBy), required: true);
+            SourceExpression.Validate(bodysortDirection, nameof(bodysortDirection), required: true);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: true);
+            SourceExpression.Validate(bodypage, nameof(bodypage), required: false);
+            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
+            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
+            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            SourceExpression.Validate(bodyincludePlaceholderData, nameof(bodyincludePlaceholderData), required: false);
+            SourceExpression.Validate(bodyincludeProcessingStatistics, nameof(bodyincludeProcessingStatistics), required: false);
+            SourceExpression.Validate(bodyincludePrompts, nameof(bodyincludePrompts), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/ListKnowledgeBases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sortBy"] = SourceExpressionConverter.Convert(bodysortBy);
+                bodypropCount++;
+                body["sortDirection"] = SourceExpressionConverter.Convert(bodysortDirection);
+                bodypropCount++;
+                body["status"] = SourceExpressionConverter.Convert(bodystatus);
+                if (bodypage != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypage);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBy != null)
+                {
+                    body["createdBy"] = SourceExpressionConverter.ConvertToken(bodycreatedBy);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = SourceExpressionConverter.ConvertToken(bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = SourceExpressionConverter.ConvertToken(bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (bodyincludePlaceholderData != null)
+                {
+                    if (bodyincludePlaceholderData != null)
+                    {
+                        body["includePlaceholderData"] = SourceExpressionConverter.ConvertToken(bodyincludePlaceholderData);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includePlaceholderData"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyincludeProcessingStatistics != null)
+                {
+                    if (bodyincludeProcessingStatistics != null)
+                    {
+                        body["includeProcessingStatistics"] = SourceExpressionConverter.ConvertToken(bodyincludeProcessingStatistics);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeProcessingStatistics"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyincludePrompts != null)
+                {
+                    if (bodyincludePrompts != null)
+                    {
+                        body["includePrompts"] = SourceExpressionConverter.ConvertToken(bodyincludePrompts);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includePrompts"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KnowledgeBaseListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<HybridSearchResponse> HybridSearch([WorkflowExpression] Func<double> bodysemanticWeight, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodyfolderPath = null, [WorkflowExpression] Func<string> bodycollectionId = null, [WorkflowExpression] Func<string> bodycreatedBy = null, [WorkflowExpression] Func<int> bodycreatedAfter = null, [WorkflowExpression] Func<int> bodycreatedBefore = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<string> bodypreferredFolderPath = null, [WorkflowExpression] Func<string[]> bodyexcludeFolderPaths = null, [WorkflowExpression] Func<string[]> bodyfolderPaths = null, [WorkflowExpression] Func<string[]> bodyentryIds = null, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null)
+        {
+            SourceExpression.Validate(bodysemanticWeight, nameof(bodysemanticWeight), required: true);
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodyfolderPath, nameof(bodyfolderPath), required: false);
+            SourceExpression.Validate(bodycollectionId, nameof(bodycollectionId), required: false);
+            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
+            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            SourceExpression.Validate(bodypreferredFolderPath, nameof(bodypreferredFolderPath), required: false);
+            SourceExpression.Validate(bodyexcludeFolderPaths, nameof(bodyexcludeFolderPaths), required: false);
+            SourceExpression.Validate(bodyfolderPaths, nameof(bodyfolderPaths), required: false);
+            SourceExpression.Validate(bodyentryIds, nameof(bodyentryIds), required: false);
+            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/HybridSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["semanticWeight"] = SourceExpressionConverter.ConvertToken(bodysemanticWeight);
+                bodypropCount++;
+                body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                if (bodyfolderPath != null)
+                {
+                    body["folderPath"] = SourceExpressionConverter.ConvertToken(bodyfolderPath);
+                    bodypropCount++;
+                }
+
+                if (bodycollectionId != null)
+                {
+                    body["collectionId"] = SourceExpressionConverter.ConvertToken(bodycollectionId);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBy != null)
+                {
+                    body["createdBy"] = SourceExpressionConverter.ConvertToken(bodycreatedBy);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = SourceExpressionConverter.ConvertToken(bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = SourceExpressionConverter.ConvertToken(bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (bodylimit != null)
+                {
+                    if (bodylimit != null)
+                    {
+                        body["limit"] = SourceExpressionConverter.ConvertToken(bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 100;
+                    bodypropCount++;
+                }
+
+                if (bodypreferredFolderPath != null)
+                {
+                    body["preferredFolderPath"] = SourceExpressionConverter.ConvertToken(bodypreferredFolderPath);
+                    bodypropCount++;
+                }
+
+                if (bodyexcludeFolderPaths != null)
+                {
+                    body["excludeFolderPaths"] = SourceExpressionConverter.ConvertToken(bodyexcludeFolderPaths);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderPaths != null)
+                {
+                    body["folderPaths"] = SourceExpressionConverter.ConvertToken(bodyfolderPaths);
+                    bodypropCount++;
+                }
+
+                if (bodyentryIds != null)
+                {
+                    body["entryIds"] = SourceExpressionConverter.ConvertToken(bodyentryIds);
+                    bodypropCount++;
+                }
+
+                if (bodyenableAISafeguards != null)
+                {
+                    if (bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = SourceExpressionConverter.ConvertToken(bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HybridSearchResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AgentListResponseItem[]> ListAgents([WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortOrderInput> bodysortOrder = null)
+        {
+            SourceExpression.Validate(bodysortBy, nameof(bodysortBy), required: false);
+            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/ListAgents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysortBy != null)
+                {
+                    if (bodysortBy != null)
+                    {
+                        body["sortBy"] = SourceExpressionConverter.Convert(bodysortBy);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sortBy"] = "name";
+                    bodypropCount++;
+                }
+
+                if (bodysortOrder != null)
+                {
+                    if (bodysortOrder != null)
+                    {
+                        body["sortOrder"] = SourceExpressionConverter.Convert(bodysortOrder);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sortOrder"] = "asc";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AgentListResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AskAgentResponse> AskAgent([WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string> bodyconversationId = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null, [WorkflowExpression] Func<string[]> bodyentryIds = null, [WorkflowExpression] Func<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, [WorkflowExpression] Func<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null)
+        {
+            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
+            SourceExpression.Validate(bodyquestion, nameof(bodyquestion), required: true);
+            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: false);
+            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
+            SourceExpression.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            SourceExpression.Validate(bodyentryIds, nameof(bodyentryIds), required: false);
+            SourceExpression.Validate(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
+            SourceExpression.Validate(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/AskAgent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["agentId"] = SourceExpressionConverter.ConvertToken(bodyagentId);
+                bodypropCount++;
+                body["question"] = SourceExpressionConverter.ConvertToken(bodyquestion);
+                if (bodyinstructions != null)
+                {
+                    body["instructions"] = SourceExpressionConverter.ConvertToken(bodyinstructions);
+                    bodypropCount++;
+                }
+
+                if (bodyconversationId != null)
+                {
+                    body["conversationId"] = SourceExpressionConverter.ConvertToken(bodyconversationId);
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = SourceExpressionConverter.ConvertToken(bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodyentryIds != null)
+                {
+                    body["entryIds"] = SourceExpressionConverter.ConvertToken(bodyentryIds);
+                    bodypropCount++;
+                }
+
+                var selectedItemsObject = new JObject();
+                var selectedItemsObjectpropCount = 0;
+                if (bodyselectedItemsfolders != null)
+                {
+                    selectedItemsObject["folders"] = SourceExpressionConverter.ConvertToken(bodyselectedItemsfolders);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (bodyselectedItemsfiles != null)
+                {
+                    selectedItemsObject["files"] = SourceExpressionConverter.ConvertToken(bodyselectedItemsfiles);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (selectedItemsObjectpropCount > 0)
+                {
+                    body["selectedItems"] = selectedItemsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AskAgentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<AgentExecutionStatusResponse> GetAgentExecutionStatus([WorkflowExpression] Func<string> bodyagentId, [WorkflowExpression] Func<string> bodyrequestId)
+        {
+            SourceExpression.Validate(bodyagentId, nameof(bodyagentId), required: true);
+            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/GetAgentExecutionStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["agentId"] = SourceExpressionConverter.ConvertToken(bodyagentId);
+                bodypropCount++;
+                body["requestId"] = SourceExpressionConverter.ConvertToken(bodyrequestId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AgentExecutionStatusResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<ListLinksV2Response> ListLinks([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodycreatedBefore = null, [WorkflowExpression] Func<string> bodycreatedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodycount = null)
+        {
+            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
+            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
+            SourceExpression.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            SourceExpression.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            SourceExpression.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api-proxy/ListLinksV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypath != null)
+                {
+                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodyusername != null)
+                {
+                    body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = SourceExpressionConverter.ConvertToken(bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = SourceExpressionConverter.ConvertToken(bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.Convert(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodyaccessibility != null)
+                {
+                    body["accessibility"] = SourceExpressionConverter.Convert(bodyaccessibility);
+                    bodypropCount++;
+                }
+
+                if (bodyoffset != null)
+                {
+                    body["offset"] = SourceExpressionConverter.ConvertToken(bodyoffset);
+                    bodypropCount++;
+                }
+
+                if (bodycount != null)
+                {
+                    body["count"] = SourceExpressionConverter.ConvertToken(bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListLinksV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        public IBodyWorkflowAction<SearchV2Response> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bool> bodyenableAISafeguards = null, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<int> bodymodifiedBefore = null, [WorkflowExpression] Func<int> bodymodifiedAfter = null, [WorkflowExpression] Func<int> bodyuploadedBefore = null, [WorkflowExpression] Func<int> bodyuploadedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodysnippetRequested = null, [WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null, [WorkflowExpression] Func<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, [WorkflowExpression] Func<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, [WorkflowExpression] Func<bodyqueryOperatorInput> bodyqueryOperator = null, [WorkflowExpression] Func<string[]> bodymlt = null, [WorkflowExpression] Func<string[]> bodymltt = null)
         {
             SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodyenableAISafeguards, nameof(bodyenableAISafeguards), required: false);
             SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
             SourceExpression.Validate(bodycount, nameof(bodycount), required: false);
             SourceExpression.Validate(bodyfolder, nameof(bodyfolder), required: false);
@@ -2660,6 +3151,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                if (bodyenableAISafeguards != null)
+                {
+                    if (bodyenableAISafeguards != null)
+                    {
+                        body["enableAISafeguards"] = SourceExpressionConverter.ConvertToken(bodyenableAISafeguards);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableAISafeguards"] = false;
+                    bodypropCount++;
+                }
+
                 if (bodyoffset != null)
                 {
                     body["offset"] = SourceExpressionConverter.ConvertToken(bodyoffset);
@@ -4533,16 +5040,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public enum bodystatusInput
     {
-        [EnumMember(Value = "pending")]
-        Pending,
-        [EnumMember(Value = "in-progress")]
-        InProgress,
-        [EnumMember(Value = "completed")]
-        Completed,
-        [EnumMember(Value = "on-hold")]
-        OnHold,
-        [EnumMember(Value = "canceled")]
-        Canceled
+        ACTIVE,
+        DELETED,
+        CREATED
     }
 
     public class CreateProjectFromTemplateResponse
@@ -4631,35 +5131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Url { get; set; }
     }
 
-    public class ListLinksResponse
-    {
-        [JsonProperty("ids")]
-        public string[] Ids { get; set; }
-
-        [JsonProperty("offset")]
-        public double Offset { get; set; }
-
-        [JsonProperty("count")]
-        public double Count { get; set; }
-
-        [JsonProperty("total_count")]
-        public double TotalCount { get; set; }
-    }
-
-    public enum bodyaccessibilityInput
-    {
-        [EnumMember(Value = "anyone")]
-        Anyone,
-        [EnumMember(Value = "password")]
-        Password,
-        [EnumMember(Value = "domain")]
-        Domain,
-        [EnumMember(Value = "recipients")]
-        Recipients,
-        [EnumMember(Value = "none")]
-        None
-    }
-
     public class ShowLinkDetailsResponse
     {
         [JsonProperty("links")]
@@ -4745,6 +5216,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }
+    }
+
+    public enum bodyaccessibilityInput
+    {
+        [EnumMember(Value = "anyone")]
+        Anyone,
+        [EnumMember(Value = "password")]
+        Password,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "recipients")]
+        Recipients
     }
 
     public enum bodyprotectionInput
@@ -4836,6 +5319,312 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string EntryId { get; set; }
     }
 
+    public class KnowledgeBaseListResponse
+    {
+        [JsonProperty("content")]
+        public KnowledgeBaseListResponseContentTypeItem[] Content { get; set; }
+
+        [JsonProperty("number")]
+        public int Number { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("first")]
+        public bool First { get; set; }
+
+        [JsonProperty("last")]
+        public bool Last { get; set; }
+
+        [JsonProperty("empty")]
+        public bool Empty { get; set; }
+
+        [JsonProperty("numberOfElements")]
+        public int NumberOfElements { get; set; }
+
+        [JsonProperty("totalElements")]
+        public int TotalElements { get; set; }
+
+        [JsonProperty("totalPages")]
+        public int TotalPages { get; set; }
+
+        [JsonProperty("fileLimit")]
+        public int FileLimit { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("paths")]
+        public KnowledgeBaseListResponseContentTypeItemPathsTypeItem[] Paths { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("createdByUser")]
+        public KnowledgeBaseListResponseContentTypeItemCreatedByUserType CreatedByUser { get; set; }
+
+        [JsonProperty("createdOn")]
+        public int CreatedOn { get; set; }
+
+        [JsonProperty("noResponseMessage")]
+        public string NoResponseMessage { get; set; }
+
+        [JsonProperty("iconName")]
+        public string IconName { get; set; }
+
+        [JsonProperty("subType")]
+        public string SubType { get; set; }
+
+        [JsonProperty("progress")]
+        public int Progress { get; set; }
+
+        [JsonProperty("lastProcessedAt")]
+        public int LastProcessedAt { get; set; }
+
+        [JsonProperty("pathCount")]
+        public int PathCount { get; set; }
+
+        [JsonProperty("prompts")]
+        public JToken[] Prompts { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItemPathsTypeItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("folderId")]
+        public string FolderId { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("permission")]
+        public string Permission { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+    }
+
+    public class KnowledgeBaseListResponseContentTypeItemCreatedByUserType
+    {
+        [JsonProperty("firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("userName")]
+        public string UserName { get; set; }
+
+        [JsonProperty("userId")]
+        public int UserId { get; set; }
+    }
+
+    public enum bodysortByInput
+    {
+        [EnumMember(Value = "last_modified")]
+        LastModified,
+        [EnumMember(Value = "size")]
+        Size,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "score")]
+        Score
+    }
+
+    public enum bodysortDirectionInput
+    {
+        [EnumMember(Value = "ascending")]
+        Ascending,
+        [EnumMember(Value = "descending")]
+        Descending
+    }
+
+    public class HybridSearchResponse
+    {
+        [JsonProperty("results")]
+        public HybridSearchResponseResultsTypeItem[] Results { get; set; }
+    }
+
+    public class HybridSearchResponseResultsTypeItem
+    {
+        [JsonProperty("filename")]
+        public string Filename { get; set; }
+
+        [JsonProperty("entryId")]
+        public string EntryId { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("chunks")]
+        public HybridSearchResponseResultsTypeItemChunksTypeItem[] Chunks { get; set; }
+    }
+
+    public class HybridSearchResponseResultsTypeItemChunksTypeItem
+    {
+        [JsonProperty("chunkId")]
+        public string ChunkId { get; set; }
+
+        [JsonProperty("chunkText")]
+        public string ChunkText { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("score")]
+        public double Score { get; set; }
+    }
+
+    public class AgentListResponseItem
+    {
+        [JsonProperty("agentId")]
+        public string AgentId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("subType")]
+        public string SubType { get; set; }
+
+        [JsonProperty("category")]
+        public string Category { get; set; }
+
+        [JsonProperty("instruction")]
+        public string Instruction { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+    }
+
+    public enum bodysortOrderInput
+    {
+        [EnumMember(Value = "asc")]
+        Asc,
+        [EnumMember(Value = "desc")]
+        Desc
+    }
+
+    public class AskAgentResponse
+    {
+        [JsonProperty("requestId")]
+        public string RequestId { get; set; }
+
+        [JsonProperty("conversationId")]
+        public string ConversationId { get; set; }
+    }
+
+    public class AgentExecutionStatusResponse
+    {
+        [JsonProperty("status")]
+        public AgentExecutionStatusResponseStatusType Status { get; set; }
+
+        [JsonProperty("responseText")]
+        public string ResponseText { get; set; }
+
+        [JsonProperty("citations")]
+        public AgentExecutionStatusResponseCitationsTypeItem[] Citations { get; set; }
+
+        [JsonProperty("lastUpdated")]
+        public int LastUpdated { get; set; }
+    }
+
+    public enum AgentExecutionStatusResponseStatusType
+    {
+        PENDING,
+        RUNNING,
+        COMPLETED,
+        FAILED
+    }
+
+    public class AgentExecutionStatusResponseCitationsTypeItem
+    {
+        [JsonProperty("previewUrl")]
+        public string PreviewUrl { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class ListLinksV2Response
+    {
+        [JsonProperty("links")]
+        public ListLinksV2ResponseLinksTypeItem[] Links { get; set; }
+
+        [JsonProperty("count")]
+        public double Count { get; set; }
+    }
+
+    public class ListLinksV2ResponseLinksTypeItem
+    {
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("accessibility")]
+        public string Accessibility { get; set; }
+
+        [JsonProperty("protection")]
+        public string Protection { get; set; }
+
+        [JsonProperty("recipients")]
+        public string[] Recipients { get; set; }
+
+        [JsonProperty("notify")]
+        public bool Notify { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link_to_current")]
+        public bool LinkToCurrent { get; set; }
+
+        [JsonProperty("creation_date")]
+        public string CreationDate { get; set; }
+
+        [JsonProperty("created_by")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("resource_id")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("expiry_clicks")]
+        public double ExpiryClicks { get; set; }
+
+        [JsonProperty("last_accessed")]
+        public string LastAccessed { get; set; }
+
+        [JsonProperty("expiry_date")]
+        public string ExpiryDate { get; set; }
+    }
+
     public class SearchV2Response
     {
         [JsonProperty("results")]
@@ -4912,26 +5701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("value")]
         public string Value { get; set; }
-    }
-
-    public enum bodysortByInput
-    {
-        [EnumMember(Value = "last_modified")]
-        LastModified,
-        [EnumMember(Value = "size")]
-        Size,
-        [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "score")]
-        Score
-    }
-
-    public enum bodysortDirectionInput
-    {
-        [EnumMember(Value = "ascending")]
-        Ascending,
-        [EnumMember(Value = "descending")]
-        Descending
     }
 
     public enum bodyfileQueryFieldsInputItem

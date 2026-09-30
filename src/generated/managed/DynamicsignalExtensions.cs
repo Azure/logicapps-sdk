@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<DocumentInfoResponse> PutDocument([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<DocumentInfoResponse> PutDocument([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
             SourceExpression.Validate(fileName, nameof(fileName), required: true);
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(file, nameof(file), required: false);
+            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(file);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
                 return callPayload;
             }
 
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse> PreregisterUser([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexternalSsoUserID = null, [WorkflowExpression] Func<string> bodyhandle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<UserTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<bool> bodysendInvitationEmail = null, [WorkflowExpression] Func<string> bodyinvitationMessage = null, [WorkflowExpression] Func<bodynotificationsDefaultInput> bodynotificationsDefault = null, [WorkflowExpression] Func<bool> bodyvaluecanSharePosts = null, [WorkflowExpression] Func<bool> bodyvaluecanCommentPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanSubmitPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanManageOrganization = null)
+        public IBodyWorkflowAction<UserRequestResponse> PreregisterUser([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexternalSsoUserId = null, [WorkflowExpression] Func<string> bodyhandle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<UserTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<bool> bodysendInvitationEmail = null, [WorkflowExpression] Func<string> bodyinvitationMessage = null, [WorkflowExpression] Func<bodynotificationsDefaultInput> bodynotificationsDefault = null, [WorkflowExpression] Func<bool> bodyvaluecanSharePosts = null, [WorkflowExpression] Func<bool> bodyvaluecanCommentPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanSubmitPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanManageOrganization = null)
         {
             SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
-            SourceExpression.Validate(bodyexternalSsoUserID, nameof(bodyexternalSsoUserID), required: false);
+            SourceExpression.Validate(bodyexternalSsoUserId, nameof(bodyexternalSsoUserId), required: false);
             SourceExpression.Validate(bodyhandle, nameof(bodyhandle), required: false);
             SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
             SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
@@ -121,9 +121,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
                     bodypropCount++;
                 }
 
-                if (bodyexternalSsoUserID != null)
+                if (bodyexternalSsoUserId != null)
                 {
-                    body["externalSsoUserId"] = SourceExpressionConverter.ConvertToken(bodyexternalSsoUserID);
+                    body["externalSsoUserId"] = SourceExpressionConverter.ConvertToken(bodyexternalSsoUserId);
                     bodypropCount++;
                 }
 
@@ -224,17 +224,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UploadImageResponse> ManageImage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<UploadImageResponse> ManageImage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(file, nameof(file), required: false);
+            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/manage/images";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(file);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
                 return callPayload;
             }
 
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> Create([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null, [WorkflowExpression] Func<string> bodymemberVideoUrl = null, [WorkflowExpression] Func<bodypostTypeInput> bodypostType = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null, [WorkflowExpression] Func<bodydisplayModeInput> bodydisplayMode = null, [WorkflowExpression] Func<bool> bodysharable = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodysuggestedShareText = null, [WorkflowExpression] Func<string> bodyshortSuggestedShareText = null, [WorkflowExpression] Func<int> bodysharePoints = null, [WorkflowExpression] Func<int> bodyclickPoints = null, [WorkflowExpression] Func<bool> bodyshareWithImages = null, [WorkflowExpression] Func<bool> bodyshareImagesOnly = null, [WorkflowExpression] Func<PostTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodydocuments = null, [WorkflowExpression] Func<int> bodycreatorID = null, [WorkflowExpression] Func<bool> bodydisplayCreator = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null)
+        public IBodyWorkflowAction<PostResponse> Create([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null, [WorkflowExpression] Func<string> bodymemberVideoUrl = null, [WorkflowExpression] Func<bodypostTypeInput> bodypostType = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null, [WorkflowExpression] Func<bodydisplayModeInput> bodydisplayMode = null, [WorkflowExpression] Func<bool> bodysharable = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodysuggestedShareText = null, [WorkflowExpression] Func<string> bodyshortSuggestedShareText = null, [WorkflowExpression] Func<int> bodysharePoints = null, [WorkflowExpression] Func<int> bodyclickPoints = null, [WorkflowExpression] Func<bool> bodyshareWithImages = null, [WorkflowExpression] Func<bool> bodyshareImagesOnly = null, [WorkflowExpression] Func<PostTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodydocuments = null, [WorkflowExpression] Func<int> bodycreatorId = null, [WorkflowExpression] Func<bool> bodydisplayCreator = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null)
         {
             SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
             SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
             SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
             SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
-            SourceExpression.Validate(bodycreatorID, nameof(bodycreatorID), required: false);
+            SourceExpression.Validate(bodycreatorId, nameof(bodycreatorId), required: false);
             SourceExpression.Validate(bodydisplayCreator, nameof(bodydisplayCreator), required: false);
             SourceExpression.Validate(bodycategoryIDs, nameof(bodycategoryIDs), required: false);
             SourceExpression.Validate(bodytargetIDs, nameof(bodytargetIDs), required: false);
@@ -430,9 +430,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
                     bodypropCount++;
                 }
 
-                if (bodycreatorID != null)
+                if (bodycreatorId != null)
                 {
-                    body["creatorId"] = SourceExpressionConverter.ConvertToken(bodycreatorID);
+                    body["creatorId"] = SourceExpressionConverter.ConvertToken(bodycreatorId);
                     bodypropCount++;
                 }
 
@@ -465,18 +465,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> PutImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<SuccessResponse> PutImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(contentType, nameof(contentType), required: true);
-            SourceExpression.Validate(file, nameof(file), required: false);
+            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(file);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
                 return callPayload;
             }
 

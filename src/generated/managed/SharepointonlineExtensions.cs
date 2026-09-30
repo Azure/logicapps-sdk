@@ -12,6 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     public class SharepointonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateAgreementsSolutionDocument([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> template, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> documentName = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(template, nameof(template), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(documentName, nameof(documentName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (documentName != null)
+                    callPayload.Queries["documentName"] = SourceExpressionConverter.ConvertO(documentName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<TablesList> GetAllTables([WorkflowExpression] Func<string> dataset)
         {
             SourceExpression.Validate(dataset, nameof(dataset), required: true);
@@ -273,6 +294,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 callPayload.Queries["inferContentType"] = Convert.ToString(true);
                 if (inferContentType != null)
                     callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<string> GetFileThumbnail([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> size)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(size, nameof(size), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}/thumbnail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
                 return callPayload;
             }
 
@@ -632,6 +671,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             }
 
             return new ApiConnectionAction<SPListExpandedUser>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<TableForm> GetTableForm([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> form)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(form, nameof(form), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/forms/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(form, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TableForm>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> SubmitDocGenForm([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> form, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(form, nameof(form), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/forms/{2}/submitdocgenform", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(form, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
@@ -1180,33 +1258,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateAgreementsSolutionDocument([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> template, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> documentName = null, [WorkflowExpression] Func<string> table = null, [WorkflowExpression] Func<string> view = null)
-        {
-            SourceExpression.Validate(dataset, nameof(dataset), required: true);
-            SourceExpression.Validate(template, nameof(template), required: true);
-            SourceExpression.Validate(item, nameof(item), required: false);
-            SourceExpression.Validate(documentName, nameof(documentName), required: false);
-            SourceExpression.Validate(table, nameof(table), required: false);
-            SourceExpression.Validate(view, nameof(view), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (documentName != null)
-                    callPayload.Queries["documentName"] = SourceExpressionConverter.ConvertO(documentName);
-                if (table != null)
-                    callPayload.Queries["table"] = SourceExpressionConverter.ConvertO(table);
-                if (view != null)
-                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
             SourceExpression.Validate(dataset, nameof(dataset), required: true);
@@ -1326,6 +1377,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
             return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
+        public IBodyWorkflowTrigger<ItemsList> OnNewItemsFromForm([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> form, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(form, nameof(form), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewitemsfromform", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form"] = SourceExpressionConverter.ConvertO(form);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<ItemsList> OnRecurrenceDigest([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<bool> update, [WorkflowExpression] Func<bool> add, [WorkflowExpression] Func<string> runSchedule, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, [WorkflowExpression] Func<string> startTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(update, nameof(update), required: true);
+            SourceExpression.Validate(add, nameof(add), required: true);
+            SourceExpression.Validate(runSchedule, nameof(runSchedule), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            SourceExpression.Validate(startTime, nameof(startTime), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onrecurrencedigest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["update"] = SourceExpressionConverter.ConvertO(update);
+                callPayload.Queries["add"] = SourceExpressionConverter.ConvertO(add);
+                callPayload.Queries["runSchedule"] = SourceExpressionConverter.ConvertO(runSchedule);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                if (startTime != null)
+                    callPayload.Queries["startTime"] = SourceExpressionConverter.ConvertO(startTime);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
+        }
+
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(dataset, nameof(dataset), required: true);
@@ -1430,6 +1531,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
     }
 
+    public class SPBlobMetadataResponse
+    {
+        public int ItemId { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string DisplayName { get; set; }
+        public string Path { get; set; }
+        public string LastModified { get; set; }
+        public int Size { get; set; }
+        public string MediaType { get; set; }
+        public bool IsFolder { get; set; }
+        public string ETag { get; set; }
+        public string FileLocator { get; set; }
+    }
+
     public class TablesList
     {
         [JsonProperty("value")]
@@ -1462,21 +1578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
     public class BlobMetadata
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string DisplayName { get; set; }
-        public string Path { get; set; }
-        public string LastModified { get; set; }
-        public int Size { get; set; }
-        public string MediaType { get; set; }
-        public bool IsFolder { get; set; }
-        public string ETag { get; set; }
-        public string FileLocator { get; set; }
-    }
-
-    public class SPBlobMetadataResponse
-    {
-        public int ItemId { get; set; }
         public string Id { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
@@ -1523,6 +1624,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         [JsonProperty("@odata.type")]
         public string Type { get; set; }
+    }
+
+    public class TableForm
+    {
+        public string FormID { get; set; }
+        public string DisplayName { get; set; }
+        public string Type { get; set; }
+        public string Link { get; set; }
+        public string CreatedBy { get; set; }
+        public string Created { get; set; }
+        public string Modified { get; set; }
+        public string ModifiedBy { get; set; }
+        public string OutputFormat { get; set; }
+        public FormFieldMetadata[] FieldsMetadata { get; set; }
+    }
+
+    public class FormFieldMetadata
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public bool IsRequired { get; set; }
+        public string DataType { get; set; }
+        public string DefaultValue { get; set; }
     }
 
     public class ItemsList

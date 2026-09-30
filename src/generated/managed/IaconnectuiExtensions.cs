@@ -6029,11 +6029,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDesktopElementsResponse> UIAGetDesktopElements([WorkflowExpression] Func<string> uIAGetDesktopElementsworkflow, [WorkflowExpression] Func<string> uIAGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> uIAGetDesktopElementssearchProcessID = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsreturnElementHandle = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsincludeChildProcesses = null)
+        public IBodyWorkflowAction<UIAGetDesktopElementsResponse> UIAGetDesktopElements([WorkflowExpression] Func<string> uIAGetDesktopElementsworkflow, [WorkflowExpression] Func<string> uIAGetDesktopElementssearchElementLocalizedControlType = null, [WorkflowExpression] Func<int> uIAGetDesktopElementssearchProcessId = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsreturnElementHandle = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsfirstItemToReturn = null, [WorkflowExpression] Func<int> uIAGetDesktopElementsmaxItemsToReturn = null, [WorkflowExpression] Func<bool> uIAGetDesktopElementsincludeChildProcesses = null)
         {
             SourceExpression.Validate(uIAGetDesktopElementsworkflow, nameof(uIAGetDesktopElementsworkflow), required: true);
             SourceExpression.Validate(uIAGetDesktopElementssearchElementLocalizedControlType, nameof(uIAGetDesktopElementssearchElementLocalizedControlType), required: false);
-            SourceExpression.Validate(uIAGetDesktopElementssearchProcessID, nameof(uIAGetDesktopElementssearchProcessID), required: false);
+            SourceExpression.Validate(uIAGetDesktopElementssearchProcessId, nameof(uIAGetDesktopElementssearchProcessId), required: false);
             SourceExpression.Validate(uIAGetDesktopElementsreturnElementHandle, nameof(uIAGetDesktopElementsreturnElementHandle), required: false);
             SourceExpression.Validate(uIAGetDesktopElementsfirstItemToReturn, nameof(uIAGetDesktopElementsfirstItemToReturn), required: false);
             SourceExpression.Validate(uIAGetDesktopElementsmaxItemsToReturn, nameof(uIAGetDesktopElementsmaxItemsToReturn), required: false);
@@ -6051,11 +6051,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
                     uIAGetDesktopElementspropCount++;
                 }
 
-                if (uIAGetDesktopElementssearchProcessID != null)
+                if (uIAGetDesktopElementssearchProcessId != null)
                 {
-                    if (uIAGetDesktopElementssearchProcessID != null)
+                    if (uIAGetDesktopElementssearchProcessId != null)
                     {
-                        uIAGetDesktopElements["SearchProcessID"] = SourceExpressionConverter.ConvertToken(uIAGetDesktopElementssearchProcessID);
+                        uIAGetDesktopElements["SearchProcessID"] = SourceExpressionConverter.ConvertToken(uIAGetDesktopElementssearchProcessId);
                         uIAGetDesktopElementspropCount++;
                     }
 

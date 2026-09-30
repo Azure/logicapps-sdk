@@ -146,6 +146,38 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         }
     }
 
+    public class SendRabbitMQMessageOutput
+    {
+        [JsonProperty("body")]
+        public JToken Body { get; set; }
+    }
+
+    public class CreateQueueOutput
+    {
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("messageCount")]
+        public int MessageCount { get; set; }
+
+        [JsonProperty("consumerCount")]
+        public int ConsumerCount { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum CreateQueueInputExchangeTypeType
+    {
+        Direct,
+        Topic
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum CompleteMessageInputAcknowledgementType
+    {
+        Complete,
+        Reject
+    }
+
     public class ReceiveRabbitMQMessagesOutput
     {
         [JsonProperty("contentData")]
@@ -180,38 +212,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 
         [JsonProperty("consumerTag")]
         public string ConsumerTag { get; set; }
-    }
-
-    public class SendRabbitMQMessageOutput
-    {
-        [JsonProperty("body")]
-        public JToken Body { get; set; }
-    }
-
-    public class CreateQueueOutput
-    {
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("messageCount")]
-        public int MessageCount { get; set; }
-
-        [JsonProperty("consumerCount")]
-        public int ConsumerCount { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CreateQueueInputExchangeTypeType
-    {
-        Direct,
-        Topic
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CompleteMessageInputAcknowledgementType
-    {
-        Complete,
-        Reject
     }
 }
 

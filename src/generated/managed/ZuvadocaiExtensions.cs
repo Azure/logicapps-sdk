@@ -12,15 +12,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class ZuvadocaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile([WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile([WorkflowExpression] Func<string> @file = null)
         {
-            SourceExpression.Validate(file, nameof(file), required: false);
+            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/files";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(file);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
                 return callPayload;
             }
 
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ocr";
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (fileIdBodyfileId != null)
                 {
-                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileID);
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
                     fileIdBodypropCount++;
                 }
 
@@ -129,9 +129,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest([WorkflowExpression] Func<string> bodyfileID = null, [WorkflowExpression] Func<string[]> bodyfieldIDs = null)
+        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest([WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string[]> bodyfieldIDs = null)
         {
-            SourceExpression.Validate(bodyfileID, nameof(bodyfileID), required: false);
+            SourceExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
             SourceExpression.Validate(bodyfieldIDs, nameof(bodyfieldIDs), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -140,9 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfileID != null)
+                if (bodyfileId != null)
                 {
-                    body["file_id"] = SourceExpressionConverter.ConvertToken(bodyfileID);
+                    body["file_id"] = SourceExpressionConverter.ConvertToken(bodyfileId);
                     bodypropCount++;
                 }
 
@@ -193,9 +193,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/classification";
@@ -203,9 +203,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (fileIdBodyfileId != null)
                 {
-                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileID);
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
                     fileIdBodypropCount++;
                 }
 
@@ -235,9 +235,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/language";
@@ -245,9 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (fileIdBodyfileId != null)
                 {
-                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileID);
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
                     fileIdBodypropCount++;
                 }
 
@@ -277,9 +277,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest([WorkflowExpression] Func<string> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            SourceExpression.Validate(fileIdBodyfileID, nameof(fileIdBodyfileID), required: false);
+            SourceExpression.Validate(fileIdBodyfileId, nameof(fileIdBodyfileId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/mlc";
@@ -287,9 +287,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var fileIdBody = new JObject();
                 var fileIdBodypropCount = 0;
-                if (fileIdBodyfileID != null)
+                if (fileIdBodyfileId != null)
                 {
-                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileID);
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
                     fileIdBodypropCount++;
                 }
 

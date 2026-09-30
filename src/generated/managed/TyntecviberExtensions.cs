@@ -68,14 +68,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
-        public IBodyWorkflowAction<SendViberFileV3Response> SendViberFile([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessagePurpose, [WorkflowExpression] Func<string> bodycontentfileurl, [WorkflowExpression] Func<string> bodycontentfilefilename, [WorkflowExpression] Func<string> bodycontentfilefiletype)
+        public IBodyWorkflowAction<SendViberFileV3Response> SendViberFile([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessagePurpose, [WorkflowExpression] Func<string> bodycontentFileurl, [WorkflowExpression] Func<string> bodycontentFilefilename, [WorkflowExpression] Func<string> bodycontentFilefiletype)
         {
             SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
             SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
             SourceExpression.Validate(bodymessagePurpose, nameof(bodymessagePurpose), required: true);
-            SourceExpression.Validate(bodycontentfileurl, nameof(bodycontentfileurl), required: true);
-            SourceExpression.Validate(bodycontentfilefilename, nameof(bodycontentfilefilename), required: true);
-            SourceExpression.Validate(bodycontentfilefiletype, nameof(bodycontentfilefiletype), required: true);
+            SourceExpression.Validate(bodycontentFileurl, nameof(bodycontentFileurl), required: true);
+            SourceExpression.Validate(bodycontentFilefilename, nameof(bodycontentFilefilename), required: true);
+            SourceExpression.Validate(bodycontentFilefiletype, nameof(bodycontentFilefiletype), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
@@ -95,17 +95,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
                 var contentObjectpropCount = 0;
                 contentObject["contentType"] = "file";
                 contentObjectpropCount++;
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["url"] = SourceExpressionConverter.ConvertToken(bodycontentfileurl);
-                fileObjectpropCount++;
-                fileObject["filename"] = SourceExpressionConverter.ConvertToken(bodycontentfilefilename);
-                fileObjectpropCount++;
-                fileObject["filetype"] = SourceExpressionConverter.ConvertToken(bodycontentfilefiletype);
-                if (fileObjectpropCount > 0)
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["url"] = SourceExpressionConverter.ConvertToken(bodycontentFileurl);
+                @fileObjectpropCount++;
+                @fileObject["filename"] = SourceExpressionConverter.ConvertToken(bodycontentFilefilename);
+                @fileObjectpropCount++;
+                @fileObject["filetype"] = SourceExpressionConverter.ConvertToken(bodycontentFilefiletype);
+                if (@fileObjectpropCount > 0)
                 {
-                    contentObject["file"] = fileObject;
+                    contentObject["file"] = @fileObject;
                     contentObjectpropCount++;
                 }
 

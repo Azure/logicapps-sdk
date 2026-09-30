@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserID, [WorkflowExpression] Func<string> requestvaluetimeOffReason = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null)
+        public IBodyWorkflowAction<TimeOffResponse> CreateTimeOff([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserId, [WorkflowExpression] Func<string> requestvaluetimeOffReason = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null)
         {
             SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(requestuserID, nameof(requestuserID), required: true);
+            SourceExpression.Validate(requestuserId, nameof(requestuserId), required: true);
             SourceExpression.Validate(requestvaluetimeOffReason, nameof(requestvaluetimeOffReason), required: false);
             SourceExpression.Validate(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
             SourceExpression.Validate(requestvalueendTime, nameof(requestvalueendTime), required: false);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 requestpropCount++;
-                request["userId"] = SourceExpressionConverter.ConvertToken(requestuserID);
+                request["userId"] = SourceExpressionConverter.ConvertToken(requestuserId);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -177,11 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<ShiftResponse> CreateShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserID, [WorkflowExpression] Func<string> requestschedulingGroupID = null, [WorkflowExpression] Func<string> requestvaluedisplayName = null, [WorkflowExpression] Func<string> requestvaluenotes = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null, [WorkflowExpression] Func<requestvalueactivitiesInputItem[]> requestvalueactivities = null)
+        public IBodyWorkflowAction<ShiftResponse> CreateShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestuserId, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestvaluedisplayName = null, [WorkflowExpression] Func<string> requestvaluenotes = null, [WorkflowExpression] Func<string> requestvaluestartTime = null, [WorkflowExpression] Func<string> requestvalueendTime = null, [WorkflowExpression] Func<requestvaluethemeInput> requestvaluetheme = null, [WorkflowExpression] Func<requestvalueactivitiesInputItem[]> requestvalueactivities = null)
         {
             SourceExpression.Validate(teamId, nameof(teamId), required: true);
-            SourceExpression.Validate(requestuserID, nameof(requestuserID), required: true);
-            SourceExpression.Validate(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            SourceExpression.Validate(requestuserId, nameof(requestuserId), required: true);
+            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             SourceExpression.Validate(requestvaluedisplayName, nameof(requestvaluedisplayName), required: false);
             SourceExpression.Validate(requestvaluenotes, nameof(requestvaluenotes), required: false);
             SourceExpression.Validate(requestvaluestartTime, nameof(requestvaluestartTime), required: false);
@@ -195,9 +195,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestschedulingGroupID != null)
+                if (requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupID);
+                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupId);
                     requestpropCount++;
                 }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 }
 
                 requestpropCount++;
-                request["userId"] = SourceExpressionConverter.ConvertToken(requestuserID);
+                request["userId"] = SourceExpressionConverter.ConvertToken(requestuserId);
                 if (requestpropCount > 0)
                 {
                     callPayload.Body = request;
@@ -324,13 +324,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse> CreateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupID = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse> CreateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
             SourceExpression.Validate(teamId, nameof(teamId), required: true);
             SourceExpression.Validate(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
             SourceExpression.Validate(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
             SourceExpression.Validate(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            SourceExpression.Validate(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             SourceExpression.Validate(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
             SourceExpression.Validate(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             SourceExpression.Validate(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
@@ -342,9 +342,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestschedulingGroupID != null)
+                if (requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupID);
+                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupId);
                     requestpropCount++;
                 }
 
@@ -423,14 +423,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shifts")]
-        public IBodyWorkflowAction<OpenShiftResponse> UpdateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupID = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
+        public IBodyWorkflowAction<OpenShiftResponse> UpdateOpenShift([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> openShiftId, [WorkflowExpression] Func<string> requestsharedOpenShiftstartTime, [WorkflowExpression] Func<string> requestsharedOpenShiftendTime, [WorkflowExpression] Func<int> requestsharedOpenShiftopenSlotCount, [WorkflowExpression] Func<string> requestschedulingGroupId = null, [WorkflowExpression] Func<string> requestsharedOpenShiftdisplayName = null, [WorkflowExpression] Func<string> requestsharedOpenShiftnotes = null, [WorkflowExpression] Func<requestsharedOpenShiftthemeInput> requestsharedOpenShifttheme = null, [WorkflowExpression] Func<requestsharedOpenShiftactivitiesInputItem[]> requestsharedOpenShiftactivities = null)
         {
             SourceExpression.Validate(teamId, nameof(teamId), required: true);
             SourceExpression.Validate(openShiftId, nameof(openShiftId), required: true);
             SourceExpression.Validate(requestsharedOpenShiftstartTime, nameof(requestsharedOpenShiftstartTime), required: true);
             SourceExpression.Validate(requestsharedOpenShiftendTime, nameof(requestsharedOpenShiftendTime), required: true);
             SourceExpression.Validate(requestsharedOpenShiftopenSlotCount, nameof(requestsharedOpenShiftopenSlotCount), required: true);
-            SourceExpression.Validate(requestschedulingGroupID, nameof(requestschedulingGroupID), required: false);
+            SourceExpression.Validate(requestschedulingGroupId, nameof(requestschedulingGroupId), required: false);
             SourceExpression.Validate(requestsharedOpenShiftdisplayName, nameof(requestsharedOpenShiftdisplayName), required: false);
             SourceExpression.Validate(requestsharedOpenShiftnotes, nameof(requestsharedOpenShiftnotes), required: false);
             SourceExpression.Validate(requestsharedOpenShifttheme, nameof(requestsharedOpenShifttheme), required: false);
@@ -442,9 +442,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                if (requestschedulingGroupID != null)
+                if (requestschedulingGroupId != null)
                 {
-                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupID);
+                    request["schedulingGroupId"] = SourceExpressionConverter.ConvertToken(requestschedulingGroupId);
                     requestpropCount++;
                 }
 

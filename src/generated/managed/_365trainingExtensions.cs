@@ -125,15 +125,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IWorkflowAction AddIdeaVote([WorkflowExpression] Func<string> ideaID)
+        public IWorkflowAction AddIdeaVote([WorkflowExpression] Func<string> ideaId)
         {
-            SourceExpression.Validate(ideaID, nameof(ideaID), required: true);
+            SourceExpression.Validate(ideaId, nameof(ideaId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/AddIdeaVote";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["IdeaID"] = SourceExpressionConverter.ConvertO(ideaID);
+                callPayload.Queries["IdeaID"] = SourceExpressionConverter.ConvertO(ideaId);
                 return callPayload;
             }
 

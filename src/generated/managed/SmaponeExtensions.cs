@@ -930,8 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
 
     public enum DataRecordApiSchemaVersionType
     {
-        [EnumMember(Value = "1")]
-        _1
+        _1 = 1
     }
 
     public enum DataRecordApiRecordTypeType

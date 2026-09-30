@@ -43,6 +43,47 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        public IBodyWorkflowAction<AppendFileOutput> AppendFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> content, [WorkflowExpression] Func<bool> fetchMetadata = null, [WorkflowExpression] Func<bool> createFile = null)
+        {
+            SourceExpression.Validate(filePath, nameof(filePath), required: true);
+            SourceExpression.Validate(content, nameof(content), required: true);
+            SourceExpression.Validate(fetchMetadata, nameof(fetchMetadata), required: false);
+            SourceExpression.Validate(createFile, nameof(createFile), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = SourceExpressionConverter.ConvertToken(filePath);
+                serviceProviderParameters["content"] = SourceExpressionConverter.ConvertToken(content);
+                if (fetchMetadata != null)
+                {
+                    serviceProviderParameters["fetchMetadata"] = SourceExpressionConverter.ConvertToken(fetchMetadata);
+                }
+                else
+                {
+                    serviceProviderParameters["fetchMetadata"] = false;
+                }
+
+                if (createFile != null)
+                {
+                    serviceProviderParameters["createFile"] = SourceExpressionConverter.ConvertToken(createFile);
+                }
+                else
+                {
+                    serviceProviderParameters["createFile"] = false;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "appendFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<AppendFileOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
         public IBodyWorkflowAction<UploadFileContentOutput> UploadFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> overWriteFileIfExists, [WorkflowExpression] Func<string> content = null)
         {
             SourceExpression.Validate(filePath, nameof(filePath), required: true);
@@ -400,60 +441,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         }
     }
 
-    public class WhenFilesAreAddedOrModifiedOutputItem
-    {
-        [JsonProperty("content")]
-        public JToken Content { get; set; }
-
-        [JsonProperty("fileMetadata")]
-        public WhenFilesAreAddedOrModifiedOutputItemFileMetadataType FileMetadata { get; set; }
-    }
-
-    public class WhenFilesAreAddedOrModifiedOutputItemFileMetadataType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public string LastUpdatedTime { get; set; }
-
-        [JsonProperty("pathRelativeToRootDirectory")]
-        public string PathRelativeToRootDirectory { get; set; }
-    }
-
-    public class WhenFileIsAddedOrModifiedOutput
-    {
-        [JsonProperty("content")]
-        public JToken Content { get; set; }
-
-        [JsonProperty("fileMetadata")]
-        public WhenFileIsAddedOrModifiedOutputFileMetadataType FileMetadata { get; set; }
-    }
-
-    public class WhenFileIsAddedOrModifiedOutputFileMetadataType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public string LastUpdatedTime { get; set; }
-
-        [JsonProperty("pathRelativeToRootDirectory")]
-        public string PathRelativeToRootDirectory { get; set; }
-    }
-
     public class GetFileContentOutput
     {
         [JsonProperty("fileName")]
@@ -461,6 +448,42 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 
         [JsonProperty("content")]
         public JToken Content { get; set; }
+    }
+
+    public class AppendFileOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("absolutePath")]
+        public string AbsolutePath { get; set; }
+
+        [JsonProperty("pathRelativeToRootDirectory")]
+        public string PathRelativeToRootDirectory { get; set; }
+
+        [JsonProperty("fileSize")]
+        public int FileSize { get; set; }
+
+        [JsonProperty("mediaType")]
+        public string MediaType { get; set; }
+
+        [JsonProperty("lastAccessTime")]
+        public string LastAccessTime { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
+
+        [JsonProperty("isDirectory")]
+        public bool IsDirectory { get; set; }
+
+        [JsonProperty("readPermission")]
+        public bool ReadPermission { get; set; }
+
+        [JsonProperty("writePermission")]
+        public bool WritePermission { get; set; }
+
+        [JsonProperty("executePermission")]
+        public bool ExecutePermission { get; set; }
     }
 
     public class UploadFileContentOutput
@@ -655,6 +678,60 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         Fail,
         Skip,
         Overwrite
+    }
+
+    public class WhenFilesAreAddedOrModifiedOutputItem
+    {
+        [JsonProperty("content")]
+        public JToken Content { get; set; }
+
+        [JsonProperty("fileMetadata")]
+        public WhenFilesAreAddedOrModifiedOutputItemFileMetadataType FileMetadata { get; set; }
+    }
+
+    public class WhenFilesAreAddedOrModifiedOutputItemFileMetadataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lastUpdatedTime")]
+        public string LastUpdatedTime { get; set; }
+
+        [JsonProperty("pathRelativeToRootDirectory")]
+        public string PathRelativeToRootDirectory { get; set; }
+    }
+
+    public class WhenFileIsAddedOrModifiedOutput
+    {
+        [JsonProperty("content")]
+        public JToken Content { get; set; }
+
+        [JsonProperty("fileMetadata")]
+        public WhenFileIsAddedOrModifiedOutputFileMetadataType FileMetadata { get; set; }
+    }
+
+    public class WhenFileIsAddedOrModifiedOutputFileMetadataType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lastUpdatedTime")]
+        public string LastUpdatedTime { get; set; }
+
+        [JsonProperty("pathRelativeToRootDirectory")]
+        public string PathRelativeToRootDirectory { get; set; }
     }
 }
 

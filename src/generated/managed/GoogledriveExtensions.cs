@@ -116,27 +116,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
-        {
-            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
-            SourceExpression.Validate(name, nameof(name), required: true);
-            SourceExpression.Validate(body, nameof(body), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/datasets/default/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
-                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
-                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
             SourceExpression.Validate(source, nameof(source), required: true);
@@ -189,6 +168,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
+        public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
+        {
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datasets/default/v2/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googledrive")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
             SourceExpression.Validate(source, nameof(source), required: true);
@@ -222,6 +222,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googledrive
         public string Name { get; set; }
         public string DisplayName { get; set; }
         public string Path { get; set; }
+        public string FolderId { get; set; }
+        public string FolderPath { get; set; }
         public string LastModified { get; set; }
         public int Size { get; set; }
         public string MediaType { get; set; }

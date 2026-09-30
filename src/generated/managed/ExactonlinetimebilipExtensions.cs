@@ -431,13 +431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PutProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsiD = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PutProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsid = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
             SourceExpression.Validate(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            SourceExpression.Validate(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsid, nameof(projectRestrictionRebillingsid), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
@@ -454,12 +454,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 var projectRestrictionRebillings = new JObject();
                 var projectRestrictionRebillingspropCount = 0;
-                if (projectRestrictionRebillingsiD != null)
+                if (projectRestrictionRebillingsid != null)
                 {
-                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
+                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsid);
                     projectRestrictionRebillingspropCount++;
                 }
 
@@ -544,12 +544,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PostProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsiD = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PostProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsid = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
             SourceExpression.Validate(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            SourceExpression.Validate(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsid, nameof(projectRestrictionRebillingsid), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
             SourceExpression.Validate(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
@@ -568,9 +568,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var projectRestrictionRebillings = new JObject();
                 var projectRestrictionRebillingspropCount = 0;
-                if (projectRestrictionRebillingsiD != null)
+                if (projectRestrictionRebillingsid != null)
                 {
-                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
+                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsid);
                     projectRestrictionRebillingspropCount++;
                 }
 
@@ -655,16 +655,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> DeleteProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> DeleteProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 return callPayload;
             }
 
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIDResponse> GetTimeAndBillingAccountDetailsByID([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIdResponse> GetTimeAndBillingAccountDetailsById([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
             SourceExpression.Validate(accountId, nameof(accountId), required: true);
             SourceExpression.Validate(division, nameof(division), required: true);
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<TimeAndBillingAccountDetailsByIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<TimeAndBillingAccountDetailsByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1145,7 +1145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingItemDetailsByIDResponse> GetTimeAndBillingItemDetailsByID([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<TimeAndBillingItemDetailsByIdResponse> GetTimeAndBillingItemDetailsById([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
             SourceExpression.Validate(itemId, nameof(itemId), required: true);
@@ -1170,7 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<TimeAndBillingItemDetailsByIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<TimeAndBillingItemDetailsByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIDResponse> GetTimeAndBillingProjectDetailsByID([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIdResponse> GetTimeAndBillingProjectDetailsById([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
             SourceExpression.Validate(projectId, nameof(projectId), required: true);
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<TimeAndBillingProjectDetailsByIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<TimeAndBillingProjectDetailsByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
@@ -1284,11 +1284,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> PutTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> timeCorrectionsiD = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> PutTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> timeCorrectionsid = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
-            SourceExpression.Validate(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(timeCorrectionsid, nameof(timeCorrectionsid), required: false);
             SourceExpression.Validate(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
             SourceExpression.Validate(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
             SourceExpression.Validate(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
@@ -1304,12 +1304,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 var timeCorrections = new JObject();
                 var timeCorrectionspropCount = 0;
-                if (timeCorrectionsiD != null)
+                if (timeCorrectionsid != null)
                 {
-                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsiD);
+                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsid);
                     timeCorrectionspropCount++;
                 }
 
@@ -1384,10 +1384,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> PostTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeCorrectionsiD = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> PostTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeCorrectionsid = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            SourceExpression.Validate(timeCorrectionsid, nameof(timeCorrectionsid), required: false);
             SourceExpression.Validate(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
             SourceExpression.Validate(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
             SourceExpression.Validate(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
@@ -1405,9 +1405,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var timeCorrections = new JObject();
                 var timeCorrectionspropCount = 0;
-                if (timeCorrectionsiD != null)
+                if (timeCorrectionsid != null)
                 {
-                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsiD);
+                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsid);
                     timeCorrectionspropCount++;
                 }
 
@@ -1482,16 +1482,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> DeleteTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> DeleteTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 return callPayload;
             }
 
@@ -1526,14 +1526,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> PutTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsiD = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse> PutTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsid = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
             SourceExpression.Validate(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
             SourceExpression.Validate(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            SourceExpression.Validate(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            SourceExpression.Validate(timeTransactionsid, nameof(timeTransactionsid), required: false);
             SourceExpression.Validate(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
             SourceExpression.Validate(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
             SourceExpression.Validate(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
@@ -1580,12 +1580,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 var timeTransactions = new JObject();
                 var timeTransactionspropCount = 0;
-                if (timeTransactionsiD != null)
+                if (timeTransactionsid != null)
                 {
-                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsiD);
+                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsid);
                     timeTransactionspropCount++;
                 }
 
@@ -1852,13 +1852,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> PostTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsiD = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse> PostTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsid = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
             SourceExpression.Validate(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
             SourceExpression.Validate(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
             SourceExpression.Validate(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            SourceExpression.Validate(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            SourceExpression.Validate(timeTransactionsid, nameof(timeTransactionsid), required: false);
             SourceExpression.Validate(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
             SourceExpression.Validate(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
             SourceExpression.Validate(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
@@ -1907,9 +1907,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var timeTransactions = new JObject();
                 var timeTransactionspropCount = 0;
-                if (timeTransactionsiD != null)
+                if (timeTransactionsid != null)
                 {
-                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsiD);
+                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsid);
                     timeTransactionspropCount++;
                 }
 
@@ -2176,16 +2176,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> DeleteTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<TimeTransactionsResponse> DeleteTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(division, nameof(division), required: true);
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(id);
                 return callPayload;
             }
 
@@ -2763,19 +2763,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string Name { get; set; }
     }
 
-    public class TimeAndBillingAccountDetailsByIDResponse
+    public class TimeAndBillingAccountDetailsByIdResponse
     {
         [JsonProperty("d")]
-        public TimeAndBillingAccountDetailsByIDArray D { get; set; }
+        public TimeAndBillingAccountDetailsByIdArray D { get; set; }
     }
 
-    public class TimeAndBillingAccountDetailsByIDArray
+    public class TimeAndBillingAccountDetailsByIdArray
     {
         [JsonProperty("results")]
-        public TimeAndBillingAccountDetailsByID[] Results { get; set; }
+        public TimeAndBillingAccountDetailsById[] Results { get; set; }
     }
 
-    public class TimeAndBillingAccountDetailsByID
+    public class TimeAndBillingAccountDetailsById
     {
         public string ID { get; set; }
         public string Name { get; set; }
@@ -3012,19 +3012,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public double SalesPrice { get; set; }
     }
 
-    public class TimeAndBillingItemDetailsByIDResponse
+    public class TimeAndBillingItemDetailsByIdResponse
     {
         [JsonProperty("d")]
-        public TimeAndBillingItemDetailsByIDArray D { get; set; }
+        public TimeAndBillingItemDetailsByIdArray D { get; set; }
     }
 
-    public class TimeAndBillingItemDetailsByIDArray
+    public class TimeAndBillingItemDetailsByIdArray
     {
         [JsonProperty("results")]
-        public TimeAndBillingItemDetailsByID[] Results { get; set; }
+        public TimeAndBillingItemDetailsById[] Results { get; set; }
     }
 
-    public class TimeAndBillingItemDetailsByID
+    public class TimeAndBillingItemDetailsById
     {
         public string ID { get; set; }
         public string Code { get; set; }
@@ -3057,19 +3057,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public int Type { get; set; }
     }
 
-    public class TimeAndBillingProjectDetailsByIDResponse
+    public class TimeAndBillingProjectDetailsByIdResponse
     {
         [JsonProperty("d")]
-        public TimeAndBillingProjectDetailsByIDArray D { get; set; }
+        public TimeAndBillingProjectDetailsByIdArray D { get; set; }
     }
 
-    public class TimeAndBillingProjectDetailsByIDArray
+    public class TimeAndBillingProjectDetailsByIdArray
     {
         [JsonProperty("results")]
-        public TimeAndBillingProjectDetailsByID[] Results { get; set; }
+        public TimeAndBillingProjectDetailsById[] Results { get; set; }
     }
 
-    public class TimeAndBillingProjectDetailsByID
+    public class TimeAndBillingProjectDetailsById
     {
         public string ID { get; set; }
         public string Account { get; set; }

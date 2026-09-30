@@ -14,6 +14,70 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     public class ServiceBusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken[]> GetQueues()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "GetQueues", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken[]> GetTopics()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "GetTopics", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken[]> GetTopicSubcriptions([WorkflowExpression] Func<string> topicName)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getTopicSubcriptions", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken[]> GetEntities()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "GetEntities", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
         public IOutputWorkflowAction<JToken> SendMessage([WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<SendMessageInputMessageType> message)
         {
             SourceExpression.Validate(entityName, nameof(entityName), required: true);
@@ -77,18 +141,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> CompleteMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
                 return serviceProviderInput;
@@ -98,18 +160,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> AbandonMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
                 return serviceProviderInput;
@@ -119,17 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        public IOutputWorkflowAction<JToken> DeadLetterMessage([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
             SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
                 if (deadLetterReason != null)
                 {
                     serviceProviderParameters["deadLetterReason"] = SourceExpressionConverter.ConvertToken(deadLetterReason);
@@ -142,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
                 return serviceProviderInput;
@@ -152,268 +210,22 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        public IOutputWorkflowAction<JToken> RenewLockMessage([WorkflowExpression] Func<string> messageId)
         {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockMessage", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
                 return serviceProviderInput;
             }
 
             return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
-        {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
-        {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
-        {
-            SourceExpression.Validate(queueName, nameof(queueName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
-                if (maxMessages != null)
-                {
-                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
-                }
-
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
-            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                if (deadLetterReason != null)
-                {
-                    serviceProviderParameters["deadLetterReason"] = SourceExpressionConverter.ConvertToken(deadLetterReason);
-                }
-
-                if (deadLetterErrorDescription != null)
-                {
-                    serviceProviderParameters["deadLetterErrorDescription"] = SourceExpressionConverter.ConvertToken(deadLetterErrorDescription);
-                }
-
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IOutputWorkflowAction<JToken> DeferTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
-        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
-        {
-            SourceExpression.Validate(topicName, nameof(topicName), required: true);
-            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
-            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
-            ServiceProviderOperationInput BuildSourceInput()
-            {
-                var serviceProviderParameters = new JObject();
-                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
-                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
-                if (maxMessages != null)
-                {
-                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
-                }
-
-                var serviceProviderInput = new ServiceProviderOperationInput
-                {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
-                    Parameters = serviceProviderParameters
-                };
-                return serviceProviderInput;
-            }
-
-            return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
@@ -464,6 +276,121 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             }
 
             return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> DeferMessage([WorkflowExpression] Func<string> messageId)
+        {
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueOutput> GetDeferredMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetDeferredMessageFromQueueOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicOutput> GetDeferredMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopic", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetDeferredMessageFromTopicOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetMessagesFromQueueOutputItem[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetMessagesFromQueueOutputItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetMessagesFromTopicOutputItem[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopic", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetMessagesFromTopicOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
@@ -801,6 +728,346 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
 
             return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> CompleteQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> AbandonQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> DeadLetterQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
+            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                if (deadLetterReason != null)
+                {
+                    serviceProviderParameters["deadLetterReason"] = SourceExpressionConverter.ConvertToken(deadLetterReason);
+                }
+
+                if (deadLetterErrorDescription != null)
+                {
+                    serviceProviderParameters["deadLetterErrorDescription"] = SourceExpressionConverter.ConvertToken(deadLetterErrorDescription);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> RenewLockQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> DeferQueueMessageV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferQueueMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> CompleteTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "completeTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> AbandonTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "abandonTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> DeadLetterTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            SourceExpression.Validate(deadLetterReason, nameof(deadLetterReason), required: false);
+            SourceExpression.Validate(deadLetterErrorDescription, nameof(deadLetterErrorDescription), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                if (deadLetterReason != null)
+                {
+                    serviceProviderParameters["deadLetterReason"] = SourceExpressionConverter.ConvertToken(deadLetterReason);
+                }
+
+                if (deadLetterErrorDescription != null)
+                {
+                    serviceProviderParameters["deadLetterErrorDescription"] = SourceExpressionConverter.ConvertToken(deadLetterErrorDescription);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deadLetterTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> RenewLockTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "renewLockTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IOutputWorkflowAction<JToken> DeferTopicMessageV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(lockToken, nameof(lockToken), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["lockToken"] = SourceExpressionConverter.ConvertToken(lockToken);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "deferTopicMessageV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetMessagesFromQueueV2OutputItem[]> GetMessagesFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromQueueV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetMessagesFromQueueV2OutputItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetDeferredMessageFromQueueV2Output> GetDeferredMessageFromQueueV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromQueueV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetDeferredMessageFromQueueV2Output>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetMessagesFromTopicV2OutputItem[]> GetMessagesFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessages = null)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(maxMessages, nameof(maxMessages), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                if (maxMessages != null)
+                {
+                    serviceProviderParameters["maxMessages"] = SourceExpressionConverter.ConvertToken(maxMessages);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getMessagesFromTopicV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetMessagesFromTopicV2OutputItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "serviceBus")]
+        public IBodyWorkflowAction<GetDeferredMessageFromTopicV2Output> GetDeferredMessageFromTopicV2([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<string> sequenceNumber)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(sequenceNumber, nameof(sequenceNumber), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                serviceProviderParameters["sequenceNumber"] = SourceExpressionConverter.ConvertToken(sequenceNumber);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "getDeferredMessageFromTopicV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetDeferredMessageFromTopicV2Output>(BuildSourceInput);
+        }
     }
 
     public class ServiceBusTriggers([ConnectionName] string connectionId)
@@ -943,6 +1210,76 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             }
 
             return new ServiceProviderOutputTrigger<JToken>(BuildSourceInput);
+        }
+
+        public IBodyWorkflowTrigger<PeekLockQueueMessagesOutputItem[]> PeekLockQueueMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        {
+            SourceExpression.Validate(queueName, nameof(queueName), required: true);
+            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = SourceExpressionConverter.ConvertToken(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
+
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = SourceExpressionConverter.ConvertToken(maxMessageBatchSize);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockQueueMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderTrigger<PeekLockQueueMessagesOutputItem[]>(BuildSourceInput);
+        }
+
+        public IBodyWorkflowTrigger<PeekLockTopicMessagesOutputItem[]> PeekLockTopicMessages([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<bool> isSessionsEnabled = null, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
+        {
+            SourceExpression.Validate(topicName, nameof(topicName), required: true);
+            SourceExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
+            SourceExpression.Validate(isSessionsEnabled, nameof(isSessionsEnabled), required: false);
+            SourceExpression.Validate(maxMessageBatchSize, nameof(maxMessageBatchSize), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["topicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["subscriptionName"] = SourceExpressionConverter.ConvertToken(subscriptionName);
+                if (isSessionsEnabled != null)
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = SourceExpressionConverter.ConvertToken(isSessionsEnabled);
+                }
+                else
+                {
+                    serviceProviderParameters["isSessionsEnabled"] = false;
+                }
+
+                if (maxMessageBatchSize != null)
+                {
+                    serviceProviderParameters["maxMessageBatchSize"] = SourceExpressionConverter.ConvertToken(maxMessageBatchSize);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "peekLockTopicMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderTrigger<PeekLockTopicMessagesOutputItem[]>(BuildSourceInput);
         }
 
         public IBodyWorkflowTrigger<PeekLockQueueMessagesV2OutputItem[]> PeekLockQueueMessagesV2([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<double> maxMessageBatchSize = null)
@@ -1108,6 +1445,811 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         }
     }
 
+    public class SendMessageInputMessageType
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+    }
+
+    public class SendMessagesInputMessagesTypeItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType
+    {
+        None,
+        Correlation
+    }
+
+    public class GetDeferredMessageFromQueueOutput
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetDeferredMessageFromTopicOutput
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromQueueOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromTopicOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetDeferredMessageFromQueueSessionOutput
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetDeferredMessageFromTopicSessionOutput
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromQueueSessionOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromTopicSessionOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromQueueV2OutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetDeferredMessageFromQueueV2Output
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetMessagesFromTopicV2OutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class GetDeferredMessageFromTopicV2Output
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
     public class ReceiveQueueMessagesOutputItem
     {
         [JsonProperty("contentData")]
@@ -1169,6 +2311,126 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     }
 
     public class ReceiveTopicMessagesOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class PeekLockQueueMessagesOutputItem
+    {
+        [JsonProperty("contentData")]
+        public JToken ContentData { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("sessionId")]
+        public string SessionId { get; set; }
+
+        [JsonProperty("userProperties")]
+        public JToken UserProperties { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("lockToken")]
+        public string LockToken { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("replyTo")]
+        public string ReplyTo { get; set; }
+
+        [JsonProperty("replyToSession")]
+        public string ReplyToSession { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("scheduledEnqueueTimeUtc")]
+        public string ScheduledEnqueueTimeUtc { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("timeToLive")]
+        public string TimeToLive { get; set; }
+
+        [JsonProperty("deadletterSource")]
+        public string DeadletterSource { get; set; }
+
+        [JsonProperty("deliveryCount")]
+        public int DeliveryCount { get; set; }
+
+        [JsonProperty("enqueuedSequenceNumber")]
+        public string EnqueuedSequenceNumber { get; set; }
+
+        [JsonProperty("enqueuedTimeUtc")]
+        public string EnqueuedTimeUtc { get; set; }
+
+        [JsonProperty("lockedUntilUtc")]
+        public string LockedUntilUtc { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public string SequenceNumber { get; set; }
+    }
+
+    public class PeekLockTopicMessagesOutputItem
     {
         [JsonProperty("contentData")]
         public JToken ContentData { get; set; }
@@ -1529,571 +2791,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
     }
 
     public class OnSingleNewMessageFromTopicSessionOutput
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class SendMessageInputMessageType
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-    }
-
-    public class SendMessagesInputMessagesTypeItem
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-    }
-
-    public class GetDeferredMessageFromQueueV2Output
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetMessagesFromQueueV2OutputItem
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetDeferredMessageFromTopicV2Output
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetMessagesFromTopicV2OutputItem
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType
-    {
-        None,
-        Correlation
-    }
-
-    public class GetDeferredMessageFromQueueSessionOutput
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetDeferredMessageFromTopicSessionOutput
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetMessagesFromQueueSessionOutputItem
-    {
-        [JsonProperty("contentData")]
-        public JToken ContentData { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("sessionId")]
-        public string SessionId { get; set; }
-
-        [JsonProperty("userProperties")]
-        public JToken UserProperties { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("lockToken")]
-        public string LockToken { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("replyTo")]
-        public string ReplyTo { get; set; }
-
-        [JsonProperty("replyToSession")]
-        public string ReplyToSession { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("scheduledEnqueueTimeUtc")]
-        public string ScheduledEnqueueTimeUtc { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("timeToLive")]
-        public string TimeToLive { get; set; }
-
-        [JsonProperty("deadletterSource")]
-        public string DeadletterSource { get; set; }
-
-        [JsonProperty("deliveryCount")]
-        public int DeliveryCount { get; set; }
-
-        [JsonProperty("enqueuedSequenceNumber")]
-        public string EnqueuedSequenceNumber { get; set; }
-
-        [JsonProperty("enqueuedTimeUtc")]
-        public string EnqueuedTimeUtc { get; set; }
-
-        [JsonProperty("lockedUntilUtc")]
-        public string LockedUntilUtc { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public string SequenceNumber { get; set; }
-    }
-
-    public class GetMessagesFromTopicSessionOutputItem
     {
         [JsonProperty("contentData")]
         public JToken ContentData { get; set; }

@@ -12,42 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     public class CognitiveservicescomputervisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DetectResponse> DetectObjects([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
-        {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/vision/v2.0/detect";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<DetectResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
-        {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(image, nameof(image), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/vision/v2.0/areaOfInterest";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AreaOfInterestResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<object> image = null)
         {
             SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
@@ -150,6 +114,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
             }
 
             return new ApiConnectionAction<DescribeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        public IBodyWorkflowAction<DetectResponse> DetectObjects([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/detect", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetectResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            SourceExpression.Validate(subdomainName, nameof(subdomainName), required: true);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/areaOfInterest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AreaOfInterestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
@@ -265,38 +267,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     {
     }
 
-    public class DetectResponse
-    {
-        [JsonProperty("objects")]
-        public DetectResponseObjectsTypeItem[] Objects { get; set; }
-    }
-
-    public class DetectResponseObjectsTypeItem
-    {
-        [JsonProperty("rectangle")]
-        public JToken BoundingBox { get; set; }
-
-        [JsonProperty("confidence")]
-        public double ObjectConfidenceScore { get; set; }
-
-        [JsonProperty("object")]
-        public string ObjectName { get; set; }
-    }
-
-    public enum formatInput
-    {
-        [EnumMember(Value = "Image Content")]
-        ImageContent,
-        [EnumMember(Value = "Image URL")]
-        ImageURL
-    }
-
-    public class AreaOfInterestResponse
-    {
-        [JsonProperty("areaOfInterest")]
-        public JToken AreaOfInterest { get; set; }
-    }
-
     public class AnalyzeResponse
     {
         [JsonProperty("categories")]
@@ -345,6 +315,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string TagName { get; set; }
     }
 
+    public enum formatInput
+    {
+        [EnumMember(Value = "Image Content")]
+        ImageContent,
+        [EnumMember(Value = "Image URL")]
+        ImageURL
+    }
+
     public enum languageInput
     {
         [EnumMember(Value = "en")]
@@ -379,6 +357,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
 
         [JsonProperty("text")]
         public string CaptionText { get; set; }
+    }
+
+    public class DetectResponse
+    {
+        [JsonProperty("objects")]
+        public DetectResponseObjectsTypeItem[] Objects { get; set; }
+    }
+
+    public class DetectResponseObjectsTypeItem
+    {
+        [JsonProperty("rectangle")]
+        public JToken BoundingBox { get; set; }
+
+        [JsonProperty("confidence")]
+        public double ObjectConfidenceScore { get; set; }
+
+        [JsonProperty("object")]
+        public string ObjectName { get; set; }
+    }
+
+    public class AreaOfInterestResponse
+    {
+        [JsonProperty("areaOfInterest")]
+        public JToken AreaOfInterest { get; set; }
     }
 
     public class OCRJsonResponse

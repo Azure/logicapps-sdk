@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodycontactcontactID = null, [WorkflowExpression] Func<string> bodylineAmountTypes = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodycurrencyCode = null, [WorkflowExpression] Func<double> bodycurrencyRate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexpectedPaymentDate = null)
+        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodycontactcontactId = null, [WorkflowExpression] Func<string> bodylineAmountTypes = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodycurrencyCode = null, [WorkflowExpression] Func<double> bodycurrencyRate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexpectedPaymentDate = null)
         {
             SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
             SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
             SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
             SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
             SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
-            SourceExpression.Validate(bodycontactcontactID, nameof(bodycontactcontactID), required: false);
+            SourceExpression.Validate(bodycontactcontactId, nameof(bodycontactcontactId), required: false);
             SourceExpression.Validate(bodylineAmountTypes, nameof(bodylineAmountTypes), required: false);
             SourceExpression.Validate(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
             SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: false);
@@ -112,9 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
 
                 var contactObject = new JObject();
                 var contactObjectpropCount = 0;
-                if (bodycontactcontactID != null)
+                if (bodycontactcontactId != null)
                 {
-                    contactObject["ContactID"] = SourceExpressionConverter.ConvertToken(bodycontactcontactID);
+                    contactObject["ContactID"] = SourceExpressionConverter.ConvertToken(bodycontactcontactId);
                     contactObjectpropCount++;
                 }
 

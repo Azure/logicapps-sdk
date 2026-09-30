@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteinvitesInputItem2[]> inviteinvites = null, [WorkflowExpression] Func<string> invitenameFormula = null, [WorkflowExpression] Func<inviteinviteAdvancedParametersInputItem[]> inviteinviteAdvancedParameters = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
+        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<inviteinvitesInputItem22[]> inviteinvites = null, [WorkflowExpression] Func<string> invitenameFormula = null, [WorkflowExpression] Func<inviteinviteAdvancedParametersInputItem[]> inviteinviteAdvancedParameters = null, [WorkflowExpression] Func<inviteqESSignatureInput> inviteqESSignature = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(inviteinvites, nameof(inviteinvites), required: false);
@@ -361,21 +361,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             }
 
             return new ApiConnectionAction<DocumentProperties[]>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<object> file)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/document";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
@@ -668,11 +653,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> inviteId, [WorkflowExpression] Func<string> replaceTostepID = null, [WorkflowExpression] Func<string> replaceTorecipientToReplace = null, [WorkflowExpression] Func<string> replaceTonewRecipient = null, [WorkflowExpression] Func<int> replaceToexpirationDays = null, [WorkflowExpression] Func<int> replaceToreminder = null, [WorkflowExpression] Func<replaceToinviteActionAttributesInputItem[]> replaceToinviteActionAttributes = null)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> inviteId, [WorkflowExpression] Func<string> replaceTostepId = null, [WorkflowExpression] Func<string> replaceTorecipientToReplace = null, [WorkflowExpression] Func<string> replaceTonewRecipient = null, [WorkflowExpression] Func<int> replaceToexpirationDays = null, [WorkflowExpression] Func<int> replaceToreminder = null, [WorkflowExpression] Func<replaceToinviteActionAttributesInputItem[]> replaceToinviteActionAttributes = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(inviteId, nameof(inviteId), required: true);
-            SourceExpression.Validate(replaceTostepID, nameof(replaceTostepID), required: false);
+            SourceExpression.Validate(replaceTostepId, nameof(replaceTostepId), required: false);
             SourceExpression.Validate(replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
             SourceExpression.Validate(replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
             SourceExpression.Validate(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
@@ -685,9 +670,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var replaceTo = new JObject();
                 var replaceTopropCount = 0;
-                if (replaceTostepID != null)
+                if (replaceTostepId != null)
                 {
-                    replaceTo["step_id"] = SourceExpressionConverter.ConvertToken(replaceTostepID);
+                    replaceTo["step_id"] = SourceExpressionConverter.ConvertToken(replaceTostepId);
                     replaceTopropCount++;
                 }
 
@@ -1111,9 +1096,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
     public class SignnoweuTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response> Triggers([WorkflowExpression] Func<string> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response> Triggers([WorkflowExpression] Func<string> bodyEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyevent, nameof(bodyevent), required: true);
+            SourceExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/multievent";
@@ -1122,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["event"] = SourceExpressionConverter.ConvertToken(bodyevent);
+                body["event"] = SourceExpressionConverter.ConvertToken(bodyEvent);
                 body["entity_id"] = "00000000-0000-0000-0000-000000000000";
                 bodypropCount++;
                 body["action"] = "callback";
@@ -1309,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Status { get; set; }
     }
 
-    public class inviteinvitesInputItem2
+    public class inviteinvitesInputItem22
     {
         [JsonProperty("email")]
         public string SignerEmail { get; set; }
@@ -1543,12 +1528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class DeleteDocResponse

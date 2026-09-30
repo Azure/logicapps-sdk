@@ -169,7 +169,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction POSTFile([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<bodyconfigfileTypeInput> bodyconfigfileType = null, [WorkflowExpression] Func<string[]> bodyconfigcomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigscoring = null)
+        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram([WorkflowExpression] Func<string> bodypropertiesdisplayName = null, [WorkflowExpression] Func<string> bodypropertiesflowId = null, [WorkflowExpression] Func<string> bodypropertiesowner = null, [WorkflowExpression] Func<string> bodypropertiesenvironment = null)
+        {
+            SourceExpression.Validate(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
+            SourceExpression.Validate(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
+            SourceExpression.Validate(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
+            SourceExpression.Validate(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/autoreview/diagram";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodypropertiesdisplayName != null)
+                {
+                    propertiesObject["displayName"] = SourceExpressionConverter.ConvertToken(bodypropertiesdisplayName);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodypropertiesflowId != null)
+                {
+                    propertiesObject["name"] = SourceExpressionConverter.ConvertToken(bodypropertiesflowId);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodypropertiesowner != null)
+                {
+                    propertiesObject["owner"] = SourceExpressionConverter.ConvertToken(bodypropertiesowner);
+                    propertiesObjectpropCount++;
+                }
+
+                if (bodypropertiesenvironment != null)
+                {
+                    propertiesObject["environment"] = SourceExpressionConverter.ConvertToken(bodypropertiesenvironment);
+                    propertiesObjectpropCount++;
+                }
+
+                var definitionObject = new JObject();
+                var definitionObjectpropCount = 0;
+                if (definitionObjectpropCount > 0)
+                {
+                    propertiesObject["definition"] = definitionObject;
+                    propertiesObjectpropCount++;
+                }
+
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                var configsObject = new JObject();
+                var configsObjectpropCount = 0;
+                configsObject["type"] = "SVG";
+                configsObjectpropCount++;
+                if (configsObjectpropCount > 0)
+                {
+                    body["configs"] = configsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<POSTDiagramResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
+        public IBodyWorkflowAction<POSTFileV2Response> POSTFile([WorkflowExpression] Func<string> bodyflowPropertiesdisplayName = null, [WorkflowExpression] Func<string> bodyflowPropertiesflowId = null, [WorkflowExpression] Func<string> bodyflowPropertiesowner = null, [WorkflowExpression] Func<string> bodyflowPropertiesenvironment = null, [WorkflowExpression] Func<bodyconfigfileTypeInput> bodyconfigfileType = null, [WorkflowExpression] Func<string[]> bodyconfigcomplexity = null, [WorkflowExpression] Func<string[]> bodyconfigscoring = null)
         {
             SourceExpression.Validate(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
             SourceExpression.Validate(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
@@ -180,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
             SourceExpression.Validate(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/v1/autoreview/file";
+                var apiCallPath = "/v2/autoreview/file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -284,81 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
                 return callPayload;
             }
 
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram([WorkflowExpression] Func<string> bodypropertiesdisplayName = null, [WorkflowExpression] Func<string> bodypropertiesflowId = null, [WorkflowExpression] Func<string> bodypropertiesowner = null, [WorkflowExpression] Func<string> bodypropertiesenvironment = null)
-        {
-            SourceExpression.Validate(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
-            SourceExpression.Validate(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
-            SourceExpression.Validate(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
-            SourceExpression.Validate(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v2/autoreview/diagram";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (bodypropertiesdisplayName != null)
-                {
-                    propertiesObject["displayName"] = SourceExpressionConverter.ConvertToken(bodypropertiesdisplayName);
-                    propertiesObjectpropCount++;
-                }
-
-                if (bodypropertiesflowId != null)
-                {
-                    propertiesObject["name"] = SourceExpressionConverter.ConvertToken(bodypropertiesflowId);
-                    propertiesObjectpropCount++;
-                }
-
-                if (bodypropertiesowner != null)
-                {
-                    propertiesObject["owner"] = SourceExpressionConverter.ConvertToken(bodypropertiesowner);
-                    propertiesObjectpropCount++;
-                }
-
-                if (bodypropertiesenvironment != null)
-                {
-                    propertiesObject["environment"] = SourceExpressionConverter.ConvertToken(bodypropertiesenvironment);
-                    propertiesObjectpropCount++;
-                }
-
-                var definitionObject = new JObject();
-                var definitionObjectpropCount = 0;
-                if (definitionObjectpropCount > 0)
-                {
-                    propertiesObject["definition"] = definitionObject;
-                    propertiesObjectpropCount++;
-                }
-
-                if (propertiesObjectpropCount > 0)
-                {
-                    body["properties"] = propertiesObject;
-                    bodypropCount++;
-                }
-
-                var configsObject = new JObject();
-                var configsObjectpropCount = 0;
-                configsObject["type"] = "SVG";
-                configsObjectpropCount++;
-                if (configsObjectpropCount > 0)
-                {
-                    body["configs"] = configsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<POSTDiagramResponse>(BuildSourceInput);
+            return new ApiConnectionAction<POSTFileV2Response>(BuildSourceInput);
         }
     }
 
@@ -819,18 +819,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Parent { get; set; }
     }
 
-    public enum bodyconfigfileTypeInput
-    {
-        [EnumMember(Value = "review")]
-        Review,
-        [EnumMember(Value = "report")]
-        Report,
-        [EnumMember(Value = "diagram")]
-        Diagram,
-        [EnumMember(Value = "exception")]
-        Exception
-    }
-
     public class POSTDiagramResponse
     {
         [JsonProperty("data")]
@@ -844,6 +832,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
 
         [JsonProperty("info")]
         public string Info { get; set; }
+    }
+
+    public class POSTFileV2Response
+    {
+        [JsonProperty("data")]
+        public POSTFileV2ResponseDataType Data { get; set; }
+    }
+
+    public class POSTFileV2ResponseDataType
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+
+        [JsonProperty("info")]
+        public string Info { get; set; }
+    }
+
+    public enum bodyconfigfileTypeInput
+    {
+        [EnumMember(Value = "review")]
+        Review,
+        [EnumMember(Value = "report")]
+        Report,
+        [EnumMember(Value = "diagram")]
+        Diagram,
+        [EnumMember(Value = "exception")]
+        Exception
     }
 }
 

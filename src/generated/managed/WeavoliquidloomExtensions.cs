@@ -402,10 +402,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -416,8 +416,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (bodylogFileName != null)
                 {
                     body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);
@@ -435,10 +439,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> EdiToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
+        public IBodyWorkflowAction<string> EdiToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -449,8 +453,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (bodylogFileName != null)
                 {
                     body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);
@@ -468,10 +476,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> XmlToXml11([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToXml11([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             SourceExpression.Validate(bodyinputString, nameof(bodyinputString), required: true);
-            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            SourceExpression.Validate(bodyliquidTemplate, nameof(bodyliquidTemplate), required: false);
             SourceExpression.Validate(bodylogFileName, nameof(bodylogFileName), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -482,8 +490,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
-                bodypropCount++;
-                body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
                 if (bodylogFileName != null)
                 {
                     body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);

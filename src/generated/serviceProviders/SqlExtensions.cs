@@ -39,6 +39,76 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
+        public IBodyWorkflowAction<JToken> ExecuteQueryWithOutputAsDictionary([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
+        {
+            SourceExpression.Validate(query, nameof(query), required: true);
+            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            SourceExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["query"] = SourceExpressionConverter.ConvertToken(query);
+                if (queryParameters != null)
+                {
+                    serviceProviderParameters["queryParameters"] = SourceExpressionConverter.ConvertToken(queryParameters);
+                }
+
+                if (includeEmptyResultSets != null)
+                {
+                    serviceProviderParameters["includeEmptyResultSets"] = SourceExpressionConverter.ConvertToken(includeEmptyResultSets);
+                }
+                else
+                {
+                    serviceProviderParameters["includeEmptyResultSets"] = true;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeQueryWithOutputAsDictionary", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
+        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
+        {
+            SourceExpression.Validate(storedProcedureName, nameof(storedProcedureName), required: true);
+            SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
+            SourceExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["storedProcedureName"] = SourceExpressionConverter.ConvertToken(storedProcedureName);
+                if (storedProcedureParameters != null)
+                {
+                    serviceProviderParameters["storedProcedureParameters"] = SourceExpressionConverter.ConvertToken(storedProcedureParameters);
+                }
+
+                if (includeEmptyResultSets != null)
+                {
+                    serviceProviderParameters["includeEmptyResultSets"] = SourceExpressionConverter.ConvertToken(includeEmptyResultSets);
+                }
+                else
+                {
+                    serviceProviderParameters["includeEmptyResultSets"] = true;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeStoredProcedure", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
         public IBodyWorkflowAction<JToken> InsertRow([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns = null)
         {
             SourceExpression.Validate(tableName, nameof(tableName), required: true);
@@ -205,11 +275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sql")]
-        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null, [WorkflowExpression] Func<bool> includeEmptyResultSets = null)
+        public IBodyWorkflowAction<ExecuteStoredProcedureWithOutputAsDictionaryOutput> ExecuteStoredProcedureWithOutputAsDictionary([WorkflowExpression] Func<string> storedProcedureName, [WorkflowExpression] Func<object> storedProcedureParameters = null)
         {
             SourceExpression.Validate(storedProcedureName, nameof(storedProcedureName), required: true);
             SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
-            SourceExpression.Validate(includeEmptyResultSets, nameof(includeEmptyResultSets), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -219,24 +288,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     serviceProviderParameters["storedProcedureParameters"] = SourceExpressionConverter.ConvertToken(storedProcedureParameters);
                 }
 
-                if (includeEmptyResultSets != null)
-                {
-                    serviceProviderParameters["includeEmptyResultSets"] = SourceExpressionConverter.ConvertToken(includeEmptyResultSets);
-                }
-                else
-                {
-                    serviceProviderParameters["includeEmptyResultSets"] = true;
-                }
-
                 var serviceProviderInput = new ServiceProviderOperationInput
                 {
-                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeStoredProcedure", connectionName: connectionId),
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/sql", operationId: "executeStoredProcedureWithOutputAsDictionary", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
                 return serviceProviderInput;
             }
 
-            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(BuildSourceInput);
+            return new ServiceProviderAction<ExecuteStoredProcedureWithOutputAsDictionaryOutput>(BuildSourceInput);
         }
     }
 
@@ -315,6 +375,18 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         }
     }
 
+    public class ExecuteStoredProcedureOutput
+    {
+        [JsonProperty("resultSets")]
+        public JToken ResultSets { get; set; }
+
+        [JsonProperty("outputParameters")]
+        public JToken OutputParameters { get; set; }
+
+        [JsonProperty("returnCode")]
+        public int ReturnCode { get; set; }
+    }
+
     public class GetRowsV2Output
     {
         [JsonProperty("value")]
@@ -330,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
         public string DisplayName { get; set; }
     }
 
-    public class ExecuteStoredProcedureOutput
+    public class ExecuteStoredProcedureWithOutputAsDictionaryOutput
     {
         [JsonProperty("resultSets")]
         public JToken ResultSets { get; set; }

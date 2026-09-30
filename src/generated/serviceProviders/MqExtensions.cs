@@ -338,443 +338,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         }
     }
 
-    public class PollAvailableOutput
-    {
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-    }
-
-    public class PollBrowseMessagesOutput
-    {
-        [JsonProperty("connectionId")]
-        public string ConnectionId { get; set; }
-
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-
-        [JsonProperty("messages")]
-        public PollBrowseMessagesOutputMessagesTypeItem[] Messages { get; set; }
-    }
-
-    public class PollBrowseMessagesOutputMessagesTypeItem
-    {
-        [JsonProperty("uniqueId")]
-        public string UniqueId { get; set; }
-
-        [JsonProperty("contentData")]
-        public string ContentData { get; set; }
-
-        [JsonProperty("binaryContentData")]
-        public JToken BinaryContentData { get; set; }
-
-        [JsonProperty("report")]
-        public PollBrowseMessagesOutputMessagesTypeItemReportType Report { get; set; }
-
-        [JsonProperty("messageType")]
-        public PollBrowseMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
-
-        [JsonProperty("expiry")]
-        public int Expiry { get; set; }
-
-        [JsonProperty("encoding")]
-        public int Encoding { get; set; }
-
-        [JsonProperty("codePage")]
-        public int CodePage { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("priority")]
-        public PollBrowseMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
-
-        [JsonProperty("persistence")]
-        public PollBrowseMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("replyToQueue")]
-        public string ReplyToQueue { get; set; }
-
-        [JsonProperty("replyToQueueManager")]
-        public string ReplyToQueueManager { get; set; }
-
-        [JsonProperty("userIdentifier")]
-        public string UserIdentifier { get; set; }
-
-        [JsonProperty("accountingToken")]
-        public string AccountingToken { get; set; }
-
-        [JsonProperty("applicationIdData")]
-        public string ApplicationIdData { get; set; }
-
-        [JsonProperty("putApplicationType")]
-        public string PutApplicationType { get; set; }
-
-        [JsonProperty("putApplicationName")]
-        public string PutApplicationName { get; set; }
-
-        [JsonProperty("putDate")]
-        public string PutDate { get; set; }
-
-        [JsonProperty("putTime")]
-        public string PutTime { get; set; }
-
-        [JsonProperty("applicationOriginData")]
-        public string ApplicationOriginData { get; set; }
-
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public int SequenceNumber { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("flags")]
-        public PollBrowseMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
-
-        [JsonProperty("originalLength")]
-        public int OriginalLength { get; set; }
-        public string OriginalConnectionId { get; set; }
-
-        [JsonProperty("originalQueueManagerName")]
-        public string OriginalQueueManagerName { get; set; }
-
-        [JsonProperty("originalQueueName")]
-        public string OriginalQueueName { get; set; }
-
-        [JsonProperty("cicsBridgeHeader")]
-        public JToken CicsBridgeHeader { get; set; }
-
-        [JsonProperty("imsBridgeHeader")]
-        public JToken ImsBridgeHeader { get; set; }
-
-        [JsonProperty("ruleAndFormattingVersion2Header")]
-        public JToken RuleAndFormattingVersion2Header { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemReportType
-    {
-        None,
-        [EnumMember(Value = "Pass Message ID")]
-        PassMessageId,
-        [EnumMember(Value = "Pass Correlator ID")]
-        PassCorrelatorId,
-        [EnumMember(Value = "Pass Discard and Expiry")]
-        PassDiscardAndExpiry,
-        [EnumMember(Value = "Discard Message")]
-        DiscardMessage
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
-    {
-        Datagram,
-        Request,
-        Reply
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
-    {
-        [EnumMember(Value = "As Published")]
-        AsPublished,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined,
-        [EnumMember(Value = "As Parent")]
-        AsParent
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
-    {
-        None,
-        Persistent,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
-    {
-        None,
-        [EnumMember(Value = "Segmentation Inhibited")]
-        SegmentationInhibited,
-        [EnumMember(Value = "Segmentation Allowed")]
-        SegmentationAllowed,
-        Segment,
-        [EnumMember(Value = "Last Segment")]
-        LastSegment,
-        [EnumMember(Value = "Message In Group")]
-        MessageInGroup,
-        [EnumMember(Value = "Last Message In Group")]
-        LastMessageInGroup
-    }
-
-    public class PollBrowseMessagesInputGetMessageOptionsType
-    {
-        [JsonProperty("format")]
-        public PollBrowseMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
-
-        [JsonProperty("maximumMessagesInBatch")]
-        public int? MaximumMessagesInBatch { get; set; }
-
-        [JsonProperty("maximumBatchSizeInMB")]
-        public int? MaximumBatchSizeInMB { get; set; }
-
-        [JsonProperty("waitIntervalInSeconds")]
-        public int? WaitIntervalInSeconds { get; set; }
-
-        [JsonProperty("browseLockedTimeoutInSeconds")]
-        public int? BrowseLockedTimeoutInSeconds { get; set; }
-
-        [JsonProperty("pollingIntervalInSeconds")]
-        public int? PollingIntervalInSeconds { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
-    {
-        String,
-        Binary
-    }
-
-    public class PollMessagesOutput
-    {
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-
-        [JsonProperty("messages")]
-        public PollMessagesOutputMessagesTypeItem[] Messages { get; set; }
-    }
-
-    public class PollMessagesOutputMessagesTypeItem
-    {
-        [JsonProperty("uniqueId")]
-        public string UniqueId { get; set; }
-
-        [JsonProperty("contentData")]
-        public string ContentData { get; set; }
-
-        [JsonProperty("binaryContentData")]
-        public JToken BinaryContentData { get; set; }
-
-        [JsonProperty("report")]
-        public PollMessagesOutputMessagesTypeItemReportType Report { get; set; }
-
-        [JsonProperty("messageType")]
-        public PollMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
-
-        [JsonProperty("expiry")]
-        public int Expiry { get; set; }
-
-        [JsonProperty("encoding")]
-        public int Encoding { get; set; }
-
-        [JsonProperty("codePage")]
-        public int CodePage { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("priority")]
-        public PollMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
-
-        [JsonProperty("persistence")]
-        public PollMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("replyToQueue")]
-        public string ReplyToQueue { get; set; }
-
-        [JsonProperty("replyToQueueManager")]
-        public string ReplyToQueueManager { get; set; }
-
-        [JsonProperty("userIdentifier")]
-        public string UserIdentifier { get; set; }
-
-        [JsonProperty("accountingToken")]
-        public string AccountingToken { get; set; }
-
-        [JsonProperty("applicationIdData")]
-        public string ApplicationIdData { get; set; }
-
-        [JsonProperty("putApplicationType")]
-        public string PutApplicationType { get; set; }
-
-        [JsonProperty("putApplicationName")]
-        public string PutApplicationName { get; set; }
-
-        [JsonProperty("putDate")]
-        public string PutDate { get; set; }
-
-        [JsonProperty("putTime")]
-        public string PutTime { get; set; }
-
-        [JsonProperty("applicationOriginData")]
-        public string ApplicationOriginData { get; set; }
-
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public int SequenceNumber { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("flags")]
-        public PollMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
-
-        [JsonProperty("originalLength")]
-        public int OriginalLength { get; set; }
-        public string OriginalConnectionId { get; set; }
-
-        [JsonProperty("originalQueueManagerName")]
-        public string OriginalQueueManagerName { get; set; }
-
-        [JsonProperty("originalQueueName")]
-        public string OriginalQueueName { get; set; }
-
-        [JsonProperty("cicsBridgeHeader")]
-        public JToken CicsBridgeHeader { get; set; }
-
-        [JsonProperty("imsBridgeHeader")]
-        public JToken ImsBridgeHeader { get; set; }
-
-        [JsonProperty("ruleAndFormattingVersion2Header")]
-        public JToken RuleAndFormattingVersion2Header { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemReportType
-    {
-        None,
-        [EnumMember(Value = "Pass Message ID")]
-        PassMessageId,
-        [EnumMember(Value = "Pass Correlator ID")]
-        PassCorrelatorId,
-        [EnumMember(Value = "Pass Discard and Expiry")]
-        PassDiscardAndExpiry,
-        [EnumMember(Value = "Discard Message")]
-        DiscardMessage
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemMessageTypeType
-    {
-        Datagram,
-        Request,
-        Reply
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemPriorityType
-    {
-        [EnumMember(Value = "As Published")]
-        AsPublished,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined,
-        [EnumMember(Value = "As Parent")]
-        AsParent
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemPersistenceType
-    {
-        None,
-        Persistent,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemFlagsType
-    {
-        None,
-        [EnumMember(Value = "Segmentation Inhibited")]
-        SegmentationInhibited,
-        [EnumMember(Value = "Segmentation Allowed")]
-        SegmentationAllowed,
-        Segment,
-        [EnumMember(Value = "Last Segment")]
-        LastSegment,
-        [EnumMember(Value = "Message In Group")]
-        MessageInGroup,
-        [EnumMember(Value = "Last Message In Group")]
-        LastMessageInGroup
-    }
-
-    public class PollMessagesInputGetMessageOptionsType
-    {
-        [JsonProperty("format")]
-        public PollMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
-
-        [JsonProperty("maximumMessagesInBatch")]
-        public int? MaximumMessagesInBatch { get; set; }
-
-        [JsonProperty("maximumBatchSizeInMB")]
-        public int? MaximumBatchSizeInMB { get; set; }
-
-        [JsonProperty("waitIntervalInSeconds")]
-        public int? WaitIntervalInSeconds { get; set; }
-
-        [JsonProperty("maximizeThroughput")]
-        public bool? MaximizeThroughput { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesInputGetMessageOptionsTypeFormatType
-    {
-        String,
-        Binary
-    }
-
     public class BrowseMessageOutput
     {
         [JsonProperty("connectionId")]
@@ -2118,6 +1681,443 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         RrsBatch,
         Sib,
         NoContext
+    }
+
+    public class PollAvailableOutput
+    {
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+    }
+
+    public class PollBrowseMessagesOutput
+    {
+        [JsonProperty("connectionId")]
+        public string ConnectionId { get; set; }
+
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("messages")]
+        public PollBrowseMessagesOutputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class PollBrowseMessagesOutputMessagesTypeItem
+    {
+        [JsonProperty("uniqueId")]
+        public string UniqueId { get; set; }
+
+        [JsonProperty("contentData")]
+        public string ContentData { get; set; }
+
+        [JsonProperty("binaryContentData")]
+        public JToken BinaryContentData { get; set; }
+
+        [JsonProperty("report")]
+        public PollBrowseMessagesOutputMessagesTypeItemReportType Report { get; set; }
+
+        [JsonProperty("messageType")]
+        public PollBrowseMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
+
+        [JsonProperty("expiry")]
+        public int Expiry { get; set; }
+
+        [JsonProperty("encoding")]
+        public int Encoding { get; set; }
+
+        [JsonProperty("codePage")]
+        public int CodePage { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("priority")]
+        public PollBrowseMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
+
+        [JsonProperty("persistence")]
+        public PollBrowseMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("replyToQueue")]
+        public string ReplyToQueue { get; set; }
+
+        [JsonProperty("replyToQueueManager")]
+        public string ReplyToQueueManager { get; set; }
+
+        [JsonProperty("userIdentifier")]
+        public string UserIdentifier { get; set; }
+
+        [JsonProperty("accountingToken")]
+        public string AccountingToken { get; set; }
+
+        [JsonProperty("applicationIdData")]
+        public string ApplicationIdData { get; set; }
+
+        [JsonProperty("putApplicationType")]
+        public string PutApplicationType { get; set; }
+
+        [JsonProperty("putApplicationName")]
+        public string PutApplicationName { get; set; }
+
+        [JsonProperty("putDate")]
+        public string PutDate { get; set; }
+
+        [JsonProperty("putTime")]
+        public string PutTime { get; set; }
+
+        [JsonProperty("applicationOriginData")]
+        public string ApplicationOriginData { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public int SequenceNumber { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("flags")]
+        public PollBrowseMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
+
+        [JsonProperty("originalLength")]
+        public int OriginalLength { get; set; }
+        public string OriginalConnectionId { get; set; }
+
+        [JsonProperty("originalQueueManagerName")]
+        public string OriginalQueueManagerName { get; set; }
+
+        [JsonProperty("originalQueueName")]
+        public string OriginalQueueName { get; set; }
+
+        [JsonProperty("cicsBridgeHeader")]
+        public JToken CicsBridgeHeader { get; set; }
+
+        [JsonProperty("imsBridgeHeader")]
+        public JToken ImsBridgeHeader { get; set; }
+
+        [JsonProperty("ruleAndFormattingVersion2Header")]
+        public JToken RuleAndFormattingVersion2Header { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemReportType
+    {
+        None,
+        [EnumMember(Value = "Pass Message ID")]
+        PassMessageId,
+        [EnumMember(Value = "Pass Correlator ID")]
+        PassCorrelatorId,
+        [EnumMember(Value = "Pass Discard and Expiry")]
+        PassDiscardAndExpiry,
+        [EnumMember(Value = "Discard Message")]
+        DiscardMessage
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
+    {
+        Datagram,
+        Request,
+        Reply
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
+    {
+        [EnumMember(Value = "As Published")]
+        AsPublished,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined,
+        [EnumMember(Value = "As Parent")]
+        AsParent
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
+    {
+        None,
+        Persistent,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
+    {
+        None,
+        [EnumMember(Value = "Segmentation Inhibited")]
+        SegmentationInhibited,
+        [EnumMember(Value = "Segmentation Allowed")]
+        SegmentationAllowed,
+        Segment,
+        [EnumMember(Value = "Last Segment")]
+        LastSegment,
+        [EnumMember(Value = "Message In Group")]
+        MessageInGroup,
+        [EnumMember(Value = "Last Message In Group")]
+        LastMessageInGroup
+    }
+
+    public class PollBrowseMessagesInputGetMessageOptionsType
+    {
+        [JsonProperty("format")]
+        public PollBrowseMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
+
+        [JsonProperty("maximumMessagesInBatch")]
+        public int? MaximumMessagesInBatch { get; set; }
+
+        [JsonProperty("maximumBatchSizeInMB")]
+        public int? MaximumBatchSizeInMB { get; set; }
+
+        [JsonProperty("waitIntervalInSeconds")]
+        public int? WaitIntervalInSeconds { get; set; }
+
+        [JsonProperty("browseLockedTimeoutInSeconds")]
+        public int? BrowseLockedTimeoutInSeconds { get; set; }
+
+        [JsonProperty("pollingIntervalInSeconds")]
+        public int? PollingIntervalInSeconds { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
+    {
+        String,
+        Binary
+    }
+
+    public class PollMessagesOutput
+    {
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("messages")]
+        public PollMessagesOutputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class PollMessagesOutputMessagesTypeItem
+    {
+        [JsonProperty("uniqueId")]
+        public string UniqueId { get; set; }
+
+        [JsonProperty("contentData")]
+        public string ContentData { get; set; }
+
+        [JsonProperty("binaryContentData")]
+        public JToken BinaryContentData { get; set; }
+
+        [JsonProperty("report")]
+        public PollMessagesOutputMessagesTypeItemReportType Report { get; set; }
+
+        [JsonProperty("messageType")]
+        public PollMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
+
+        [JsonProperty("expiry")]
+        public int Expiry { get; set; }
+
+        [JsonProperty("encoding")]
+        public int Encoding { get; set; }
+
+        [JsonProperty("codePage")]
+        public int CodePage { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("priority")]
+        public PollMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
+
+        [JsonProperty("persistence")]
+        public PollMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("replyToQueue")]
+        public string ReplyToQueue { get; set; }
+
+        [JsonProperty("replyToQueueManager")]
+        public string ReplyToQueueManager { get; set; }
+
+        [JsonProperty("userIdentifier")]
+        public string UserIdentifier { get; set; }
+
+        [JsonProperty("accountingToken")]
+        public string AccountingToken { get; set; }
+
+        [JsonProperty("applicationIdData")]
+        public string ApplicationIdData { get; set; }
+
+        [JsonProperty("putApplicationType")]
+        public string PutApplicationType { get; set; }
+
+        [JsonProperty("putApplicationName")]
+        public string PutApplicationName { get; set; }
+
+        [JsonProperty("putDate")]
+        public string PutDate { get; set; }
+
+        [JsonProperty("putTime")]
+        public string PutTime { get; set; }
+
+        [JsonProperty("applicationOriginData")]
+        public string ApplicationOriginData { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public int SequenceNumber { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("flags")]
+        public PollMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
+
+        [JsonProperty("originalLength")]
+        public int OriginalLength { get; set; }
+        public string OriginalConnectionId { get; set; }
+
+        [JsonProperty("originalQueueManagerName")]
+        public string OriginalQueueManagerName { get; set; }
+
+        [JsonProperty("originalQueueName")]
+        public string OriginalQueueName { get; set; }
+
+        [JsonProperty("cicsBridgeHeader")]
+        public JToken CicsBridgeHeader { get; set; }
+
+        [JsonProperty("imsBridgeHeader")]
+        public JToken ImsBridgeHeader { get; set; }
+
+        [JsonProperty("ruleAndFormattingVersion2Header")]
+        public JToken RuleAndFormattingVersion2Header { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemReportType
+    {
+        None,
+        [EnumMember(Value = "Pass Message ID")]
+        PassMessageId,
+        [EnumMember(Value = "Pass Correlator ID")]
+        PassCorrelatorId,
+        [EnumMember(Value = "Pass Discard and Expiry")]
+        PassDiscardAndExpiry,
+        [EnumMember(Value = "Discard Message")]
+        DiscardMessage
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemMessageTypeType
+    {
+        Datagram,
+        Request,
+        Reply
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemPriorityType
+    {
+        [EnumMember(Value = "As Published")]
+        AsPublished,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined,
+        [EnumMember(Value = "As Parent")]
+        AsParent
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemPersistenceType
+    {
+        None,
+        Persistent,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemFlagsType
+    {
+        None,
+        [EnumMember(Value = "Segmentation Inhibited")]
+        SegmentationInhibited,
+        [EnumMember(Value = "Segmentation Allowed")]
+        SegmentationAllowed,
+        Segment,
+        [EnumMember(Value = "Last Segment")]
+        LastSegment,
+        [EnumMember(Value = "Message In Group")]
+        MessageInGroup,
+        [EnumMember(Value = "Last Message In Group")]
+        LastMessageInGroup
+    }
+
+    public class PollMessagesInputGetMessageOptionsType
+    {
+        [JsonProperty("format")]
+        public PollMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
+
+        [JsonProperty("maximumMessagesInBatch")]
+        public int? MaximumMessagesInBatch { get; set; }
+
+        [JsonProperty("maximumBatchSizeInMB")]
+        public int? MaximumBatchSizeInMB { get; set; }
+
+        [JsonProperty("waitIntervalInSeconds")]
+        public int? WaitIntervalInSeconds { get; set; }
+
+        [JsonProperty("maximizeThroughput")]
+        public bool? MaximizeThroughput { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesInputGetMessageOptionsTypeFormatType
+    {
+        String,
+        Binary
     }
 }
 

@@ -56,15 +56,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
                     invitedUserMessageInfoObjectpropCount++;
                 }
 
-                invitedUserMessageInfoObject["messageLanguage"] = "en-US";
-                invitedUserMessageInfoObjectpropCount++;
                 if (bodyinvitedUserMessageInfomessageLanguage != null)
                 {
                     invitedUserMessageInfoObject["messageLanguage"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserMessageInfomessageLanguage);
+                    invitedUserMessageInfoObjectpropCount++;
                 }
 
-                body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
-                bodypropCount++;
+                if (invitedUserMessageInfoObjectpropCount > 0)
+                {
+                    body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
+                    bodypropCount++;
+                }
 
                 if (bodyinvitedUserType != null)
                 {
@@ -90,7 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
                     bodypropCount++;
                 }
 
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
                 return callPayload;
             }
 

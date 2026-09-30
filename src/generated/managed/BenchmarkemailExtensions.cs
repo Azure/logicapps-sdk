@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
-        public IBodyWorkflowAction<int> CreateContact([WorkflowExpression] Func<string> listID, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> middleName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> jobTitle = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> notes = null)
+        public IBodyWorkflowAction<int> CreateContact([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> middleName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> jobTitle = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> notes = null)
         {
-            SourceExpression.Validate(listID, nameof(listID), required: true);
+            SourceExpression.Validate(listId, nameof(listId), required: true);
             SourceExpression.Validate(email, nameof(email), required: true);
             SourceExpression.Validate(firstName, nameof(firstName), required: false);
             SourceExpression.Validate(middleName, nameof(middleName), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["output"] = Convert.ToString("json");
                 callPayload.Queries["method"] = Convert.ToString("listAddContacts");
-                callPayload.Queries["listID"] = SourceExpressionConverter.ConvertO(listID);
+                callPayload.Queries["listID"] = SourceExpressionConverter.ConvertO(listId);
                 callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
                 if (firstName != null)
                     callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);

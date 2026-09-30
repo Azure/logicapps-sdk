@@ -12,23 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
     public class SqlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
-        {
-            SourceExpression.Validate(procedure, nameof(procedure), required: true);
-            SourceExpression.Validate(parameters, nameof(parameters), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/default/procedures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(parameters);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
         public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(server, nameof(server), required: true);
@@ -84,6 +67,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                 {
                     callPayload.Body = query;
                 }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
+        public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
+        {
+            SourceExpression.Validate(server, nameof(server), required: true);
+            SourceExpression.Validate(database, nameof(database), required: true);
+            SourceExpression.Validate(procedure, nameof(procedure), required: true);
+            SourceExpression.Validate(parameters, nameof(parameters), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/procedures/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(server, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(database, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(parameters);
                 return callPayload;
             }
 

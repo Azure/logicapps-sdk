@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<JokeIDResponse> JokeID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<JokeIdResponse> JokeId([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<JokeIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<JokeIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
@@ -107,16 +107,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         public string Punchline { get; set; }
     }
 
-    public class JokeIDResponse
+    public class JokeIdResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
 
         [JsonProperty("body")]
-        public JokeIDResponseBodyType Body { get; set; }
+        public JokeIdResponseBodyType Body { get; set; }
     }
 
-    public class JokeIDResponseBodyType
+    public class JokeIdResponseBodyType
     {
         [JsonProperty("_id")]
         public string Id { get; set; }

@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     public class IlovesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
-        public IBodyWorkflowAction<SignResponse> Sign([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodysigners = null, [WorkflowExpression] Func<string> bodysignersEmails = null, [WorkflowExpression] Func<string> bodysignsPositions = null, [WorkflowExpression] Func<bodysignTypeInput> bodysignType = null, [WorkflowExpression] Func<string> bodyexpirationDays = null, [WorkflowExpression] Func<bodysignerRemindersInput> bodysignerReminders = null, [WorkflowExpression] Func<string> bodysignerReminderDaysCycle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodysize = null)
+        public IBodyWorkflowAction<SignResponse> Sign([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodysigners = null, [WorkflowExpression] Func<string> bodysignersEmails = null, [WorkflowExpression] Func<string> bodysignsPositions = null, [WorkflowExpression] Func<bodysignTypeInput> bodysignType = null, [WorkflowExpression] Func<string> bodyexpirationDays = null, [WorkflowExpression] Func<bodysignerRemindersInput> bodysignerReminders = null, [WorkflowExpression] Func<string> bodysignerReminderDaysCycle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodysize = null)
         {
             SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
             SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
             SourceExpression.Validate(bodysigners, nameof(bodysigners), required: false);
             SourceExpression.Validate(bodysignersEmails, nameof(bodysignersEmails), required: false);
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
                 body["file_source"] = SourceExpressionConverter.Convert(bodyfileSource);
                 bodypropCount++;
                 body["file_name"] = SourceExpressionConverter.ConvertToken(bodyfileName);
-                if (bodyfile != null)
+                if (bodyFile != null)
                 {
-                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                     bodypropCount++;
                 }
 

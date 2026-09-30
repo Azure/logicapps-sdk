@@ -14,13 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     public class ConfluentKafkaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> messageKey = null, [WorkflowExpression] Func<object> headers = null, [WorkflowExpression] Func<string> schemaSubjectName = null)
+        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> messageKey = null, [WorkflowExpression] Func<object> headers = null, [WorkflowExpression] Func<string> schemaSubjectName = null, [WorkflowExpression] Func<bool> rawStringContent = null)
         {
             SourceExpression.Validate(topicName, nameof(topicName), required: true);
             SourceExpression.Validate(message, nameof(message), required: true);
             SourceExpression.Validate(messageKey, nameof(messageKey), required: false);
             SourceExpression.Validate(headers, nameof(headers), required: false);
             SourceExpression.Validate(schemaSubjectName, nameof(schemaSubjectName), required: false);
+            SourceExpression.Validate(rawStringContent, nameof(rawStringContent), required: false);
             ServiceProviderOperationInput BuildSourceInput()
             {
                 var serviceProviderParameters = new JObject();
@@ -39,6 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                 if (schemaSubjectName != null)
                 {
                     serviceProviderParameters["SchemaSubjectName"] = SourceExpressionConverter.ConvertToken(schemaSubjectName);
+                }
+
+                if (rawStringContent != null)
+                {
+                    serviceProviderParameters["rawStringContent"] = SourceExpressionConverter.ConvertToken(rawStringContent);
+                }
+                else
+                {
+                    serviceProviderParameters["rawStringContent"] = false;
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput
@@ -110,6 +120,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         }
     }
 
+    public class SendMessageOutput
+    {
+        public string TopicName { get; set; }
+        public int Partition { get; set; }
+        public int Offset { get; set; }
+        public string Timestamp { get; set; }
+        public string Status { get; set; }
+    }
+
     public class ReceiveMessageOutput
     {
         [JsonProperty("messageKey")]
@@ -144,15 +163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         Ssl,
         SaslPlaintext,
         SaslSsl
-    }
-
-    public class SendMessageOutput
-    {
-        public string TopicName { get; set; }
-        public int Partition { get; set; }
-        public int Offset { get; set; }
-        public string Timestamp { get; set; }
-        public string Status { get; set; }
     }
 }
 

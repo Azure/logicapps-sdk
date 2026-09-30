@@ -46,23 +46,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD4POSTFileResponse> MD4POSTFile([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> file)
-        {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/hash/md4/base64";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<MD4POSTFileResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<MD5GETResponse> MD5GET([WorkflowExpression] Func<string> value)
         {
             SourceExpression.Validate(value, nameof(value), required: true);
@@ -94,23 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
             }
 
             return new ApiConnectionAction<MD5POSTResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<MD5POSTFileResponse> MD5POSTFile([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> file)
-        {
-            SourceExpression.Validate(value, nameof(value), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/hash/md5/base64";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<MD5POSTFileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
@@ -313,24 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
-        public IBodyWorkflowAction<M200> SHA1POSTForm([WorkflowExpression] Func<string> xHashifyProcess, [WorkflowExpression] Func<string> digestFormat, [WorkflowExpression] Func<string> file)
-        {
-            SourceExpression.Validate(xHashifyProcess, nameof(xHashifyProcess), required: true);
-            SourceExpression.Validate(digestFormat, nameof(digestFormat), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/hash/sha1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(digestFormat, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-Hashify-Process"] = SourceExpressionConverter.ConvertO(xHashifyProcess);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<M200>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashifyip")]
         public IBodyWorkflowAction<SHA256GETResponse> SHA256GET([WorkflowExpression] Func<string> value, [WorkflowExpression] Func<string> digestFormat)
         {
             SourceExpression.Validate(value, nameof(value), required: true);
@@ -430,14 +378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         public string Key { get; set; }
     }
 
-    public class MD4POSTFileResponse
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public string Key { get; set; }
-    }
-
     public class MD5GETResponse
     {
         public string Digest { get; set; }
@@ -447,14 +387,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
     }
 
     public class MD5POSTResponse
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public string Key { get; set; }
-    }
-
-    public class MD5POSTFileResponse
     {
         public string Digest { get; set; }
         public string DigestEnc { get; set; }
@@ -542,14 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
         public string Key { get; set; }
     }
 
-    public class M200
-    {
-        public string Digest { get; set; }
-        public string DigestEnc { get; set; }
-        public string Type { get; set; }
-        public JToken Key { get; set; }
-    }
-
     public class SHA256GETResponse
     {
         public string Digest { get; set; }
@@ -582,6 +506,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashifyip
 
         [JsonProperty("uptime")]
         public string Uptime { get; set; }
+    }
+
+    public class M200
+    {
+        public string Digest { get; set; }
+        public string DigestEnc { get; set; }
+        public string Type { get; set; }
+        public JToken Key { get; set; }
     }
 }
 

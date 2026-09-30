@@ -12,89 +12,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetHLLAPIDLL([WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLdLLFilename, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLworkflow, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLentryPointName = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLisEnhancedInterface = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
+        public IWorkflowAction HLLAPISetHLLAPIdLL([WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLdLLFilename, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLworkflow, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLiAHLLAPIPath = null, [WorkflowExpression] Func<string> hLLAPISetHLLAPIdLLentryPointName = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLisEnhancedInterface = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLis64BitHLLAPIdLL = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL = null)
         {
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLdLLFilename, nameof(hLLAPISetHLLAPIDLLdLLFilename), required: true);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLworkflow, nameof(hLLAPISetHLLAPIDLLworkflow), required: true);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIDLLiAHLLAPIPath), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLentryPointName, nameof(hLLAPISetHLLAPIDLLentryPointName), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLisEnhancedInterface, nameof(hLLAPISetHLLAPIDLLisEnhancedInterface), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL), required: false);
-            SourceExpression.Validate(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLdLLFilename, nameof(hLLAPISetHLLAPIdLLdLLFilename), required: true);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLworkflow, nameof(hLLAPISetHLLAPIdLLworkflow), required: true);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIdLLiAHLLAPIPath), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLentryPointName, nameof(hLLAPISetHLLAPIdLLentryPointName), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLisEnhancedInterface, nameof(hLLAPISetHLLAPIdLLisEnhancedInterface), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL, nameof(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var hLLAPISetHLLAPIDLL = new JObject();
-                var hLLAPISetHLLAPIDLLpropCount = 0;
-                hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["DLLFilename"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLdLLFilename);
-                if (hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
+                var hLLAPISetHLLAPIdLL = new JObject();
+                var hLLAPISetHLLAPIdLLpropCount = 0;
+                hLLAPISetHLLAPIdLLpropCount++;
+                hLLAPISetHLLAPIdLL["DLLFilename"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLdLLFilename);
+                if (hLLAPISetHLLAPIdLLiAHLLAPIPath != null)
                 {
-                    hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLiAHLLAPIPath);
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["IAHLLAPIPath"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLiAHLLAPIPath);
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLentryPointName != null)
+                if (hLLAPISetHLLAPIdLLentryPointName != null)
                 {
-                    hLLAPISetHLLAPIDLL["EntryPointName"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLentryPointName);
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["EntryPointName"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLentryPointName);
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                if (hLLAPISetHLLAPIdLLisEnhancedInterface != null)
                 {
-                    if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                    if (hLLAPISetHLLAPIdLLisEnhancedInterface != null)
                     {
-                        hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLisEnhancedInterface);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["IsEnhancedInterface"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLisEnhancedInterface);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["IsEnhancedInterface"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                if (hLLAPISetHLLAPIdLLis64BitHLLAPIdLL != null)
                 {
-                    if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                    if (hLLAPISetHLLAPIdLLis64BitHLLAPIdLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["Is64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLis64BitHLLAPIdLL);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["Is64BitHLLAPIDLL"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                if (hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL != null)
                 {
-                    if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                    if (hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL != null)
                     {
-                        hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
-                        hLLAPISetHLLAPIDLLpropCount++;
+                        hLLAPISetHLLAPIdLL["UseCOMFor64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLuseCOMFor64BitHLLAPIdLL);
+                        hLLAPISetHLLAPIdLLpropCount++;
                     }
 
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
                 else
                 {
-                    hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = false;
-                    hLLAPISetHLLAPIDLLpropCount++;
+                    hLLAPISetHLLAPIdLL["UseCOMFor64BitHLLAPIDLL"] = false;
+                    hLLAPISetHLLAPIdLLpropCount++;
                 }
 
-                hLLAPISetHLLAPIDLLpropCount++;
-                hLLAPISetHLLAPIDLL["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLworkflow);
-                if (hLLAPISetHLLAPIDLLpropCount > 0)
+                hLLAPISetHLLAPIdLLpropCount++;
+                hLLAPISetHLLAPIdLL["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIdLLworkflow);
+                if (hLLAPISetHLLAPIdLLpropCount > 0)
                 {
-                    callPayload.Body = hLLAPISetHLLAPIDLL;
+                    callPayload.Body = hLLAPISetHLLAPIdLL;
                 }
                 return callPayload;
             }
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIConnect([WorkflowExpression] Func<string> hLLAPIConnectsessionID, [WorkflowExpression] Func<string> hLLAPIConnectworkflow)
+        public IWorkflowAction HLLAPIConnect([WorkflowExpression] Func<string> hLLAPIConnectsessionId, [WorkflowExpression] Func<string> hLLAPIConnectworkflow)
         {
-            SourceExpression.Validate(hLLAPIConnectsessionID, nameof(hLLAPIConnectsessionID), required: true);
+            SourceExpression.Validate(hLLAPIConnectsessionId, nameof(hLLAPIConnectsessionId), required: true);
             SourceExpression.Validate(hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIConnect = new JObject();
                 var hLLAPIConnectpropCount = 0;
                 hLLAPIConnectpropCount++;
-                hLLAPIConnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIConnectsessionID);
+                hLLAPIConnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIConnectsessionId);
                 hLLAPIConnectpropCount++;
                 hLLAPIConnect["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIConnectworkflow);
                 if (hLLAPIConnectpropCount > 0)
@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus([WorkflowExpression] Func<string> hLLAPIGetConnectStatussessionID, [WorkflowExpression] Func<string> hLLAPIGetConnectStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus([WorkflowExpression] Func<string> hLLAPIGetConnectStatussessionId, [WorkflowExpression] Func<string> hLLAPIGetConnectStatusworkflow)
         {
-            SourceExpression.Validate(hLLAPIGetConnectStatussessionID, nameof(hLLAPIGetConnectStatussessionID), required: true);
+            SourceExpression.Validate(hLLAPIGetConnectStatussessionId, nameof(hLLAPIGetConnectStatussessionId), required: true);
             SourceExpression.Validate(hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetConnectStatus = new JObject();
                 var hLLAPIGetConnectStatuspropCount = 0;
                 hLLAPIGetConnectStatuspropCount++;
-                hLLAPIGetConnectStatus["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetConnectStatussessionID);
+                hLLAPIGetConnectStatus["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetConnectStatussessionId);
                 hLLAPIGetConnectStatuspropCount++;
                 hLLAPIGetConnectStatus["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIGetConnectStatusworkflow);
                 if (hLLAPIGetConnectStatuspropCount > 0)
@@ -178,9 +178,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIDisconnect([WorkflowExpression] Func<string> hLLAPIDisconnectsessionID, [WorkflowExpression] Func<string> hLLAPIDisconnectworkflow)
+        public IWorkflowAction HLLAPIDisconnect([WorkflowExpression] Func<string> hLLAPIDisconnectsessionId, [WorkflowExpression] Func<string> hLLAPIDisconnectworkflow)
         {
-            SourceExpression.Validate(hLLAPIDisconnectsessionID, nameof(hLLAPIDisconnectsessionID), required: true);
+            SourceExpression.Validate(hLLAPIDisconnectsessionId, nameof(hLLAPIDisconnectsessionId), required: true);
             SourceExpression.Validate(hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIDisconnect = new JObject();
                 var hLLAPIDisconnectpropCount = 0;
                 hLLAPIDisconnectpropCount++;
-                hLLAPIDisconnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIDisconnectsessionID);
+                hLLAPIDisconnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIDisconnectsessionId);
                 hLLAPIDisconnectpropCount++;
                 hLLAPIDisconnect["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIDisconnectworkflow);
                 if (hLLAPIDisconnectpropCount > 0)
@@ -204,9 +204,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetCursorPos([WorkflowExpression] Func<string> hLLAPISetCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISetCursorPosworkflow)
+        public IWorkflowAction HLLAPISetCursorPos([WorkflowExpression] Func<string> hLLAPISetCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISetCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISetCursorPossessionID, nameof(hLLAPISetCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISetCursorPossessionId, nameof(hLLAPISetCursorPossessionId), required: true);
             SourceExpression.Validate(hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
             SourceExpression.Validate(hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
             SourceExpression.Validate(hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISetCursorPos = new JObject();
                 var hLLAPISetCursorPospropCount = 0;
                 hLLAPISetCursorPospropCount++;
-                hLLAPISetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPossessionID);
+                hLLAPISetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPossessionId);
                 hLLAPISetCursorPospropCount++;
                 hLLAPISetCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPoscursorRowIndex);
                 hLLAPISetCursorPospropCount++;
@@ -236,9 +236,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos([WorkflowExpression] Func<string> hLLAPIGetCursorPossessionID, [WorkflowExpression] Func<string> hLLAPIGetCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos([WorkflowExpression] Func<string> hLLAPIGetCursorPossessionId, [WorkflowExpression] Func<string> hLLAPIGetCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPIGetCursorPossessionID, nameof(hLLAPIGetCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPIGetCursorPossessionId, nameof(hLLAPIGetCursorPossessionId), required: true);
             SourceExpression.Validate(hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIGetCursorPos = new JObject();
                 var hLLAPIGetCursorPospropCount = 0;
                 hLLAPIGetCursorPospropCount++;
-                hLLAPIGetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetCursorPossessionID);
+                hLLAPIGetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetCursorPossessionId);
                 hLLAPIGetCursorPospropCount++;
                 hLLAPIGetCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIGetCursorPosworkflow);
                 if (hLLAPIGetCursorPospropCount > 0)
@@ -314,9 +314,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendStringAtCursorPos([WorkflowExpression] Func<string> hLLAPISendStringAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosinputString, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendStringAtCursorPos([WorkflowExpression] Func<string> hLLAPISendStringAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosinputString, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISendStringAtCursorPossessionID, nameof(hLLAPISendStringAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISendStringAtCursorPossessionId, nameof(hLLAPISendStringAtCursorPossessionId), required: true);
             SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
             SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
             SourceExpression.Validate(hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendStringAtCursorPos = new JObject();
                 var hLLAPISendStringAtCursorPospropCount = 0;
                 hLLAPISendStringAtCursorPospropCount++;
-                hLLAPISendStringAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPossessionID);
+                hLLAPISendStringAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPossessionId);
                 hLLAPISendStringAtCursorPospropCount++;
                 hLLAPISendStringAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPoscursorRowIndex);
                 hLLAPISendStringAtCursorPospropCount++;
@@ -349,9 +349,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendPasswordAtCursorPos([WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendPasswordAtCursorPos([WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPISendPasswordAtCursorPossessionID, nameof(hLLAPISendPasswordAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPossessionId, nameof(hLLAPISendPasswordAtCursorPossessionId), required: true);
             SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
             SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
             SourceExpression.Validate(hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISendPasswordAtCursorPos = new JObject();
                 var hLLAPISendPasswordAtCursorPospropCount = 0;
                 hLLAPISendPasswordAtCursorPospropCount++;
-                hLLAPISendPasswordAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPossessionID);
+                hLLAPISendPasswordAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPossessionId);
                 hLLAPISendPasswordAtCursorPospropCount++;
                 hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPoscursorRowIndex);
                 hLLAPISendPasswordAtCursorPospropCount++;
@@ -384,9 +384,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos([WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorColIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPosreadScreenLength, [WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos([WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPossessionId, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorColIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPosreadScreenLength, [WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPosworkflow)
         {
-            SourceExpression.Validate(hLLAPIReadScreenAtCursorPossessionID, nameof(hLLAPIReadScreenAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPossessionId, nameof(hLLAPIReadScreenAtCursorPossessionId), required: true);
             SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
             SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
             SourceExpression.Validate(hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenAtCursorPos = new JObject();
                 var hLLAPIReadScreenAtCursorPospropCount = 0;
                 hLLAPIReadScreenAtCursorPospropCount++;
-                hLLAPIReadScreenAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPossessionID);
+                hLLAPIReadScreenAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPossessionId);
                 hLLAPIReadScreenAtCursorPospropCount++;
                 hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPoscursorRowIndex);
                 hLLAPIReadScreenAtCursorPospropCount++;
@@ -442,9 +442,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows([WorkflowExpression] Func<string> hLLAPIReadScreenRowssessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsstartRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsendRowIndex, [WorkflowExpression] Func<string> hLLAPIReadScreenRowsworkflow, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
+        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows([WorkflowExpression] Func<string> hLLAPIReadScreenRowssessionId, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsstartRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsendRowIndex, [WorkflowExpression] Func<string> hLLAPIReadScreenRowsworkflow, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
-            SourceExpression.Validate(hLLAPIReadScreenRowssessionID, nameof(hLLAPIReadScreenRowssessionID), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenRowssessionId, nameof(hLLAPIReadScreenRowssessionId), required: true);
             SourceExpression.Validate(hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
             SourceExpression.Validate(hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
             SourceExpression.Validate(hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIReadScreenRows = new JObject();
                 var hLLAPIReadScreenRowspropCount = 0;
                 hLLAPIReadScreenRowspropCount++;
-                hLLAPIReadScreenRows["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowssessionID);
+                hLLAPIReadScreenRows["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowssessionId);
                 hLLAPIReadScreenRowspropCount++;
                 hLLAPIReadScreenRows["StartRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsstartRowIndex);
                 hLLAPIReadScreenRowspropCount++;
@@ -620,9 +620,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString([WorkflowExpression] Func<string> hLLAPISearchForStringsessionID, [WorkflowExpression] Func<string> hLLAPISearchForStringsearchString, [WorkflowExpression] Func<string> hLLAPISearchForStringworkflow, [WorkflowExpression] Func<bool> hLLAPISearchForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartColIndex = null)
+        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString([WorkflowExpression] Func<string> hLLAPISearchForStringsessionId, [WorkflowExpression] Func<string> hLLAPISearchForStringsearchString, [WorkflowExpression] Func<string> hLLAPISearchForStringworkflow, [WorkflowExpression] Func<bool> hLLAPISearchForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartColIndex = null)
         {
-            SourceExpression.Validate(hLLAPISearchForStringsessionID, nameof(hLLAPISearchForStringsessionID), required: true);
+            SourceExpression.Validate(hLLAPISearchForStringsessionId, nameof(hLLAPISearchForStringsessionId), required: true);
             SourceExpression.Validate(hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
             SourceExpression.Validate(hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
             SourceExpression.Validate(hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPISearchForString = new JObject();
                 var hLLAPISearchForStringpropCount = 0;
                 hLLAPISearchForStringpropCount++;
-                hLLAPISearchForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsessionID);
+                hLLAPISearchForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsessionId);
                 hLLAPISearchForStringpropCount++;
                 hLLAPISearchForString["SearchString"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsearchString);
                 if (hLLAPISearchForStringsearchEntireScreen != null)
@@ -680,9 +680,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString([WorkflowExpression] Func<string> hLLAPIWaitForStringsessionID, [WorkflowExpression] Func<string> hLLAPIWaitForStringsearchString, [WorkflowExpression] Func<double> hLLAPIWaitForStringsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForStringworkflow, [WorkflowExpression] Func<bool> hLLAPIWaitForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartColIndex = null, [WorkflowExpression] Func<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString([WorkflowExpression] Func<string> hLLAPIWaitForStringsessionId, [WorkflowExpression] Func<string> hLLAPIWaitForStringsearchString, [WorkflowExpression] Func<double> hLLAPIWaitForStringsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForStringworkflow, [WorkflowExpression] Func<bool> hLLAPIWaitForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartColIndex = null, [WorkflowExpression] Func<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
-            SourceExpression.Validate(hLLAPIWaitForStringsessionID, nameof(hLLAPIWaitForStringsessionID), required: true);
+            SourceExpression.Validate(hLLAPIWaitForStringsessionId, nameof(hLLAPIWaitForStringsessionId), required: true);
             SourceExpression.Validate(hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
             SourceExpression.Validate(hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
             SourceExpression.Validate(hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
                 var hLLAPIWaitForString = new JObject();
                 var hLLAPIWaitForStringpropCount = 0;
                 hLLAPIWaitForStringpropCount++;
-                hLLAPIWaitForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsessionID);
+                hLLAPIWaitForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsessionId);
                 hLLAPIWaitForStringpropCount++;
                 hLLAPIWaitForString["SearchString"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchString);
                 if (hLLAPIWaitForStringsearchEntireScreen != null)

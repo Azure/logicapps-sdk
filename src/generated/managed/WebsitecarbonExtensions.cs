@@ -130,10 +130,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
 
     public enum greenInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 }
 

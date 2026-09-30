@@ -318,9 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioPostResponse> Audio([WorkflowExpression] Func<string> bodydatafile = null, [WorkflowExpression] Func<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
+        public IBodyWorkflowAction<AudioPostResponse> Audio([WorkflowExpression] Func<string> bodydataFile = null, [WorkflowExpression] Func<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
         {
-            SourceExpression.Validate(bodydatafile, nameof(bodydatafile), required: false);
+            SourceExpression.Validate(bodydataFile, nameof(bodydataFile), required: false);
             SourceExpression.Validate(bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -333,9 +333,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
                 bodypropCount++;
                 var dataObject = new JObject();
                 var dataObjectpropCount = 0;
-                if (bodydatafile != null)
+                if (bodydataFile != null)
                 {
-                    dataObject["file"] = SourceExpressionConverter.ConvertToken(bodydatafile);
+                    dataObject["file"] = SourceExpressionConverter.ConvertToken(bodydataFile);
                     dataObjectpropCount++;
                 }
 

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     public class OnenoteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> bodynameOfTheNewSection = null)
+        public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> bodynameOfTheNewSection)
         {
             SourceExpression.Validate(notebookKey, nameof(notebookKey), required: true);
-            SourceExpression.Validate(bodynameOfTheNewSection, nameof(bodynameOfTheNewSection), required: false);
+            SourceExpression.Validate(bodynameOfTheNewSection, nameof(bodynameOfTheNewSection), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/notebooks/Dynamic/sections";
@@ -24,12 +24,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
                 callPayload.Queries["notebookKey"] = SourceExpressionConverter.ConvertO(notebookKey);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodynameOfTheNewSection != null)
-                {
-                    body["name"] = SourceExpressionConverter.ConvertToken(bodynameOfTheNewSection);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodynameOfTheNewSection);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

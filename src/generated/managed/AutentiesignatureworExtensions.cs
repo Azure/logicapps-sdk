@@ -86,22 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
-        public IBodyWorkflowAction<AddFileResponse> AddFile([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<object> file)
-        {
-            SourceExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentProcessId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<AddFileResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<GetFilesInfoResponse> GetFilesInfo([WorkflowExpression] Func<string> documentProcessId, [WorkflowExpression] Func<filePurposeInput> filePurpose = null)
         {
             SourceExpression.Validate(documentProcessId, nameof(documentProcessId), required: true);
@@ -433,27 +417,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         SIGNER,
         APPROVER,
         REVIEWER
-    }
-
-    public class AddFileResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("filename")]
-        public string Filename { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("filePurpose")]
-        public string FilePurpose { get; set; }
-
-        [JsonProperty("mimeType")]
-        public string MimeType { get; set; }
     }
 
     public class GetFilesInfoResponse

@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction Transform([WorkflowExpression] Func<string> bodybase64Content, [WorkflowExpression] Func<string> bodyconfigId)
+        public IWorkflowAction Transform([WorkflowExpression] Func<string> bodyconfigId, [WorkflowExpression] Func<string> bodybase64Content)
         {
-            SourceExpression.Validate(bodybase64Content, nameof(bodybase64Content), required: true);
             SourceExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: true);
+            SourceExpression.Validate(bodybase64Content, nameof(bodybase64Content), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/1.0/translate";
@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["base64Content"] = SourceExpressionConverter.ConvertToken(bodybase64Content);
-                bodypropCount++;
                 body["configId"] = SourceExpressionConverter.ConvertToken(bodyconfigId);
+                bodypropCount++;
+                body["base64Content"] = SourceExpressionConverter.ConvertToken(bodybase64Content);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

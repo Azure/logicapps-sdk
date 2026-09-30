@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     public class SmartdialogActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null, [WorkflowExpression] Func<requestBodyunicodeCharacterHandlingPolicyInput> requestBodyunicodeCharacterHandlingPolicy = null)
         {
             SourceExpression.Validate(customerId, nameof(customerId), required: true);
             SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             SourceExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
             SourceExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
             SourceExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            SourceExpression.Validate(requestBodyunicodeCharacterHandlingPolicy, nameof(requestBodyunicodeCharacterHandlingPolicy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/messages";
@@ -79,6 +80,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                     requestBodypropCount++;
                 }
 
+                if (requestBodyunicodeCharacterHandlingPolicy != null)
+                {
+                    requestBody["UnicodeCharacterHandlingPolicy"] = SourceExpressionConverter.Convert(requestBodyunicodeCharacterHandlingPolicy);
+                    requestBodypropCount++;
+                }
+
                 if (requestBodypropCount > 0)
                 {
                     callPayload.Body = requestBody;
@@ -90,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage([WorkflowExpression] Func<string> parentMessageId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage([WorkflowExpression] Func<string> parentMessageId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null, [WorkflowExpression] Func<requestBodyunicodeCharacterHandlingPolicyInput> requestBodyunicodeCharacterHandlingPolicy = null)
         {
             SourceExpression.Validate(parentMessageId, nameof(parentMessageId), required: true);
             SourceExpression.Validate(customerId, nameof(customerId), required: true);
@@ -105,6 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
             SourceExpression.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
             SourceExpression.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
             SourceExpression.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            SourceExpression.Validate(requestBodyunicodeCharacterHandlingPolicy, nameof(requestBodyunicodeCharacterHandlingPolicy), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentMessageId, 1));
@@ -155,6 +163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                 if (requestBodyrequestId != null)
                 {
                     requestBody["RequestId"] = SourceExpressionConverter.ConvertToken(requestBodyrequestId);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyunicodeCharacterHandlingPolicy != null)
+                {
+                    requestBody["UnicodeCharacterHandlingPolicy"] = SourceExpressionConverter.Convert(requestBodyunicodeCharacterHandlingPolicy);
                     requestBodypropCount++;
                 }
 
@@ -252,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodytemplateName, [WorkflowExpression] Func<requestBodyrecipientsInputItem2[]> requestBodyrecipients, [WorkflowExpression] Func<string[]> requestBodybodyParameters = null, [WorkflowExpression] Func<string[]> requestBodyheaderParameters = null, [WorkflowExpression] Func<requestBodybuttonsInputItem2[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<bool> requestBodyuseSmsFallback = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodytemplateName, [WorkflowExpression] Func<requestBodyrecipientsInputItem2[]> requestBodyrecipients, [WorkflowExpression] Func<string[]> requestBodybodyParameters = null, [WorkflowExpression] Func<string[]> requestBodyheaderParameters = null, [WorkflowExpression] Func<requestBodybuttonsInputItem22[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<bool> requestBodyuseSmsFallback = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
         {
             SourceExpression.Validate(customerId, nameof(customerId), required: true);
             SourceExpression.Validate(serviceId, nameof(serviceId), required: true);
@@ -652,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                 createWebhookRequestBodypropCount++;
                 createWebhookRequestBody["actionType"] = "HttpRequest";
                 createWebhookRequestBodypropCount++;
-                createWebhookRequestBody["description"] = "PowerAutomate auto-created webhook. Please don't modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
+                createWebhookRequestBody["description"] = "PowerAutomate auto-created webhook. Please don´t modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
                 createWebhookRequestBodypropCount++;
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
@@ -699,6 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     {
         public string Address { get; set; }
         public JToken Personalization { get; set; }
+    }
+
+    public enum requestBodyunicodeCharacterHandlingPolicyInput
+    {
+        None,
+        Strict,
+        Replace
     }
 
     public class SendReplyMessageResponse
@@ -768,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Address { get; set; }
     }
 
-    public class requestBodybuttonsInputItem2
+    public class requestBodybuttonsInputItem22
     {
         public requestBodybuttonsInputItemTypeType Type { get; set; }
         public string Data { get; set; }

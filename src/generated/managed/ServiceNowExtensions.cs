@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> file = null)
+        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> @file = null)
         {
             SourceExpression.Validate(tableName, nameof(tableName), required: true);
             SourceExpression.Validate(tableSysId, nameof(tableSysId), required: true);
             SourceExpression.Validate(fileName, nameof(fileName), required: true);
-            SourceExpression.Validate(file, nameof(file), required: false);
+            SourceExpression.Validate(@file, nameof(@file), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/now/v1/attachment/file";
@@ -51,24 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
                 callPayload.Queries["table_name"] = SourceExpressionConverter.ConvertO(tableName);
                 callPayload.Queries["table_sys_id"] = SourceExpressionConverter.ConvertO(tableSysId);
                 callPayload.Queries["file_name"] = SourceExpressionConverter.ConvertO(fileName);
-                callPayload.Body = SourceExpressionConverter.ConvertToken(file);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadAttachmentResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachment([WorkflowExpression] Func<object> attachmentContent, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId)
-        {
-            SourceExpression.Validate(attachmentContent, nameof(attachmentContent), required: true);
-            SourceExpression.Validate(tableName, nameof(tableName), required: true);
-            SourceExpression.Validate(tableSysId, nameof(tableSysId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/now/v1/attachment/upload";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
                 return callPayload;
             }
 
@@ -156,11 +139,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
             SourceExpression.Validate(tableType, nameof(tableType), required: true);
             SourceExpression.Validate(body, nameof(body), required: false);
             SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            SourceExpression.Validate(sysparmInputDisplayValue, nameof(sysparmInputDisplayValue), required: false);
             SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
             SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -171,6 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
                 callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
                 if (sysparmDisplayValue != null)
                     callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_input_display_value"] = Convert.ToString(false);
+                if (sysparmInputDisplayValue != null)
+                    callPayload.Queries["sysparm_input_display_value"] = SourceExpressionConverter.ConvertO(sysparmInputDisplayValue);
                 callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
                 if (sysparmExcludeReferenceLink != null)
                     callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
@@ -211,12 +198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
             SourceExpression.Validate(tableType, nameof(tableType), required: true);
             SourceExpression.Validate(sysid, nameof(sysid), required: true);
             SourceExpression.Validate(body, nameof(body), required: false);
             SourceExpression.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            SourceExpression.Validate(sysparmInputDisplayValue, nameof(sysparmInputDisplayValue), required: false);
             SourceExpression.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
             SourceExpression.Validate(sysparmFields, nameof(sysparmFields), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -227,6 +215,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
                 callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
                 if (sysparmDisplayValue != null)
                     callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_input_display_value"] = Convert.ToString(false);
+                if (sysparmInputDisplayValue != null)
+                    callPayload.Queries["sysparm_input_display_value"] = SourceExpressionConverter.ConvertO(sysparmInputDisplayValue);
                 callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
                 if (sysparmExcludeReferenceLink != null)
                     callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
@@ -414,6 +405,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
             }
 
             return new ApiConnectionAction<GetArticlesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetArticleResponse> GetKnowledgeArticle([WorkflowExpression] Func<string> articleSysId, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> language = null)
+        {
+            SourceExpression.Validate(articleSysId, nameof(articleSysId), required: true);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(language, nameof(language), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_km_api/knowledge/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(articleSysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetArticleResponse>(BuildSourceInput);
         }
     }
 
@@ -998,6 +1010,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class GetArticleResponse
+    {
+        [JsonProperty("result")]
+        public GetArticleResponseResultType Result { get; set; }
+    }
+
+    public class GetArticleResponseResultType
+    {
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        [JsonProperty("sys_id")]
+        public string SysID { get; set; }
+
+        [JsonProperty("short_description")]
+        public string ShortDescription { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("template")]
+        public bool Template { get; set; }
+
+        [JsonProperty("template_table")]
+        public string TemplateTable { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("content")]
+        public GetArticleResponseResultTypeContentTypeItem[] Content { get; set; }
+    }
+
+    public class GetArticleResponseResultTypeContentTypeItem
+    {
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("column")]
+        public string Column { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 }
 

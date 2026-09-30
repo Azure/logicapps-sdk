@@ -72,18 +72,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID([WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<NeoIdResponse> NeoId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<NeoIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<NeoIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -110,18 +110,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID([WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<SentryIdResponse> SentryId([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<SentryIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<SentryIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
@@ -920,10 +920,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string OrbitClassRange { get; set; }
     }
 
-    public class NeoIDResponse
+    public class NeoIdResponse
     {
         [JsonProperty("links")]
-        public NeoIDResponseLinksType Links { get; set; }
+        public NeoIdResponseLinksType Links { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -947,43 +947,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double AbsoluteMagnitudeH { get; set; }
 
         [JsonProperty("estimated_diameter")]
-        public NeoIDResponseEstimatedDiameterType EstimatedDiameter { get; set; }
+        public NeoIdResponseEstimatedDiameterType EstimatedDiameter { get; set; }
 
         [JsonProperty("is_potentially_hazardous_asteroid")]
         public bool IsPotentiallyHazardousAsteroid { get; set; }
 
         [JsonProperty("close_approach_data")]
-        public NeoIDResponseCloseApproachDataTypeItem[] CloseApproachData { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItem[] CloseApproachData { get; set; }
 
         [JsonProperty("orbital_data")]
-        public NeoIDResponseOrbitalDataType OrbitalData { get; set; }
+        public NeoIdResponseOrbitalDataType OrbitalData { get; set; }
 
         [JsonProperty("is_sentry_object")]
         public bool IsSentryObject { get; set; }
     }
 
-    public class NeoIDResponseLinksType
+    public class NeoIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterType
+    public class NeoIdResponseEstimatedDiameterType
     {
         [JsonProperty("kilometers")]
-        public NeoIDResponseEstimatedDiameterTypeKilometersType Kilometers { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeKilometersType Kilometers { get; set; }
 
         [JsonProperty("meters")]
-        public NeoIDResponseEstimatedDiameterTypeMetersType Meters { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeMetersType Meters { get; set; }
 
         [JsonProperty("miles")]
-        public NeoIDResponseEstimatedDiameterTypeMilesType Miles { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeMilesType Miles { get; set; }
 
         [JsonProperty("feet")]
-        public NeoIDResponseEstimatedDiameterTypeFeetType Feet { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeFeetType Feet { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeKilometersType
+    public class NeoIdResponseEstimatedDiameterTypeKilometersType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeMetersType
+    public class NeoIdResponseEstimatedDiameterTypeMetersType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeMilesType
+    public class NeoIdResponseEstimatedDiameterTypeMilesType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeFeetType
+    public class NeoIdResponseEstimatedDiameterTypeFeetType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItem
+    public class NeoIdResponseCloseApproachDataTypeItem
     {
         [JsonProperty("close_approach_date")]
         public string CloseApproachDate { get; set; }
@@ -1031,16 +1031,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public int EpochDateCloseApproach { get; set; }
 
         [JsonProperty("relative_velocity")]
-        public NeoIDResponseCloseApproachDataTypeItemRelativeVelocityType RelativeVelocity { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItemRelativeVelocityType RelativeVelocity { get; set; }
 
         [JsonProperty("miss_distance")]
-        public NeoIDResponseCloseApproachDataTypeItemMissDistanceType MissDistance { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItemMissDistanceType MissDistance { get; set; }
 
         [JsonProperty("orbiting_body")]
         public string OrbitingBody { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItemRelativeVelocityType
+    public class NeoIdResponseCloseApproachDataTypeItemRelativeVelocityType
     {
         [JsonProperty("kilometers_per_second")]
         public string KilometersPerSecond { get; set; }
@@ -1052,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string MilesPerHour { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItemMissDistanceType
+    public class NeoIdResponseCloseApproachDataTypeItemMissDistanceType
     {
         [JsonProperty("astronomical")]
         public string Astronomical { get; set; }
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Miles { get; set; }
     }
 
-    public class NeoIDResponseOrbitalDataType
+    public class NeoIdResponseOrbitalDataType
     {
         [JsonProperty("orbit_id")]
         public string OrbitId { get; set; }
@@ -1136,10 +1136,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Equinox { get; set; }
 
         [JsonProperty("orbit_class")]
-        public NeoIDResponseOrbitalDataTypeOrbitClassType OrbitClass { get; set; }
+        public NeoIdResponseOrbitalDataTypeOrbitClassType OrbitClass { get; set; }
     }
 
-    public class NeoIDResponseOrbitalDataTypeOrbitClassType
+    public class NeoIdResponseOrbitalDataTypeOrbitClassType
     {
         [JsonProperty("orbit_class_type")]
         public string OrbitClassType { get; set; }
@@ -1262,10 +1262,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Self { get; set; }
     }
 
-    public class SentryIDResponse
+    public class SentryIdResponse
     {
         [JsonProperty("links")]
-        public SentryIDResponseLinksType Links { get; set; }
+        public SentryIdResponseLinksType Links { get; set; }
 
         [JsonProperty("spkId")]
         public string SpkId { get; set; }
@@ -1328,7 +1328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double AverageLunarDistance { get; set; }
     }
 
-    public class SentryIDResponseLinksType
+    public class SentryIdResponseLinksType
     {
         [JsonProperty("near_earth_object_parent")]
         public string NearEarthObjectParent { get; set; }

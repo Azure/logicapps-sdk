@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedIDResponse> BreedID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<BreedIdResponse> BreedId([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<BreedIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<BreedIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
+        public IBodyWorkflowAction<BreedSpeciesIdResponse> BreedSpeciesId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(limit, nameof(limit), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<BreedSpeciesIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<BreedSpeciesIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<OrganizationIdResponse> OrganizationId([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<OrganizationIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<OrganizationIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalIDResponse> AnimalID([WorkflowExpression] Func<string> id)
+        public IBodyWorkflowAction<AnimalIdResponse> AnimalId([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
                 return callPayload;
             }
 
-            return new ApiConnectionAction<AnimalIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<AnimalIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
@@ -365,22 +365,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Next { get; set; }
     }
 
-    public class BreedIDResponse
+    public class BreedIdResponse
     {
         [JsonProperty("meta")]
-        public BreedIDResponseMetaType Meta { get; set; }
+        public BreedIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public BreedIDResponseDataTypeItem[] Data { get; set; }
+        public BreedIdResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("included")]
-        public BreedIDResponseIncludedTypeItem[] Included { get; set; }
+        public BreedIdResponseIncludedTypeItem[] Included { get; set; }
 
         [JsonProperty("links")]
-        public BreedIDResponseLinksType Links { get; set; }
+        public BreedIdResponseLinksType Links { get; set; }
     }
 
-    public class BreedIDResponseMetaType
+    public class BreedIdResponseMetaType
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string TransactionId { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItem
+    public class BreedIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -410,34 +410,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public BreedIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public BreedIdResponseDataTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("relationships")]
-        public BreedIDResponseDataTypeItemRelationshipsType Relationships { get; set; }
+        public BreedIdResponseDataTypeItemRelationshipsType Relationships { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemAttributesType
+    public class BreedIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemRelationshipsType
+    public class BreedIdResponseDataTypeItemRelationshipsType
     {
         [JsonProperty("species")]
-        public BreedIDResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
+        public BreedIdResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemRelationshipsTypeSpeciesType
+    public class BreedIdResponseDataTypeItemRelationshipsTypeSpeciesType
     {
         [JsonProperty("data")]
-        public BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
+        public BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
 
         [JsonProperty("links")]
-        public BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType Links { get; set; }
+        public BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType Links { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
+    public class BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -446,22 +446,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("links")]
-        public BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType Links { get; set; }
+        public BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType Links { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType
+    public class BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class BreedIDResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType
+    public class BreedIdResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class BreedIDResponseIncludedTypeItem
+    public class BreedIdResponseIncludedTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -470,10 +470,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public BreedIDResponseIncludedTypeItemAttributesType Attributes { get; set; }
+        public BreedIdResponseIncludedTypeItemAttributesType Attributes { get; set; }
     }
 
-    public class BreedIDResponseIncludedTypeItemAttributesType
+    public class BreedIdResponseIncludedTypeItemAttributesType
     {
         [JsonProperty("singular")]
         public string Singular { get; set; }
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string YoungPlural { get; set; }
     }
 
-    public class BreedIDResponseLinksType
+    public class BreedIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
@@ -638,22 +638,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Next { get; set; }
     }
 
-    public class BreedSpeciesIDResponse
+    public class BreedSpeciesIdResponse
     {
         [JsonProperty("meta")]
-        public BreedSpeciesIDResponseMetaType Meta { get; set; }
+        public BreedSpeciesIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public BreedSpeciesIDResponseDataTypeItem[] Data { get; set; }
+        public BreedSpeciesIdResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("included")]
-        public BreedSpeciesIDResponseIncludedTypeItem[] Included { get; set; }
+        public BreedSpeciesIdResponseIncludedTypeItem[] Included { get; set; }
 
         [JsonProperty("links")]
-        public BreedSpeciesIDResponseLinksType Links { get; set; }
+        public BreedSpeciesIdResponseLinksType Links { get; set; }
     }
 
-    public class BreedSpeciesIDResponseMetaType
+    public class BreedSpeciesIdResponseMetaType
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string TransactionId { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItem
+    public class BreedSpeciesIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -683,34 +683,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public BreedSpeciesIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("relationships")]
-        public BreedSpeciesIDResponseDataTypeItemRelationshipsType Relationships { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemRelationshipsType Relationships { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemAttributesType
+    public class BreedSpeciesIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemRelationshipsType
+    public class BreedSpeciesIdResponseDataTypeItemRelationshipsType
     {
         [JsonProperty("species")]
-        public BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesType
+    public class BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesType
     {
         [JsonProperty("data")]
-        public BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
 
         [JsonProperty("links")]
-        public BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType Links { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType Links { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
+    public class BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -719,22 +719,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("links")]
-        public BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType Links { get; set; }
+        public BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType Links { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType
+    public class BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItemLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class BreedSpeciesIDResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType
+    public class BreedSpeciesIdResponseDataTypeItemRelationshipsTypeSpeciesTypeLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class BreedSpeciesIDResponseIncludedTypeItem
+    public class BreedSpeciesIdResponseIncludedTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -743,10 +743,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public BreedSpeciesIDResponseIncludedTypeItemAttributesType Attributes { get; set; }
+        public BreedSpeciesIdResponseIncludedTypeItemAttributesType Attributes { get; set; }
     }
 
-    public class BreedSpeciesIDResponseIncludedTypeItemAttributesType
+    public class BreedSpeciesIdResponseIncludedTypeItemAttributesType
     {
         [JsonProperty("singular")]
         public string Singular { get; set; }
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string YoungPlural { get; set; }
     }
 
-    public class BreedSpeciesIDResponseLinksType
+    public class BreedSpeciesIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
@@ -890,16 +890,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string SponsorshipUrl { get; set; }
     }
 
-    public class OrganizationIDResponse
+    public class OrganizationIdResponse
     {
         [JsonProperty("meta")]
-        public OrganizationIDResponseMetaType Meta { get; set; }
+        public OrganizationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public OrganizationIDResponseDataTypeItem[] Data { get; set; }
+        public OrganizationIdResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class OrganizationIDResponseMetaType
+    public class OrganizationIdResponseMetaType
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string TransactionId { get; set; }
     }
 
-    public class OrganizationIDResponseDataTypeItem
+    public class OrganizationIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -929,10 +929,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public OrganizationIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public OrganizationIdResponseDataTypeItemAttributesType Attributes { get; set; }
     }
 
-    public class OrganizationIDResponseDataTypeItemAttributesType
+    public class OrganizationIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2180,19 +2180,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Self { get; set; }
     }
 
-    public class AnimalIDResponse
+    public class AnimalIdResponse
     {
         [JsonProperty("meta")]
-        public AnimalIDResponseMetaType Meta { get; set; }
+        public AnimalIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("included")]
-        public AnimalIDResponseIncludedTypeItem[] Included { get; set; }
+        public AnimalIdResponseIncludedTypeItem[] Included { get; set; }
     }
 
-    public class AnimalIDResponseMetaType
+    public class AnimalIdResponseMetaType
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -2213,7 +2213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string TransactionId { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItem
+    public class AnimalIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2222,13 +2222,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public AnimalIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public AnimalIdResponseDataTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("relationships")]
-        public AnimalIDResponseDataTypeItemRelationshipsType Relationships { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsType Relationships { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemAttributesType
+    public class AnimalIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("isAdoptionPending")]
         public bool IsAdoptionPending { get; set; }
@@ -2327,40 +2327,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string UpdatedDate { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsType
+    public class AnimalIdResponseDataTypeItemRelationshipsType
     {
         [JsonProperty("breeds")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeBreedsType Breeds { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeBreedsType Breeds { get; set; }
 
         [JsonProperty("colors")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeColorsType Colors { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeColorsType Colors { get; set; }
 
         [JsonProperty("patterns")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypePatternsType Patterns { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypePatternsType Patterns { get; set; }
 
         [JsonProperty("species")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeSpeciesType Species { get; set; }
 
         [JsonProperty("statuses")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeStatusesType Statuses { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeStatusesType Statuses { get; set; }
 
         [JsonProperty("locations")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeLocationsType Locations { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeLocationsType Locations { get; set; }
 
         [JsonProperty("orgs")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeOrgsType Orgs { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeOrgsType Orgs { get; set; }
 
         [JsonProperty("pictures")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypePicturesType Pictures { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypePicturesType Pictures { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeBreedsType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeBreedsType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeBreedsTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeBreedsTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeBreedsTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeBreedsTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2369,13 +2369,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeColorsType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeColorsType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeColorsTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeColorsTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeColorsTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeColorsTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2384,13 +2384,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypePatternsType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypePatternsType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypePatternsTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypePatternsTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypePatternsTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypePatternsTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2399,13 +2399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeSpeciesType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeSpeciesType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeSpeciesTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2414,13 +2414,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeStatusesType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeStatusesType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeStatusesTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeStatusesTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeStatusesTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeStatusesTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2429,13 +2429,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeLocationsType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeLocationsType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeLocationsTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeLocationsTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeLocationsTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeLocationsTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2444,13 +2444,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeOrgsType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeOrgsType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypeOrgsTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypeOrgsTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypeOrgsTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypeOrgsTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2459,13 +2459,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypePicturesType
+    public class AnimalIdResponseDataTypeItemRelationshipsTypePicturesType
     {
         [JsonProperty("data")]
-        public AnimalIDResponseDataTypeItemRelationshipsTypePicturesTypeDataTypeItem[] Data { get; set; }
+        public AnimalIdResponseDataTypeItemRelationshipsTypePicturesTypeDataTypeItem[] Data { get; set; }
     }
 
-    public class AnimalIDResponseDataTypeItemRelationshipsTypePicturesTypeDataTypeItem
+    public class AnimalIdResponseDataTypeItemRelationshipsTypePicturesTypeDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2474,7 +2474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItem
+    public class AnimalIdResponseIncludedTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2483,13 +2483,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public AnimalIDResponseIncludedTypeItemAttributesType Attributes { get; set; }
+        public AnimalIdResponseIncludedTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("links")]
-        public AnimalIDResponseIncludedTypeItemLinksType Links { get; set; }
+        public AnimalIdResponseIncludedTypeItemLinksType Links { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItemAttributesType
+    public class AnimalIdResponseIncludedTypeItemAttributesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2561,13 +2561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Type { get; set; }
 
         [JsonProperty("original")]
-        public AnimalIDResponseIncludedTypeItemAttributesTypeOriginalType Original { get; set; }
+        public AnimalIdResponseIncludedTypeItemAttributesTypeOriginalType Original { get; set; }
 
         [JsonProperty("large")]
-        public AnimalIDResponseIncludedTypeItemAttributesTypeLargeType Large { get; set; }
+        public AnimalIdResponseIncludedTypeItemAttributesTypeLargeType Large { get; set; }
 
         [JsonProperty("small")]
-        public AnimalIDResponseIncludedTypeItemAttributesTypeSmallType Small { get; set; }
+        public AnimalIdResponseIncludedTypeItemAttributesTypeSmallType Small { get; set; }
 
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -2579,7 +2579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Updated { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItemAttributesTypeOriginalType
+    public class AnimalIdResponseIncludedTypeItemAttributesTypeOriginalType
     {
         [JsonProperty("filesize")]
         public int Filesize { get; set; }
@@ -2594,7 +2594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Url { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItemAttributesTypeLargeType
+    public class AnimalIdResponseIncludedTypeItemAttributesTypeLargeType
     {
         [JsonProperty("filesize")]
         public int Filesize { get; set; }
@@ -2609,7 +2609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Url { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItemAttributesTypeSmallType
+    public class AnimalIdResponseIncludedTypeItemAttributesTypeSmallType
     {
         [JsonProperty("filesize")]
         public int Filesize { get; set; }
@@ -2624,7 +2624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Url { get; set; }
     }
 
-    public class AnimalIDResponseIncludedTypeItemLinksType
+    public class AnimalIdResponseIncludedTypeItemLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }

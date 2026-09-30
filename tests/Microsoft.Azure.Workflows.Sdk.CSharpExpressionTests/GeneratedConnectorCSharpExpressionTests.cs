@@ -4,22 +4,27 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.A365adminmcp;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.A365copilotchatmcp;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Bkkfutarip;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Dropbox;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Impexium;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Plivo;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Slack;
     using Newtonsoft.Json.Linq;
 
     public class GeneratedConnectorCSharpExpressionTests
     {
         [Fact]
-        public void McpAdminTools_OmitsUntouchedOptionalInputs()
+        public void McpM365copilot_OmitsUntouchedOptionalInputs()
         {
-            var action = new A365adminmcpActions("a365adminmcp").McpAdminTools();
+            var action = new A365copilotchatmcpActions("a365copilotchatmcp").McpM365copilot();
 
             var actual = JObject.Parse(action.GetActionDefinition("workflow").ToJson());
             var expected = JObject.Parse(
@@ -28,10 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                   "type": "ApiConnection",
                   "inputs": {
                     "method": "post",
-                    "path": "/servers/mcp_AdminTools",
+                    "path": "/servers/mcp_m365copilot",
                     "host": {
                       "connection": {
-                        "referenceName": "a365adminmcp"
+                        "referenceName": "a365copilotchatmcp"
                       }
                     }
                   }
@@ -42,7 +47,55 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void DropboxCreateFile_SerializesDesignerEquivalentQueries()
+        public void HiddenPathDefaults_UseLiteralMetadataAndDeclaredWireValues()
+        {
+            var alerts = GetActionInput(new BkkfutaripActions("connection").SearchAlerts());
+            var messages = GetActionInput(new PlivoActions("connection").ListMessages());
+
+            Assert.Equal(
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/{0}/api/where/alert-search\", encodeURIComponent(\"otp\"))}",
+                alerts.Path);
+            Assert.Equal(
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/v1/Account/{0}/Message/\", encodeURIComponent(\"auth_id_value\"))}",
+                messages.Path);
+        }
+
+        [Fact]
+        public void HiddenIntegerPathDefault_PreservesLateBoundPublicInput()
+        {
+            var person = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("OriginalPerson");
+            var action = new ImpexiumActions("connection").FindIndividualIdOrEmail(() => person.Output);
+            person.WithName("Person");
+
+            Assert.Equal(
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/api/v1/Individuals/Profile/{0}/{1}/\", encodeURIComponent(outputs(\"Person\").ToObject<string>()), encodeURIComponent(1))}",
+                GetActionInput(action).Path);
+        }
+
+        [Fact]
+        public void RepeatedNestedBodyNames_KeepDistinctObjectsAndCallback()
+        {
+            var trigger = new AzureeventgridTriggers("connection").CreateSubscription(
+                () => "subscription",
+                () => "resource-type",
+                bodypropertiesresourceName: () => "topic",
+                bodypropertiesfilterprefixFilter: () => "prefix");
+            var input = Assert.IsType<ApiConnectionActionInput>(trigger.GetTriggerDefinition().Inputs);
+            var body = Assert.IsType<JObject>(input.Body);
+            var properties = Assert.IsType<JObject>(body["properties"]);
+            var destination = Assert.IsType<JObject>(properties["destination"]);
+            var destinationProperties = Assert.IsType<JObject>(destination["properties"]);
+
+            Assert.Equal("topic", properties["topic"]?.Value<string>());
+            Assert.Equal("prefix", properties["filter"]?["subjectBeginsWith"]?.Value<string>());
+            Assert.Equal("webhook", destination["endpointType"]?.Value<string>());
+            Assert.Equal("#{listCallbackUrl()}", destinationProperties["endpointUrl"]?.Value<string>());
+            Assert.Null(properties["endpointUrl"]);
+            Assert.Null(destinationProperties["topic"]);
+        }
+
+        [Fact]
+        public void DropboxCreateFile_PreservesCurrentSchemaQueriesAndHiddenDefault()
         {
             var action = new DropboxActions("dropbox").CreateFile(
                 folderPath: () => "/parity/incoming",
@@ -59,7 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                     "body": "{\"orderId\":42,\"ready\":true}",
                     "queries": {
                       "folderPath": "/parity/incoming",
-                      "name": "payload.json"
+                      "name": "payload.json",
+                      "queryParametersSingleEncoded": "True"
                     },
                     "path": "/datasets/default/files",
                     "host": {
@@ -113,6 +167,86 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
+        public void Office365CalendarGetTables_PreservesStringHiddenDefaults()
+        {
+            var action = new Office365Actions("office365").CalendarGetTables();
+            var queries = JObject.Parse(action.GetActionDefinition("workflow").ToJson())["inputs"]?["queries"];
+
+            Assert.Equal(JTokenType.String, queries?["skip"]?.Type);
+            Assert.Equal("0", queries?["skip"]?.Value<string>());
+            Assert.Equal(JTokenType.String, queries?["top"]?.Type);
+            Assert.Equal("256", queries?["top"]?.Value<string>());
+        }
+
+        [Fact]
+        public void Office365ReplyTo_OmitsEmptyBodyButKeepsPopulatedBody()
+        {
+            var connector = new Office365Actions("office365");
+            var empty = JObject.Parse(connector.ReplyTo(() => "message").GetActionDefinition("workflow").ToJson());
+            var populated = JObject.Parse(connector.ReplyTo(
+                () => "message", replyParametersbody: () => "reply").GetActionDefinition("workflow").ToJson());
+
+            Assert.Null(empty["inputs"]?["body"]);
+            Assert.Equal("reply", populated["inputs"]?["body"]?["Body"]?.Value<string>());
+        }
+
+        [Fact]
+        public void Office365ReplyTo_BodyOmissionDoesNotSkipRequiredArgumentValidation()
+        {
+            var error = Assert.Throws<ArgumentNullException>(() => new Office365Actions("office365").ReplyTo(null));
+
+            Assert.Equal("messageId", error.ParamName);
+        }
+
+        [Fact]
+        public void SharePointFolderOperations_PreservePublicSurfaceAndPaths()
+        {
+            var connector = new SharepointonlineActions("sharepointonline");
+            var root = GetActionInput(connector.ListRootFolder(() => "site"));
+            var folder = GetActionInput(connector.ListFolder(() => "site", () => "folder"));
+
+            Assert.Equal("get", root.Method);
+            Assert.Equal("get", folder.Method);
+            Assert.Equal(
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/datasets/{0}/folders\", encodeURIComponent(encodeURIComponent(\"site\")))}",
+                root.Path);
+            Assert.Equal(
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/datasets/{0}/folders/{1}\", encodeURIComponent(encodeURIComponent(\"site\")), encodeURIComponent(\"folder\"))}",
+                folder.Path);
+        }
+
+        [Fact]
+        public void ManagedModelProperties_PreservePublicAcronymsAndWireNames()
+        {
+            var calendar = JObject.FromObject(new CalendarGetTablesV2ResponseValueTypeItem { ID = "calendar" });
+            var folder = JObject.FromObject(new GraphContactFolder { ID = "folder", ParentFolderID = "parent" });
+
+            Assert.Equal("calendar", calendar["id"]?.Value<string>());
+            Assert.Equal("folder", folder["id"]?.Value<string>());
+            Assert.Equal("parent", folder["parentFolderId"]?.Value<string>());
+            Assert.Equal("ApprovalRequestID", nameof(ApprovalData.ApprovalRequestID));
+            Assert.Equal("ID", nameof(DeletedItem.ID));
+        }
+
+        [Fact]
+        public void SlackBodyEnum_PreservesLiteralAndNativeWireValues()
+        {
+            var literal = new SlackActions("slack").PostMessage(
+                () => "channel", () => "message", messageparseMode: () => messageparseModeInput.Full);
+            var source = WorkflowActions.BuiltIn.Compose<messageparseModeInput>(() => messageparseModeInput.Full)
+                .WithName("Original");
+            var native = new SlackActions("slack").PostMessage(
+                () => "channel", () => "message", messageparseMode: () => source.Output);
+            source.WithName("Mode");
+
+            Assert.Equal("full", Assert.IsType<JObject>(GetActionInput(literal).Body)["parse"]?.Value<string>());
+            var expression = Assert.IsType<JObject>(GetActionInput(native).Body)["parse"]?.Value<string>();
+            Assert.StartsWith("#{", expression);
+            Assert.Contains("outputs(\"Mode\")", expression);
+            Assert.DoesNotContain("Original", expression);
+        }
+
+        [Fact]
         public void HiddenQueryDefaults_PreserveSwaggerPrimitiveTypes()
         {
             var input = new ApiConnectionActionInput("/path", "get", "connection");
@@ -162,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         [Fact]
         public void HeaderInput_EmitsCSharpExpression()
         {
-            var action = new A365adminmcpActions("connection").McpAdminTools(
+            var action = new A365copilotchatmcpActions("connection").McpM365copilot(
                 mcpSessionId: () => "session".ToUpper());
 
             var input = GetActionInput(action);
@@ -188,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void CreateInvitation_EmitsRequiredEmptyObjectBody()
+        public void CreateInvitation_OmitsUntouchedOptionalBody()
         {
             var action = new AadinvitationmanagerActions("connection").CreateInvitation();
 
@@ -199,11 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                   "type": "ApiConnection",
                   "inputs": {
                     "method": "post",
-                    "body": {
-                      "invitedUserMessageInfo": {
-                        "messageLanguage": "en-US"
-                      }
-                    },
                     "path": "/v1.0/invitations",
                     "host": {
                       "connection": {
@@ -245,13 +374,24 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                           "name": "Ada"
                         }
                       }
-                    ],
-                    "messageLanguage": "en-US"
+                    ]
                   }
                 }
                 """);
 
             Assert.True(JToken.DeepEquals(expected, body), body?.ToString());
+        }
+
+        [Fact]
+        public void CreateInvitation_PreservesExplicitMessageLanguage()
+        {
+            var action = new AadinvitationmanagerActions("connection").CreateInvitation(
+                bodyinvitedUserMessageInfomessageLanguage: () => "en-US");
+            var body = JObject.Parse(action.GetActionDefinition("workflow").ToJson())["inputs"]?["body"];
+
+            Assert.True(JToken.DeepEquals(
+                JObject.Parse("""{"invitedUserMessageInfo":{"messageLanguage":"en-US"}}"""), body),
+                body?.ToString());
         }
 
         [Fact]
@@ -324,8 +464,8 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var query = GetActionInput(new AbbreviationsipActions("connection")
                 .AbbrGet(term: () => source.Output));
-            var header = GetActionInput(new A365adminmcpActions("connection")
-                .McpAdminTools(mcpSessionId: () => source.Output));
+            var header = GetActionInput(new A365copilotchatmcpActions("connection")
+                .McpM365copilot(mcpSessionId: () => source.Output));
             var body = GetActionInput(new AadinvitationmanagerActions("connection")
                 .CreateInvitation(bodyinvitedUserDisplayName: () => source.Output));
 

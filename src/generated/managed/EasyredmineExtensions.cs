@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
     public class EasyredmineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<GetIssueResponse> CreateIssue([WorkflowExpression] Func<string> issueissueprojectID = null, [WorkflowExpression] Func<string> issueissuepriorityID = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null, [WorkflowExpression] Func<string> issueissuestartDate = null, [WorkflowExpression] Func<string> issueissuedueDate = null, [WorkflowExpression] Func<double> issueissueestimatedHours = null)
+        public IBodyWorkflowAction<GetIssueResponse> CreateIssue([WorkflowExpression] Func<string> issueissueprojectId = null, [WorkflowExpression] Func<string> issueissuepriorityId = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null, [WorkflowExpression] Func<string> issueissuestartDate = null, [WorkflowExpression] Func<string> issueissuedueDate = null, [WorkflowExpression] Func<double> issueissueestimatedHours = null)
         {
-            SourceExpression.Validate(issueissueprojectID, nameof(issueissueprojectID), required: false);
-            SourceExpression.Validate(issueissuepriorityID, nameof(issueissuepriorityID), required: false);
+            SourceExpression.Validate(issueissueprojectId, nameof(issueissueprojectId), required: false);
+            SourceExpression.Validate(issueissuepriorityId, nameof(issueissuepriorityId), required: false);
             SourceExpression.Validate(issueissuesubject, nameof(issueissuesubject), required: false);
             SourceExpression.Validate(issueissuedescription, nameof(issueissuedescription), required: false);
             SourceExpression.Validate(issueissuestartDate, nameof(issueissuestartDate), required: false);
@@ -30,15 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
                 var issuepropCount = 0;
                 var issueObject = new JObject();
                 var issueObjectpropCount = 0;
-                if (issueissueprojectID != null)
+                if (issueissueprojectId != null)
                 {
-                    issueObject["project_id"] = SourceExpressionConverter.ConvertToken(issueissueprojectID);
+                    issueObject["project_id"] = SourceExpressionConverter.ConvertToken(issueissueprojectId);
                     issueObjectpropCount++;
                 }
 
-                if (issueissuepriorityID != null)
+                if (issueissuepriorityId != null)
                 {
-                    issueObject["priority_id"] = SourceExpressionConverter.ConvertToken(issueissuepriorityID);
+                    issueObject["priority_id"] = SourceExpressionConverter.ConvertToken(issueissuepriorityId);
                     issueObjectpropCount++;
                 }
 
@@ -104,15 +104,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<string> UpdateIssue([WorkflowExpression] Func<string> issueId, [WorkflowExpression] Func<string> issueissueprojectID = null, [WorkflowExpression] Func<string> issueissuepriorityID = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null, [WorkflowExpression] Func<issueissuestatusInput> issueissuestatus = null, [WorkflowExpression] Func<string> issueissueassignToID = null, [WorkflowExpression] Func<string> issueissuestartDate = null, [WorkflowExpression] Func<string> issueissuedueDate = null, [WorkflowExpression] Func<double> issueissueestimatedHours = null)
+        public IBodyWorkflowAction<string> UpdateIssue([WorkflowExpression] Func<string> issueId, [WorkflowExpression] Func<string> issueissueprojectId = null, [WorkflowExpression] Func<string> issueissuepriorityId = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null, [WorkflowExpression] Func<issueissuestatusInput> issueissuestatus = null, [WorkflowExpression] Func<string> issueissueassignToId = null, [WorkflowExpression] Func<string> issueissuestartDate = null, [WorkflowExpression] Func<string> issueissuedueDate = null, [WorkflowExpression] Func<double> issueissueestimatedHours = null)
         {
             SourceExpression.Validate(issueId, nameof(issueId), required: true);
-            SourceExpression.Validate(issueissueprojectID, nameof(issueissueprojectID), required: false);
-            SourceExpression.Validate(issueissuepriorityID, nameof(issueissuepriorityID), required: false);
+            SourceExpression.Validate(issueissueprojectId, nameof(issueissueprojectId), required: false);
+            SourceExpression.Validate(issueissuepriorityId, nameof(issueissuepriorityId), required: false);
             SourceExpression.Validate(issueissuesubject, nameof(issueissuesubject), required: false);
             SourceExpression.Validate(issueissuedescription, nameof(issueissuedescription), required: false);
             SourceExpression.Validate(issueissuestatus, nameof(issueissuestatus), required: false);
-            SourceExpression.Validate(issueissueassignToID, nameof(issueissueassignToID), required: false);
+            SourceExpression.Validate(issueissueassignToId, nameof(issueissueassignToId), required: false);
             SourceExpression.Validate(issueissuestartDate, nameof(issueissuestartDate), required: false);
             SourceExpression.Validate(issueissuedueDate, nameof(issueissuedueDate), required: false);
             SourceExpression.Validate(issueissueestimatedHours, nameof(issueissueestimatedHours), required: false);
@@ -125,15 +125,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
                 var issuepropCount = 0;
                 var issueObject = new JObject();
                 var issueObjectpropCount = 0;
-                if (issueissueprojectID != null)
+                if (issueissueprojectId != null)
                 {
-                    issueObject["project_id"] = SourceExpressionConverter.ConvertToken(issueissueprojectID);
+                    issueObject["project_id"] = SourceExpressionConverter.ConvertToken(issueissueprojectId);
                     issueObjectpropCount++;
                 }
 
-                if (issueissuepriorityID != null)
+                if (issueissuepriorityId != null)
                 {
-                    issueObject["priority_id"] = SourceExpressionConverter.ConvertToken(issueissuepriorityID);
+                    issueObject["priority_id"] = SourceExpressionConverter.ConvertToken(issueissuepriorityId);
                     issueObjectpropCount++;
                 }
 
@@ -155,9 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
                     issueObjectpropCount++;
                 }
 
-                if (issueissueassignToID != null)
+                if (issueissueassignToId != null)
                 {
-                    issueObject["assigned_to_id"] = SourceExpressionConverter.ConvertToken(issueissueassignToID);
+                    issueObject["assigned_to_id"] = SourceExpressionConverter.ConvertToken(issueissueassignToId);
                     issueObjectpropCount++;
                 }
 
@@ -196,14 +196,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> projectprojectname = null, [WorkflowExpression] Func<string> projectprojectidentifier = null, [WorkflowExpression] Func<string> projectprojectdescription = null, [WorkflowExpression] Func<string> projectprojecthomepage = null, [WorkflowExpression] Func<string> projectprojectparentProjectID = null, [WorkflowExpression] Func<bool> projectprojectpublic = null, [WorkflowExpression] Func<bool> projectprojectinheritMembers = null)
+        public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> projectprojectname = null, [WorkflowExpression] Func<string> projectprojectidentifier = null, [WorkflowExpression] Func<string> projectprojectdescription = null, [WorkflowExpression] Func<string> projectprojecthomepage = null, [WorkflowExpression] Func<string> projectprojectparentProjectId = null, [WorkflowExpression] Func<bool> projectprojectPublic = null, [WorkflowExpression] Func<bool> projectprojectinheritMembers = null)
         {
             SourceExpression.Validate(projectprojectname, nameof(projectprojectname), required: false);
             SourceExpression.Validate(projectprojectidentifier, nameof(projectprojectidentifier), required: false);
             SourceExpression.Validate(projectprojectdescription, nameof(projectprojectdescription), required: false);
             SourceExpression.Validate(projectprojecthomepage, nameof(projectprojecthomepage), required: false);
-            SourceExpression.Validate(projectprojectparentProjectID, nameof(projectprojectparentProjectID), required: false);
-            SourceExpression.Validate(projectprojectpublic, nameof(projectprojectpublic), required: false);
+            SourceExpression.Validate(projectprojectparentProjectId, nameof(projectprojectparentProjectId), required: false);
+            SourceExpression.Validate(projectprojectPublic, nameof(projectprojectPublic), required: false);
             SourceExpression.Validate(projectprojectinheritMembers, nameof(projectprojectinheritMembers), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -238,17 +238,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
                     projectObjectpropCount++;
                 }
 
-                if (projectprojectparentProjectID != null)
+                if (projectprojectparentProjectId != null)
                 {
-                    projectObject["parent_id"] = SourceExpressionConverter.ConvertToken(projectprojectparentProjectID);
+                    projectObject["parent_id"] = SourceExpressionConverter.ConvertToken(projectprojectparentProjectId);
                     projectObjectpropCount++;
                 }
 
-                if (projectprojectpublic != null)
+                if (projectprojectPublic != null)
                 {
-                    if (projectprojectpublic != null)
+                    if (projectprojectPublic != null)
                     {
-                        projectObject["is_public"] = SourceExpressionConverter.ConvertToken(projectprojectpublic);
+                        projectObject["is_public"] = SourceExpressionConverter.ConvertToken(projectprojectPublic);
                         projectObjectpropCount++;
                     }
 

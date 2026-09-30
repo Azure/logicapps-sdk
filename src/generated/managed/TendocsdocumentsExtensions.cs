@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse> AiSummary([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<int> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse> AiSummary([WorkflowExpression] Func<string> requestdocumentFile = null, [WorkflowExpression] Func<int> requestconfigurationtargetWordCount = null)
         {
-            SourceExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            SourceExpression.Validate(requestdocumentFile, nameof(requestdocumentFile), required: false);
             SourceExpression.Validate(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (requestdocumentfile != null)
+                if (requestdocumentFile != null)
                 {
-                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentfile);
+                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentFile);
                     documentObjectpropCount++;
                 }
 
@@ -182,9 +182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> ConversionConvert([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> ConversionConvert([WorkflowExpression] Func<string> requestdocumentFile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            SourceExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            SourceExpression.Validate(requestdocumentFile, nameof(requestdocumentFile), required: false);
             SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -195,9 +195,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                 var requestpropCount = 0;
                 var documentObject = new JObject();
                 var documentObjectpropCount = 0;
-                if (requestdocumentfile != null)
+                if (requestdocumentFile != null)
                 {
-                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentfile);
+                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentFile);
                     documentObjectpropCount++;
                 }
 
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdocumentIntroduction, [WorkflowExpression] Func<string> requestrecipientEmail, [WorkflowExpression] Func<string> requestrecipientFirstName, [WorkflowExpression] Func<string> requestrecipientLastName, [WorkflowExpression] Func<string> requestexpiryDate, [WorkflowExpression] Func<bool> requestsignatureRequired, [WorkflowExpression] Func<string> requestorgansiationTitle, [WorkflowExpression] Func<string> requestorganisationEmail, [WorkflowExpression] Func<string> requestorganisationOwner, [WorkflowExpression] Func<string> requestdocumentpDFDocument = null, [WorkflowExpression] Func<string> requestdocumentLogo = null, [WorkflowExpression] Func<string> requestcheckbox = null, [WorkflowExpression] Func<string> requestorganisationWebsite = null, [WorkflowExpression] Func<string> requestorganisationPhone = null, [WorkflowExpression] Func<string> requestoragnisationOwnerTitle = null, [WorkflowExpression] Func<bool> requestcomments = null, [WorkflowExpression] Func<string> requestprojectID = null, [WorkflowExpression] Func<string> requestcompleteButtonLabel = null, [WorkflowExpression] Func<string> requestcompleteDocumentLabel = null, [WorkflowExpression] Func<string> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdocumentIntroduction, [WorkflowExpression] Func<string> requestrecipientEmail, [WorkflowExpression] Func<string> requestrecipientFirstName, [WorkflowExpression] Func<string> requestrecipientLastName, [WorkflowExpression] Func<string> requestexpiryDate, [WorkflowExpression] Func<bool> requestsignatureRequired, [WorkflowExpression] Func<string> requestorgansiationTitle, [WorkflowExpression] Func<string> requestorganisationEmail, [WorkflowExpression] Func<string> requestorganisationOwner, [WorkflowExpression] Func<string> requestdocumentpDFDocument = null, [WorkflowExpression] Func<string> requestdocumentLogo = null, [WorkflowExpression] Func<string> requestcheckbox = null, [WorkflowExpression] Func<string> requestorganisationWebsite = null, [WorkflowExpression] Func<string> requestorganisationPhone = null, [WorkflowExpression] Func<string> requestoragnisationOwnerTitle = null, [WorkflowExpression] Func<bool> requestcomments = null, [WorkflowExpression] Func<string> requestprojectId = null, [WorkflowExpression] Func<string> requestcompleteButtonLabel = null, [WorkflowExpression] Func<string> requestcompleteDocumentLabel = null, [WorkflowExpression] Func<string> requestincompleteDocumentLabel = null)
         {
             SourceExpression.Validate(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
             SourceExpression.Validate(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
             SourceExpression.Validate(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
             SourceExpression.Validate(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
             SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
-            SourceExpression.Validate(requestprojectID, nameof(requestprojectID), required: false);
+            SourceExpression.Validate(requestprojectId, nameof(requestprojectId), required: false);
             SourceExpression.Validate(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
             SourceExpression.Validate(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
             SourceExpression.Validate(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
@@ -509,9 +509,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
                     requestpropCount++;
                 }
 
-                if (requestprojectID != null)
+                if (requestprojectId != null)
                 {
-                    request["projectIdentifier"] = SourceExpressionConverter.ConvertToken(requestprojectID);
+                    request["projectIdentifier"] = SourceExpressionConverter.ConvertToken(requestprojectId);
                     requestpropCount++;
                 }
 

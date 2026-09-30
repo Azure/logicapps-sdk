@@ -221,13 +221,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction UpdateIncidentCustomFields([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodygroupType, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields, [WorkflowExpression] Func<string> bodypublicID = null, [WorkflowExpression] Func<string> bodycontainerID = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
+        public IWorkflowAction UpdateIncidentCustomFields([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodygroupType, [WorkflowExpression] Func<bodycustomFieldsInputItem[]> bodycustomFields, [WorkflowExpression] Func<string> bodypublicId = null, [WorkflowExpression] Func<string> bodycontainerId = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: true);
             SourceExpression.Validate(bodycustomFields, nameof(bodycustomFields), required: true);
-            SourceExpression.Validate(bodypublicID, nameof(bodypublicID), required: false);
-            SourceExpression.Validate(bodycontainerID, nameof(bodycontainerID), required: false);
+            SourceExpression.Validate(bodypublicId, nameof(bodypublicId), required: false);
+            SourceExpression.Validate(bodycontainerId, nameof(bodycontainerId), required: false);
             SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -241,15 +241,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["groupType"] = SourceExpressionConverter.ConvertToken(bodygroupType);
-                if (bodypublicID != null)
+                if (bodypublicId != null)
                 {
-                    body["publicId"] = SourceExpressionConverter.ConvertToken(bodypublicID);
+                    body["publicId"] = SourceExpressionConverter.ConvertToken(bodypublicId);
                     bodypropCount++;
                 }
 
-                if (bodycontainerID != null)
+                if (bodycontainerId != null)
                 {
-                    body["containerId"] = SourceExpressionConverter.ConvertToken(bodycontainerID);
+                    body["containerId"] = SourceExpressionConverter.ConvertToken(bodycontainerId);
                     bodypropCount++;
                 }
 
@@ -574,6 +574,139 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
+        public IBodyWorkflowAction<OmnisearchIncidentsResponse> SearchIncidentsOmnisearch([WorkflowExpression] Func<string> bodysearchString, [WorkflowExpression] Func<bool> bodyincludeCorrelated = null, [WorkflowExpression] Func<string> bodyorderColumn = null, [WorkflowExpression] Func<bodyorderDirectionInput> bodyorderDirection = null, [WorkflowExpression] Func<int> bodyskip = null, [WorkflowExpression] Func<int> bodytop = null, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
+        {
+            SourceExpression.Validate(bodysearchString, nameof(bodysearchString), required: true);
+            SourceExpression.Validate(bodyincludeCorrelated, nameof(bodyincludeCorrelated), required: false);
+            SourceExpression.Validate(bodyorderColumn, nameof(bodyorderColumn), required: false);
+            SourceExpression.Validate(bodyorderDirection, nameof(bodyorderDirection), required: false);
+            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: false);
+            SourceExpression.Validate(bodytop, nameof(bodytop), required: false);
+            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/icm/incidents/omnisearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
+                if (icmEndpoint != null)
+                    callPayload.Queries["icmEndpoint"] = SourceExpressionConverter.Convert(icmEndpoint);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["searchString"] = SourceExpressionConverter.ConvertToken(bodysearchString);
+                if (bodyincludeCorrelated != null)
+                {
+                    if (bodyincludeCorrelated != null)
+                    {
+                        body["includeCorrelated"] = SourceExpressionConverter.ConvertToken(bodyincludeCorrelated);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeCorrelated"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyorderColumn != null)
+                {
+                    if (bodyorderColumn != null)
+                    {
+                        body["orderColumn"] = SourceExpressionConverter.ConvertToken(bodyorderColumn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["orderColumn"] = "CreateDate";
+                    bodypropCount++;
+                }
+
+                if (bodyorderDirection != null)
+                {
+                    if (bodyorderDirection != null)
+                    {
+                        body["orderDir"] = SourceExpressionConverter.Convert(bodyorderDirection);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["orderDir"] = "desc";
+                    bodypropCount++;
+                }
+
+                if (bodyskip != null)
+                {
+                    if (bodyskip != null)
+                    {
+                        body["skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["skip"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodytop != null)
+                {
+                    if (bodytop != null)
+                    {
+                        body["top"] = SourceExpressionConverter.ConvertToken(bodytop);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["top"] = 100;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OmnisearchIncidentsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
+        public IBodyWorkflowAction<bool> CheckUserAccess([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> upn, [WorkflowExpression] Func<icmEndpointInput> icmEndpoint = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(upn, nameof(upn), required: true);
+            SourceExpression.Validate(icmEndpoint, nameof(icmEndpoint), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/checkuseraccess", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["upn"] = SourceExpressionConverter.ConvertO(upn);
+                callPayload.Queries["icmEndpoint"] = Convert.ToString("Public");
+                if (icmEndpoint != null)
+                    callPayload.Queries["icmEndpoint"] = SourceExpressionConverter.Convert(icmEndpoint);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<bool>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmTeamSearchResponse> SearchIcMTeams([WorkflowExpression] Func<string> publicId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> includeMembers = null, [WorkflowExpression] Func<int> skip = null)
         {
             SourceExpression.Validate(publicId, nameof(publicId), required: false);
@@ -816,6 +949,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/icm/triggers/onIncidentCreated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
+                if (searchEndpoint != null)
+                    callPayload.Queries["searchEndpoint"] = SourceExpressionConverter.Convert(searchEndpoint);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsModified([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(filter, nameof(filter), required: true);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(searchEndpoint, nameof(searchEndpoint), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/icm/triggers/onIncidentModified";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
@@ -1812,6 +1967,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     {
         Public,
         Eudb
+    }
+
+    public class OmnisearchIncidentsResponse
+    {
+        [JsonProperty("value")]
+        public OmnisearchIncident[] Value { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("source")]
+        public string Source { get; set; }
+    }
+
+    public class OmnisearchIncident
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string State { get; set; }
+        public int Severity { get; set; }
+        public string CreatedDate { get; set; }
+        public string LastModifiedDate { get; set; }
+        public bool IsSecurityRisk { get; set; }
+        public bool IsCustomerImpacting { get; set; }
+        public int OwningTeamId { get; set; }
+        public string OwningTeamName { get; set; }
+        public string OwningTenantName { get; set; }
+        public int OwningServiceId { get; set; }
+        public string ResponsibleServiceName { get; set; }
+        public string RoutingId { get; set; }
+        public string CorrelationId { get; set; }
+        public string ContactAlias { get; set; }
+    }
+
+    public enum bodyorderDirectionInput
+    {
+        [EnumMember(Value = "asc")]
+        Asc,
+        [EnumMember(Value = "desc")]
+        Desc
     }
 
     public class IcmTeamSearchResponse

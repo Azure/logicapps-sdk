@@ -12,173 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
     public class OpentextedocsbyonefoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<string> bodyfilefileName, [WorkflowExpression] Func<string> bodyfilefileContent, [WorkflowExpression] Func<string> bodyparentID = null, [WorkflowExpression] Func<string> bodymetadatadescription = null, [WorkflowExpression] Func<bodymetadatafieldsInputItem[]> bodymetadatafields = null)
-        {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            SourceExpression.Validate(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            SourceExpression.Validate(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            SourceExpression.Validate(bodyparentID, nameof(bodyparentID), required: false);
-            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
-            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodyparentID != null)
-                {
-                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentID);
-                    bodypropCount++;
-                }
-
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                metadataObjectpropCount++;
-                metadataObject["displayName"] = SourceExpressionConverter.ConvertToken(bodymetadatadisplayName);
-                if (bodymetadatadescription != null)
-                {
-                    metadataObject["description"] = SourceExpressionConverter.ConvertToken(bodymetadatadescription);
-                    metadataObjectpropCount++;
-                }
-
-                if (bodymetadatafields != null)
-                {
-                    metadataObject["fieldValues"] = SourceExpressionConverter.ConvertToken(bodymetadatafields);
-                    metadataObjectpropCount++;
-                }
-
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyfilefileContent);
-                if (fileObjectpropCount > 0)
-                {
-                    body["file"] = fileObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<string> bodyfilefileName, [WorkflowExpression] Func<string> bodyfilefileContent, [WorkflowExpression] Func<string> bodymetadatadescription = null, [WorkflowExpression] Func<bodymetadatafieldsInputItem[]> bodymetadatafields = null)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            SourceExpression.Validate(bodyfilefileName, nameof(bodyfilefileName), required: true);
-            SourceExpression.Validate(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
-            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                metadataObjectpropCount++;
-                metadataObject["displayName"] = SourceExpressionConverter.ConvertToken(bodymetadatadisplayName);
-                if (bodymetadatadescription != null)
-                {
-                    metadataObject["description"] = SourceExpressionConverter.ConvertToken(bodymetadatadescription);
-                    metadataObjectpropCount++;
-                }
-
-                if (bodymetadatafields != null)
-                {
-                    metadataObject["fieldValues"] = SourceExpressionConverter.ConvertToken(bodymetadatafields);
-                    metadataObjectpropCount++;
-                }
-
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                var fileObject = new JObject();
-                var fileObjectpropCount = 0;
-                fileObjectpropCount++;
-                fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyfilefileName);
-                fileObjectpropCount++;
-                fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyfilefileContent);
-                if (fileObjectpropCount > 0)
-                {
-                    body["file"] = fileObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IWorkflowAction UpdateDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields = null)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/document/update-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
-                if (bodydescription != null)
-                {
-                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodyfields != null)
-                {
-                    body["fieldValues"] = SourceExpressionConverter.ConvertToken(bodyfields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IWorkflowAction UpdateDocumentContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
@@ -342,90 +175,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             }
 
             return new ApiConnectionAction<Version[]>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IBodyWorkflowAction<string> CreateFolder([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyparentID = null, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields = null)
-        {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyparentID, nameof(bodyparentID), required: false);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/folder/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
-                if (bodydescription != null)
-                {
-                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodyparentID != null)
-                {
-                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentID);
-                    bodypropCount++;
-                }
-
-                if (bodyfields != null)
-                {
-                    body["fieldValues"] = SourceExpressionConverter.ConvertToken(bodyfields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IWorkflowAction UpdateFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields = null)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
-            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/folder/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
-                if (bodydescription != null)
-                {
-                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
-                    bodypropCount++;
-                }
-
-                if (bodyfields != null)
-                {
-                    body["fieldValues"] = SourceExpressionConverter.ConvertToken(bodyfields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
@@ -650,63 +399,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IBodyWorkflowAction<string> CreateLookupEntry([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields = null)
-        {
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/lookup-entry/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodyfields != null)
-                {
-                    body["fieldValues"] = SourceExpressionConverter.ConvertToken(bodyfields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
-        public IWorkflowAction UpdateLookupEntry([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields = null)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
-            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/lookup-entry/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodyfields != null)
-                {
-                    body["fieldValues"] = SourceExpressionConverter.ConvertToken(bodyfields);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
         public IBodyWorkflowAction<GetLookupEntriesResponseItem[]> GetLookupEntries([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> filter = null)
         {
             SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
@@ -723,13 +415,293 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
             return new ApiConnectionAction<GetLookupEntriesResponseItem[]>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IBodyWorkflowAction<string> CreateDocument([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<object> bodymetadatafields, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodymetadatadescription = null)
+        {
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: true);
+            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
+            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                metadataObjectpropCount++;
+                metadataObject["displayName"] = SourceExpressionConverter.ConvertToken(bodymetadatadisplayName);
+                if (bodymetadatadescription != null)
+                {
+                    metadataObject["description"] = SourceExpressionConverter.ConvertToken(bodymetadatadescription);
+                    metadataObjectpropCount++;
+                }
+
+                metadataObjectpropCount++;
+                metadataObject["fields"] = SourceExpressionConverter.ConvertToken(bodymetadatafields);
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
+                {
+                    body["file"] = @fileObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IBodyWorkflowAction<string> CreateFolder([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyparentId = null)
+        {
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyparentId, nameof(bodyparentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IBodyWorkflowAction<string> CreateLookupEntry([WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<object> bodyfields)
+        {
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/lookup-entry/create/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodymetadatadisplayName, [WorkflowExpression] Func<object> bodymetadatafields, [WorkflowExpression] Func<string> bodyFilefileName, [WorkflowExpression] Func<string> bodyFilefileContent, [WorkflowExpression] Func<string> bodymetadatadescription = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            SourceExpression.Validate(bodymetadatafields, nameof(bodymetadatafields), required: true);
+            SourceExpression.Validate(bodyFilefileName, nameof(bodyFilefileName), required: true);
+            SourceExpression.Validate(bodyFilefileContent, nameof(bodyFilefileContent), required: true);
+            SourceExpression.Validate(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                metadataObjectpropCount++;
+                metadataObject["displayName"] = SourceExpressionConverter.ConvertToken(bodymetadatadisplayName);
+                if (bodymetadatadescription != null)
+                {
+                    metadataObject["description"] = SourceExpressionConverter.ConvertToken(bodymetadatadescription);
+                    metadataObjectpropCount++;
+                }
+
+                metadataObjectpropCount++;
+                metadataObject["fields"] = SourceExpressionConverter.ConvertToken(bodymetadatafields);
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var @fileObject = new JObject();
+                var @fileObjectpropCount = 0;
+                @fileObjectpropCount++;
+                @fileObject["name"] = SourceExpressionConverter.ConvertToken(bodyFilefileName);
+                @fileObjectpropCount++;
+                @fileObject["content"] = SourceExpressionConverter.ConvertToken(bodyFilefileContent);
+                if (@fileObjectpropCount > 0)
+                {
+                    body["file"] = @fileObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IWorkflowAction UpdateDocumentProperties([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/document/update-properties/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IWorkflowAction UpdateFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<object> bodyfields, [WorkflowExpression] Func<string> bodydescription = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextedocsbyonefox")]
+        public IWorkflowAction UpdateLookupEntry([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> configurationKey, [WorkflowExpression] Func<object> bodyfields)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(configurationKey, nameof(configurationKey), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/lookup-entry/update/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
     }
 
     public class OpentextedocsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DocumentCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentCreated([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -745,9 +717,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -785,9 +757,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentContentUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentContentUpdated([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -803,9 +775,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -843,9 +815,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentPropertiesUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentPropertiesUpdated([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -861,9 +833,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -901,9 +873,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger DocumentDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentDeleted([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -919,9 +891,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -959,9 +931,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderCreated([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -977,9 +949,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -1017,9 +989,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderUpdated([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -1035,9 +1007,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -1075,9 +1047,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FolderDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderDeleted([WorkflowExpression] Func<int> bodyfilterparentparentId = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
+            SourceExpression.Validate(bodyfilterparentparentId, nameof(bodyfilterparentparentId), required: false);
             SourceExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
             SourceExpression.Validate(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -1093,9 +1065,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 var filterObjectpropCount = 0;
                 var parentObject = new JObject();
                 var parentObjectpropCount = 0;
-                if (bodyfilterparentparentID != null)
+                if (bodyfilterparentparentId != null)
                 {
-                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentID);
+                    parentObject["id"] = SourceExpressionConverter.ConvertToken(bodyfilterparentparentId);
                     parentObjectpropCount++;
                 }
 
@@ -1153,24 +1125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
 
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
-    }
-
-    public class bodymetadatafieldsInputItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class bodyfieldsInputItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class GetDocumentResponse

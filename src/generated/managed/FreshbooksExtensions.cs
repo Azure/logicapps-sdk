@@ -561,7 +561,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,
@@ -836,7 +837,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,

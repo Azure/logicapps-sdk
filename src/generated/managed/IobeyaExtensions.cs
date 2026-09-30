@@ -211,23 +211,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage([WorkflowExpression] Func<string> boardImageId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<fileContentTypeInput> fileContentType)
-        {
-            SourceExpression.Validate(boardImageId, nameof(boardImageId), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(fileContentType, nameof(fileContentType), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/board-images/{0}/asset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardImageId, 1));
-                var apiCallHttpMethod = "put";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<JToken>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateGauge([WorkflowExpression] Func<string> gaugeId, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodytitle = null)
         {
             SourceExpression.Validate(gaugeId, nameof(gaugeId), required: true);
@@ -453,14 +436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
-    }
-
-    public enum fileContentTypeInput
-    {
-        [EnumMember(Value = "image/png")]
-        ImagePng,
-        [EnumMember(Value = "image/jpg")]
-        ImageJpg
     }
 }
 

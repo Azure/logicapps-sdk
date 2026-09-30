@@ -12,11 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<bool> isSandbox, [WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> onBehalfOf = null, [WorkflowExpression] Func<int> expiryDays = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<bool> hideDocumentId = null, [WorkflowExpression] Func<bool> enablePrintAndSign = null, [WorkflowExpression] Func<bool> enableReassign = null, [WorkflowExpression] Func<bool> enableAutoReminder = null, [WorkflowExpression] Func<object> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<bool> isSandbox, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> onBehalfOf = null, [WorkflowExpression] Func<int> expiryDays = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<bool> hideDocumentId = null, [WorkflowExpression] Func<bool> enablePrintAndSign = null, [WorkflowExpression] Func<bool> enableReassign = null, [WorkflowExpression] Func<bool> enableAutoReminder = null, [WorkflowExpression] Func<object> signers = null)
         {
             SourceExpression.Validate(templateId, nameof(templateId), required: true);
             SourceExpression.Validate(isSandbox, nameof(isSandbox), required: true);
-            SourceExpression.Validate(title, nameof(title), required: true);
             SourceExpression.Validate(message, nameof(message), required: false);
             SourceExpression.Validate(cc, nameof(cc), required: false);
             SourceExpression.Validate(brandId, nameof(brandId), required: false);
@@ -35,7 +34,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["templateId"] = SourceExpressionConverter.ConvertO(templateId);
                 callPayload.Queries["isSandbox"] = SourceExpressionConverter.ConvertO(isSandbox);
-                callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
                 if (message != null)
                     callPayload.Queries["message"] = SourceExpressionConverter.ConvertO(message);
                 if (cc != null)

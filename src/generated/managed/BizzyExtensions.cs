@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReply([WorkflowExpression] Func<string> contentreplyText, [WorkflowExpression] Func<string> contentreplyActivity, [WorkflowExpression] Func<bool> contentshowInChat = null, [WorkflowExpression] Func<string> contentcustomChannelData = null, [WorkflowExpression] Func<string> contentsignalResponseJSON = null, [WorkflowExpression] Func<string> contentmessageID = null)
+        public IBodyWorkflowAction<BotReplyResponse> SendReply([WorkflowExpression] Func<string> contentreplyText, [WorkflowExpression] Func<string> contentreplyActivity, [WorkflowExpression] Func<bool> contentshowInChat = null, [WorkflowExpression] Func<string> contentcustomChannelData = null, [WorkflowExpression] Func<string> contentsignalResponseJSON = null, [WorkflowExpression] Func<string> contentmessageId = null)
         {
             SourceExpression.Validate(contentreplyText, nameof(contentreplyText), required: true);
             SourceExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
             SourceExpression.Validate(contentshowInChat, nameof(contentshowInChat), required: false);
             SourceExpression.Validate(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
             SourceExpression.Validate(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
-            SourceExpression.Validate(contentmessageID, nameof(contentmessageID), required: false);
+            SourceExpression.Validate(contentmessageId, nameof(contentmessageId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/triggers/bot/reply";
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     contentpropCount++;
                 }
 
-                if (contentmessageID != null)
+                if (contentmessageId != null)
                 {
-                    content["messageId"] = SourceExpressionConverter.ConvertToken(contentmessageID);
+                    content["messageId"] = SourceExpressionConverter.ConvertToken(contentmessageId);
                     contentpropCount++;
                 }
 
@@ -249,11 +249,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var contentpropCount = 0;
                 contentpropCount++;
                 content["EnterpriseBot"] = SourceExpressionConverter.ConvertToken(contenttargetBot);
-                var teamIDStrObject = new JObject();
-                var teamIDStrObjectpropCount = 0;
-                if (teamIDStrObjectpropCount > 0)
+                var teamIdStrObject = new JObject();
+                var teamIdStrObjectpropCount = 0;
+                if (teamIdStrObjectpropCount > 0)
                 {
-                    content["teamIDStr"] = teamIDStrObject;
+                    content["teamIDStr"] = teamIdStrObject;
                     contentpropCount++;
                 }
 

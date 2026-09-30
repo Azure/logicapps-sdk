@@ -133,29 +133,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<KillProcessIDResponse> KillProcessID([WorkflowExpression] Func<int> killProcessIDprocessID, [WorkflowExpression] Func<string> killProcessIDworkflow)
+        public IBodyWorkflowAction<KillProcessIdResponse> KillProcessId([WorkflowExpression] Func<int> killProcessIDprocessId, [WorkflowExpression] Func<string> killProcessIDworkflow)
         {
-            SourceExpression.Validate(killProcessIDprocessID, nameof(killProcessIDprocessID), required: true);
+            SourceExpression.Validate(killProcessIDprocessId, nameof(killProcessIDprocessId), required: true);
             SourceExpression.Validate(killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/Environment/KillProcessID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var killProcessID = new JObject();
-                var killProcessIDpropCount = 0;
-                killProcessIDpropCount++;
-                killProcessID["ProcessID"] = SourceExpressionConverter.ConvertToken(killProcessIDprocessID);
-                killProcessIDpropCount++;
-                killProcessID["Workflow"] = SourceExpressionConverter.ConvertToken(killProcessIDworkflow);
-                if (killProcessIDpropCount > 0)
+                var killProcessId = new JObject();
+                var killProcessIdpropCount = 0;
+                killProcessIdpropCount++;
+                killProcessId["ProcessID"] = SourceExpressionConverter.ConvertToken(killProcessIDprocessId);
+                killProcessIdpropCount++;
+                killProcessId["Workflow"] = SourceExpressionConverter.ConvertToken(killProcessIDworkflow);
+                if (killProcessIdpropCount > 0)
                 {
-                    callPayload.Body = killProcessID;
+                    callPayload.Body = killProcessId;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<KillProcessIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<KillProcessIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
-        public IBodyWorkflowAction<GetProcessByPIDResponse> GetProcessByPID([WorkflowExpression] Func<int> getProcessByPIDprocessId, [WorkflowExpression] Func<string> getProcessByPIDworkflow)
+        public IBodyWorkflowAction<GetProcessByPIdResponse> GetProcessByPId([WorkflowExpression] Func<int> getProcessByPIDprocessId, [WorkflowExpression] Func<string> getProcessByPIDworkflow)
         {
             SourceExpression.Validate(getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
             SourceExpression.Validate(getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
@@ -240,20 +240,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
                 var apiCallPath = "/Environment/GetProcessByPID";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var getProcessByPID = new JObject();
-                var getProcessByPIDpropCount = 0;
-                getProcessByPIDpropCount++;
-                getProcessByPID["ProcessId"] = SourceExpressionConverter.ConvertToken(getProcessByPIDprocessId);
-                getProcessByPIDpropCount++;
-                getProcessByPID["Workflow"] = SourceExpressionConverter.ConvertToken(getProcessByPIDworkflow);
-                if (getProcessByPIDpropCount > 0)
+                var getProcessByPId = new JObject();
+                var getProcessByPIdpropCount = 0;
+                getProcessByPIdpropCount++;
+                getProcessByPId["ProcessId"] = SourceExpressionConverter.ConvertToken(getProcessByPIDprocessId);
+                getProcessByPIdpropCount++;
+                getProcessByPId["Workflow"] = SourceExpressionConverter.ConvertToken(getProcessByPIDworkflow);
+                if (getProcessByPIdpropCount > 0)
                 {
-                    callPayload.Body = getProcessByPID;
+                    callPayload.Body = getProcessByPId;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<GetProcessByPIDResponse>(BuildSourceInput);
+            return new ApiConnectionAction<GetProcessByPIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
@@ -11253,7 +11253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfProcessesKilled { get; set; }
     }
 
-    public class KillProcessIDResponse
+    public class KillProcessIdResponse
     {
         public int NumberOfProcessesKilled { get; set; }
     }
@@ -11274,7 +11274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfAgentsFailedToKill { get; set; }
     }
 
-    public class GetProcessByPIDResponse
+    public class GetProcessByPIdResponse
     {
         public bool ProcessRunning { get; set; }
     }

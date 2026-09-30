@@ -215,21 +215,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
             return new ApiConnectionAction<FilesGetResponse>(BuildSourceInput);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<object> file)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/files";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<FilePostResponse>(BuildSourceInput);
-        }
     }
 
     public class OpenqrTriggers([ConnectionName] string connectionId)
@@ -604,30 +589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 
         [JsonProperty("prev_cursor")]
         public string PrevCursor { get; set; }
-    }
-
-    public class FilePostResponse
-    {
-        [JsonProperty("data")]
-        public FilePostResponseDataType Data { get; set; }
-    }
-
-    public class FilePostResponseDataType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("mime_type")]
-        public string MimeType { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("public")]
-        public bool Public { get; set; }
     }
 }
 

@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     public class RaptordocmanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<string> GetUserToken([WorkflowExpression] Func<string> externalSystemID, [WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> externalUserName)
+        public IBodyWorkflowAction<string> GetUserToken([WorkflowExpression] Func<string> externalSystemId, [WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> externalUserName)
         {
-            SourceExpression.Validate(externalSystemID, nameof(externalSystemID), required: true);
+            SourceExpression.Validate(externalSystemId, nameof(externalSystemId), required: true);
             SourceExpression.Validate(secret, nameof(secret), required: true);
             SourceExpression.Validate(externalUserName, nameof(externalUserName), required: true);
             ApiConnectionActionInput BuildSourceInput()
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
                 var apiCallPath = "/User/getusertoken";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["externalSystemID"] = SourceExpressionConverter.ConvertO(externalSystemID);
+                callPayload.Queries["externalSystemID"] = SourceExpressionConverter.ConvertO(externalSystemId);
                 callPayload.Queries["secret"] = SourceExpressionConverter.ConvertO(secret);
                 callPayload.Queries["externalUserName"] = SourceExpressionConverter.ConvertO(externalUserName);
                 return callPayload;
@@ -1300,14 +1300,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
     public enum bodyorderByInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class GetTagByTagIdResponse
@@ -2834,14 +2830,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
 
     public enum bodylabelsInputItemLanguageIdType
     {
-        [EnumMember(Value = "1031")]
-        _1031,
-        [EnumMember(Value = "1033")]
-        _1033,
-        [EnumMember(Value = "1036")]
-        _1036,
-        [EnumMember(Value = "2067")]
-        _2067
+        _1031 = 1031,
+        _1033 = 1033,
+        _1036 = 1036,
+        _2067 = 2067
     }
 }
 

@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFlow([WorkflowExpression] Func<string> bodyformID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFlow([WorkflowExpression] Func<string> bodyformId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyformID, nameof(bodyformID), required: true);
+            SourceExpression.Validate(bodyformId, nameof(bodyformId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/resources/flows";
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["form_id"] = SourceExpressionConverter.ConvertToken(bodyformID);
+                body["form_id"] = SourceExpressionConverter.ConvertToken(bodyformId);
                 var metaObject = new JObject();
                 var metaObjectpropCount = 0;
                 metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";

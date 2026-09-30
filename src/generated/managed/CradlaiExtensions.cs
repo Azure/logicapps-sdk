@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated([WorkflowExpression] Func<string> requestmodel, [WorkflowExpression] Func<string> requestdocumentID, [WorkflowExpression] Func<requestpostprocessingtheOutputFormatInput> requestpostprocessingtheOutputFormat = null, [WorkflowExpression] Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, [WorkflowExpression] Func<bool> requestpreprocessingautoRotate = null, [WorkflowExpression] Func<int> requestpreprocessingmaxPages = null, [WorkflowExpression] Func<string> requestpreprocessingimageQuality = null)
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated([WorkflowExpression] Func<string> requestmodel, [WorkflowExpression] Func<string> requestdocumentId, [WorkflowExpression] Func<requestpostprocessingtheOutputFormatInput> requestpostprocessingtheOutputFormat = null, [WorkflowExpression] Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, [WorkflowExpression] Func<bool> requestpreprocessingautoRotate = null, [WorkflowExpression] Func<int> requestpreprocessingmaxPages = null, [WorkflowExpression] Func<string> requestpreprocessingimageQuality = null)
         {
             SourceExpression.Validate(requestmodel, nameof(requestmodel), required: true);
-            SourceExpression.Validate(requestdocumentID, nameof(requestdocumentID), required: true);
+            SourceExpression.Validate(requestdocumentId, nameof(requestdocumentId), required: true);
             SourceExpression.Validate(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
             SourceExpression.Validate(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
             SourceExpression.Validate(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                 requestpropCount++;
                 request["modelId"] = SourceExpressionConverter.ConvertToken(requestmodel);
                 requestpropCount++;
-                request["documentId"] = SourceExpressionConverter.ConvertToken(requestdocumentID);
+                request["documentId"] = SourceExpressionConverter.ConvertToken(requestdocumentId);
                 var postprocessConfigObject = new JObject();
                 var postprocessConfigObjectpropCount = 0;
                 if (requestpostprocessingtheOutputFormat != null)
@@ -157,9 +157,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> variables = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> document = null)
+        public IBodyWorkflowAction<JToken> CreateRun([WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> actionId = null, [WorkflowExpression] Func<int> maxWaitInterval = null, [WorkflowExpression] Func<string> variables = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> document = null)
         {
             SourceExpression.Validate(agentId, nameof(agentId), required: true);
+            SourceExpression.Validate(actionId, nameof(actionId), required: false);
+            SourceExpression.Validate(maxWaitInterval, nameof(maxWaitInterval), required: false);
             SourceExpression.Validate(variables, nameof(variables), required: false);
             SourceExpression.Validate(title, nameof(title), required: false);
             SourceExpression.Validate(document, nameof(document), required: false);
@@ -168,30 +170,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                 var apiCallPath = "/agents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["AgentId"] = SourceExpressionConverter.ConvertO(agentId);
                 if (variables != null)
-                    callPayload.Headers["variables"] = SourceExpressionConverter.ConvertO(variables);
+                    callPayload.Queries["variables"] = SourceExpressionConverter.ConvertO(variables);
                 if (title != null)
-                    callPayload.Headers["title"] = SourceExpressionConverter.ConvertO(title);
+                    callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
+                callPayload.Headers["AgentId"] = SourceExpressionConverter.ConvertO(agentId);
+                if (actionId != null)
+                    callPayload.Headers["ActionId"] = SourceExpressionConverter.ConvertO(actionId);
+                if (maxWaitInterval != null)
+                    callPayload.Headers["maxWaitInterval"] = SourceExpressionConverter.ConvertO(maxWaitInterval);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(document);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<CreateRunResponse>(BuildSourceInput);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IWorkflowAction Validate([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> xCradlSharedSecret)
+        public IWorkflowAction Validate()
         {
-            SourceExpression.Validate(actionId, nameof(actionId), required: true);
-            SourceExpression.Validate(xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["ActionId"] = SourceExpressionConverter.ConvertO(actionId);
-                callPayload.Headers["X-Cradl-Shared-Secret"] = SourceExpressionConverter.ConvertO(xCradlSharedSecret);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
                 return callPayload;
             }
 
@@ -199,10 +207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> requestinputdocumentID, [WorkflowExpression] Func<string> requestinputtitle = null)
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> requestinputdocumentId, [WorkflowExpression] Func<string> requestinputtitle = null)
         {
             SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
-            SourceExpression.Validate(requestinputdocumentID, nameof(requestinputdocumentID), required: true);
+            SourceExpression.Validate(requestinputdocumentId, nameof(requestinputdocumentId), required: true);
             SourceExpression.Validate(requestinputtitle, nameof(requestinputtitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -215,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                 var inputObject = new JObject();
                 var inputObjectpropCount = 0;
                 inputObjectpropCount++;
-                inputObject["documentId"] = SourceExpressionConverter.ConvertToken(requestinputdocumentID);
+                inputObject["documentId"] = SourceExpressionConverter.ConvertToken(requestinputdocumentId);
                 if (requestinputtitle != null)
                 {
                     inputObject["title"] = SourceExpressionConverter.ConvertToken(requestinputtitle);
@@ -378,15 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         BESTNPAGES,
         [EnumMember(Value = "BEST_FIRST")]
         BESTFIRST
-    }
-
-    public class CreateRunResponse
-    {
-        [JsonProperty("runId")]
-        public string AgentRunId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
     }
 
     public class CreateExecutionDeprecatedResponse

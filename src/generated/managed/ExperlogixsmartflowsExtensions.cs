@@ -269,23 +269,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction ImportPackage([WorkflowExpression] Func<object> package, [WorkflowExpression] Func<bool> overwriteExisting)
-        {
-            SourceExpression.Validate(package, nameof(package), required: true);
-            SourceExpression.Validate(overwriteExisting, nameof(overwriteExisting), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/Import";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["overwriteExisting"] = SourceExpressionConverter.ConvertO(overwriteExisting);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
         public IBodyWorkflowAction<string> BackupPackage([WorkflowExpression] Func<bool> reqincludeHistory, [WorkflowExpression] Func<bool> req00000000000000000000000000000000 = null)
         {
             SourceExpression.Validate(reqincludeHistory, nameof(reqincludeHistory), required: true);
@@ -323,21 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
             }
 
             return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction RestorePackage([WorkflowExpression] Func<object> package)
-        {
-            SourceExpression.Validate(package, nameof(package), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/Restore";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

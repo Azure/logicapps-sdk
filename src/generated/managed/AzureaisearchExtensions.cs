@@ -337,6 +337,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
 
             return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
+        public IBodyWorkflowAction<AgenticRetrievalOutput> KnowledgeAgentRetrieval([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> agentName, [WorkflowExpression] Func<AgenticRetrievalInput[]> userQuery = null)
+        {
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(agentName, nameof(agentName), required: true);
+            SourceExpression.Validate(userQuery, nameof(userQuery), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/knowledgeAgentRetrieval";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                callPayload.Queries["agentName"] = SourceExpressionConverter.ConvertO(agentName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(userQuery);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AgenticRetrievalOutput>(BuildSourceInput);
+        }
     }
 
     public class AzureaisearchTriggers([ConnectionName] string connectionId)
@@ -347,6 +367,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     {
         Any,
         All
+    }
+
+    public class AgenticRetrievalOutput
+    {
+        [JsonProperty("response")]
+        public AgenticRetrievalOutputResponse[] Response { get; set; }
+
+        [JsonProperty("activity")]
+        public AgenticRetrievalOutputActivity[] Activity { get; set; }
+
+        [JsonProperty("references")]
+        public AgenticRetrievalOutputReferences[] References { get; set; }
+    }
+
+    public class AgenticRetrievalOutputResponse
+    {
+        [JsonProperty("role")]
+        public string AgentMessageResponseRole { get; set; }
+
+        [JsonProperty("content")]
+        public AgenticRetrievalOutputResponseContent[] Content { get; set; }
+    }
+
+    public class AgenticRetrievalOutputResponseContent
+    {
+        [JsonProperty("type")]
+        public string AgentMessageResponseType { get; set; }
+
+        [JsonProperty("text")]
+        public JToken[] AgentMessageResponseText { get; set; }
+    }
+
+    public class AgenticRetrievalOutputActivity
+    {
+        [JsonProperty("type")]
+        public string AgentMessageActivity { get; set; }
+
+        [JsonProperty("id")]
+        public string AgentMessageId { get; set; }
+
+        [JsonProperty("inputTokens")]
+        public string AgentMessageInputTokens { get; set; }
+
+        [JsonProperty("outputTokens")]
+        public string AgentMessageOutputTokens { get; set; }
+
+        [JsonProperty("targetIndex")]
+        public string AgentMessageTargetIndex { get; set; }
+
+        [JsonProperty("query")]
+        public AgenticRetrievalOutputActivityQueryType Query { get; set; }
+
+        [JsonProperty("queryTime")]
+        public string AgentMessageQueryTime { get; set; }
+
+        [JsonProperty("count")]
+        public string AgentMessageCount { get; set; }
+    }
+
+    public class AgenticRetrievalOutputActivityQueryType
+    {
+        [JsonProperty("search")]
+        public string AgentMessageSearchQuery { get; set; }
+
+        [JsonProperty("filter")]
+        public string AgentMessageQueryFilter { get; set; }
+    }
+
+    public class AgenticRetrievalOutputReferences
+    {
+        [JsonProperty("type")]
+        public string AgentMessageReferenceType { get; set; }
+
+        [JsonProperty("id")]
+        public string AgentMessageReferenceId { get; set; }
+
+        [JsonProperty("activitySource")]
+        public string AgentMessageReferenceActivitySource { get; set; }
+
+        [JsonProperty("docKey")]
+        public string AgentMessageReferenceDocumentKey { get; set; }
+
+        [JsonProperty("sourceData")]
+        public string AgentMessageReferenceSourceData { get; set; }
+    }
+
+    public class AgenticRetrievalInput
+    {
+        [JsonProperty("role")]
+        public AgenticRetrievalInputRoleType Role { get; set; }
+
+        [JsonProperty("content")]
+        public string AgentMessageContent { get; set; }
+    }
+
+    public enum AgenticRetrievalInputRoleType
+    {
+        [EnumMember(Value = "user")]
+        User,
+        [EnumMember(Value = "assistant")]
+        Assistant
     }
 }
 

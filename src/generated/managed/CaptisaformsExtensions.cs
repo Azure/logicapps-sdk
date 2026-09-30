@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     public class CaptisaformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> CreateEntry([WorkflowExpression] Func<string> formID, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> CreateEntry([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(formID, nameof(formID), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
             SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(body);
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry([WorkflowExpression] Func<string> formID, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
         {
-            SourceExpression.Validate(formID, nameof(formID), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
             SourceExpression.Validate(id, nameof(id), required: true);
             SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/data/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(body);
@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formID, nameof(formID), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/c/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/c/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
             return new ApiConnectionTrigger<WebhookResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(formID, nameof(formID), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/u/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/u/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

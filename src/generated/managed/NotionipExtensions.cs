@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction Updateablock([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, [WorkflowExpression] Func<string> bodyparagraphcolor = null, [WorkflowExpression] Func<bodyheading1richTextInputItem[]> bodyheading1richText = null, [WorkflowExpression] Func<string> bodyheading1color = null, [WorkflowExpression] Func<bodyheading2richTextInputItem[]> bodyheading2richText = null, [WorkflowExpression] Func<string> bodyheading2color = null, [WorkflowExpression] Func<bodyheading3richTextInputItem[]> bodyheading3richText = null, [WorkflowExpression] Func<string> bodyheading3color = null, [WorkflowExpression] Func<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, [WorkflowExpression] Func<string> bodybulletedListItemcolor = null, [WorkflowExpression] Func<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, [WorkflowExpression] Func<string> bodynumberedListItemcolor = null, [WorkflowExpression] Func<bodytoDorichTextInputItem[]> bodytoDorichText = null, [WorkflowExpression] Func<bool> bodytoDochecked = null, [WorkflowExpression] Func<string> bodytoDocolor = null)
+        public IWorkflowAction Updateablock([WorkflowExpression] Func<string> blockId, [WorkflowExpression] Func<bodyparagraphrichTextInputItem[]> bodyparagraphrichText = null, [WorkflowExpression] Func<string> bodyparagraphcolor = null, [WorkflowExpression] Func<bodyheading1richTextInputItem[]> bodyheading1richText = null, [WorkflowExpression] Func<string> bodyheading1color = null, [WorkflowExpression] Func<bodyheading2richTextInputItem[]> bodyheading2richText = null, [WorkflowExpression] Func<string> bodyheading2color = null, [WorkflowExpression] Func<bodyheading3richTextInputItem[]> bodyheading3richText = null, [WorkflowExpression] Func<string> bodyheading3color = null, [WorkflowExpression] Func<bodybulletedListItemrichTextInputItem[]> bodybulletedListItemrichText = null, [WorkflowExpression] Func<string> bodybulletedListItemcolor = null, [WorkflowExpression] Func<bodynumberedListItemrichTextInputItem[]> bodynumberedListItemrichText = null, [WorkflowExpression] Func<string> bodynumberedListItemcolor = null, [WorkflowExpression] Func<bodytoDorichTextInputItem[]> bodytoDorichText = null, [WorkflowExpression] Func<bool> bodytoDoChecked = null, [WorkflowExpression] Func<string> bodytoDocolor = null)
         {
             SourceExpression.Validate(blockId, nameof(blockId), required: true);
             SourceExpression.Validate(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
             SourceExpression.Validate(bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
             SourceExpression.Validate(bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
             SourceExpression.Validate(bodytoDorichText, nameof(bodytoDorichText), required: false);
-            SourceExpression.Validate(bodytoDochecked, nameof(bodytoDochecked), required: false);
+            SourceExpression.Validate(bodytoDoChecked, nameof(bodytoDoChecked), required: false);
             SourceExpression.Validate(bodytoDocolor, nameof(bodytoDocolor), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
                     toDoObjectpropCount++;
                 }
 
-                if (bodytoDochecked != null)
+                if (bodytoDoChecked != null)
                 {
-                    toDoObject["checked"] = SourceExpressionConverter.ConvertToken(bodytoDochecked);
+                    toDoObject["checked"] = SourceExpressionConverter.ConvertToken(bodytoDoChecked);
                     toDoObjectpropCount++;
                 }
 

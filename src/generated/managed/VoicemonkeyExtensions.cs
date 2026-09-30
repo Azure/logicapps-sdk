@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     public class VoicemonkeyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement([WorkflowExpression] Func<string> bodydeviceID, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodychimeInput> bodychime = null, [WorkflowExpression] Func<string> bodyaudio = null, [WorkflowExpression] Func<string> bodybackgroundAudio = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodynoBackground = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodymediaWidth = null, [WorkflowExpression] Func<int> bodymediaHeight = null, [WorkflowExpression] Func<bodymediaScalingInput> bodymediaScaling = null, [WorkflowExpression] Func<bodymediaAlignmentInput> bodymediaAlignment = null, [WorkflowExpression] Func<int> bodymediaRadius = null, [WorkflowExpression] Func<string> bodyvideo = null, [WorkflowExpression] Func<int> bodyvideoRepeat = null, [WorkflowExpression] Func<string> bodyechoDotWithClockDisplay = null)
+        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodychimeInput> bodychime = null, [WorkflowExpression] Func<string> bodyaudio = null, [WorkflowExpression] Func<string> bodybackgroundAudio = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodynoBackground = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodymediaWidth = null, [WorkflowExpression] Func<int> bodymediaHeight = null, [WorkflowExpression] Func<bodymediaScalingInput> bodymediaScaling = null, [WorkflowExpression] Func<bodymediaAlignmentInput> bodymediaAlignment = null, [WorkflowExpression] Func<int> bodymediaRadius = null, [WorkflowExpression] Func<string> bodyvideo = null, [WorkflowExpression] Func<int> bodyvideoRepeat = null, [WorkflowExpression] Func<string> bodyechoDotWithClockDisplay = null)
         {
-            SourceExpression.Validate(bodydeviceID, nameof(bodydeviceID), required: true);
+            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
             SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
             SourceExpression.Validate(bodyvoice, nameof(bodyvoice), required: false);
             SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceID);
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
                 if (bodytext != null)
                 {
                     body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
@@ -154,9 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine([WorkflowExpression] Func<string> bodydeviceID)
+        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine([WorkflowExpression] Func<string> bodydeviceId)
         {
-            SourceExpression.Validate(bodydeviceID, nameof(bodydeviceID), required: true);
+            SourceExpression.Validate(bodydeviceId, nameof(bodydeviceId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/trigger";
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceID);
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow([WorkflowExpression] Func<int> bodyflowID)
+        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow([WorkflowExpression] Func<int> bodyflowId)
         {
-            SourceExpression.Validate(bodyflowID, nameof(bodyflowID), required: true);
+            SourceExpression.Validate(bodyflowId, nameof(bodyflowId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/flows";
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["flow"] = SourceExpressionConverter.ConvertToken(bodyflowID);
+                body["flow"] = SourceExpressionConverter.ConvertToken(bodyflowId);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

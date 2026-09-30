@@ -12,14 +12,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
     public class VentipixassetandinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IBodyWorkflowAction<JToken> GetListItems([WorkflowExpression] Func<string> listIDDynamic, [WorkflowExpression] Func<string> barcodeValue, [WorkflowExpression] Func<string> location = null)
+        public IBodyWorkflowAction<JToken> GetListItems([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<string> barcodeValue, [WorkflowExpression] Func<string> location = null)
         {
-            SourceExpression.Validate(listIDDynamic, nameof(listIDDynamic), required: true);
+            SourceExpression.Validate(listIdDynamic, nameof(listIdDynamic), required: true);
             SourceExpression.Validate(barcodeValue, nameof(barcodeValue), required: true);
             SourceExpression.Validate(location, nameof(location), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIDDynamic, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["barcode_value"] = SourceExpressionConverter.ConvertO(barcodeValue);
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IWorkflowAction CreateListItem([WorkflowExpression] Func<string> listIDDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
+        public IWorkflowAction CreateListItem([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            SourceExpression.Validate(listIDDynamic, nameof(listIDDynamic), required: true);
+            SourceExpression.Validate(listIdDynamic, nameof(listIdDynamic), required: true);
             SourceExpression.Validate(dynamicListSchema, nameof(dynamicListSchema), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIDDynamic, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicListSchema);

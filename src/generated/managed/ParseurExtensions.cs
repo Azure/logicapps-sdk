@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        public IBodyWorkflowAction<JToken> GetMailboxSchema([WorkflowExpression] Func<string> mailboxID)
+        public IBodyWorkflowAction<JToken> GetMailboxSchema([WorkflowExpression] Func<string> mailboxId)
         {
-            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            SourceExpression.Validate(mailboxId, nameof(mailboxId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        public IBodyWorkflowAction<JToken> GetTableSchema([WorkflowExpression] Func<string> tableID)
+        public IBodyWorkflowAction<JToken> GetTableSchema([WorkflowExpression] Func<string> tableId)
         {
-            SourceExpression.Validate(tableID, nameof(tableID), required: true);
+            SourceExpression.Validate(tableId, nameof(tableId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            SourceExpression.Validate(mailboxId, nameof(mailboxId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            SourceExpression.Validate(mailboxId, nameof(mailboxId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -116,12 +116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
             return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(tableID, nameof(tableID), required: true);
+            SourceExpression.Validate(tableId, nameof(tableId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();

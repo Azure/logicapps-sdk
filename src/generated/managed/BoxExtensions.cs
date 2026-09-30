@@ -214,13 +214,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
 
     public class BoxTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(folderId, nameof(folderId), required: true);
             SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/datasets/default/triggers/batch/onupdatedfile";
+                var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
@@ -233,13 +233,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Box
             return new ApiConnectionTrigger<BlobMetadata[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             SourceExpression.Validate(folderId, nameof(folderId), required: true);
             SourceExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/datasets/default/triggers/batch/onnewfileV2";
+                var apiCallPath = "/datasets/default/triggers/batch/onupdatedfileV2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);

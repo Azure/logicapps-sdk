@@ -12,11 +12,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction AppendIDsToList([WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<string> bodylist, [WorkflowExpression] Func<string[]> bodyiDS)
+        public IWorkflowAction AppendIDsToList([WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<string> bodylist, [WorkflowExpression] Func<string[]> bodyidS)
         {
             SourceExpression.Validate(bodylistType, nameof(bodylistType), required: true);
             SourceExpression.Validate(bodylist, nameof(bodylist), required: true);
-            SourceExpression.Validate(bodyiDS, nameof(bodyiDS), required: true);
+            SourceExpression.Validate(bodyidS, nameof(bodyidS), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list/v1/appendidstolist";
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
                 bodypropCount++;
                 body["list_id"] = SourceExpressionConverter.ConvertToken(bodylist);
                 bodypropCount++;
-                body["ids"] = SourceExpressionConverter.ConvertToken(bodyiDS);
+                body["ids"] = SourceExpressionConverter.ConvertToken(bodyidS);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions, [WorkflowExpression] Func<string[]> bodyiDS)
+        public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodylistTypeInput> bodylistType, [WorkflowExpression] Func<bodypermissionsInput> bodypermissions, [WorkflowExpression] Func<string[]> bodyidS)
         {
             SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
             SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
             SourceExpression.Validate(bodylistType, nameof(bodylistType), required: true);
             SourceExpression.Validate(bodypermissions, nameof(bodypermissions), required: true);
-            SourceExpression.Validate(bodyiDS, nameof(bodyiDS), required: true);
+            SourceExpression.Validate(bodyidS, nameof(bodyidS), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/list/v1/createlistfromids";
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
                 bodypropCount++;
                 body["list_permissions"] = SourceExpressionConverter.Convert(bodypermissions);
                 bodypropCount++;
-                body["ids"] = SourceExpressionConverter.ConvertToken(bodyiDS);
+                body["ids"] = SourceExpressionConverter.ConvertToken(bodyidS);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;

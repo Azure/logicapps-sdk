@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2> CreateProject([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> projectdataprojectName = null, [WorkflowExpression] Func<string> projectdatadueDate = null, [WorkflowExpression] Func<bool> projectdatapublic = null, [WorkflowExpression] Func<projectdataprojectColorInput> projectdataprojectColor = null, [WorkflowExpression] Func<string> projectdataprojectNotes = null, [WorkflowExpression] Func<string> projectdataowner = null, [WorkflowExpression] Func<bool> projectdataarchive = null)
+        public IBodyWorkflowAction<ProjectResponseV2> CreateProject([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> projectdataprojectName = null, [WorkflowExpression] Func<string> projectdatadueDate = null, [WorkflowExpression] Func<bool> projectdataPublic = null, [WorkflowExpression] Func<projectdataprojectColorInput> projectdataprojectColor = null, [WorkflowExpression] Func<string> projectdataprojectNotes = null, [WorkflowExpression] Func<string> projectdataowner = null, [WorkflowExpression] Func<bool> projectdataarchive = null)
         {
             SourceExpression.Validate(workspace, nameof(workspace), required: true);
             SourceExpression.Validate(team, nameof(team), required: false);
             SourceExpression.Validate(projectdataprojectName, nameof(projectdataprojectName), required: false);
             SourceExpression.Validate(projectdatadueDate, nameof(projectdatadueDate), required: false);
-            SourceExpression.Validate(projectdatapublic, nameof(projectdatapublic), required: false);
+            SourceExpression.Validate(projectdataPublic, nameof(projectdataPublic), required: false);
             SourceExpression.Validate(projectdataprojectColor, nameof(projectdataprojectColor), required: false);
             SourceExpression.Validate(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
             SourceExpression.Validate(projectdataowner, nameof(projectdataowner), required: false);
@@ -98,11 +98,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                     dataObjectpropCount++;
                 }
 
-                if (projectdatapublic != null)
+                if (projectdataPublic != null)
                 {
-                    if (projectdatapublic != null)
+                    if (projectdataPublic != null)
                     {
-                        dataObject["public"] = SourceExpressionConverter.ConvertToken(projectdatapublic);
+                        dataObject["public"] = SourceExpressionConverter.ConvertToken(projectdataPublic);
                         dataObjectpropCount++;
                     }
 

@@ -228,12 +228,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLHistoryResponse> SPLHistory([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETID, nameof(sETID), required: true);
+            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/history.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -243,12 +243,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLMediaResponse> SPLMedia([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLMediaResponse> SPLMedia([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETID, nameof(sETID), required: true);
+            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/media.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -258,12 +258,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLNDCResponse> SPLNDC([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLNDCResponse> SPLNDC([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETID, nameof(sETID), required: true);
+            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/ndcs.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -273,12 +273,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging([WorkflowExpression] Func<string> sETID)
+        public IBodyWorkflowAction<SPLPackagingResponse> SPLPackaging([WorkflowExpression] Func<string> sETId)
         {
-            SourceExpression.Validate(sETID, nameof(sETID), required: true);
+            SourceExpression.Validate(sETId, nameof(sETId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETID, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/spls/{0}/packaging.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sETId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;

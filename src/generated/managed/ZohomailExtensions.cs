@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SearchMailResponse> SearchMail([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<string> bodyentire = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyfromDate = null, [WorkflowExpression] Func<string> bodytoDate = null, [WorkflowExpression] Func<bool> bodygroupResult = null, [WorkflowExpression] Func<string> bodyin = null, [WorkflowExpression] Func<string> bodylabel = null)
+        public IBodyWorkflowAction<SearchMailResponse> SearchMail([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<string> bodyentire = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyfromDate = null, [WorkflowExpression] Func<string> bodytoDate = null, [WorkflowExpression] Func<bool> bodygroupResult = null, [WorkflowExpression] Func<string> bodyIn = null, [WorkflowExpression] Func<string> bodylabel = null)
         {
             SourceExpression.Validate(accountId, nameof(accountId), required: true);
             SourceExpression.Validate(start, nameof(start), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             SourceExpression.Validate(bodyfromDate, nameof(bodyfromDate), required: false);
             SourceExpression.Validate(bodytoDate, nameof(bodytoDate), required: false);
             SourceExpression.Validate(bodygroupResult, nameof(bodygroupResult), required: false);
-            SourceExpression.Validate(bodyin, nameof(bodyin), required: false);
+            SourceExpression.Validate(bodyIn, nameof(bodyIn), required: false);
             SourceExpression.Validate(bodylabel, nameof(bodylabel), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
@@ -289,9 +289,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                     bodypropCount++;
                 }
 
-                if (bodyin != null)
+                if (bodyIn != null)
                 {
-                    body["in"] = SourceExpressionConverter.ConvertToken(bodyin);
+                    body["in"] = SourceExpressionConverter.ConvertToken(bodyIn);
                     bodypropCount++;
                 }
 

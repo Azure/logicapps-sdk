@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [JsonProperty("sourceTestId")]
         public string SourceTestId { get; set; }
 
-        [JsonProperty("??ourceLibraryId")]
+        [JsonProperty("🇸ourceLibraryId")]
         public string OurceLibraryId { get; set; }
 
         [JsonProperty("sourceVersion")]

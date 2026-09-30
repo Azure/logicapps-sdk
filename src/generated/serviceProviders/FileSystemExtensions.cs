@@ -362,48 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         }
     }
 
-    public class WhenFilesAreAddedOutputItem
-    {
-        [JsonProperty("createdTime")]
-        public int CreatedTime { get; set; }
-
-        [JsonProperty("contentType")]
-        public int ContentType { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public string LastUpdatedTime { get; set; }
-    }
-
-    public class WhenFilesAreAddedOrModifiedOutputItem
-    {
-        [JsonProperty("createdTime")]
-        public int CreatedTime { get; set; }
-
-        [JsonProperty("contentType")]
-        public int ContentType { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public string LastUpdatedTime { get; set; }
-    }
-
     public class CreateFileOutput
     {
         [JsonProperty("name")]
@@ -494,6 +452,48 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         Fail,
         Skip,
         Overwrite
+    }
+
+    public class WhenFilesAreAddedOutputItem
+    {
+        [JsonProperty("createdTime")]
+        public int CreatedTime { get; set; }
+
+        [JsonProperty("contentType")]
+        public int ContentType { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lastUpdatedTime")]
+        public string LastUpdatedTime { get; set; }
+    }
+
+    public class WhenFilesAreAddedOrModifiedOutputItem
+    {
+        [JsonProperty("createdTime")]
+        public int CreatedTime { get; set; }
+
+        [JsonProperty("contentType")]
+        public int ContentType { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lastUpdatedTime")]
+        public string LastUpdatedTime { get; set; }
     }
 }
 

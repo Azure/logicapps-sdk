@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     public class ProjectumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> GeneratePowerpointDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfofile = null)
+        public IBodyWorkflowAction<string> GeneratePowerpointDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfoFile = null)
         {
             SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            SourceExpression.Validate(generationInfofile, nameof(generationInfofile), required: false);
+            SourceExpression.Validate(generationInfoFile, nameof(generationInfoFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Powerpoint";
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
                 var generationInfopropCount = 0;
                 generationInfopropCount++;
                 generationInfo["dataMap"] = SourceExpressionConverter.ConvertToken(generationInfodataMap);
-                if (generationInfofile != null)
+                if (generationInfoFile != null)
                 {
-                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfofile);
+                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfoFile);
                     generationInfopropCount++;
                 }
 
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> GenerateWordDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfofile = null)
+        public IBodyWorkflowAction<string> GenerateWordDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfoFile = null)
         {
             SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
-            SourceExpression.Validate(generationInfofile, nameof(generationInfofile), required: false);
+            SourceExpression.Validate(generationInfoFile, nameof(generationInfoFile), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/api/Word";
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
                 var generationInfopropCount = 0;
                 generationInfopropCount++;
                 generationInfo["dataMap"] = SourceExpressionConverter.ConvertToken(generationInfodataMap);
-                if (generationInfofile != null)
+                if (generationInfoFile != null)
                 {
-                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfofile);
+                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfoFile);
                     generationInfopropCount++;
                 }
 

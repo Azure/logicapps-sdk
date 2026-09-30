@@ -1308,12 +1308,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
 
     public enum bodyInputItemPurchaseOrderTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class bodyInputItemLineItemsTypeItem2

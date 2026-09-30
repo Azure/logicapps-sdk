@@ -12,25 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     public class DocparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<string> parserId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> remoteId = null)
-        {
-            SourceExpression.Validate(parserId, nameof(parserId), required: true);
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(remoteId, nameof(remoteId), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/upload/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parserId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (remoteId != null)
-                    callPayload.Queries["remote_id"] = SourceExpressionConverter.ConvertO(remoteId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<UploadDocumentResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument([WorkflowExpression] Func<string> parserId, [WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> remoteId = null)
         {
             SourceExpression.Validate(parserId, nameof(parserId), required: true);
@@ -74,24 +55,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
             return new ApiConnectionTrigger<WebhookCreateReponse>(BuildSourceInput, triggerName, recurrence);
         }
-    }
-
-    public class UploadDocumentResponse
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("file_size")]
-        public int Size { get; set; }
-
-        [JsonProperty("quota_used")]
-        public int QuotaUsed { get; set; }
-
-        [JsonProperty("quota_left")]
-        public int QuotaLeft { get; set; }
-
-        [JsonProperty("quota_refill")]
-        public string QuotaRefill { get; set; }
     }
 
     public class FetchDocumentResponse

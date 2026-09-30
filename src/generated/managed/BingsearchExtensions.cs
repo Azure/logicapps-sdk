@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
         [EnumMember(Value = "en-IN")]
         EnIN,
         [EnumMember(Value = "en-ID")]
-        EnID,
+        EnId,
         [EnumMember(Value = "en-IE")]
         EnIE,
         [EnumMember(Value = "it-IT")]

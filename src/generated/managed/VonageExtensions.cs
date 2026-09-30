@@ -12,51 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
     public class VonageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> brand, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> senderId = null, [WorkflowExpression] Func<codeLengthInput> codeLength = null, [WorkflowExpression] Func<lgInput> lg = null, [WorkflowExpression] Func<int> pinExpiry = null, [WorkflowExpression] Func<int> nextEventWait = null, [WorkflowExpression] Func<workflowIdInput> workflowId = null)
-        {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            SourceExpression.Validate(number, nameof(number), required: true);
-            SourceExpression.Validate(brand, nameof(brand), required: true);
-            SourceExpression.Validate(country, nameof(country), required: false);
-            SourceExpression.Validate(senderId, nameof(senderId), required: false);
-            SourceExpression.Validate(codeLength, nameof(codeLength), required: false);
-            SourceExpression.Validate(lg, nameof(lg), required: false);
-            SourceExpression.Validate(pinExpiry, nameof(pinExpiry), required: false);
-            SourceExpression.Validate(nextEventWait, nameof(nextEventWait), required: false);
-            SourceExpression.Validate(workflowId, nameof(workflowId), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/verify/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<VerifyRequestResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> code)
-        {
-            SourceExpression.Validate(format, nameof(format), required: true);
-            SourceExpression.Validate(apiKey, nameof(apiKey), required: true);
-            SourceExpression.Validate(apiSecret, nameof(apiSecret), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            SourceExpression.Validate(code, nameof(code), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<VerifyCheckResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country)
         {
             SourceExpression.Validate(format, nameof(format), required: true);
@@ -110,152 +65,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
     {
     }
 
-    public class VerifyRequestResponse
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("request_id")]
-        public string RequestId { get; set; }
-    }
-
-    public enum formatInput
-    {
-        [EnumMember(Value = "json")]
-        Json,
-        [EnumMember(Value = "xml")]
-        Xml
-    }
-
-    public enum codeLengthInput
-    {
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "6")]
-        _6
-    }
-
-    public enum lgInput
-    {
-        [EnumMember(Value = "ar-xa")]
-        ArXa,
-        [EnumMember(Value = "cs-cz")]
-        CsCz,
-        [EnumMember(Value = "cy-cy")]
-        CyCy,
-        [EnumMember(Value = "cy-gb")]
-        CyGb,
-        [EnumMember(Value = "da-dk")]
-        DaDk,
-        [EnumMember(Value = "de-de")]
-        DeDe,
-        [EnumMember(Value = "el-gr")]
-        ElGr,
-        [EnumMember(Value = "en-au")]
-        EnAu,
-        [EnumMember(Value = "en-gb")]
-        EnGb,
-        [EnumMember(Value = "en-in")]
-        EnIn,
-        [EnumMember(Value = "en-us")]
-        EnUs,
-        [EnumMember(Value = "es-es")]
-        EsEs,
-        [EnumMember(Value = "es-mx")]
-        EsMx,
-        [EnumMember(Value = "es-us")]
-        EsUs,
-        [EnumMember(Value = "fi-fi")]
-        FiFi,
-        [EnumMember(Value = "fil-ph")]
-        FilPh,
-        [EnumMember(Value = "fr-ca")]
-        FrCa,
-        [EnumMember(Value = "fr-fr")]
-        FrFr,
-        [EnumMember(Value = "hi-in")]
-        HiIn,
-        [EnumMember(Value = "hu-hu")]
-        HuHu,
-        [EnumMember(Value = "id-id")]
-        IdId,
-        [EnumMember(Value = "is-is")]
-        IsIs,
-        [EnumMember(Value = "it-it")]
-        ItIt,
-        [EnumMember(Value = "ja-jp")]
-        JaJp,
-        [EnumMember(Value = "ko-kr")]
-        KoKr,
-        [EnumMember(Value = "nb-no")]
-        NbNo,
-        [EnumMember(Value = "nl-nl")]
-        NlNl,
-        [EnumMember(Value = "pl-pl")]
-        PlPl,
-        [EnumMember(Value = "pt-br")]
-        PtBr,
-        [EnumMember(Value = "pt-pt")]
-        PtPt,
-        [EnumMember(Value = "ro-ro")]
-        RoRo,
-        [EnumMember(Value = "ru-ru")]
-        RuRu,
-        [EnumMember(Value = "sv-se")]
-        SvSe,
-        [EnumMember(Value = "th-th")]
-        ThTh,
-        [EnumMember(Value = "tr-tr")]
-        TrTr,
-        [EnumMember(Value = "vi-vn")]
-        ViVn,
-        [EnumMember(Value = "yue-cn")]
-        YueCn,
-        [EnumMember(Value = "zh-cn")]
-        ZhCn,
-        [EnumMember(Value = "zh-tw")]
-        ZhTw
-    }
-
-    public enum workflowIdInput
-    {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7
-    }
-
-    public class VerifyCheckResponse
-    {
-        [JsonProperty("request_id")]
-        public string RequestId { get; set; }
-
-        [JsonProperty("event_id")]
-        public string EventId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("price")]
-        public string Price { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("estimated_price_messages_sent")]
-        public string EstimatedPriceMessagesSent { get; set; }
-    }
-
     public class BasicNumberInsightResponse
     {
         [JsonProperty("status")]
@@ -284,6 +93,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
 
         [JsonProperty("country_prefix")]
         public string CountryPrefix { get; set; }
+    }
+
+    public enum formatInput
+    {
+        [EnumMember(Value = "json")]
+        Json,
+        [EnumMember(Value = "xml")]
+        Xml
     }
 
     public class StandardNumberInsightResponse

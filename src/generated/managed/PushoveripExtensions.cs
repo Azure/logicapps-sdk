@@ -167,22 +167,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 
     public enum bodypriorityInput
     {
-        [EnumMember(Value = "-2")]
-        Negative2,
-        [EnumMember(Value = "-1")]
-        Negative1,
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        Negative2 = -2,
+        Negative1 = -1,
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum bodyhtmlInput
     {
-        [EnumMember(Value = "1")]
-        _1
+        _1 = 1
     }
 
     public class GetSoundsResponse

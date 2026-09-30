@@ -12,6 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
     public class Linkedinv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
+        public IBodyWorkflowAction<ListCompaniesResponseV2Item[]> ListCompanies()
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/listCompanies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCompaniesResponseV2Item[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate([WorkflowExpression] Func<string> bodycompany, [WorkflowExpression] Func<string> bodycommentary, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility, [WorkflowExpression] Func<string> bodycontentarticleuRLOfTheArticle, [WorkflowExpression] Func<string> bodycontentarticletitle, [WorkflowExpression] Func<bool> bodyisReshareDisabledByAuthor = null, [WorkflowExpression] Func<string> bodycontentarticledescription = null, [WorkflowExpression] Func<string> bodycontentarticlethumbnailURL = null)
         {
             SourceExpression.Validate(bodycompany, nameof(bodycompany), required: true);
@@ -24,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             SourceExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/company/rest/posts";
+                var apiCallPath = "/company/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -127,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
             SourceExpression.Validate(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/people/rest/posts";
+                var apiCallPath = "/people/rest/posts/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
@@ -215,24 +229,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
             return new ApiConnectionAction<ShareResponseV2>(BuildSourceInput);
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ListCompaniesResponseV2Item[]> ListCompanies()
-        {
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/v2/organizationalEntityAcls";
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ListCompaniesResponseV2Item[]>(BuildSourceInput);
-        }
     }
 
     public class Linkedinv2Triggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ListCompaniesResponseV2Item
+    {
+        [JsonProperty("companyUrn")]
+        public string CompanyUrn { get; set; }
+
+        [JsonProperty("companyName")]
+        public string CompanyName { get; set; }
     }
 
     public class ShareResponseV2
@@ -248,15 +257,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         ConnectionsOnly,
         [EnumMember(Value = "Logged in members only")]
         LoggedInMembersOnly
-    }
-
-    public class ListCompaniesResponseV2Item
-    {
-        [JsonProperty("companyUrn")]
-        public string CompanyUrn { get; set; }
-
-        [JsonProperty("companyName")]
-        public string CompanyName { get; set; }
     }
 }
 

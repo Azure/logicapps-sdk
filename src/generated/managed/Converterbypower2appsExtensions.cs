@@ -12,239 +12,274 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class Converterbypower2appsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5101AddHtmlToWord> AddHtmlToWord([WorkflowExpression] Func<string> dtoRequestV5101AddHtmlToWordhTML, [WorkflowExpression] Func<string> dtoRequestV5101AddHtmlToWordexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord> AddHtmlToWord([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5101AddHtmlToWordhTML, nameof(dtoRequestV5101AddHtmlToWordhTML), required: true);
-            SourceExpression.Validate(dtoRequestV5101AddHtmlToWordexistingFileContent, nameof(dtoRequestV5101AddHtmlToWordexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5101_AddHtmlToWord";
+                var apiCallPath = "/V5102_AddHtmlToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5101AddHtmlToWord = new JObject();
-                var dtoRequestV5101AddHtmlToWordpropCount = 0;
-                if (dtoRequestV5101AddHtmlToWordexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestV5101AddHtmlToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5101AddHtmlToWordexistingFileContent);
-                    dtoRequestV5101AddHtmlToWordpropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5101AddHtmlToWordpropCount++;
-                dtoRequestV5101AddHtmlToWord["html"] = SourceExpressionConverter.ConvertToken(dtoRequestV5101AddHtmlToWordhTML);
-                if (dtoRequestV5101AddHtmlToWordpropCount > 0)
+                dtoRequestpropCount++;
+                dtoRequest["html"] = SourceExpressionConverter.ConvertToken(dtoRequesthTML);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5101AddHtmlToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5101AddHtmlToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5102AddHtmlToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5031AddImageToWord> AddImageToWord([WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordimage, [WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestV5031AddImageToWordcaptionText = null, [WorkflowExpression] Func<int> dtoRequestV5031AddImageToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5031AddImageToWordmaximumImageHeight = null)
+        public IBodyWorkflowAction<DtoResponseV5032AddImageToWord> AddImageToWord([WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestcaptionText = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5031AddImageToWordimage, nameof(dtoRequestV5031AddImageToWordimage), required: true);
-            SourceExpression.Validate(dtoRequestV5031AddImageToWordexistingFileContent, nameof(dtoRequestV5031AddImageToWordexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestV5031AddImageToWordcaptionText, nameof(dtoRequestV5031AddImageToWordcaptionText), required: false);
-            SourceExpression.Validate(dtoRequestV5031AddImageToWordmaximumImageWidth, nameof(dtoRequestV5031AddImageToWordmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV5031AddImageToWordmaximumImageHeight, nameof(dtoRequestV5031AddImageToWordmaximumImageHeight), required: false);
+            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestcaptionText, nameof(dtoRequestcaptionText), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5031_AddImageToWord";
+                var apiCallPath = "/V5032_AddImageToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5031AddImageToWord = new JObject();
-                var dtoRequestV5031AddImageToWordpropCount = 0;
-                if (dtoRequestV5031AddImageToWordexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestV5031AddImageToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordexistingFileContent);
-                    dtoRequestV5031AddImageToWordpropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5031AddImageToWordpropCount++;
-                dtoRequestV5031AddImageToWord["image"] = SourceExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordimage);
-                if (dtoRequestV5031AddImageToWordcaptionText != null)
+                dtoRequestpropCount++;
+                dtoRequest["image"] = SourceExpressionConverter.ConvertToken(dtoRequestimage);
+                if (dtoRequestcaptionText != null)
                 {
-                    dtoRequestV5031AddImageToWord["imageText"] = SourceExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordcaptionText);
-                    dtoRequestV5031AddImageToWordpropCount++;
+                    dtoRequest["imageText"] = SourceExpressionConverter.ConvertToken(dtoRequestcaptionText);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5031AddImageToWordmaximumImageWidth != null)
+                if (dtoRequestmaximumImageWidth != null)
                 {
-                    dtoRequestV5031AddImageToWord["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordmaximumImageWidth);
-                    dtoRequestV5031AddImageToWordpropCount++;
+                    dtoRequest["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5031AddImageToWordmaximumImageHeight != null)
+                if (dtoRequestmaximumImageHeight != null)
                 {
-                    dtoRequestV5031AddImageToWord["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestV5031AddImageToWordmaximumImageHeight);
-                    dtoRequestV5031AddImageToWordpropCount++;
+                    dtoRequest["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5031AddImageToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5031AddImageToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5031AddImageToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5032AddImageToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5042AddImageWithinTableToWord> AddImageWithinTableToWord([WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWordimage, [WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWordexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestV5042AddImageWithinTableToWorddescriptionText = null, [WorkflowExpression] Func<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight = null)
+        public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord> AddImageWithinTableToWord([WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<string> dtoRequestdescriptionText = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5042AddImageWithinTableToWordimage, nameof(dtoRequestV5042AddImageWithinTableToWordimage), required: true);
-            SourceExpression.Validate(dtoRequestV5042AddImageWithinTableToWordexistingFileContent, nameof(dtoRequestV5042AddImageWithinTableToWordexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestV5042AddImageWithinTableToWorddescriptionText, nameof(dtoRequestV5042AddImageWithinTableToWorddescriptionText), required: false);
-            SourceExpression.Validate(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight, nameof(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight), required: false);
+            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestdescriptionText, nameof(dtoRequestdescriptionText), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5042_AddImageWithinTableToWord";
+                var apiCallPath = "/V5043_AddImageWithinTableToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5042AddImageWithinTableToWord = new JObject();
-                var dtoRequestV5042AddImageWithinTableToWordpropCount = 0;
-                if (dtoRequestV5042AddImageWithinTableToWordexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordexistingFileContent);
-                    dtoRequestV5042AddImageWithinTableToWordpropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5042AddImageWithinTableToWordpropCount++;
-                dtoRequestV5042AddImageWithinTableToWord["image"] = SourceExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordimage);
-                if (dtoRequestV5042AddImageWithinTableToWorddescriptionText != null)
+                dtoRequestpropCount++;
+                dtoRequest["image"] = SourceExpressionConverter.ConvertToken(dtoRequestimage);
+                if (dtoRequestdescriptionText != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["imageText"] = SourceExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWorddescriptionText);
-                    dtoRequestV5042AddImageWithinTableToWordpropCount++;
+                    dtoRequest["imageText"] = SourceExpressionConverter.ConvertToken(dtoRequestdescriptionText);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth != null)
+                if (dtoRequestmaximumImageWidth != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordmaximumImageWidth);
-                    dtoRequestV5042AddImageWithinTableToWordpropCount++;
+                    dtoRequest["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight != null)
+                if (dtoRequestmaximumImageHeight != null)
                 {
-                    dtoRequestV5042AddImageWithinTableToWord["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestV5042AddImageWithinTableToWordmaximumImageHeight);
-                    dtoRequestV5042AddImageWithinTableToWordpropCount++;
+                    dtoRequest["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5042AddImageWithinTableToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5042AddImageWithinTableToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5042AddImageWithinTableToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5043AddImageWithinTableToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5052AddTableToWord> AddTableToWord([WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableData, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordexistingFileContent = null, [WorkflowExpression] Func<bool> dtoRequestV5052AddTableToWordshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableStyle = null, [WorkflowExpression] Func<string> dtoRequestV5052AddTableToWordtableCaption = null)
+        public IBodyWorkflowAction<DtoResponseV5053AddTableToWord> AddTableToWord([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<bool> dtoRequestshowHeaders = null, [WorkflowExpression] Func<string> dtoRequesttableStyle = null, [WorkflowExpression] Func<string> dtoRequesttableCaption = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5052AddTableToWordtableData, nameof(dtoRequestV5052AddTableToWordtableData), required: true);
-            SourceExpression.Validate(dtoRequestV5052AddTableToWordexistingFileContent, nameof(dtoRequestV5052AddTableToWordexistingFileContent), required: false);
-            SourceExpression.Validate(dtoRequestV5052AddTableToWordshowHeaders, nameof(dtoRequestV5052AddTableToWordshowHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV5052AddTableToWordtableStyle, nameof(dtoRequestV5052AddTableToWordtableStyle), required: false);
-            SourceExpression.Validate(dtoRequestV5052AddTableToWordtableCaption, nameof(dtoRequestV5052AddTableToWordtableCaption), required: false);
+            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestshowHeaders, nameof(dtoRequestshowHeaders), required: false);
+            SourceExpression.Validate(dtoRequesttableStyle, nameof(dtoRequesttableStyle), required: false);
+            SourceExpression.Validate(dtoRequesttableCaption, nameof(dtoRequesttableCaption), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5052_AddTableToWord";
+                var apiCallPath = "/V5053_AddTableToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5052AddTableToWord = new JObject();
-                var dtoRequestV5052AddTableToWordpropCount = 0;
-                if (dtoRequestV5052AddTableToWordexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestV5052AddTableToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordexistingFileContent);
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5052AddTableToWordpropCount++;
-                dtoRequestV5052AddTableToWord["table"] = SourceExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableData);
-                if (dtoRequestV5052AddTableToWordshowHeaders != null)
+                dtoRequestpropCount++;
+                dtoRequest["table"] = SourceExpressionConverter.ConvertToken(dtoRequesttableData);
+                if (dtoRequestshowHeaders != null)
                 {
-                    if (dtoRequestV5052AddTableToWordshowHeaders != null)
+                    if (dtoRequestshowHeaders != null)
                     {
-                        dtoRequestV5052AddTableToWord["hasHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordshowHeaders);
-                        dtoRequestV5052AddTableToWordpropCount++;
+                        dtoRequest["hasHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestshowHeaders);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV5052AddTableToWord["hasHeader"] = true;
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequest["hasHeader"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5052AddTableToWordtableStyle != null)
+                if (dtoRequesttableStyle != null)
                 {
-                    if (dtoRequestV5052AddTableToWordtableStyle != null)
+                    if (dtoRequesttableStyle != null)
                     {
-                        dtoRequestV5052AddTableToWord["tableStyle"] = SourceExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableStyle);
-                        dtoRequestV5052AddTableToWordpropCount++;
+                        dtoRequest["tableStyle"] = SourceExpressionConverter.ConvertToken(dtoRequesttableStyle);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV5052AddTableToWord["tableStyle"] = "GridTable1Light";
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequest["tableStyle"] = "GridTable1Light";
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5052AddTableToWordtableCaption != null)
+                if (dtoRequesttableCaption != null)
                 {
-                    dtoRequestV5052AddTableToWord["tableText"] = SourceExpressionConverter.ConvertToken(dtoRequestV5052AddTableToWordtableCaption);
-                    dtoRequestV5052AddTableToWordpropCount++;
+                    dtoRequest["tableText"] = SourceExpressionConverter.ConvertToken(dtoRequesttableCaption);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5052AddTableToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5052AddTableToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5052AddTableToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5053AddTableToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5061AddTextToWord> AddTextToWord([WorkflowExpression] Func<string> dtoRequestAddTextToWordDatatype, [WorkflowExpression] Func<string> dtoRequestAddTextToWordDatatext, [WorkflowExpression] Func<string> dtoRequestAddTextToWordDataexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5062AddTextToWord> AddTextToWord([WorkflowExpression] Func<string> dtoRequesttype, [WorkflowExpression] Func<string> dtoRequesttext, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestAddTextToWordDatatype, nameof(dtoRequestAddTextToWordDatatype), required: true);
-            SourceExpression.Validate(dtoRequestAddTextToWordDatatext, nameof(dtoRequestAddTextToWordDatatext), required: true);
-            SourceExpression.Validate(dtoRequestAddTextToWordDataexistingFileContent, nameof(dtoRequestAddTextToWordDataexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequesttype, nameof(dtoRequesttype), required: true);
+            SourceExpression.Validate(dtoRequesttext, nameof(dtoRequesttext), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5061_AddTextToWord";
+                var apiCallPath = "/V5062_AddTextToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestAddTextToWordData = new JObject();
-                var dtoRequestAddTextToWordDatapropCount = 0;
-                if (dtoRequestAddTextToWordDataexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestAddTextToWordData["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestAddTextToWordDataexistingFileContent);
-                    dtoRequestAddTextToWordDatapropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestAddTextToWordDatapropCount++;
-                dtoRequestAddTextToWordData["sectionType"] = SourceExpressionConverter.ConvertToken(dtoRequestAddTextToWordDatatype);
-                dtoRequestAddTextToWordDatapropCount++;
-                dtoRequestAddTextToWordData["text"] = SourceExpressionConverter.ConvertToken(dtoRequestAddTextToWordDatatext);
-                if (dtoRequestAddTextToWordDatapropCount > 0)
+                dtoRequestpropCount++;
+                dtoRequest["sectionType"] = SourceExpressionConverter.ConvertToken(dtoRequesttype);
+                dtoRequestpropCount++;
+                dtoRequest["text"] = SourceExpressionConverter.ConvertToken(dtoRequesttext);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestAddTextToWordData;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5061AddTextToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5062AddTextToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -320,37 +355,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3041CompressImage> CompressImage([WorkflowExpression] Func<string> dtoRequestCompressImageimageFile, [WorkflowExpression] Func<int> dtoRequestCompressImageimageQuality = null)
+        public IBodyWorkflowAction<DtoResponseV3042CompressImage> CompressImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestCompressImageimageFile, nameof(dtoRequestCompressImageimageFile), required: true);
-            SourceExpression.Validate(dtoRequestCompressImageimageQuality, nameof(dtoRequestCompressImageimageQuality), required: false);
+            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
+            SourceExpression.Validate(dtoRequestimageQuality, nameof(dtoRequestimageQuality), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3041_CompressImage";
+                var apiCallPath = "/V3042_CompressImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestCompressImage = new JObject();
-                var dtoRequestCompressImagepropCount = 0;
-                dtoRequestCompressImagepropCount++;
-                dtoRequestCompressImage["file"] = SourceExpressionConverter.ConvertToken(dtoRequestCompressImageimageFile);
-                if (dtoRequestCompressImageimageQuality != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestimageFile);
+                if (dtoRequestimageQuality != null)
                 {
-                    dtoRequestCompressImage["quality"] = SourceExpressionConverter.ConvertToken(dtoRequestCompressImageimageQuality);
-                    dtoRequestCompressImagepropCount++;
+                    dtoRequest["quality"] = SourceExpressionConverter.ConvertToken(dtoRequestimageQuality);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestCompressImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestCompressImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3041CompressImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3042CompressImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4080CompressPdf> CompressPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestcompressImages = null, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<bool> dtoRequestoptimizeFonts = null, [WorkflowExpression] Func<bool> dtoRequestoptimizePageContents = null, [WorkflowExpression] Func<bool> dtoRequestremoveMetadata = null)
+        public IBodyWorkflowAction<DtoResponseV4081CompressPdf> CompressPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestcompressImages = null, [WorkflowExpression] Func<int> dtoRequestimageQuality = null, [WorkflowExpression] Func<bool> dtoRequestoptimizeFonts = null, [WorkflowExpression] Func<bool> dtoRequestoptimizePageContents = null, [WorkflowExpression] Func<bool> dtoRequestremoveMetadata = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
             SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             SourceExpression.Validate(dtoRequestcompressImages, nameof(dtoRequestcompressImages), required: false);
@@ -358,9 +400,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
             SourceExpression.Validate(dtoRequestoptimizeFonts, nameof(dtoRequestoptimizeFonts), required: false);
             SourceExpression.Validate(dtoRequestoptimizePageContents, nameof(dtoRequestoptimizePageContents), required: false);
             SourceExpression.Validate(dtoRequestremoveMetadata, nameof(dtoRequestremoveMetadata), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4080_CompressPdf";
+                var apiCallPath = "/V4081_CompressPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequest = new JObject();
@@ -397,6 +440,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestpropCount++;
                 }
 
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
                 if (dtoRequestpropCount > 0)
                 {
                     callPayload.Body = dtoRequest;
@@ -404,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4080CompressPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4081CompressPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -431,163 +480,177 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1033ConvertCsvToExcel> ConvertCsvToExcel([WorkflowExpression] Func<string> dtoRequestV1033ConvertCsvToExcelcSV, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestV1033ConvertCsvToExcelseparator = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth = null)
+        public IBodyWorkflowAction<DtoResponseV1035ConvertCsvToExcel> ConvertCsvToExcel([WorkflowExpression] Func<string> dtoRequestcSV, [WorkflowExpression] Func<bool> dtoRequestcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequeststopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<int> dtoRequestcSVInputEncoding = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelcSV, nameof(dtoRequestV1033ConvertCsvToExcelcSV), required: true);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders, nameof(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection, nameof(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows, nameof(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows, nameof(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow, nameof(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelseparator, nameof(dtoRequestV1033ConvertCsvToExcelseparator), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter, nameof(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent, nameof(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText, nameof(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth, nameof(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestcSV, nameof(dtoRequestcSV), required: true);
+            SourceExpression.Validate(dtoRequestcSVHasHeaders, nameof(dtoRequestcSVHasHeaders), required: false);
+            SourceExpression.Validate(dtoRequestautoDetectFieldTypes, nameof(dtoRequestautoDetectFieldTypes), required: false);
+            SourceExpression.Validate(dtoRequestnumberOfRowsForFieldTypeDetection, nameof(dtoRequestnumberOfRowsForFieldTypeDetection), required: false);
+            SourceExpression.Validate(dtoRequestremoveEmptyRows, nameof(dtoRequestremoveEmptyRows), required: false);
+            SourceExpression.Validate(dtoRequestskipANumberOfRows, nameof(dtoRequestskipANumberOfRows), required: false);
+            SourceExpression.Validate(dtoRequeststopAtASpecificRow, nameof(dtoRequeststopAtASpecificRow), required: false);
+            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
+            SourceExpression.Validate(dtoRequestautoDetectQuoteDelimiter, nameof(dtoRequestautoDetectQuoteDelimiter), required: false);
+            SourceExpression.Validate(dtoRequestcSVInputEncoding, nameof(dtoRequestcSVInputEncoding), required: false);
+            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
+            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
+            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V1033_ConvertCsvToExcel";
+                var apiCallPath = "/V1035_ConvertCsvToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV1033ConvertCsvToExcel = new JObject();
-                var dtoRequestV1033ConvertCsvToExcelpropCount = 0;
-                dtoRequestV1033ConvertCsvToExcelpropCount++;
-                dtoRequestV1033ConvertCsvToExcel["csv"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelcSV);
-                if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["csv"] = SourceExpressionConverter.ConvertToken(dtoRequestcSV);
+                if (dtoRequestcSVHasHeaders != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelcSVHasHeaders != null)
+                    if (dtoRequestcSVHasHeaders != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelcSVHasHeaders);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["dataIncludesHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestcSVHasHeaders);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["dataIncludesHeader"] = true;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["dataIncludesHeader"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
+                if (dtoRequestautoDetectFieldTypes != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes != null)
+                    if (dtoRequestautoDetectFieldTypes != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelautoDetectFieldTypes);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["autoDiscoverFieldTypes"] = SourceExpressionConverter.ConvertToken(dtoRequestautoDetectFieldTypes);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["autoDiscoverFieldTypes"] = false;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["autoDiscoverFieldTypes"] = false;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection != null)
+                if (dtoRequestnumberOfRowsForFieldTypeDetection != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["maxScanRows"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelnumberOfRowsForFieldTypeDetection);
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["maxScanRows"] = SourceExpressionConverter.ConvertToken(dtoRequestnumberOfRowsForFieldTypeDetection);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
+                if (dtoRequestremoveEmptyRows != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelremoveEmptyRows != null)
+                    if (dtoRequestremoveEmptyRows != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelremoveEmptyRows);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["ignoreEmptyLine"] = SourceExpressionConverter.ConvertToken(dtoRequestremoveEmptyRows);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["ignoreEmptyLine"] = true;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["ignoreEmptyLine"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelskipANumberOfRows != null)
+                if (dtoRequestskipANumberOfRows != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["skip"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelskipANumberOfRows);
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["skip"] = SourceExpressionConverter.ConvertToken(dtoRequestskipANumberOfRows);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow != null)
+                if (dtoRequeststopAtASpecificRow != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["skipLast"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelstopAtASpecificRow);
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["skipLast"] = SourceExpressionConverter.ConvertToken(dtoRequeststopAtASpecificRow);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelseparator != null)
+                if (dtoRequestseparator != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelseparator);
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestseparator);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
+                if (dtoRequestautoDetectQuoteDelimiter != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter != null)
+                    if (dtoRequestautoDetectQuoteDelimiter != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelautoDetectQuoteDelimiter);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["mayHaveQuotedFields"] = SourceExpressionConverter.ConvertToken(dtoRequestautoDetectQuoteDelimiter);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["mayHaveQuotedFields"] = true;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["mayHaveQuotedFields"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
+                if (dtoRequestcSVInputEncoding != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent != null)
+                    dtoRequest["encoding"] = SourceExpressionConverter.ConvertToken(dtoRequestcSVInputEncoding);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestadjustExcelColumnToContent != null)
+                {
+                    if (dtoRequestadjustExcelColumnToContent != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExceladjustExcelColumnToContent);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestadjustExcelColumnToContent);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["adjustColumnToContent"] = true;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["adjustColumnToContent"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
+                if (dtoRequestwrapExcelColumnText != null)
                 {
-                    if (dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText != null)
+                    if (dtoRequestwrapExcelColumnText != null)
                     {
-                        dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelwrapExcelColumnText);
-                        dtoRequestV1033ConvertCsvToExcelpropCount++;
+                        dtoRequest["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestwrapExcelColumnText);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV1033ConvertCsvToExcel["wrapColumnText"] = false;
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["wrapColumnText"] = false;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth != null)
+                if (dtoRequestmaxExcelColumnWidth != null)
                 {
-                    dtoRequestV1033ConvertCsvToExcel["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestV1033ConvertCsvToExcelmaxExcelColumnWidth);
-                    dtoRequestV1033ConvertCsvToExcelpropCount++;
+                    dtoRequest["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaxExcelColumnWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV1033ConvertCsvToExcelpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV1033ConvertCsvToExcel;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV1033ConvertCsvToExcel>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV1035ConvertCsvToExcel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -829,6 +892,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV1150ConvertCsvToMarkdown> ConvertCsvToMarkdown([WorkflowExpression] Func<string> dtoRequestcSV, [WorkflowExpression] Func<bool> dtoRequestfirstRowIsTheHeader = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestvaluesMayBeInQuotes = null, [WorkflowExpression] Func<bool> dtoRequestskipEmptyLines = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
+        {
+            SourceExpression.Validate(dtoRequestcSV, nameof(dtoRequestcSV), required: true);
+            SourceExpression.Validate(dtoRequestfirstRowIsTheHeader, nameof(dtoRequestfirstRowIsTheHeader), required: false);
+            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
+            SourceExpression.Validate(dtoRequestvaluesMayBeInQuotes, nameof(dtoRequestvaluesMayBeInQuotes), required: false);
+            SourceExpression.Validate(dtoRequestskipEmptyLines, nameof(dtoRequestskipEmptyLines), required: false);
+            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V1150_ConvertCsvToMarkdown";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["csv"] = SourceExpressionConverter.ConvertToken(dtoRequestcSV);
+                if (dtoRequestfirstRowIsTheHeader != null)
+                {
+                    dtoRequest["dataIncludesHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestfirstRowIsTheHeader);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestseparator != null)
+                {
+                    dtoRequest["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestseparator);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestvaluesMayBeInQuotes != null)
+                {
+                    dtoRequest["mayHaveQuotedFields"] = SourceExpressionConverter.ConvertToken(dtoRequestvaluesMayBeInQuotes);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestskipEmptyLines != null)
+                {
+                    dtoRequest["ignoreEmptyLine"] = SourceExpressionConverter.ConvertToken(dtoRequestskipEmptyLines);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestfileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestfileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV1150ConvertCsvToMarkdown>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
         public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson> ConvertExcelToJson([WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonexcelFile, [WorkflowExpression] Func<bool> dtoRequestV1100ConvertExcelToJsonexcelHasHeaders = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonstartCell = null, [WorkflowExpression] Func<string> dtoRequestV1100ConvertExcelToJsonsheetName = null)
         {
             SourceExpression.Validate(dtoRequestV1100ConvertExcelToJsonexcelFile, nameof(dtoRequestV1100ConvertExcelToJsonexcelFile), required: true);
@@ -883,47 +1011,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4013ConvertFileToPdf> ConvertFileToPdf([WorkflowExpression] Func<string> dtoRequestV4013FileToPdffile, [WorkflowExpression] Func<string> dtoRequestV4013FileToPdforiginFileName = null, [WorkflowExpression] Func<string> dtoRequestV4013FileToPdforiginFileExtension = null, [WorkflowExpression] Func<int> dtoRequestV4013FileToPdfconformanceLevel = null)
+        public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown> ConvertExcelToMarkdown([WorkflowExpression] Func<string> dtoRequestexcel, [WorkflowExpression] Func<bool> dtoRequestfirstRowIsTheHeader = null, [WorkflowExpression] Func<bool> dtoRequestaddSheetNames = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestV4013FileToPdffile, nameof(dtoRequestV4013FileToPdffile), required: true);
-            SourceExpression.Validate(dtoRequestV4013FileToPdforiginFileName, nameof(dtoRequestV4013FileToPdforiginFileName), required: false);
-            SourceExpression.Validate(dtoRequestV4013FileToPdforiginFileExtension, nameof(dtoRequestV4013FileToPdforiginFileExtension), required: false);
-            SourceExpression.Validate(dtoRequestV4013FileToPdfconformanceLevel, nameof(dtoRequestV4013FileToPdfconformanceLevel), required: false);
+            SourceExpression.Validate(dtoRequestexcel, nameof(dtoRequestexcel), required: true);
+            SourceExpression.Validate(dtoRequestfirstRowIsTheHeader, nameof(dtoRequestfirstRowIsTheHeader), required: false);
+            SourceExpression.Validate(dtoRequestaddSheetNames, nameof(dtoRequestaddSheetNames), required: false);
+            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4013_ConvertFileToPdf";
+                var apiCallPath = "/V1140_ConvertExcelToMarkdown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4013FileToPdf = new JObject();
-                var dtoRequestV4013FileToPdfpropCount = 0;
-                dtoRequestV4013FileToPdfpropCount++;
-                dtoRequestV4013FileToPdf["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4013FileToPdffile);
-                if (dtoRequestV4013FileToPdforiginFileName != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["excel"] = SourceExpressionConverter.ConvertToken(dtoRequestexcel);
+                if (dtoRequestfirstRowIsTheHeader != null)
                 {
-                    dtoRequestV4013FileToPdf["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestV4013FileToPdforiginFileName);
-                    dtoRequestV4013FileToPdfpropCount++;
+                    dtoRequest["firstRowIsHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestfirstRowIsTheHeader);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4013FileToPdforiginFileExtension != null)
+                if (dtoRequestaddSheetNames != null)
                 {
-                    dtoRequestV4013FileToPdf["fileExtension"] = SourceExpressionConverter.ConvertToken(dtoRequestV4013FileToPdforiginFileExtension);
-                    dtoRequestV4013FileToPdfpropCount++;
+                    dtoRequest["includeSheetNames"] = SourceExpressionConverter.ConvertToken(dtoRequestaddSheetNames);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4013FileToPdfconformanceLevel != null)
+                if (dtoRequestfileName != null)
                 {
-                    dtoRequestV4013FileToPdf["conformanceLevel"] = SourceExpressionConverter.ConvertToken(dtoRequestV4013FileToPdfconformanceLevel);
-                    dtoRequestV4013FileToPdfpropCount++;
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestfileName);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4013FileToPdfpropCount > 0)
+                if (dtoRequestoutputFormat != null)
                 {
-                    callPayload.Body = dtoRequestV4013FileToPdf;
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4013ConvertFileToPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV1140ConvertExcelToMarkdown>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf> ConvertFileToPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestoriginFileName = null, [WorkflowExpression] Func<string> dtoRequestoriginFileExtension = null, [WorkflowExpression] Func<int> dtoRequestconformanceLevel = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
+            SourceExpression.Validate(dtoRequestoriginFileName, nameof(dtoRequestoriginFileName), required: false);
+            SourceExpression.Validate(dtoRequestoriginFileExtension, nameof(dtoRequestoriginFileExtension), required: false);
+            SourceExpression.Validate(dtoRequestconformanceLevel, nameof(dtoRequestconformanceLevel), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4014_ConvertFileToPdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestFile);
+                if (dtoRequestoriginFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestoriginFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoriginFileExtension != null)
+                {
+                    dtoRequest["fileExtension"] = SourceExpressionConverter.ConvertToken(dtoRequestoriginFileExtension);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestconformanceLevel != null)
+                {
+                    dtoRequest["conformanceLevel"] = SourceExpressionConverter.ConvertToken(dtoRequestconformanceLevel);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4014ConvertFileToPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -957,196 +1143,268 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7080ConvertHtmlTableToExcel> ConvertHtmlTableToExcel([WorkflowExpression] Func<string> dtoRequestV7080ConvertHtmlTableToExcelhTMLTable)
+        public IBodyWorkflowAction<DtoResponseV7082ConvertHtmlTableToExcel> ConvertHtmlTableToExcel([WorkflowExpression] Func<string> dtoRequesthTMLTable, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable, nameof(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable), required: true);
+            SourceExpression.Validate(dtoRequesthTMLTable, nameof(dtoRequesthTMLTable), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V7080_ConvertHtmlTableToExcel";
+                var apiCallPath = "/V7082_ConvertHtmlTableToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV7080ConvertHtmlTableToExcel = new JObject();
-                var dtoRequestV7080ConvertHtmlTableToExcelpropCount = 0;
-                dtoRequestV7080ConvertHtmlTableToExcelpropCount++;
-                dtoRequestV7080ConvertHtmlTableToExcel["htmlTable"] = SourceExpressionConverter.ConvertToken(dtoRequestV7080ConvertHtmlTableToExcelhTMLTable);
-                if (dtoRequestV7080ConvertHtmlTableToExcelpropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["htmlTable"] = SourceExpressionConverter.ConvertToken(dtoRequesthTMLTable);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV7080ConvertHtmlTableToExcel;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV7080ConvertHtmlTableToExcel>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV7082ConvertHtmlTableToExcel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7012ConvertHtmlTableToJson> ConvertHtmlTableToJson([WorkflowExpression] Func<string> dtoRequestHtmlToTableDatahTMLTable)
+        public IBodyWorkflowAction<DtoResponseV7013ConvertHtmlTableToJson> ConvertHtmlTableToJson([WorkflowExpression] Func<string> dtoRequesthTMLTable)
         {
-            SourceExpression.Validate(dtoRequestHtmlToTableDatahTMLTable, nameof(dtoRequestHtmlToTableDatahTMLTable), required: true);
+            SourceExpression.Validate(dtoRequesthTMLTable, nameof(dtoRequesthTMLTable), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V7012_ConvertHtmlTableToJson";
+                var apiCallPath = "/V7013_ConvertHtmlTableToJson";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestHtmlToTableData = new JObject();
-                var dtoRequestHtmlToTableDatapropCount = 0;
-                dtoRequestHtmlToTableDatapropCount++;
-                dtoRequestHtmlToTableData["htmlTable"] = SourceExpressionConverter.ConvertToken(dtoRequestHtmlToTableDatahTMLTable);
-                if (dtoRequestHtmlToTableDatapropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["htmlTable"] = SourceExpressionConverter.ConvertToken(dtoRequesthTMLTable);
+                if (dtoRequestpropCount > 0)
                 {
-                    callPayload.Body = dtoRequestHtmlToTableData;
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV7012ConvertHtmlTableToJson>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV7013ConvertHtmlTableToJson>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7031ConvertHtmlToImage> ConvertHtmlToImage([WorkflowExpression] Func<string> dtoRequestV7031ConvertHtmlToImagehTML, [WorkflowExpression] Func<int> dtoRequestV7031ConvertHtmlToImagewidth = null, [WorkflowExpression] Func<int> dtoRequestV7031ConvertHtmlToImageheight = null)
+        public IBodyWorkflowAction<DtoResponseV7032ConvertHtmlToImage> ConvertHtmlToImage([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<int> dtoRequestwidth = null, [WorkflowExpression] Func<int> dtoRequestheight = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV7031ConvertHtmlToImagehTML, nameof(dtoRequestV7031ConvertHtmlToImagehTML), required: true);
-            SourceExpression.Validate(dtoRequestV7031ConvertHtmlToImagewidth, nameof(dtoRequestV7031ConvertHtmlToImagewidth), required: false);
-            SourceExpression.Validate(dtoRequestV7031ConvertHtmlToImageheight, nameof(dtoRequestV7031ConvertHtmlToImageheight), required: false);
+            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
+            SourceExpression.Validate(dtoRequestwidth, nameof(dtoRequestwidth), required: false);
+            SourceExpression.Validate(dtoRequestheight, nameof(dtoRequestheight), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V7031_ConvertHtmlToImage";
+                var apiCallPath = "/V7032_ConvertHtmlToImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV7031ConvertHtmlToImage = new JObject();
-                var dtoRequestV7031ConvertHtmlToImagepropCount = 0;
-                dtoRequestV7031ConvertHtmlToImagepropCount++;
-                dtoRequestV7031ConvertHtmlToImage["html"] = SourceExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImagehTML);
-                if (dtoRequestV7031ConvertHtmlToImagewidth != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["html"] = SourceExpressionConverter.ConvertToken(dtoRequesthTML);
+                if (dtoRequestwidth != null)
                 {
-                    dtoRequestV7031ConvertHtmlToImage["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImagewidth);
-                    dtoRequestV7031ConvertHtmlToImagepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestwidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7031ConvertHtmlToImageheight != null)
+                if (dtoRequestheight != null)
                 {
-                    dtoRequestV7031ConvertHtmlToImage["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV7031ConvertHtmlToImageheight);
-                    dtoRequestV7031ConvertHtmlToImagepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestheight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7031ConvertHtmlToImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV7031ConvertHtmlToImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV7031ConvertHtmlToImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV7032ConvertHtmlToImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7022ConvertHtmlToPdf> ConvertHtmlToPdf([WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfhTML, [WorkflowExpression] Func<bool> dtoRequestV7022ConvertHtmlToPdflandscapeFormat = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdffooterOptions = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfheaderOptions = null, [WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfpaperFormat = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdftopMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfbottomMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfleftMargin = null, [WorkflowExpression] Func<int> dtoRequestV7022ConvertHtmlToPdfrightMargin = null, [WorkflowExpression] Func<string> dtoRequestV7022ConvertHtmlToPdfpageRanges = null, [WorkflowExpression] Func<double> dtoRequestV7022ConvertHtmlToPdfscale = null)
+        public IBodyWorkflowAction<DtoResponseV7090ConvertHtmlToMarkdown> ConvertHtmlToMarkdown([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<bool> dtoRequestremoveMenusAndExtras = null, [WorkflowExpression] Func<bool> dtoRequestkeepImagePlaceholders = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfhTML, nameof(dtoRequestV7022ConvertHtmlToPdfhTML), required: true);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdflandscapeFormat, nameof(dtoRequestV7022ConvertHtmlToPdflandscapeFormat), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent, nameof(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdffooterOptions, nameof(dtoRequestV7022ConvertHtmlToPdffooterOptions), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfheaderOptions, nameof(dtoRequestV7022ConvertHtmlToPdfheaderOptions), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfpaperFormat, nameof(dtoRequestV7022ConvertHtmlToPdfpaperFormat), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdftopMargin, nameof(dtoRequestV7022ConvertHtmlToPdftopMargin), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfbottomMargin, nameof(dtoRequestV7022ConvertHtmlToPdfbottomMargin), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfleftMargin, nameof(dtoRequestV7022ConvertHtmlToPdfleftMargin), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfrightMargin, nameof(dtoRequestV7022ConvertHtmlToPdfrightMargin), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfpageRanges, nameof(dtoRequestV7022ConvertHtmlToPdfpageRanges), required: false);
-            SourceExpression.Validate(dtoRequestV7022ConvertHtmlToPdfscale, nameof(dtoRequestV7022ConvertHtmlToPdfscale), required: false);
+            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
+            SourceExpression.Validate(dtoRequestremoveMenusAndExtras, nameof(dtoRequestremoveMenusAndExtras), required: false);
+            SourceExpression.Validate(dtoRequestkeepImagePlaceholders, nameof(dtoRequestkeepImagePlaceholders), required: false);
+            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V7022_ConvertHtmlToPdf";
+                var apiCallPath = "/V7090_ConvertHtmlToMarkdown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV7022ConvertHtmlToPdf = new JObject();
-                var dtoRequestV7022ConvertHtmlToPdfpropCount = 0;
-                dtoRequestV7022ConvertHtmlToPdfpropCount++;
-                dtoRequestV7022ConvertHtmlToPdf["html"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfhTML);
-                if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["html"] = SourceExpressionConverter.ConvertToken(dtoRequesthTML);
+                if (dtoRequestremoveMenusAndExtras != null)
                 {
-                    if (dtoRequestV7022ConvertHtmlToPdflandscapeFormat != null)
+                    dtoRequest["removeClutter"] = SourceExpressionConverter.ConvertToken(dtoRequestremoveMenusAndExtras);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestkeepImagePlaceholders != null)
+                {
+                    dtoRequest["keepImagePlaceholders"] = SourceExpressionConverter.ConvertToken(dtoRequestkeepImagePlaceholders);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestfileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestfileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV7090ConvertHtmlToMarkdown>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV7023ConvertHtmlToPdf> ConvertHtmlToPdf([WorkflowExpression] Func<string> dtoRequesthTML, [WorkflowExpression] Func<bool> dtoRequestlandscapeFormat = null, [WorkflowExpression] Func<int> dtoRequestqualityOfImageContent = null, [WorkflowExpression] Func<int> dtoRequestfooterOptions = null, [WorkflowExpression] Func<int> dtoRequestheaderOptions = null, [WorkflowExpression] Func<string> dtoRequestpaperFormat = null, [WorkflowExpression] Func<int> dtoRequesttopMargin = null, [WorkflowExpression] Func<int> dtoRequestbottomMargin = null, [WorkflowExpression] Func<int> dtoRequestleftMargin = null, [WorkflowExpression] Func<int> dtoRequestrightMargin = null, [WorkflowExpression] Func<string> dtoRequestpageRanges = null, [WorkflowExpression] Func<double> dtoRequestscale = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequesthTML, nameof(dtoRequesthTML), required: true);
+            SourceExpression.Validate(dtoRequestlandscapeFormat, nameof(dtoRequestlandscapeFormat), required: false);
+            SourceExpression.Validate(dtoRequestqualityOfImageContent, nameof(dtoRequestqualityOfImageContent), required: false);
+            SourceExpression.Validate(dtoRequestfooterOptions, nameof(dtoRequestfooterOptions), required: false);
+            SourceExpression.Validate(dtoRequestheaderOptions, nameof(dtoRequestheaderOptions), required: false);
+            SourceExpression.Validate(dtoRequestpaperFormat, nameof(dtoRequestpaperFormat), required: false);
+            SourceExpression.Validate(dtoRequesttopMargin, nameof(dtoRequesttopMargin), required: false);
+            SourceExpression.Validate(dtoRequestbottomMargin, nameof(dtoRequestbottomMargin), required: false);
+            SourceExpression.Validate(dtoRequestleftMargin, nameof(dtoRequestleftMargin), required: false);
+            SourceExpression.Validate(dtoRequestrightMargin, nameof(dtoRequestrightMargin), required: false);
+            SourceExpression.Validate(dtoRequestpageRanges, nameof(dtoRequestpageRanges), required: false);
+            SourceExpression.Validate(dtoRequestscale, nameof(dtoRequestscale), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V7023_ConvertHtmlToPdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["html"] = SourceExpressionConverter.ConvertToken(dtoRequesthTML);
+                if (dtoRequestlandscapeFormat != null)
+                {
+                    if (dtoRequestlandscapeFormat != null)
                     {
-                        dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdflandscapeFormat);
-                        dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                        dtoRequest["isLandscape"] = SourceExpressionConverter.ConvertToken(dtoRequestlandscapeFormat);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["isLandscape"] = false;
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["isLandscape"] = false;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent != null)
+                if (dtoRequestqualityOfImageContent != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["imageQuality"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfqualityOfImageContent);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["imageQuality"] = SourceExpressionConverter.ConvertToken(dtoRequestqualityOfImageContent);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdffooterOptions != null)
+                if (dtoRequestfooterOptions != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["footerOption"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdffooterOptions);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["footerOption"] = SourceExpressionConverter.ConvertToken(dtoRequestfooterOptions);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfheaderOptions != null)
+                if (dtoRequestheaderOptions != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["headerOption"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfheaderOptions);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["headerOption"] = SourceExpressionConverter.ConvertToken(dtoRequestheaderOptions);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfpaperFormat != null)
+                if (dtoRequestpaperFormat != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["paperFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfpaperFormat);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["paperFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestpaperFormat);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdftopMargin != null)
+                if (dtoRequesttopMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginTop"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdftopMargin);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["marginTop"] = SourceExpressionConverter.ConvertToken(dtoRequesttopMargin);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfbottomMargin != null)
+                if (dtoRequestbottomMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginBottom"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfbottomMargin);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["marginBottom"] = SourceExpressionConverter.ConvertToken(dtoRequestbottomMargin);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfleftMargin != null)
+                if (dtoRequestleftMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginLeft"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfleftMargin);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["marginLeft"] = SourceExpressionConverter.ConvertToken(dtoRequestleftMargin);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfrightMargin != null)
+                if (dtoRequestrightMargin != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["marginRight"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfrightMargin);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["marginRight"] = SourceExpressionConverter.ConvertToken(dtoRequestrightMargin);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfpageRanges != null)
+                if (dtoRequestpageRanges != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["pageRanges"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfpageRanges);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["pageRanges"] = SourceExpressionConverter.ConvertToken(dtoRequestpageRanges);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfscale != null)
+                if (dtoRequestscale != null)
                 {
-                    dtoRequestV7022ConvertHtmlToPdf["scale"] = SourceExpressionConverter.ConvertToken(dtoRequestV7022ConvertHtmlToPdfscale);
-                    dtoRequestV7022ConvertHtmlToPdfpropCount++;
+                    dtoRequest["scale"] = SourceExpressionConverter.ConvertToken(dtoRequestscale);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV7022ConvertHtmlToPdfpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV7022ConvertHtmlToPdf;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV7022ConvertHtmlToPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV7023ConvertHtmlToPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1243,84 +1501,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1063ConvertJsonToExcel> ConvertJsonToExcel([WorkflowExpression] Func<string> dtoRequestJsonToExcelDatajSON, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDataallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDataadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestJsonToExcelDatawrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestJsonToExcelDatamaxExcelColumnWidth = null)
+        public IBodyWorkflowAction<DtoResponseV1064ConvertJsonToExcel> ConvertJsonToExcel([WorkflowExpression] Func<string> dtoRequestjSON, [WorkflowExpression] Func<bool> dtoRequestallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestJsonToExcelDatajSON, nameof(dtoRequestJsonToExcelDatajSON), required: true);
-            SourceExpression.Validate(dtoRequestJsonToExcelDataallInOneTable, nameof(dtoRequestJsonToExcelDataallInOneTable), required: false);
-            SourceExpression.Validate(dtoRequestJsonToExcelDataadjustExcelColumnToContent, nameof(dtoRequestJsonToExcelDataadjustExcelColumnToContent), required: false);
-            SourceExpression.Validate(dtoRequestJsonToExcelDatawrapExcelColumnText, nameof(dtoRequestJsonToExcelDatawrapExcelColumnText), required: false);
-            SourceExpression.Validate(dtoRequestJsonToExcelDatamaxExcelColumnWidth, nameof(dtoRequestJsonToExcelDatamaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestjSON, nameof(dtoRequestjSON), required: true);
+            SourceExpression.Validate(dtoRequestallInOneTable, nameof(dtoRequestallInOneTable), required: false);
+            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
+            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
+            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V1063_ConvertJsonToExcel";
+                var apiCallPath = "/V1064_ConvertJsonToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestJsonToExcelData = new JObject();
-                var dtoRequestJsonToExcelDatapropCount = 0;
-                dtoRequestJsonToExcelDatapropCount++;
-                dtoRequestJsonToExcelData["json"] = SourceExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatajSON);
-                if (dtoRequestJsonToExcelDataallInOneTable != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["json"] = SourceExpressionConverter.ConvertToken(dtoRequestjSON);
+                if (dtoRequestallInOneTable != null)
                 {
-                    if (dtoRequestJsonToExcelDataallInOneTable != null)
+                    if (dtoRequestallInOneTable != null)
                     {
-                        dtoRequestJsonToExcelData["allInOneTable"] = SourceExpressionConverter.ConvertToken(dtoRequestJsonToExcelDataallInOneTable);
-                        dtoRequestJsonToExcelDatapropCount++;
+                        dtoRequest["allInOneTable"] = SourceExpressionConverter.ConvertToken(dtoRequestallInOneTable);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestJsonToExcelData["allInOneTable"] = true;
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequest["allInOneTable"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
+                if (dtoRequestadjustExcelColumnToContent != null)
                 {
-                    if (dtoRequestJsonToExcelDataadjustExcelColumnToContent != null)
+                    if (dtoRequestadjustExcelColumnToContent != null)
                     {
-                        dtoRequestJsonToExcelData["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestJsonToExcelDataadjustExcelColumnToContent);
-                        dtoRequestJsonToExcelDatapropCount++;
+                        dtoRequest["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestadjustExcelColumnToContent);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestJsonToExcelData["adjustColumnToContent"] = true;
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequest["adjustColumnToContent"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDatawrapExcelColumnText != null)
+                if (dtoRequestwrapExcelColumnText != null)
                 {
-                    if (dtoRequestJsonToExcelDatawrapExcelColumnText != null)
+                    if (dtoRequestwrapExcelColumnText != null)
                     {
-                        dtoRequestJsonToExcelData["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatawrapExcelColumnText);
-                        dtoRequestJsonToExcelDatapropCount++;
+                        dtoRequest["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestwrapExcelColumnText);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestJsonToExcelData["wrapColumnText"] = false;
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequest["wrapColumnText"] = false;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDatamaxExcelColumnWidth != null)
+                if (dtoRequestmaxExcelColumnWidth != null)
                 {
-                    dtoRequestJsonToExcelData["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestJsonToExcelDatamaxExcelColumnWidth);
-                    dtoRequestJsonToExcelDatapropCount++;
+                    dtoRequest["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaxExcelColumnWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestJsonToExcelDatapropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestJsonToExcelData;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV1063ConvertJsonToExcel>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV1064ConvertJsonToExcel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1416,33 +1681,286 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4070ConvertPdfToPdfA> ConvertPdfToPdfA([WorkflowExpression] Func<string> dtoRequestV4070ConvertPdfToPdfApDF, [WorkflowExpression] Func<int> dtoRequestV4070ConvertPdfToPdfAconformanceLevel = null)
+        public IBodyWorkflowAction<DtoResponseV1110ConvertMultiCsvToExcel> ConvertMultiCsvToExcel([WorkflowExpression] Func<CsvSheetItem[]> dtoRequestsheet, [WorkflowExpression] Func<bool> dtoRequestcSVHasHeaders = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectFieldTypes = null, [WorkflowExpression] Func<int> dtoRequestnumberOfRowsForFieldTypeDetection = null, [WorkflowExpression] Func<bool> dtoRequestremoveEmptyRows = null, [WorkflowExpression] Func<int> dtoRequestskipANumberOfRows = null, [WorkflowExpression] Func<int> dtoRequeststopAtASpecificRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestautoDetectQuoteDelimiter = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV4070ConvertPdfToPdfApDF, nameof(dtoRequestV4070ConvertPdfToPdfApDF), required: true);
-            SourceExpression.Validate(dtoRequestV4070ConvertPdfToPdfAconformanceLevel, nameof(dtoRequestV4070ConvertPdfToPdfAconformanceLevel), required: false);
+            SourceExpression.Validate(dtoRequestsheet, nameof(dtoRequestsheet), required: true);
+            SourceExpression.Validate(dtoRequestcSVHasHeaders, nameof(dtoRequestcSVHasHeaders), required: false);
+            SourceExpression.Validate(dtoRequestautoDetectFieldTypes, nameof(dtoRequestautoDetectFieldTypes), required: false);
+            SourceExpression.Validate(dtoRequestnumberOfRowsForFieldTypeDetection, nameof(dtoRequestnumberOfRowsForFieldTypeDetection), required: false);
+            SourceExpression.Validate(dtoRequestremoveEmptyRows, nameof(dtoRequestremoveEmptyRows), required: false);
+            SourceExpression.Validate(dtoRequestskipANumberOfRows, nameof(dtoRequestskipANumberOfRows), required: false);
+            SourceExpression.Validate(dtoRequeststopAtASpecificRow, nameof(dtoRequeststopAtASpecificRow), required: false);
+            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
+            SourceExpression.Validate(dtoRequestautoDetectQuoteDelimiter, nameof(dtoRequestautoDetectQuoteDelimiter), required: false);
+            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
+            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
+            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4070_ConvertPdfToPdfA";
+                var apiCallPath = "/V1110_ConvertMultiCsvToExcel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4070ConvertPdfToPdfA = new JObject();
-                var dtoRequestV4070ConvertPdfToPdfApropCount = 0;
-                dtoRequestV4070ConvertPdfToPdfApropCount++;
-                dtoRequestV4070ConvertPdfToPdfA["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestV4070ConvertPdfToPdfApDF);
-                if (dtoRequestV4070ConvertPdfToPdfAconformanceLevel != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["csvSheets"] = SourceExpressionConverter.ConvertToken(dtoRequestsheet);
+                if (dtoRequestcSVHasHeaders != null)
                 {
-                    dtoRequestV4070ConvertPdfToPdfA["conformanceLevel"] = SourceExpressionConverter.ConvertToken(dtoRequestV4070ConvertPdfToPdfAconformanceLevel);
-                    dtoRequestV4070ConvertPdfToPdfApropCount++;
+                    if (dtoRequestcSVHasHeaders != null)
+                    {
+                        dtoRequest["dataIncludesHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestcSVHasHeaders);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["dataIncludesHeader"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4070ConvertPdfToPdfApropCount > 0)
+                if (dtoRequestautoDetectFieldTypes != null)
                 {
-                    callPayload.Body = dtoRequestV4070ConvertPdfToPdfA;
+                    if (dtoRequestautoDetectFieldTypes != null)
+                    {
+                        dtoRequest["autoDiscoverFieldTypes"] = SourceExpressionConverter.ConvertToken(dtoRequestautoDetectFieldTypes);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["autoDiscoverFieldTypes"] = false;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestnumberOfRowsForFieldTypeDetection != null)
+                {
+                    dtoRequest["maxScanRows"] = SourceExpressionConverter.ConvertToken(dtoRequestnumberOfRowsForFieldTypeDetection);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestremoveEmptyRows != null)
+                {
+                    if (dtoRequestremoveEmptyRows != null)
+                    {
+                        dtoRequest["ignoreEmptyLine"] = SourceExpressionConverter.ConvertToken(dtoRequestremoveEmptyRows);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["ignoreEmptyLine"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestskipANumberOfRows != null)
+                {
+                    dtoRequest["skip"] = SourceExpressionConverter.ConvertToken(dtoRequestskipANumberOfRows);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequeststopAtASpecificRow != null)
+                {
+                    dtoRequest["skipLast"] = SourceExpressionConverter.ConvertToken(dtoRequeststopAtASpecificRow);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestseparator != null)
+                {
+                    dtoRequest["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestseparator);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestautoDetectQuoteDelimiter != null)
+                {
+                    if (dtoRequestautoDetectQuoteDelimiter != null)
+                    {
+                        dtoRequest["mayHaveQuotedFields"] = SourceExpressionConverter.ConvertToken(dtoRequestautoDetectQuoteDelimiter);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["mayHaveQuotedFields"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestadjustExcelColumnToContent != null)
+                {
+                    if (dtoRequestadjustExcelColumnToContent != null)
+                    {
+                        dtoRequest["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestadjustExcelColumnToContent);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["adjustColumnToContent"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestwrapExcelColumnText != null)
+                {
+                    if (dtoRequestwrapExcelColumnText != null)
+                    {
+                        dtoRequest["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestwrapExcelColumnText);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["wrapColumnText"] = false;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestmaxExcelColumnWidth != null)
+                {
+                    dtoRequest["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaxExcelColumnWidth);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestexcelFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestexcelFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4070ConvertPdfToPdfA>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV1110ConvertMultiCsvToExcel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown> ConvertPdfToMarkdown([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<bool> dtoRequestkeepReadingOrder = null, [WorkflowExpression] Func<bool> dtoRequestmarkHeadings = null, [WorkflowExpression] Func<bool> dtoRequestaddPageMarkers = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            SourceExpression.Validate(dtoRequestkeepReadingOrder, nameof(dtoRequestkeepReadingOrder), required: false);
+            SourceExpression.Validate(dtoRequestmarkHeadings, nameof(dtoRequestmarkHeadings), required: false);
+            SourceExpression.Validate(dtoRequestaddPageMarkers, nameof(dtoRequestaddPageMarkers), required: false);
+            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4130_ConvertPdfToMarkdown";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestfromPage != null)
+                {
+                    dtoRequest["fromPage"] = SourceExpressionConverter.ConvertToken(dtoRequestfromPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesttoPage != null)
+                {
+                    dtoRequest["toPage"] = SourceExpressionConverter.ConvertToken(dtoRequesttoPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestkeepReadingOrder != null)
+                {
+                    dtoRequest["layoutBased"] = SourceExpressionConverter.ConvertToken(dtoRequestkeepReadingOrder);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestmarkHeadings != null)
+                {
+                    dtoRequest["detectHeadings"] = SourceExpressionConverter.ConvertToken(dtoRequestmarkHeadings);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestaddPageMarkers != null)
+                {
+                    dtoRequest["addPageMarkers"] = SourceExpressionConverter.ConvertToken(dtoRequestaddPageMarkers);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestfileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestfileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4130ConvertPdfToMarkdown>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA> ConvertPdfToPdfA([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestconformanceLevel = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestconformanceLevel, nameof(dtoRequestconformanceLevel), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4071_ConvertPdfToPdfA";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestconformanceLevel != null)
+                {
+                    dtoRequest["conformanceLevel"] = SourceExpressionConverter.ConvertToken(dtoRequestconformanceLevel);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4071ConvertPdfToPdfA>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1513,49 +2031,280 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1052ConvertXmlToJson> ConvertXmlToJson([WorkflowExpression] Func<string> dtoRequestV1052ConvertXmlToJsonxML)
+        public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown> ConvertWordToMarkdown([WorkflowExpression] Func<string> dtoRequestword, [WorkflowExpression] Func<bool> dtoRequestkeepImagePlaceholders = null, [WorkflowExpression] Func<string> dtoRequestfileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestV1052ConvertXmlToJsonxML, nameof(dtoRequestV1052ConvertXmlToJsonxML), required: true);
+            SourceExpression.Validate(dtoRequestword, nameof(dtoRequestword), required: true);
+            SourceExpression.Validate(dtoRequestkeepImagePlaceholders, nameof(dtoRequestkeepImagePlaceholders), required: false);
+            SourceExpression.Validate(dtoRequestfileName, nameof(dtoRequestfileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V1052_ConvertXmlToJson";
+                var apiCallPath = "/V5170_ConvertWordToMarkdown";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV1052ConvertXmlToJson = new JObject();
-                var dtoRequestV1052ConvertXmlToJsonpropCount = 0;
-                dtoRequestV1052ConvertXmlToJsonpropCount++;
-                dtoRequestV1052ConvertXmlToJson["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestV1052ConvertXmlToJsonxML);
-                if (dtoRequestV1052ConvertXmlToJsonpropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["word"] = SourceExpressionConverter.ConvertToken(dtoRequestword);
+                if (dtoRequestkeepImagePlaceholders != null)
                 {
-                    callPayload.Body = dtoRequestV1052ConvertXmlToJson;
+                    dtoRequest["keepImagePlaceholders"] = SourceExpressionConverter.ConvertToken(dtoRequestkeepImagePlaceholders);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestfileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestfileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV1052ConvertXmlToJson>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5170ConvertWordToMarkdown>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV8010ConvertXRechnungToPdf> ConvertXRechnungToPdf([WorkflowExpression] Func<string> dtoRequestV8010ConvertXRechnungToPdfxRechnung)
+        public IBodyWorkflowAction<DtoResponseV1130ConvertXmlToCsv> ConvertXmlToCsv([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null, [WorkflowExpression] Func<string> dtoRequestcSVFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
         {
-            SourceExpression.Validate(dtoRequestV8010ConvertXRechnungToPdfxRechnung, nameof(dtoRequestV8010ConvertXRechnungToPdfxRechnung), required: true);
+            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
+            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
+            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
+            SourceExpression.Validate(dtoRequestcSVFileName, nameof(dtoRequestcSVFileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V8010_ConvertXRechnungToPdf";
+                var apiCallPath = "/V1130_ConvertXmlToCsv";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV8010ConvertXRechnungToPdf = new JObject();
-                var dtoRequestV8010ConvertXRechnungToPdfpropCount = 0;
-                dtoRequestV8010ConvertXRechnungToPdfpropCount++;
-                dtoRequestV8010ConvertXRechnungToPdf["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestV8010ConvertXRechnungToPdfxRechnung);
-                if (dtoRequestV8010ConvertXRechnungToPdfpropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestxML);
+                if (dtoRequestseparator != null)
                 {
-                    callPayload.Body = dtoRequestV8010ConvertXRechnungToPdf;
+                    dtoRequest["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestseparator);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestignoreXMLFormatting != null)
+                {
+                    if (dtoRequestignoreXMLFormatting != null)
+                    {
+                        dtoRequest["ignoreXmlFormatting"] = SourceExpressionConverter.ConvertToken(dtoRequestignoreXMLFormatting);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["ignoreXmlFormatting"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestcSVFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestcSVFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV8010ConvertXRechnungToPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV1130ConvertXmlToCsv>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV1120ConvertXmlToExcel> ConvertXmlToExcel([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null, [WorkflowExpression] Func<bool> dtoRequestallInOneTable = null, [WorkflowExpression] Func<bool> dtoRequestadjustExcelColumnToContent = null, [WorkflowExpression] Func<bool> dtoRequestwrapExcelColumnText = null, [WorkflowExpression] Func<int> dtoRequestmaxExcelColumnWidth = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
+            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
+            SourceExpression.Validate(dtoRequestallInOneTable, nameof(dtoRequestallInOneTable), required: false);
+            SourceExpression.Validate(dtoRequestadjustExcelColumnToContent, nameof(dtoRequestadjustExcelColumnToContent), required: false);
+            SourceExpression.Validate(dtoRequestwrapExcelColumnText, nameof(dtoRequestwrapExcelColumnText), required: false);
+            SourceExpression.Validate(dtoRequestmaxExcelColumnWidth, nameof(dtoRequestmaxExcelColumnWidth), required: false);
+            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V1120_ConvertXmlToExcel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestxML);
+                if (dtoRequestignoreXMLFormatting != null)
+                {
+                    if (dtoRequestignoreXMLFormatting != null)
+                    {
+                        dtoRequest["ignoreXmlFormatting"] = SourceExpressionConverter.ConvertToken(dtoRequestignoreXMLFormatting);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["ignoreXmlFormatting"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestallInOneTable != null)
+                {
+                    if (dtoRequestallInOneTable != null)
+                    {
+                        dtoRequest["allInOneTable"] = SourceExpressionConverter.ConvertToken(dtoRequestallInOneTable);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["allInOneTable"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestadjustExcelColumnToContent != null)
+                {
+                    if (dtoRequestadjustExcelColumnToContent != null)
+                    {
+                        dtoRequest["adjustColumnToContent"] = SourceExpressionConverter.ConvertToken(dtoRequestadjustExcelColumnToContent);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["adjustColumnToContent"] = true;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestwrapExcelColumnText != null)
+                {
+                    if (dtoRequestwrapExcelColumnText != null)
+                    {
+                        dtoRequest["wrapColumnText"] = SourceExpressionConverter.ConvertToken(dtoRequestwrapExcelColumnText);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["wrapColumnText"] = false;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestmaxExcelColumnWidth != null)
+                {
+                    dtoRequest["maxColumnWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaxExcelColumnWidth);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestexcelFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestexcelFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV1120ConvertXmlToExcel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV1053ConvertXmlToJson> ConvertXmlToJson([WorkflowExpression] Func<string> dtoRequestxML, [WorkflowExpression] Func<bool> dtoRequestignoreXMLFormatting = null)
+        {
+            SourceExpression.Validate(dtoRequestxML, nameof(dtoRequestxML), required: true);
+            SourceExpression.Validate(dtoRequestignoreXMLFormatting, nameof(dtoRequestignoreXMLFormatting), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V1053_ConvertXmlToJson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestxML);
+                if (dtoRequestignoreXMLFormatting != null)
+                {
+                    dtoRequest["ignoreXmlFormatting"] = SourceExpressionConverter.ConvertToken(dtoRequestignoreXMLFormatting);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV1053ConvertXmlToJson>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV8011ConvertXRechnungToPdf> ConvertXRechnungToPdf([WorkflowExpression] Func<string> dtoRequestxRechnung, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequestxRechnung, nameof(dtoRequestxRechnung), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V8011_ConvertXRechnungToPdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["xml"] = SourceExpressionConverter.ConvertToken(dtoRequestxRechnung);
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV8011ConvertXRechnungToPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -1582,343 +2331,385 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3091CreateChartImage> CreateChartImage([WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagetableData, [WorkflowExpression] Func<int> dtoRequestV3091CreateChartImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3091CreateChartImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImageoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3091CreateChartImagechartType = null)
+        public IBodyWorkflowAction<DtoResponseV3092CreateChartImage> CreateChartImage([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestchartType = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3091CreateChartImagetableData, nameof(dtoRequestV3091CreateChartImagetableData), required: true);
-            SourceExpression.Validate(dtoRequestV3091CreateChartImageimageWidth, nameof(dtoRequestV3091CreateChartImageimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV3091CreateChartImageimageHeight, nameof(dtoRequestV3091CreateChartImageimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV3091CreateChartImagebackgroundColor, nameof(dtoRequestV3091CreateChartImagebackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestV3091CreateChartImageoutputFormat, nameof(dtoRequestV3091CreateChartImageoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestV3091CreateChartImagechartType, nameof(dtoRequestV3091CreateChartImagechartType), required: false);
+            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
+            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
+            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
+            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestchartType, nameof(dtoRequestchartType), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3091_CreateChartImage";
+                var apiCallPath = "/V3092_CreateChartImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3091CreateChartImage = new JObject();
-                var dtoRequestV3091CreateChartImagepropCount = 0;
-                if (dtoRequestV3091CreateChartImageimageWidth != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestimageWidth != null)
                 {
-                    dtoRequestV3091CreateChartImage["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageimageWidth);
-                    dtoRequestV3091CreateChartImagepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestimageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImageimageHeight != null)
+                if (dtoRequestimageHeight != null)
                 {
-                    dtoRequestV3091CreateChartImage["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageimageHeight);
-                    dtoRequestV3091CreateChartImagepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestimageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImagebackgroundColor != null)
+                if (dtoRequestbackgroundColor != null)
                 {
-                    dtoRequestV3091CreateChartImage["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagebackgroundColor);
-                    dtoRequestV3091CreateChartImagepropCount++;
+                    dtoRequest["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestbackgroundColor);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImageoutputFormat != null)
+                if (dtoRequestoutputFormat != null)
                 {
-                    dtoRequestV3091CreateChartImage["format"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImageoutputFormat);
-                    dtoRequestV3091CreateChartImagepropCount++;
+                    dtoRequest["format"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV3091CreateChartImagepropCount++;
-                dtoRequestV3091CreateChartImage["chart"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagetableData);
-                if (dtoRequestV3091CreateChartImagechartType != null)
+                dtoRequestpropCount++;
+                dtoRequest["chart"] = SourceExpressionConverter.ConvertToken(dtoRequesttableData);
+                if (dtoRequestchartType != null)
                 {
-                    dtoRequestV3091CreateChartImage["type"] = SourceExpressionConverter.ConvertToken(dtoRequestV3091CreateChartImagechartType);
-                    dtoRequestV3091CreateChartImagepropCount++;
+                    dtoRequest["type"] = SourceExpressionConverter.ConvertToken(dtoRequestchartType);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3091CreateChartImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3091CreateChartImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3091CreateChartImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3092CreateChartImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3062CreateCode> CreateCode([WorkflowExpression] Func<string> dtoRequestV3062CreateCodecontent, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodecodeFormat = null, [WorkflowExpression] Func<int> dtoRequestV3062CreateCodewidth = null, [WorkflowExpression] Func<int> dtoRequestV3062CreateCodeheight = null, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodeoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3062CreateCodeembeddedImage = null, [WorkflowExpression] Func<double> dtoRequestV3062CreateCodeembeddedImageOpacity = null, [WorkflowExpression] Func<double> dtoRequestV3062CreateCodeembeddedImageRatio = null)
+        public IBodyWorkflowAction<DtoResponseV3063CreateCode> CreateCode([WorkflowExpression] Func<string> dtoRequestcontent, [WorkflowExpression] Func<string> dtoRequestcodeFormat = null, [WorkflowExpression] Func<int> dtoRequestwidth = null, [WorkflowExpression] Func<int> dtoRequestheight = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestembeddedImage = null, [WorkflowExpression] Func<double> dtoRequestembeddedImageOpacity = null, [WorkflowExpression] Func<double> dtoRequestembeddedImageRatio = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3062CreateCodecontent, nameof(dtoRequestV3062CreateCodecontent), required: true);
-            SourceExpression.Validate(dtoRequestV3062CreateCodecodeFormat, nameof(dtoRequestV3062CreateCodecodeFormat), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodewidth, nameof(dtoRequestV3062CreateCodewidth), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodeheight, nameof(dtoRequestV3062CreateCodeheight), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodeoutputFormat, nameof(dtoRequestV3062CreateCodeoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodeembeddedImage, nameof(dtoRequestV3062CreateCodeembeddedImage), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodeembeddedImageOpacity, nameof(dtoRequestV3062CreateCodeembeddedImageOpacity), required: false);
-            SourceExpression.Validate(dtoRequestV3062CreateCodeembeddedImageRatio, nameof(dtoRequestV3062CreateCodeembeddedImageRatio), required: false);
+            SourceExpression.Validate(dtoRequestcontent, nameof(dtoRequestcontent), required: true);
+            SourceExpression.Validate(dtoRequestcodeFormat, nameof(dtoRequestcodeFormat), required: false);
+            SourceExpression.Validate(dtoRequestwidth, nameof(dtoRequestwidth), required: false);
+            SourceExpression.Validate(dtoRequestheight, nameof(dtoRequestheight), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestembeddedImage, nameof(dtoRequestembeddedImage), required: false);
+            SourceExpression.Validate(dtoRequestembeddedImageOpacity, nameof(dtoRequestembeddedImageOpacity), required: false);
+            SourceExpression.Validate(dtoRequestembeddedImageRatio, nameof(dtoRequestembeddedImageRatio), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3062_CreateCode";
+                var apiCallPath = "/V3063_CreateCode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3062CreateCode = new JObject();
-                var dtoRequestV3062CreateCodepropCount = 0;
-                dtoRequestV3062CreateCodepropCount++;
-                dtoRequestV3062CreateCode["content"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodecontent);
-                if (dtoRequestV3062CreateCodecodeFormat != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["content"] = SourceExpressionConverter.ConvertToken(dtoRequestcontent);
+                if (dtoRequestcodeFormat != null)
                 {
-                    dtoRequestV3062CreateCode["codeFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodecodeFormat);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["codeFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestcodeFormat);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodewidth != null)
+                if (dtoRequestwidth != null)
                 {
-                    dtoRequestV3062CreateCode["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodewidth);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestwidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeheight != null)
+                if (dtoRequestheight != null)
                 {
-                    dtoRequestV3062CreateCode["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeheight);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestheight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeoutputFormat != null)
+                if (dtoRequestoutputFormat != null)
                 {
-                    dtoRequestV3062CreateCode["outFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeoutputFormat);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["outFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImage != null)
+                if (dtoRequestembeddedImage != null)
                 {
-                    dtoRequestV3062CreateCode["image"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImage);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["image"] = SourceExpressionConverter.ConvertToken(dtoRequestembeddedImage);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImageOpacity != null)
+                if (dtoRequestembeddedImageOpacity != null)
                 {
-                    dtoRequestV3062CreateCode["imageOpacity"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImageOpacity);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["imageOpacity"] = SourceExpressionConverter.ConvertToken(dtoRequestembeddedImageOpacity);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodeembeddedImageRatio != null)
+                if (dtoRequestembeddedImageRatio != null)
                 {
-                    dtoRequestV3062CreateCode["imageRatio"] = SourceExpressionConverter.ConvertToken(dtoRequestV3062CreateCodeembeddedImageRatio);
-                    dtoRequestV3062CreateCodepropCount++;
+                    dtoRequest["imageRatio"] = SourceExpressionConverter.ConvertToken(dtoRequestembeddedImageRatio);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3062CreateCodepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3062CreateCode;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3062CreateCode>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3063CreateCode>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3111CreateGraphImage> CreateGraphImage([WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImagegraphData, [WorkflowExpression] Func<int> dtoRequestV3111CreateGraphImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3111CreateGraphImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3111CreateGraphImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV3112CreateGraphImage> CreateGraphImage([WorkflowExpression] Func<string> dtoRequestgraphData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3111CreateGraphImagegraphData, nameof(dtoRequestV3111CreateGraphImagegraphData), required: true);
-            SourceExpression.Validate(dtoRequestV3111CreateGraphImageimageWidth, nameof(dtoRequestV3111CreateGraphImageimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV3111CreateGraphImageimageHeight, nameof(dtoRequestV3111CreateGraphImageimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV3111CreateGraphImagebackgroundColor, nameof(dtoRequestV3111CreateGraphImagebackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestV3111CreateGraphImageoutputFormat, nameof(dtoRequestV3111CreateGraphImageoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestgraphData, nameof(dtoRequestgraphData), required: true);
+            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
+            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
+            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3111_CreateGraphImage";
+                var apiCallPath = "/V3112_CreateGraphImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3111CreateGraphImage = new JObject();
-                var dtoRequestV3111CreateGraphImagepropCount = 0;
-                if (dtoRequestV3111CreateGraphImageimageWidth != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestimageWidth != null)
                 {
-                    dtoRequestV3111CreateGraphImage["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageimageWidth);
-                    dtoRequestV3111CreateGraphImagepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestimageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImageimageHeight != null)
+                if (dtoRequestimageHeight != null)
                 {
-                    dtoRequestV3111CreateGraphImage["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageimageHeight);
-                    dtoRequestV3111CreateGraphImagepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestimageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImagebackgroundColor != null)
+                if (dtoRequestbackgroundColor != null)
                 {
-                    dtoRequestV3111CreateGraphImage["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImagebackgroundColor);
-                    dtoRequestV3111CreateGraphImagepropCount++;
+                    dtoRequest["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestbackgroundColor);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3111CreateGraphImageoutputFormat != null)
+                if (dtoRequestoutputFormat != null)
                 {
-                    dtoRequestV3111CreateGraphImage["format"] = SourceExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImageoutputFormat);
-                    dtoRequestV3111CreateGraphImagepropCount++;
+                    dtoRequest["format"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV3111CreateGraphImagepropCount++;
-                dtoRequestV3111CreateGraphImage["graph"] = SourceExpressionConverter.ConvertToken(dtoRequestV3111CreateGraphImagegraphData);
-                if (dtoRequestV3111CreateGraphImagepropCount > 0)
+                dtoRequestpropCount++;
+                dtoRequest["graph"] = SourceExpressionConverter.ConvertToken(dtoRequestgraphData);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3111CreateGraphImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3111CreateGraphImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3112CreateGraphImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3101CreateTableImage> CreateTableImage([WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagetableData, [WorkflowExpression] Func<int> dtoRequestV3101CreateTableImageimageWidth = null, [WorkflowExpression] Func<int> dtoRequestV3101CreateTableImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagebackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImageoutputFormat = null, [WorkflowExpression] Func<string> dtoRequestV3101CreateTableImagetitle = null, [WorkflowExpression] Func<bool> dtoRequestV3101CreateTableImageshowTableBorders = null)
+        public IBodyWorkflowAction<DtoResponseV3102CreateTableImage> CreateTableImage([WorkflowExpression] Func<string> dtoRequesttableData, [WorkflowExpression] Func<int> dtoRequestimageWidth = null, [WorkflowExpression] Func<int> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestbackgroundColor = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<string> dtoRequesttitle = null, [WorkflowExpression] Func<bool> dtoRequestshowTableBorders = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3101CreateTableImagetableData, nameof(dtoRequestV3101CreateTableImagetableData), required: true);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImageimageWidth, nameof(dtoRequestV3101CreateTableImageimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImageimageHeight, nameof(dtoRequestV3101CreateTableImageimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImagebackgroundColor, nameof(dtoRequestV3101CreateTableImagebackgroundColor), required: false);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImageoutputFormat, nameof(dtoRequestV3101CreateTableImageoutputFormat), required: false);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImagetitle, nameof(dtoRequestV3101CreateTableImagetitle), required: false);
-            SourceExpression.Validate(dtoRequestV3101CreateTableImageshowTableBorders, nameof(dtoRequestV3101CreateTableImageshowTableBorders), required: false);
+            SourceExpression.Validate(dtoRequesttableData, nameof(dtoRequesttableData), required: true);
+            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
+            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
+            SourceExpression.Validate(dtoRequestbackgroundColor, nameof(dtoRequestbackgroundColor), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequesttitle, nameof(dtoRequesttitle), required: false);
+            SourceExpression.Validate(dtoRequestshowTableBorders, nameof(dtoRequestshowTableBorders), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3101_CreateTableImage";
+                var apiCallPath = "/V3102_CreateTableImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3101CreateTableImage = new JObject();
-                var dtoRequestV3101CreateTableImagepropCount = 0;
-                if (dtoRequestV3101CreateTableImageimageWidth != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestimageWidth != null)
                 {
-                    dtoRequestV3101CreateTableImage["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageimageWidth);
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestimageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageimageHeight != null)
+                if (dtoRequestimageHeight != null)
                 {
-                    dtoRequestV3101CreateTableImage["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageimageHeight);
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestimageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImagebackgroundColor != null)
+                if (dtoRequestbackgroundColor != null)
                 {
-                    dtoRequestV3101CreateTableImage["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagebackgroundColor);
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["backgroundColor"] = SourceExpressionConverter.ConvertToken(dtoRequestbackgroundColor);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageoutputFormat != null)
+                if (dtoRequestoutputFormat != null)
                 {
-                    dtoRequestV3101CreateTableImage["format"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageoutputFormat);
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["format"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV3101CreateTableImagepropCount++;
-                dtoRequestV3101CreateTableImage["data"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagetableData);
-                if (dtoRequestV3101CreateTableImagetitle != null)
+                dtoRequestpropCount++;
+                dtoRequest["data"] = SourceExpressionConverter.ConvertToken(dtoRequesttableData);
+                if (dtoRequesttitle != null)
                 {
-                    dtoRequestV3101CreateTableImage["title"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImagetitle);
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["title"] = SourceExpressionConverter.ConvertToken(dtoRequesttitle);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImageshowTableBorders != null)
+                if (dtoRequestshowTableBorders != null)
                 {
-                    if (dtoRequestV3101CreateTableImageshowTableBorders != null)
+                    if (dtoRequestshowTableBorders != null)
                     {
-                        dtoRequestV3101CreateTableImage["hasLines"] = SourceExpressionConverter.ConvertToken(dtoRequestV3101CreateTableImageshowTableBorders);
-                        dtoRequestV3101CreateTableImagepropCount++;
+                        dtoRequest["hasLines"] = SourceExpressionConverter.ConvertToken(dtoRequestshowTableBorders);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV3101CreateTableImage["hasLines"] = true;
-                    dtoRequestV3101CreateTableImagepropCount++;
+                    dtoRequest["hasLines"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3101CreateTableImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3101CreateTableImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3101CreateTableImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3102CreateTableImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3081CreateWatermarkImage> CreateWatermarkImage([WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagemainImage, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkImage, [WorkflowExpression] Func<int> dtoRequestV3081CreateWatermarkImagewatermarkOpacity = null, [WorkflowExpression] Func<int> dtoRequestV3081CreateWatermarkImagewatermarkRatio = null, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition = null, [WorkflowExpression] Func<string> dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition = null)
+        public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage> CreateWatermarkImage([WorkflowExpression] Func<string> dtoRequestmainImage, [WorkflowExpression] Func<string> dtoRequestwatermarkImage, [WorkflowExpression] Func<int> dtoRequestwatermarkOpacity = null, [WorkflowExpression] Func<int> dtoRequestwatermarkRatio = null, [WorkflowExpression] Func<string> dtoRequestwatermarkHorizontalPosition = null, [WorkflowExpression] Func<string> dtoRequestwatermarkVerticalPosition = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagemainImage, nameof(dtoRequestV3081CreateWatermarkImagemainImage), required: true);
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkImage, nameof(dtoRequestV3081CreateWatermarkImagewatermarkImage), required: true);
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkOpacity, nameof(dtoRequestV3081CreateWatermarkImagewatermarkOpacity), required: false);
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkRatio, nameof(dtoRequestV3081CreateWatermarkImagewatermarkRatio), required: false);
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition), required: false);
-            SourceExpression.Validate(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition, nameof(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition), required: false);
+            SourceExpression.Validate(dtoRequestmainImage, nameof(dtoRequestmainImage), required: true);
+            SourceExpression.Validate(dtoRequestwatermarkImage, nameof(dtoRequestwatermarkImage), required: true);
+            SourceExpression.Validate(dtoRequestwatermarkOpacity, nameof(dtoRequestwatermarkOpacity), required: false);
+            SourceExpression.Validate(dtoRequestwatermarkRatio, nameof(dtoRequestwatermarkRatio), required: false);
+            SourceExpression.Validate(dtoRequestwatermarkHorizontalPosition, nameof(dtoRequestwatermarkHorizontalPosition), required: false);
+            SourceExpression.Validate(dtoRequestwatermarkVerticalPosition, nameof(dtoRequestwatermarkVerticalPosition), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3081_CreateWatermarkImage";
+                var apiCallPath = "/V3082_CreateWatermarkImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3081CreateWatermarkImage = new JObject();
-                var dtoRequestV3081CreateWatermarkImagepropCount = 0;
-                dtoRequestV3081CreateWatermarkImagepropCount++;
-                dtoRequestV3081CreateWatermarkImage["image"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagemainImage);
-                dtoRequestV3081CreateWatermarkImagepropCount++;
-                dtoRequestV3081CreateWatermarkImage["watermarkImage"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkImage);
-                if (dtoRequestV3081CreateWatermarkImagewatermarkOpacity != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["image"] = SourceExpressionConverter.ConvertToken(dtoRequestmainImage);
+                dtoRequestpropCount++;
+                dtoRequest["watermarkImage"] = SourceExpressionConverter.ConvertToken(dtoRequestwatermarkImage);
+                if (dtoRequestwatermarkOpacity != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["opacity"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkOpacity);
-                    dtoRequestV3081CreateWatermarkImagepropCount++;
+                    dtoRequest["opacity"] = SourceExpressionConverter.ConvertToken(dtoRequestwatermarkOpacity);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkRatio != null)
+                if (dtoRequestwatermarkRatio != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["ratio"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkRatio);
-                    dtoRequestV3081CreateWatermarkImagepropCount++;
+                    dtoRequest["ratio"] = SourceExpressionConverter.ConvertToken(dtoRequestwatermarkRatio);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition != null)
+                if (dtoRequestwatermarkHorizontalPosition != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["imagePositionHorizontal"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkHorizontalPosition);
-                    dtoRequestV3081CreateWatermarkImagepropCount++;
+                    dtoRequest["imagePositionHorizontal"] = SourceExpressionConverter.ConvertToken(dtoRequestwatermarkHorizontalPosition);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition != null)
+                if (dtoRequestwatermarkVerticalPosition != null)
                 {
-                    dtoRequestV3081CreateWatermarkImage["imagePositionVertical"] = SourceExpressionConverter.ConvertToken(dtoRequestV3081CreateWatermarkImagewatermarkVerticalPosition);
-                    dtoRequestV3081CreateWatermarkImagepropCount++;
+                    dtoRequest["imagePositionVertical"] = SourceExpressionConverter.ConvertToken(dtoRequestwatermarkVerticalPosition);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3081CreateWatermarkImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3081CreateWatermarkImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3081CreateWatermarkImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3082CreateWatermarkImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5011CreateWordFile> CreateWordFile([WorkflowExpression] Func<Section[]> dtoRequestV5011CreateWordFilesection, [WorkflowExpression] Func<string> dtoRequestV5011CreateWordFileexistingFileContent = null)
+        public IBodyWorkflowAction<DtoResponseV5012CreateWordFile> CreateWordFile([WorkflowExpression] Func<Section[]> dtoRequestsection, [WorkflowExpression] Func<string> dtoRequestexistingFileContent = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5011CreateWordFilesection, nameof(dtoRequestV5011CreateWordFilesection), required: true);
-            SourceExpression.Validate(dtoRequestV5011CreateWordFileexistingFileContent, nameof(dtoRequestV5011CreateWordFileexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestsection, nameof(dtoRequestsection), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5011_CreateWordFile";
+                var apiCallPath = "/V5012_CreateWordFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5011CreateWordFile = new JObject();
-                var dtoRequestV5011CreateWordFilepropCount = 0;
-                if (dtoRequestV5011CreateWordFileexistingFileContent != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                if (dtoRequestexistingFileContent != null)
                 {
-                    dtoRequestV5011CreateWordFile["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5011CreateWordFileexistingFileContent);
-                    dtoRequestV5011CreateWordFilepropCount++;
+                    dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5011CreateWordFilepropCount++;
-                dtoRequestV5011CreateWordFile["sections"] = SourceExpressionConverter.ConvertToken(dtoRequestV5011CreateWordFilesection);
-                if (dtoRequestV5011CreateWordFilepropCount > 0)
+                dtoRequestpropCount++;
+                dtoRequest["sections"] = SourceExpressionConverter.ConvertToken(dtoRequestsection);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5011CreateWordFile;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5011CreateWordFile>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5012CreateWordFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2013,29 +2804,261 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4060ExtractPdfPages> ExtractPdfPages([WorkflowExpression] Func<string> dtoRequestV4060ExtractPdfPagespDFFile, [WorkflowExpression] Func<string> dtoRequestV4060ExtractPdfPagespagesToExtract)
+        public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages> ExtractPdfPages([WorkflowExpression] Func<string> dtoRequestpDFFile, [WorkflowExpression] Func<string> dtoRequestpagesToExtract, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV4060ExtractPdfPagespDFFile, nameof(dtoRequestV4060ExtractPdfPagespDFFile), required: true);
-            SourceExpression.Validate(dtoRequestV4060ExtractPdfPagespagesToExtract, nameof(dtoRequestV4060ExtractPdfPagespagesToExtract), required: true);
+            SourceExpression.Validate(dtoRequestpDFFile, nameof(dtoRequestpDFFile), required: true);
+            SourceExpression.Validate(dtoRequestpagesToExtract, nameof(dtoRequestpagesToExtract), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4060_ExtractPdfPages";
+                var apiCallPath = "/V4061_ExtractPdfPages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4060ExtractPdfPages = new JObject();
-                var dtoRequestV4060ExtractPdfPagespropCount = 0;
-                dtoRequestV4060ExtractPdfPagespropCount++;
-                dtoRequestV4060ExtractPdfPages["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4060ExtractPdfPagespDFFile);
-                dtoRequestV4060ExtractPdfPagespropCount++;
-                dtoRequestV4060ExtractPdfPages["pages"] = SourceExpressionConverter.ConvertToken(dtoRequestV4060ExtractPdfPagespagesToExtract);
-                if (dtoRequestV4060ExtractPdfPagespropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestpDFFile);
+                dtoRequestpropCount++;
+                dtoRequest["pages"] = SourceExpressionConverter.ConvertToken(dtoRequestpagesToExtract);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV4060ExtractPdfPages;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4060ExtractPdfPages>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4061ExtractPdfPages>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv> ExtractPdfTablesToCsv([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequestseparator = null, [WorkflowExpression] Func<string> dtoRequestcSVFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
+            SourceExpression.Validate(dtoRequestseparator, nameof(dtoRequestseparator), required: false);
+            SourceExpression.Validate(dtoRequestcSVFileName, nameof(dtoRequestcSVFileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4160_ExtractPdfTablesToCsv";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestfromPage != null)
+                {
+                    dtoRequest["fromPage"] = SourceExpressionConverter.ConvertToken(dtoRequestfromPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesttoPage != null)
+                {
+                    dtoRequest["toPage"] = SourceExpressionConverter.ConvertToken(dtoRequesttoPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestheaderRow != null)
+                {
+                    dtoRequest["headerMode"] = SourceExpressionConverter.ConvertToken(dtoRequestheaderRow);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestseparator != null)
+                {
+                    dtoRequest["delimiter"] = SourceExpressionConverter.ConvertToken(dtoRequestseparator);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestcSVFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestcSVFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4160ExtractPdfTablesToCsv>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel> ExtractPdfTablesToExcel([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequestexcelFileName = null, [WorkflowExpression] Func<int> dtoRequestfileResponse = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
+            SourceExpression.Validate(dtoRequestexcelFileName, nameof(dtoRequestexcelFileName), required: false);
+            SourceExpression.Validate(dtoRequestfileResponse, nameof(dtoRequestfileResponse), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4150_ExtractPdfTablesToExcel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestfromPage != null)
+                {
+                    dtoRequest["fromPage"] = SourceExpressionConverter.ConvertToken(dtoRequestfromPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesttoPage != null)
+                {
+                    dtoRequest["toPage"] = SourceExpressionConverter.ConvertToken(dtoRequesttoPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestheaderRow != null)
+                {
+                    dtoRequest["headerMode"] = SourceExpressionConverter.ConvertToken(dtoRequestheaderRow);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestexcelFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestexcelFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestfileResponse != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestfileResponse);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4150ExtractPdfTablesToExcel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml> ExtractPdfTablesToHtml([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null, [WorkflowExpression] Func<string> dtoRequesthTMLFileName = null, [WorkflowExpression] Func<int> dtoRequestoutputFormat = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
+            SourceExpression.Validate(dtoRequesthTMLFileName, nameof(dtoRequesthTMLFileName), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4170_ExtractPdfTablesToHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestfromPage != null)
+                {
+                    dtoRequest["fromPage"] = SourceExpressionConverter.ConvertToken(dtoRequestfromPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesttoPage != null)
+                {
+                    dtoRequest["toPage"] = SourceExpressionConverter.ConvertToken(dtoRequesttoPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestheaderRow != null)
+                {
+                    dtoRequest["headerMode"] = SourceExpressionConverter.ConvertToken(dtoRequestheaderRow);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesthTMLFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequesthTMLFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestoutputFormat != null)
+                {
+                    dtoRequest["textOutputMode"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4170ExtractPdfTablesToHtml>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson> ExtractPdfTablesToJson([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<int> dtoRequestfromPage = null, [WorkflowExpression] Func<int> dtoRequesttoPage = null, [WorkflowExpression] Func<int> dtoRequestheaderRow = null)
+        {
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestfromPage, nameof(dtoRequestfromPage), required: false);
+            SourceExpression.Validate(dtoRequesttoPage, nameof(dtoRequesttoPage), required: false);
+            SourceExpression.Validate(dtoRequestheaderRow, nameof(dtoRequestheaderRow), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4140_ExtractPdfTablesToJson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdf"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestfromPage != null)
+                {
+                    dtoRequest["fromPage"] = SourceExpressionConverter.ConvertToken(dtoRequestfromPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequesttoPage != null)
+                {
+                    dtoRequest["toPage"] = SourceExpressionConverter.ConvertToken(dtoRequesttoPage);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestheaderRow != null)
+                {
+                    dtoRequest["headerMode"] = SourceExpressionConverter.ConvertToken(dtoRequestheaderRow);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4140ExtractPdfTablesToJson>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2144,9 +3167,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> ExtractWordBookmarks([WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarksfile, [WorkflowExpression] Func<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
+        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks> ExtractWordBookmarks([WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarksFile, [WorkflowExpression] Func<bool> dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchName = null, [WorkflowExpression] Func<string> dtoRequestV5021ExtractWordBookmarkssearchContent = null)
         {
-            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarksfile, nameof(dtoRequestV5021ExtractWordBookmarksfile), required: true);
+            SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarksFile, nameof(dtoRequestV5021ExtractWordBookmarksFile), required: true);
             SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks, nameof(dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks), required: false);
             SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchName, nameof(dtoRequestV5021ExtractWordBookmarkssearchName), required: false);
             SourceExpression.Validate(dtoRequestV5021ExtractWordBookmarkssearchContent, nameof(dtoRequestV5021ExtractWordBookmarkssearchContent), required: false);
@@ -2158,7 +3181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5021ExtractWordBookmarks = new JObject();
                 var dtoRequestV5021ExtractWordBookmarkspropCount = 0;
                 dtoRequestV5021ExtractWordBookmarkspropCount++;
-                dtoRequestV5021ExtractWordBookmarks["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarksfile);
+                dtoRequestV5021ExtractWordBookmarks["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5021ExtractWordBookmarksFile);
                 if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
                 {
                     if (dtoRequestV5021ExtractWordBookmarksincludeHiddenBookmarks != null)
@@ -2198,9 +3221,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> ExtractWordContentControls([WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlsfile, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
+        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls> ExtractWordContentControls([WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlsFile, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTag = null, [WorkflowExpression] Func<string> dtoRequestV5120ExtractWordContentControlssearchTitle = null)
         {
-            SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlsfile, nameof(dtoRequestV5120ExtractWordContentControlsfile), required: true);
+            SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlsFile, nameof(dtoRequestV5120ExtractWordContentControlsFile), required: true);
             SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTag, nameof(dtoRequestV5120ExtractWordContentControlssearchTag), required: false);
             SourceExpression.Validate(dtoRequestV5120ExtractWordContentControlssearchTitle, nameof(dtoRequestV5120ExtractWordContentControlssearchTitle), required: false);
             ApiConnectionActionInput BuildSourceInput()
@@ -2211,7 +3234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV5120ExtractWordContentControls = new JObject();
                 var dtoRequestV5120ExtractWordContentControlspropCount = 0;
                 dtoRequestV5120ExtractWordContentControlspropCount++;
-                dtoRequestV5120ExtractWordContentControls["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlsfile);
+                dtoRequestV5120ExtractWordContentControls["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlsFile);
                 if (dtoRequestV5120ExtractWordContentControlssearchTag != null)
                 {
                     dtoRequestV5120ExtractWordContentControls["searchTag"] = SourceExpressionConverter.ConvertToken(dtoRequestV5120ExtractWordContentControlssearchTag);
@@ -2342,189 +3365,210 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile> InsertImageToWord([WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordimage, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestV5081InsertImageToWordmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestV5081InsertImageToWordmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5081InsertImageToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord> InsertImageToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestimage, [WorkflowExpression] Func<string> dtoRequestplaceholderName = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageWidth = null, [WorkflowExpression] Func<int> dtoRequestmaximumImageHeight = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordexistingFileContent, nameof(dtoRequestV5081InsertImageToWordexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordimage, nameof(dtoRequestV5081InsertImageToWordimage), required: true);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderName, nameof(dtoRequestV5081InsertImageToWordplaceholderName), required: false);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordmaximumImageWidth, nameof(dtoRequestV5081InsertImageToWordmaximumImageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordmaximumImageHeight, nameof(dtoRequestV5081InsertImageToWordmaximumImageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderPrefix, nameof(dtoRequestV5081InsertImageToWordplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV5081InsertImageToWordplaceholderSuffix, nameof(dtoRequestV5081InsertImageToWordplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestimage, nameof(dtoRequestimage), required: true);
+            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageWidth, nameof(dtoRequestmaximumImageWidth), required: false);
+            SourceExpression.Validate(dtoRequestmaximumImageHeight, nameof(dtoRequestmaximumImageHeight), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5081_InsertImageToWord";
+                var apiCallPath = "/V5082_InsertImageToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5081InsertImageToWord = new JObject();
-                var dtoRequestV5081InsertImageToWordpropCount = 0;
-                dtoRequestV5081InsertImageToWordpropCount++;
-                dtoRequestV5081InsertImageToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordexistingFileContent);
-                if (dtoRequestV5081InsertImageToWordplaceholderName != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                if (dtoRequestplaceholderName != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderName);
-                    dtoRequestV5081InsertImageToWordpropCount++;
+                    dtoRequest["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderName);
+                    dtoRequestpropCount++;
                 }
 
-                dtoRequestV5081InsertImageToWordpropCount++;
-                dtoRequestV5081InsertImageToWord["placeholderImage"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordimage);
-                if (dtoRequestV5081InsertImageToWordmaximumImageWidth != null)
+                dtoRequestpropCount++;
+                dtoRequest["placeholderImage"] = SourceExpressionConverter.ConvertToken(dtoRequestimage);
+                if (dtoRequestmaximumImageWidth != null)
                 {
-                    dtoRequestV5081InsertImageToWord["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordmaximumImageWidth);
-                    dtoRequestV5081InsertImageToWordpropCount++;
+                    dtoRequest["maxWidth"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordmaximumImageHeight != null)
+                if (dtoRequestmaximumImageHeight != null)
                 {
-                    dtoRequestV5081InsertImageToWord["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordmaximumImageHeight);
-                    dtoRequestV5081InsertImageToWordpropCount++;
+                    dtoRequest["maxHeight"] = SourceExpressionConverter.ConvertToken(dtoRequestmaximumImageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordplaceholderPrefix != null)
+                if (dtoRequestplaceholderPrefix != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderPrefix);
-                    dtoRequestV5081InsertImageToWordpropCount++;
+                    dtoRequest["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderPrefix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordplaceholderSuffix != null)
+                if (dtoRequestplaceholderSuffix != null)
                 {
-                    dtoRequestV5081InsertImageToWord["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5081InsertImageToWordplaceholderSuffix);
-                    dtoRequestV5081InsertImageToWordpropCount++;
+                    dtoRequest["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderSuffix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5081InsertImageToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5081InsertImageToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseFile>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5082InsertImageToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5110InsertMultipleTextSectionsToWord> InsertMultipleTextSectionsToWord([WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, [WorkflowExpression] Func<InsertSection[]> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, [WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord> InsertMultipleTextSectionsToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<InsertSection[]> dtoRequestplaceholder, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder), required: true);
-            SourceExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix, nameof(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestplaceholder, nameof(dtoRequestplaceholder), required: true);
+            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5110_InsertMultipleTextSectionsToWord";
+                var apiCallPath = "/V5111_InsertMultipleTextSectionsToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5110InsertMultipleTextSectionsToWord = new JObject();
-                var dtoRequestV5110InsertMultipleTextSectionsToWordpropCount = 0;
-                dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-                dtoRequestV5110InsertMultipleTextSectionsToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordexistingFileContent);
-                dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
-                dtoRequestV5110InsertMultipleTextSectionsToWord["insertSections"] = SourceExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholder);
-                if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                dtoRequestpropCount++;
+                dtoRequest["insertSections"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholder);
+                if (dtoRequestplaceholderPrefix != null)
                 {
-                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderPrefix);
-                    dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
+                    dtoRequest["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderPrefix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix != null)
+                if (dtoRequestplaceholderSuffix != null)
                 {
-                    dtoRequestV5110InsertMultipleTextSectionsToWord["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5110InsertMultipleTextSectionsToWordplaceholderSuffix);
-                    dtoRequestV5110InsertMultipleTextSectionsToWordpropCount++;
+                    dtoRequest["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderSuffix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5110InsertMultipleTextSectionsToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5110InsertMultipleTextSectionsToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5110InsertMultipleTextSectionsToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5111InsertMultipleTextSectionsToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5091InsertTableToWord> InsertTableToWord([WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderName = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderTable = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordtableStyle = null, [WorkflowExpression] Func<bool> dtoRequestV5091InsertTableToWordshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5091InsertTableToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord> InsertTableToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestplaceholderName = null, [WorkflowExpression] Func<string> dtoRequestplaceholderTable = null, [WorkflowExpression] Func<string> dtoRequesttableStyle = null, [WorkflowExpression] Func<bool> dtoRequestshowHeaders = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordexistingFileContent, nameof(dtoRequestV5091InsertTableToWordexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderName, nameof(dtoRequestV5091InsertTableToWordplaceholderName), required: false);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderTable, nameof(dtoRequestV5091InsertTableToWordplaceholderTable), required: false);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordtableStyle, nameof(dtoRequestV5091InsertTableToWordtableStyle), required: false);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordshowHeaders, nameof(dtoRequestV5091InsertTableToWordshowHeaders), required: false);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderPrefix, nameof(dtoRequestV5091InsertTableToWordplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV5091InsertTableToWordplaceholderSuffix, nameof(dtoRequestV5091InsertTableToWordplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderTable, nameof(dtoRequestplaceholderTable), required: false);
+            SourceExpression.Validate(dtoRequesttableStyle, nameof(dtoRequesttableStyle), required: false);
+            SourceExpression.Validate(dtoRequestshowHeaders, nameof(dtoRequestshowHeaders), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5091_InsertTableToWord";
+                var apiCallPath = "/V5092_InsertTableToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5091InsertTableToWord = new JObject();
-                var dtoRequestV5091InsertTableToWordpropCount = 0;
-                dtoRequestV5091InsertTableToWordpropCount++;
-                dtoRequestV5091InsertTableToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordexistingFileContent);
-                if (dtoRequestV5091InsertTableToWordplaceholderName != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                if (dtoRequestplaceholderName != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderName);
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderName);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderTable != null)
+                if (dtoRequestplaceholderTable != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderTable"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderTable);
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["placeholderTable"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderTable);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordtableStyle != null)
+                if (dtoRequesttableStyle != null)
                 {
-                    if (dtoRequestV5091InsertTableToWordtableStyle != null)
+                    if (dtoRequesttableStyle != null)
                     {
-                        dtoRequestV5091InsertTableToWord["tableStyle"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordtableStyle);
-                        dtoRequestV5091InsertTableToWordpropCount++;
+                        dtoRequest["tableStyle"] = SourceExpressionConverter.ConvertToken(dtoRequesttableStyle);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV5091InsertTableToWord["tableStyle"] = "GridTable1Light";
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["tableStyle"] = "GridTable1Light";
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordshowHeaders != null)
+                if (dtoRequestshowHeaders != null)
                 {
-                    if (dtoRequestV5091InsertTableToWordshowHeaders != null)
+                    if (dtoRequestshowHeaders != null)
                     {
-                        dtoRequestV5091InsertTableToWord["hasHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordshowHeaders);
-                        dtoRequestV5091InsertTableToWordpropCount++;
+                        dtoRequest["hasHeader"] = SourceExpressionConverter.ConvertToken(dtoRequestshowHeaders);
+                        dtoRequestpropCount++;
                     }
 
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequestpropCount++;
                 }
                 else
                 {
-                    dtoRequestV5091InsertTableToWord["hasHeader"] = true;
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["hasHeader"] = true;
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderPrefix != null)
+                if (dtoRequestplaceholderPrefix != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderPrefix);
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderPrefix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordplaceholderSuffix != null)
+                if (dtoRequestplaceholderSuffix != null)
                 {
-                    dtoRequestV5091InsertTableToWord["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5091InsertTableToWordplaceholderSuffix);
-                    dtoRequestV5091InsertTableToWordpropCount++;
+                    dtoRequest["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderSuffix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5091InsertTableToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5091InsertTableToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5091InsertTableToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5092InsertTableToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2575,76 +3619,189 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5071InsertTextToWord> InsertTextToWord([WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderName, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestV5071InsertTextToWordplaceholderSuffix = null)
+        public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord> InsertTextToWord([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestplaceholderName, [WorkflowExpression] Func<string> dtoRequestplaceholderText = null, [WorkflowExpression] Func<string> dtoRequestplaceholderPrefix = null, [WorkflowExpression] Func<string> dtoRequestplaceholderSuffix = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5071InsertTextToWordexistingFileContent, nameof(dtoRequestV5071InsertTextToWordexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderName, nameof(dtoRequestV5071InsertTextToWordplaceholderName), required: true);
-            SourceExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderText, nameof(dtoRequestV5071InsertTextToWordplaceholderText), required: false);
-            SourceExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderPrefix, nameof(dtoRequestV5071InsertTextToWordplaceholderPrefix), required: false);
-            SourceExpression.Validate(dtoRequestV5071InsertTextToWordplaceholderSuffix, nameof(dtoRequestV5071InsertTextToWordplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestplaceholderName, nameof(dtoRequestplaceholderName), required: true);
+            SourceExpression.Validate(dtoRequestplaceholderText, nameof(dtoRequestplaceholderText), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderPrefix, nameof(dtoRequestplaceholderPrefix), required: false);
+            SourceExpression.Validate(dtoRequestplaceholderSuffix, nameof(dtoRequestplaceholderSuffix), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5071_InsertTextToWord";
+                var apiCallPath = "/V5072_InsertTextToWord";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5071InsertTextToWord = new JObject();
-                var dtoRequestV5071InsertTextToWordpropCount = 0;
-                dtoRequestV5071InsertTextToWordpropCount++;
-                dtoRequestV5071InsertTextToWord["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordexistingFileContent);
-                dtoRequestV5071InsertTextToWordpropCount++;
-                dtoRequestV5071InsertTextToWord["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderName);
-                if (dtoRequestV5071InsertTextToWordplaceholderText != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["existingFileContent"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                dtoRequestpropCount++;
+                dtoRequest["placeholderName"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderName);
+                if (dtoRequestplaceholderText != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderText"] = SourceExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderText);
-                    dtoRequestV5071InsertTextToWordpropCount++;
+                    dtoRequest["placeholderText"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderText);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5071InsertTextToWordplaceholderPrefix != null)
+                if (dtoRequestplaceholderPrefix != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderPrefix);
-                    dtoRequestV5071InsertTextToWordpropCount++;
+                    dtoRequest["placeholderPrefix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderPrefix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5071InsertTextToWordplaceholderSuffix != null)
+                if (dtoRequestplaceholderSuffix != null)
                 {
-                    dtoRequestV5071InsertTextToWord["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestV5071InsertTextToWordplaceholderSuffix);
-                    dtoRequestV5071InsertTextToWordpropCount++;
+                    dtoRequest["placeholderSuffix"] = SourceExpressionConverter.ConvertToken(dtoRequestplaceholderSuffix);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5071InsertTextToWordpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5071InsertTextToWord;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5071InsertTextToWord>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5072InsertTextToWord>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4021MergePdfs> MergePdfs([WorkflowExpression] Func<string> dtoRequestV4021MergePdfsfile1, [WorkflowExpression] Func<string> dtoRequestV4021MergePdfsfile2)
+        public IBodyWorkflowAction<DtoResponseV4120MergeMultiplePdfs> MergeMultiplePdfs([WorkflowExpression] Func<PdfMergeItem[]> dtoRequestpDF, [WorkflowExpression] Func<bool> dtoRequestaddPageNumbers = null, [WorkflowExpression] Func<int> dtoRequestpageNumberFormat = null, [WorkflowExpression] Func<int> dtoRequestpageNumberPosition = null, [WorkflowExpression] Func<bool> dtoRequestaddBookmarks = null, [WorkflowExpression] Func<string> dtoRequestpDFTitle = null, [WorkflowExpression] Func<string> dtoRequestpDFAuthor = null, [WorkflowExpression] Func<string> dtoRequestpDFFileName = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV4021MergePdfsfile1, nameof(dtoRequestV4021MergePdfsfile1), required: true);
-            SourceExpression.Validate(dtoRequestV4021MergePdfsfile2, nameof(dtoRequestV4021MergePdfsfile2), required: true);
+            SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
+            SourceExpression.Validate(dtoRequestaddPageNumbers, nameof(dtoRequestaddPageNumbers), required: false);
+            SourceExpression.Validate(dtoRequestpageNumberFormat, nameof(dtoRequestpageNumberFormat), required: false);
+            SourceExpression.Validate(dtoRequestpageNumberPosition, nameof(dtoRequestpageNumberPosition), required: false);
+            SourceExpression.Validate(dtoRequestaddBookmarks, nameof(dtoRequestaddBookmarks), required: false);
+            SourceExpression.Validate(dtoRequestpDFTitle, nameof(dtoRequestpDFTitle), required: false);
+            SourceExpression.Validate(dtoRequestpDFAuthor, nameof(dtoRequestpDFAuthor), required: false);
+            SourceExpression.Validate(dtoRequestpDFFileName, nameof(dtoRequestpDFFileName), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4021_MergePdfs";
+                var apiCallPath = "/V4120_MergeMultiplePdfs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4021MergePdfs = new JObject();
-                var dtoRequestV4021MergePdfspropCount = 0;
-                dtoRequestV4021MergePdfspropCount++;
-                dtoRequestV4021MergePdfs["file1"] = SourceExpressionConverter.ConvertToken(dtoRequestV4021MergePdfsfile1);
-                dtoRequestV4021MergePdfspropCount++;
-                dtoRequestV4021MergePdfs["file2"] = SourceExpressionConverter.ConvertToken(dtoRequestV4021MergePdfsfile2);
-                if (dtoRequestV4021MergePdfspropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["pdfFiles"] = SourceExpressionConverter.ConvertToken(dtoRequestpDF);
+                if (dtoRequestaddPageNumbers != null)
                 {
-                    callPayload.Body = dtoRequestV4021MergePdfs;
+                    if (dtoRequestaddPageNumbers != null)
+                    {
+                        dtoRequest["addPageNumbers"] = SourceExpressionConverter.ConvertToken(dtoRequestaddPageNumbers);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["addPageNumbers"] = false;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpageNumberFormat != null)
+                {
+                    dtoRequest["pageNumberFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestpageNumberFormat);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpageNumberPosition != null)
+                {
+                    dtoRequest["pageNumberPosition"] = SourceExpressionConverter.ConvertToken(dtoRequestpageNumberPosition);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestaddBookmarks != null)
+                {
+                    if (dtoRequestaddBookmarks != null)
+                    {
+                        dtoRequest["addBookmarks"] = SourceExpressionConverter.ConvertToken(dtoRequestaddBookmarks);
+                        dtoRequestpropCount++;
+                    }
+
+                    dtoRequestpropCount++;
+                }
+                else
+                {
+                    dtoRequest["addBookmarks"] = false;
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpDFTitle != null)
+                {
+                    dtoRequest["pdfTitle"] = SourceExpressionConverter.ConvertToken(dtoRequestpDFTitle);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpDFAuthor != null)
+                {
+                    dtoRequest["pdfAuthor"] = SourceExpressionConverter.ConvertToken(dtoRequestpDFAuthor);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpDFFileName != null)
+                {
+                    dtoRequest["fileName"] = SourceExpressionConverter.ConvertToken(dtoRequestpDFFileName);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4021MergePdfs>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4120MergeMultiplePdfs>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
+        public IBodyWorkflowAction<DtoResponseV4022MergePdfs> MergePdfs([WorkflowExpression] Func<string> dtoRequestfile1, [WorkflowExpression] Func<string> dtoRequestfile2, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
+        {
+            SourceExpression.Validate(dtoRequestfile1, nameof(dtoRequestfile1), required: true);
+            SourceExpression.Validate(dtoRequestfile2, nameof(dtoRequestfile2), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/V4022_MergePdfs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file1"] = SourceExpressionConverter.ConvertToken(dtoRequestfile1);
+                dtoRequestpropCount++;
+                dtoRequest["file2"] = SourceExpressionConverter.ConvertToken(dtoRequestfile2);
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DtoResponseV4022MergePdfs>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2674,9 +3831,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> PdfMetadata([WorkflowExpression] Func<string> dtoRequestV4031PdfMetadatafile)
+        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata> PdfMetadata([WorkflowExpression] Func<string> dtoRequestV4031PdfMetadataFile)
         {
-            SourceExpression.Validate(dtoRequestV4031PdfMetadatafile, nameof(dtoRequestV4031PdfMetadatafile), required: true);
+            SourceExpression.Validate(dtoRequestV4031PdfMetadataFile, nameof(dtoRequestV4031PdfMetadataFile), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/V4031_PdfMetadata";
@@ -2685,7 +3842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 var dtoRequestV4031PdfMetadata = new JObject();
                 var dtoRequestV4031PdfMetadatapropCount = 0;
                 dtoRequestV4031PdfMetadatapropCount++;
-                dtoRequestV4031PdfMetadata["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4031PdfMetadatafile);
+                dtoRequestV4031PdfMetadata["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4031PdfMetadataFile);
                 if (dtoRequestV4031PdfMetadatapropCount > 0)
                 {
                     callPayload.Body = dtoRequestV4031PdfMetadata;
@@ -2697,40 +3854,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4041ProtectPdf> ProtectPdf([WorkflowExpression] Func<string> dtoRequestV4041ProtectPdffile, [WorkflowExpression] Func<string> dtoRequestV4041ProtectPdfownerPassword = null, [WorkflowExpression] Func<string> dtoRequestV4041ProtectPdfuserPassword = null)
+        public IBodyWorkflowAction<DtoResponseV4042ProtectPdf> ProtectPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestownerPassword = null, [WorkflowExpression] Func<string> dtoRequestuserPassword = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV4041ProtectPdffile, nameof(dtoRequestV4041ProtectPdffile), required: true);
-            SourceExpression.Validate(dtoRequestV4041ProtectPdfownerPassword, nameof(dtoRequestV4041ProtectPdfownerPassword), required: false);
-            SourceExpression.Validate(dtoRequestV4041ProtectPdfuserPassword, nameof(dtoRequestV4041ProtectPdfuserPassword), required: false);
+            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
+            SourceExpression.Validate(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
+            SourceExpression.Validate(dtoRequestuserPassword, nameof(dtoRequestuserPassword), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4041_ProtectPdf";
+                var apiCallPath = "/V4042_ProtectPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4041ProtectPdf = new JObject();
-                var dtoRequestV4041ProtectPdfpropCount = 0;
-                dtoRequestV4041ProtectPdfpropCount++;
-                dtoRequestV4041ProtectPdf["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdffile);
-                if (dtoRequestV4041ProtectPdfownerPassword != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestFile);
+                if (dtoRequestownerPassword != null)
                 {
-                    dtoRequestV4041ProtectPdf["ownerPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdfownerPassword);
-                    dtoRequestV4041ProtectPdfpropCount++;
+                    dtoRequest["ownerPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestownerPassword);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4041ProtectPdfuserPassword != null)
+                if (dtoRequestuserPassword != null)
                 {
-                    dtoRequestV4041ProtectPdf["userPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestV4041ProtectPdfuserPassword);
-                    dtoRequestV4041ProtectPdfpropCount++;
+                    dtoRequest["userPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestuserPassword);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4041ProtectPdfpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV4041ProtectPdf;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4041ProtectPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4042ProtectPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2794,16 +3958,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4110RemovePagesFromPdf> RemovePagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<string> dtoRequestpages, [WorkflowExpression] Func<bool> dtoRequestinputIs1Based = null, [WorkflowExpression] Func<int> dtoRequestmode = null, [WorkflowExpression] Func<bool> dtoRequestfailIfPageOutOfRange = null)
+        public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf> RemovePagesFromPdf([WorkflowExpression] Func<string> dtoRequestpDF, [WorkflowExpression] Func<string> dtoRequestpages, [WorkflowExpression] Func<bool> dtoRequestinputIs1Based = null, [WorkflowExpression] Func<int> dtoRequestmode = null, [WorkflowExpression] Func<bool> dtoRequestfailIfPageOutOfRange = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
             SourceExpression.Validate(dtoRequestpDF, nameof(dtoRequestpDF), required: true);
             SourceExpression.Validate(dtoRequestpages, nameof(dtoRequestpages), required: true);
             SourceExpression.Validate(dtoRequestinputIs1Based, nameof(dtoRequestinputIs1Based), required: false);
             SourceExpression.Validate(dtoRequestmode, nameof(dtoRequestmode), required: false);
             SourceExpression.Validate(dtoRequestfailIfPageOutOfRange, nameof(dtoRequestfailIfPageOutOfRange), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4110_RemovePagesFromPdf";
+                var apiCallPath = "/V4111_RemovePagesFromPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var dtoRequest = new JObject();
@@ -2830,6 +3995,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                     dtoRequestpropCount++;
                 }
 
+                if (dtoRequestreduceResponseSize != null)
+                {
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
                 if (dtoRequestpropCount > 0)
                 {
                     callPayload.Body = dtoRequest;
@@ -2837,7 +4008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4110RemovePagesFromPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4111RemovePagesFromPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -2874,84 +4045,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3022ResizeImage> ResizeImage([WorkflowExpression] Func<string> dtoRequestV3022ResizeImageimageFile, [WorkflowExpression] Func<double> dtoRequestV3022ResizeImageimageWidth = null, [WorkflowExpression] Func<double> dtoRequestV3022ResizeImageimageHeight = null, [WorkflowExpression] Func<string> dtoRequestV3022ResizeImageresizeBy = null)
+        public IBodyWorkflowAction<DtoResponseV3023ResizeImage> ResizeImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<double> dtoRequestimageWidth = null, [WorkflowExpression] Func<double> dtoRequestimageHeight = null, [WorkflowExpression] Func<string> dtoRequestresizeBy = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3022ResizeImageimageFile, nameof(dtoRequestV3022ResizeImageimageFile), required: true);
-            SourceExpression.Validate(dtoRequestV3022ResizeImageimageWidth, nameof(dtoRequestV3022ResizeImageimageWidth), required: false);
-            SourceExpression.Validate(dtoRequestV3022ResizeImageimageHeight, nameof(dtoRequestV3022ResizeImageimageHeight), required: false);
-            SourceExpression.Validate(dtoRequestV3022ResizeImageresizeBy, nameof(dtoRequestV3022ResizeImageresizeBy), required: false);
+            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
+            SourceExpression.Validate(dtoRequestimageWidth, nameof(dtoRequestimageWidth), required: false);
+            SourceExpression.Validate(dtoRequestimageHeight, nameof(dtoRequestimageHeight), required: false);
+            SourceExpression.Validate(dtoRequestresizeBy, nameof(dtoRequestresizeBy), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3022_ResizeImage";
+                var apiCallPath = "/V3023_ResizeImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3022ResizeImage = new JObject();
-                var dtoRequestV3022ResizeImagepropCount = 0;
-                dtoRequestV3022ResizeImagepropCount++;
-                dtoRequestV3022ResizeImage["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageFile);
-                if (dtoRequestV3022ResizeImageimageWidth != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestimageFile);
+                if (dtoRequestimageWidth != null)
                 {
-                    dtoRequestV3022ResizeImage["width"] = SourceExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageWidth);
-                    dtoRequestV3022ResizeImagepropCount++;
+                    dtoRequest["width"] = SourceExpressionConverter.ConvertToken(dtoRequestimageWidth);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3022ResizeImageimageHeight != null)
+                if (dtoRequestimageHeight != null)
                 {
-                    dtoRequestV3022ResizeImage["height"] = SourceExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageimageHeight);
-                    dtoRequestV3022ResizeImagepropCount++;
+                    dtoRequest["height"] = SourceExpressionConverter.ConvertToken(dtoRequestimageHeight);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3022ResizeImageresizeBy != null)
+                if (dtoRequestresizeBy != null)
                 {
-                    dtoRequestV3022ResizeImage["resizeBy"] = SourceExpressionConverter.ConvertToken(dtoRequestV3022ResizeImageresizeBy);
-                    dtoRequestV3022ResizeImagepropCount++;
+                    dtoRequest["resizeBy"] = SourceExpressionConverter.ConvertToken(dtoRequestresizeBy);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3022ResizeImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3022ResizeImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3022ResizeImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3023ResizeImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3031RotateImage> RotateImage([WorkflowExpression] Func<string> dtoRequestV3031RotateImageimageFile, [WorkflowExpression] Func<double> dtoRequestV3031RotateImagerotate = null, [WorkflowExpression] Func<string> dtoRequestV3031RotateImageoutputFormat = null)
+        public IBodyWorkflowAction<DtoResponseV3032RotateImage> RotateImage([WorkflowExpression] Func<string> dtoRequestimageFile, [WorkflowExpression] Func<double> dtoRequestrotate = null, [WorkflowExpression] Func<string> dtoRequestoutputFormat = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV3031RotateImageimageFile, nameof(dtoRequestV3031RotateImageimageFile), required: true);
-            SourceExpression.Validate(dtoRequestV3031RotateImagerotate, nameof(dtoRequestV3031RotateImagerotate), required: false);
-            SourceExpression.Validate(dtoRequestV3031RotateImageoutputFormat, nameof(dtoRequestV3031RotateImageoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestimageFile, nameof(dtoRequestimageFile), required: true);
+            SourceExpression.Validate(dtoRequestrotate, nameof(dtoRequestrotate), required: false);
+            SourceExpression.Validate(dtoRequestoutputFormat, nameof(dtoRequestoutputFormat), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V3031_RotateImage";
+                var apiCallPath = "/V3032_RotateImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV3031RotateImage = new JObject();
-                var dtoRequestV3031RotateImagepropCount = 0;
-                dtoRequestV3031RotateImagepropCount++;
-                dtoRequestV3031RotateImage["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV3031RotateImageimageFile);
-                if (dtoRequestV3031RotateImagerotate != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestimageFile);
+                if (dtoRequestrotate != null)
                 {
-                    dtoRequestV3031RotateImage["rotate"] = SourceExpressionConverter.ConvertToken(dtoRequestV3031RotateImagerotate);
-                    dtoRequestV3031RotateImagepropCount++;
+                    dtoRequest["rotate"] = SourceExpressionConverter.ConvertToken(dtoRequestrotate);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3031RotateImageoutputFormat != null)
+                if (dtoRequestoutputFormat != null)
                 {
-                    dtoRequestV3031RotateImage["outFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestV3031RotateImageoutputFormat);
-                    dtoRequestV3031RotateImagepropCount++;
+                    dtoRequest["outFormat"] = SourceExpressionConverter.ConvertToken(dtoRequestoutputFormat);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV3031RotateImagepropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV3031RotateImage;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV3031RotateImage>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV3032RotateImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
@@ -3280,145 +4465,180 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4051UnProtectPdf> UnProtectPdf([WorkflowExpression] Func<string> dtoRequestV4051UnProtectPdffile, [WorkflowExpression] Func<string> dtoRequestV4051UnProtectPdfownerPassword = null, [WorkflowExpression] Func<bool> dtoRequestV4051UnProtectPdfremovePermissions = null)
+        public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf> UnProtectPdf([WorkflowExpression] Func<string> dtoRequestFile, [WorkflowExpression] Func<string> dtoRequestownerPassword = null, [WorkflowExpression] Func<bool> dtoRequestremovePermissions = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV4051UnProtectPdffile, nameof(dtoRequestV4051UnProtectPdffile), required: true);
-            SourceExpression.Validate(dtoRequestV4051UnProtectPdfownerPassword, nameof(dtoRequestV4051UnProtectPdfownerPassword), required: false);
-            SourceExpression.Validate(dtoRequestV4051UnProtectPdfremovePermissions, nameof(dtoRequestV4051UnProtectPdfremovePermissions), required: false);
+            SourceExpression.Validate(dtoRequestFile, nameof(dtoRequestFile), required: true);
+            SourceExpression.Validate(dtoRequestownerPassword, nameof(dtoRequestownerPassword), required: false);
+            SourceExpression.Validate(dtoRequestremovePermissions, nameof(dtoRequestremovePermissions), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V4051_UnProtectPdf";
+                var apiCallPath = "/V4052_UnProtectPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV4051UnProtectPdf = new JObject();
-                var dtoRequestV4051UnProtectPdfpropCount = 0;
-                dtoRequestV4051UnProtectPdfpropCount++;
-                dtoRequestV4051UnProtectPdf["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdffile);
-                if (dtoRequestV4051UnProtectPdfownerPassword != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestFile);
+                if (dtoRequestownerPassword != null)
                 {
-                    dtoRequestV4051UnProtectPdf["ownerPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdfownerPassword);
-                    dtoRequestV4051UnProtectPdfpropCount++;
+                    dtoRequest["ownerPassword"] = SourceExpressionConverter.ConvertToken(dtoRequestownerPassword);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4051UnProtectPdfremovePermissions != null)
+                if (dtoRequestremovePermissions != null)
                 {
-                    dtoRequestV4051UnProtectPdf["removePermissions"] = SourceExpressionConverter.ConvertToken(dtoRequestV4051UnProtectPdfremovePermissions);
-                    dtoRequestV4051UnProtectPdfpropCount++;
+                    dtoRequest["removePermissions"] = SourceExpressionConverter.ConvertToken(dtoRequestremovePermissions);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV4051UnProtectPdfpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV4051UnProtectPdf;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV4051UnProtectPdf>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV4052UnProtectPdf>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile> UpdateMultipleWordContentControls([WorkflowExpression] Func<string> dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, [WorkflowExpression] Func<ContentControl[]> dtoRequestV5150UpdateMultipleWordContentControlscontentControl)
+        public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls> UpdateMultipleWordContentControls([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<ContentControl[]> dtoRequestcontentControl, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent, nameof(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5150UpdateMultipleWordContentControlscontentControl, nameof(dtoRequestV5150UpdateMultipleWordContentControlscontentControl), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestcontentControl, nameof(dtoRequestcontentControl), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5150_UpdateMultipleWordContentControls";
+                var apiCallPath = "/V5151_UpdateMultipleWordContentControls";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5150UpdateMultipleWordContentControls = new JObject();
-                var dtoRequestV5150UpdateMultipleWordContentControlspropCount = 0;
-                dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-                dtoRequestV5150UpdateMultipleWordContentControls["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5150UpdateMultipleWordContentControlsexistingFileContent);
-                dtoRequestV5150UpdateMultipleWordContentControlspropCount++;
-                dtoRequestV5150UpdateMultipleWordContentControls["contentControls"] = SourceExpressionConverter.ConvertToken(dtoRequestV5150UpdateMultipleWordContentControlscontentControl);
-                if (dtoRequestV5150UpdateMultipleWordContentControlspropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                dtoRequestpropCount++;
+                dtoRequest["contentControls"] = SourceExpressionConverter.ConvertToken(dtoRequestcontentControl);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5150UpdateMultipleWordContentControls;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseFile>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5151UpdateMultipleWordContentControls>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile> UpdateWordContentControl([WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlexistingFileContent, [WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlname, [WorkflowExpression] Func<string> dtoRequestV5140UpdateWordContentControlvalue = null)
+        public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl> UpdateWordContentControl([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<string> dtoRequestname, [WorkflowExpression] Func<string> dtoRequestvalue = null, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5140UpdateWordContentControlexistingFileContent, nameof(dtoRequestV5140UpdateWordContentControlexistingFileContent), required: true);
-            SourceExpression.Validate(dtoRequestV5140UpdateWordContentControlname, nameof(dtoRequestV5140UpdateWordContentControlname), required: true);
-            SourceExpression.Validate(dtoRequestV5140UpdateWordContentControlvalue, nameof(dtoRequestV5140UpdateWordContentControlvalue), required: false);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestname, nameof(dtoRequestname), required: true);
+            SourceExpression.Validate(dtoRequestvalue, nameof(dtoRequestvalue), required: false);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5140_UpdateWordContentControl";
+                var apiCallPath = "/V5141_UpdateWordContentControl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5140UpdateWordContentControl = new JObject();
-                var dtoRequestV5140UpdateWordContentControlpropCount = 0;
-                dtoRequestV5140UpdateWordContentControlpropCount++;
-                dtoRequestV5140UpdateWordContentControl["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlexistingFileContent);
-                dtoRequestV5140UpdateWordContentControlpropCount++;
-                dtoRequestV5140UpdateWordContentControl["name"] = SourceExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlname);
-                if (dtoRequestV5140UpdateWordContentControlvalue != null)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                dtoRequestpropCount++;
+                dtoRequest["name"] = SourceExpressionConverter.ConvertToken(dtoRequestname);
+                if (dtoRequestvalue != null)
                 {
-                    dtoRequestV5140UpdateWordContentControl["value"] = SourceExpressionConverter.ConvertToken(dtoRequestV5140UpdateWordContentControlvalue);
-                    dtoRequestV5140UpdateWordContentControlpropCount++;
+                    dtoRequest["value"] = SourceExpressionConverter.ConvertToken(dtoRequestvalue);
+                    dtoRequestpropCount++;
                 }
 
-                if (dtoRequestV5140UpdateWordContentControlpropCount > 0)
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5140UpdateWordContentControl;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseFile>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5141UpdateWordContentControl>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5130UpdateWordTableOfContents> UpdateWordTableOfContents([WorkflowExpression] Func<string> dtoRequestV5130UpdateWordTableOfContentsexistingFileContent)
+        public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents> UpdateWordTableOfContents([WorkflowExpression] Func<string> dtoRequestexistingFileContent, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent, nameof(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestexistingFileContent, nameof(dtoRequestexistingFileContent), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V5130_UpdateWordTableOfContents";
+                var apiCallPath = "/V5131_UpdateWordTableOfContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV5130UpdateWordTableOfContents = new JObject();
-                var dtoRequestV5130UpdateWordTableOfContentspropCount = 0;
-                dtoRequestV5130UpdateWordTableOfContentspropCount++;
-                dtoRequestV5130UpdateWordTableOfContents["file"] = SourceExpressionConverter.ConvertToken(dtoRequestV5130UpdateWordTableOfContentsexistingFileContent);
-                if (dtoRequestV5130UpdateWordTableOfContentspropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["file"] = SourceExpressionConverter.ConvertToken(dtoRequestexistingFileContent);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV5130UpdateWordTableOfContents;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV5130UpdateWordTableOfContents>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV5131UpdateWordTableOfContents>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2031UrlToFile> UrlToFile([WorkflowExpression] Func<string> dtoRequestV2031UrlToFileuRL)
+        public IBodyWorkflowAction<DtoResponseV2032UrlToFile> UrlToFile([WorkflowExpression] Func<string> dtoRequestuRL, [WorkflowExpression] Func<int> dtoRequestreduceResponseSize = null)
         {
-            SourceExpression.Validate(dtoRequestV2031UrlToFileuRL, nameof(dtoRequestV2031UrlToFileuRL), required: true);
+            SourceExpression.Validate(dtoRequestuRL, nameof(dtoRequestuRL), required: true);
+            SourceExpression.Validate(dtoRequestreduceResponseSize, nameof(dtoRequestreduceResponseSize), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/V2031_UrlToFile";
+                var apiCallPath = "/V2032_UrlToFile";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var dtoRequestV2031UrlToFile = new JObject();
-                var dtoRequestV2031UrlToFilepropCount = 0;
-                dtoRequestV2031UrlToFilepropCount++;
-                dtoRequestV2031UrlToFile["url"] = SourceExpressionConverter.ConvertToken(dtoRequestV2031UrlToFileuRL);
-                if (dtoRequestV2031UrlToFilepropCount > 0)
+                var dtoRequest = new JObject();
+                var dtoRequestpropCount = 0;
+                dtoRequestpropCount++;
+                dtoRequest["url"] = SourceExpressionConverter.ConvertToken(dtoRequestuRL);
+                if (dtoRequestreduceResponseSize != null)
                 {
-                    callPayload.Body = dtoRequestV2031UrlToFile;
+                    dtoRequest["fileResponseMode"] = SourceExpressionConverter.ConvertToken(dtoRequestreduceResponseSize);
+                    dtoRequestpropCount++;
+                }
+
+                if (dtoRequestpropCount > 0)
+                {
+                    callPayload.Body = dtoRequest;
                 }
                 return callPayload;
             }
 
-            return new ApiConnectionAction<DtoResponseV2031UrlToFile>(BuildSourceInput);
+            return new ApiConnectionAction<DtoResponseV2032UrlToFile>(BuildSourceInput);
         }
     }
 
@@ -3426,7 +4646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     {
     }
 
-    public class DtoResponseV5101AddHtmlToWord
+    public class DtoResponseV5102AddHtmlToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3441,7 +4661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5031AddImageToWord
+    public class DtoResponseV5032AddImageToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3456,7 +4676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5042AddImageWithinTableToWord
+    public class DtoResponseV5043AddImageWithinTableToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3471,7 +4691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5052AddTableToWord
+    public class DtoResponseV5053AddTableToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3486,7 +4706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5061AddTextToWord
+    public class DtoResponseV5062AddTextToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3513,7 +4733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class DtoResponseV3041CompressImage
+    public class DtoResponseV3042CompressImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3528,7 +4748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV4080CompressPdf
+    public class DtoResponseV4081CompressPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3573,7 +4793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string ColorName { get; set; }
     }
 
-    public class DtoResponseV1033ConvertCsvToExcel
+    public class DtoResponseV1035ConvertCsvToExcel
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3586,6 +4806,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
+
+        [JsonProperty("detectedEncoding")]
+        public string DetectedEncoding { get; set; }
+
+        [JsonProperty("detectedDelimiter")]
+        public string DetectedDelimiter { get; set; }
     }
 
     public class DtoResponseHtml
@@ -3600,6 +4826,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
+    public class DtoResponseV1150ConvertCsvToMarkdown
+    {
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("characterCount")]
+        public int CharacterCount { get; set; }
+
+        [JsonProperty("estimatedTokens")]
+        public int EstimatedTokens { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
     public class DtoResponseV1100ConvertExcelToJson
     {
         [JsonProperty("json")]
@@ -3609,7 +4859,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONSchemaResponse { get; set; }
     }
 
-    public class DtoResponseV4013ConvertFileToPdf
+    public class DtoResponseV1140ConvertExcelToMarkdown
+    {
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("characterCount")]
+        public int CharacterCount { get; set; }
+
+        [JsonProperty("estimatedTokens")]
+        public int EstimatedTokens { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV4014ConvertFileToPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3633,7 +4907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] AllCSVTablesResponse { get; set; }
     }
 
-    public class DtoResponseV7080ConvertHtmlTableToExcel
+    public class DtoResponseV7082ConvertHtmlTableToExcel
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3646,18 +4920,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
+
+        [JsonProperty("notes")]
+        public string[] Notes { get; set; }
     }
 
-    public class DtoResponseV7012ConvertHtmlTableToJson
+    public class DtoResponseV7013ConvertHtmlTableToJson
     {
         [JsonProperty("firstTable")]
         public string FirstJSONTableResponse { get; set; }
 
         [JsonProperty("tables")]
         public string[] AllJSONTablesResponse { get; set; }
+
+        [JsonProperty("notes")]
+        public string[] Notes { get; set; }
     }
 
-    public class DtoResponseV7031ConvertHtmlToImage
+    public class DtoResponseV7032ConvertHtmlToImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3672,7 +4952,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV7022ConvertHtmlToPdf
+    public class DtoResponseV7090ConvertHtmlToMarkdown
+    {
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("characterCount")]
+        public int CharacterCount { get; set; }
+
+        [JsonProperty("estimatedTokens")]
+        public int EstimatedTokens { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV7023ConvertHtmlToPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3708,7 +5012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string CSVResponse { get; set; }
     }
 
-    public class DtoResponseV1063ConvertJsonToExcel
+    public class DtoResponseV1064ConvertJsonToExcel
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3741,7 +5045,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string YAMLResponse { get; set; }
     }
 
-    public class DtoResponseV4070ConvertPdfToPdfA
+    public class DtoResponseV1110ConvertMultiCsvToExcel
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class CsvSheetItem
+    {
+        [JsonProperty("csv")]
+        public string CSV { get; set; }
+
+        [JsonProperty("sheetName")]
+        public string Name { get; set; }
+    }
+
+    public class DtoResponseV4130ConvertPdfToMarkdown
+    {
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("characterCount")]
+        public int CharacterCount { get; set; }
+
+        [JsonProperty("estimatedTokens")]
+        public int EstimatedTokens { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV4071ConvertPdfToPdfA
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3777,13 +5132,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string HTMLResponse { get; set; }
     }
 
-    public class DtoResponseV1052ConvertXmlToJson
+    public class DtoResponseV5170ConvertWordToMarkdown
+    {
+        [JsonProperty("markdown")]
+        public string Markdown { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("characterCount")]
+        public int CharacterCount { get; set; }
+
+        [JsonProperty("estimatedTokens")]
+        public int EstimatedTokens { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV1130ConvertXmlToCsv
+    {
+        [JsonProperty("csv")]
+        public string CSV { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV1120ConvertXmlToExcel
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class DtoResponseV1053ConvertXmlToJson
     {
         [JsonProperty("json")]
         public string JSONResponse { get; set; }
     }
 
-    public class DtoResponseV8010ConvertXRechnungToPdf
+    public class DtoResponseV8011ConvertXRechnungToPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3804,7 +5219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class DtoResponseV3091CreateChartImage
+    public class DtoResponseV3092CreateChartImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3819,7 +5234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV3062CreateCode
+    public class DtoResponseV3063CreateCode
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3834,7 +5249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV3111CreateGraphImage
+    public class DtoResponseV3112CreateGraphImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3849,7 +5264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV3101CreateTableImage
+    public class DtoResponseV3102CreateTableImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3864,7 +5279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV3081CreateWatermarkImage
+    public class DtoResponseV3082CreateWatermarkImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3879,7 +5294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5011CreateWordFile
+    public class DtoResponseV5012CreateWordFile
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3951,7 +5366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Path { get; set; }
     }
 
-    public class DtoResponseV4060ExtractPdfPages
+    public class DtoResponseV4061ExtractPdfPages
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -3964,6 +5379,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
+    }
+
+    public class DtoResponseV4160ExtractPdfTablesToCsv
+    {
+        [JsonProperty("firstTable")]
+        public string FirstTable { get; set; }
+
+        [JsonProperty("tables")]
+        public string[] Tables { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+
+        [JsonProperty("tableCount")]
+        public int TableCount { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class DtoResponseV4150ExtractPdfTablesToExcel
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string Base64String { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+
+        [JsonProperty("tableCount")]
+        public int TableCount { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class DtoResponseV4170ExtractPdfTablesToHtml
+    {
+        [JsonProperty("html")]
+        public string HTML { get; set; }
+
+        [JsonProperty("firstTable")]
+        public string FirstTable { get; set; }
+
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+
+        [JsonProperty("tableCount")]
+        public int TableCount { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+    }
+
+    public class DtoResponseV4140ExtractPdfTablesToJson
+    {
+        [JsonProperty("firstTable")]
+        public string FirstTable { get; set; }
+
+        [JsonProperty("tables")]
+        public string[] Tables { get; set; }
+
+        [JsonProperty("tableCount")]
+        public int TableCount { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
     }
 
     public class DtoResponseV2140ExtractTextAccordingToPattern
@@ -4119,7 +5627,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool HasXMPData { get; set; }
     }
 
-    public class DtoResponseV5110InsertMultipleTextSectionsToWord
+    public class DtoResponseV5082InsertImageToWord
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+    }
+
+    public class DtoResponseV5111InsertMultipleTextSectionsToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4143,7 +5666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Text { get; set; }
     }
 
-    public class DtoResponseV5091InsertTableToWord
+    public class DtoResponseV5092InsertTableToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4158,7 +5681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV5071InsertTextToWord
+    public class DtoResponseV5072InsertTextToWord
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4173,7 +5696,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV4021MergePdfs
+    public class DtoResponseV4120MergeMultiplePdfs
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+    }
+
+    public class PdfMergeItem
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+    }
+
+    public class DtoResponseV4022MergePdfs
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4230,7 +5777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Keywords { get; set; }
     }
 
-    public class DtoResponseV4041ProtectPdf
+    public class DtoResponseV4042ProtectPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4269,7 +5816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FirstMatchValue { get; set; }
     }
 
-    public class DtoResponseV4110RemovePagesFromPdf
+    public class DtoResponseV4111RemovePagesFromPdf
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4290,7 +5837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string ReplacedText { get; set; }
     }
 
-    public class DtoResponseV3022ResizeImage
+    public class DtoResponseV3023ResizeImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4305,7 +5852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV3031RotateImage
+    public class DtoResponseV3032RotateImage
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4359,7 +5906,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] TranslationsResponse { get; set; }
     }
 
-    public class DtoResponseV4051UnProtectPdf
+    public class DtoResponseV4052UnProtectPdf
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+    }
+
+    public class DtoResponseV5151UpdateMultipleWordContentControls
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4386,7 +5948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int SearchBy { get; set; }
     }
 
-    public class DtoResponseV5130UpdateWordTableOfContents
+    public class DtoResponseV5141UpdateWordContentControl
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }
@@ -4401,7 +5963,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class DtoResponseV2031UrlToFile
+    public class DtoResponseV5131UpdateWordTableOfContents
+    {
+        [JsonProperty("file")]
+        public string FileResponse { get; set; }
+
+        [JsonProperty("fileString")]
+        public string FileResponseAsString { get; set; }
+
+        [JsonProperty("mimeType")]
+        public string MIMEType { get; set; }
+
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
+    }
+
+    public class DtoResponseV2032UrlToFile
     {
         [JsonProperty("file")]
         public string FileResponse { get; set; }

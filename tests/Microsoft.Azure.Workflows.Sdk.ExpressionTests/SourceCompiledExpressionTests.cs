@@ -68,7 +68,7 @@ public sealed class SourceCompiledExpressionTests
     public void Managed_trigger_interpolation_remains_one_native_expression()
     {
         var trigger = WorkflowTriggers.Managed.Azurequeues("connection")
-            .OnMessages(storageAccountName: () => "account", queueName: () => "queue");
+            .OnMessagesV2(storageAccountName: () => "account", queueName: () => "queue");
         var action = WorkflowActions.BuiltIn.Compose(inputs: () => $"Message: {trigger.TriggerBody}");
 
         var expression = Native(action);

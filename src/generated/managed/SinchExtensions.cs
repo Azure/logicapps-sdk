@@ -80,13 +80,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         {
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/v1/int-crm/integrations/account/sender-id";
+                var apiCallPath = "/v1/int-power-automate/v1/int-crm/integrations/account/sender-id";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
             }
 
             return new ApiConnectionAction<GetSenderIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
+        public IBodyWorkflowAction<SendMmsResponse> SendMms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodymedia = null, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
+        {
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodymedia, nameof(bodymedia), required: false);
+            SourceExpression.Validate(bodysourceNumber, nameof(bodysourceNumber), required: false);
+            SourceExpression.Validate(bodymetadata, nameof(bodymetadata), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/int-power-automate/send-mms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodymedia != null)
+                {
+                    body["media"] = SourceExpressionConverter.ConvertToken(bodymedia);
+                    bodypropCount++;
+                }
+
+                if (bodysourceNumber != null)
+                {
+                    body["source_number"] = SourceExpressionConverter.ConvertToken(bodysourceNumber);
+                    bodypropCount++;
+                }
+
+                if (bodymetadata != null)
+                {
+                    body["metadata"] = SourceExpressionConverter.ConvertToken(bodymetadata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendMmsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
@@ -110,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             SourceExpression.Validate(body, nameof(body), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/v2/int-power-automate/message";
+                var apiCallPath = "/v1/int-power-automate/send-message-v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(body);
@@ -148,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
                     bodypropCount++;
                 }
 
-                body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end\"message_id\": \"$messageId\",\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
+                body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end#if($messageId)\"message_id\": \"$messageId\",#end\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -328,6 +375,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
         [JsonProperty("number_id")]
         public string NumberId { get; set; }
 
@@ -339,6 +389,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
         [JsonProperty("number_status")]
         public string NumberStatus { get; set; }
+    }
+
+    public class SendMmsResponse
+    {
+        [JsonProperty("messages")]
+        public SendMmsResponseMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItem
+    {
+        [JsonProperty("callback_url")]
+        public string CallbackUrl { get; set; }
+
+        [JsonProperty("delivery_report")]
+        public bool DeliveryReport { get; set; }
+
+        [JsonProperty("destination_number")]
+        public string DestinationNumber { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("message_expiry_timestamp")]
+        public string MessageExpiryTimestamp { get; set; }
+
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("metadata")]
+        public SendMmsResponseMessagesTypeItemMetadataType Metadata { get; set; }
+
+        [JsonProperty("scheduled")]
+        public string Scheduled { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("source_number")]
+        public string SourceNumber { get; set; }
+
+        [JsonProperty("media")]
+        public string[] Media { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItemMetadataType
+    {
+        public string Source { get; set; }
     }
 
     public class Message

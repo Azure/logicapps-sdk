@@ -28,21 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<BarcodeScanResult> BarcodeScanImage([WorkflowExpression] Func<object> imageFile)
-        {
-            SourceExpression.Validate(imageFile, nameof(imageFile), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/barcode/scan/image";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<BarcodeScanResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
         public IBodyWorkflowAction<string> GenerateBarcodeQRCode([WorkflowExpression] Func<string> value = null)
         {
             SourceExpression.Validate(value, nameof(value), required: false);
@@ -137,13 +122,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
     {
         public string EAN { get; set; }
         public string Title { get; set; }
-    }
-
-    public class BarcodeScanResult
-    {
-        public bool Successful { get; set; }
-        public string BarcodeType { get; set; }
-        public string RawText { get; set; }
     }
 }
 

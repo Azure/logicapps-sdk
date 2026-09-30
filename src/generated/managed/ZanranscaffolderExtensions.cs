@@ -12,39 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
     public class ZanranscaffolderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> UploadDocument([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<int> startPage = null, [WorkflowExpression] Func<int> endPage = null, [WorkflowExpression] Func<string> coords = null)
-        {
-            SourceExpression.Validate(file, nameof(file), required: true);
-            SourceExpression.Validate(startPage, nameof(startPage), required: false);
-            SourceExpression.Validate(endPage, nameof(endPage), required: false);
-            SourceExpression.Validate(coords, nameof(coords), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/Upload/UploadFile";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> GetStatus([WorkflowExpression] Func<string> docname)
-        {
-            SourceExpression.Validate(docname, nameof(docname), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/api/DocSearch/GetStatus";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<string>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression] Func<string> docname)
         {
             SourceExpression.Validate(docname, nameof(docname), required: true);

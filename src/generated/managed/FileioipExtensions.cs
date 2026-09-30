@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse> FileUpload([WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUploadResponse> FileUpload([WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
             SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
             SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfile != null)
+                if (bodyFile != null)
                 {
-                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                     bodypropCount++;
                 }
 
@@ -86,10 +86,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyFile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
             SourceExpression.Validate(key, nameof(key), required: true);
-            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyFile, nameof(bodyFile), required: false);
             SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
             SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
             SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyfile != null)
+                if (bodyFile != null)
                 {
-                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyFile);
                     bodypropCount++;
                 }
 

@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dropbox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
                 callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
                 callPayload.Body = SourceExpressionConverter.ConvertToken(body);
                 return callPayload;
             }

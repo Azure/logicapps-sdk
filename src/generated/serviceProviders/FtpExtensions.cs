@@ -245,27 +245,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         }
     }
 
-    public class WhenFtpFilesAreAddedOrModifiedOutputItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("size")]
-        public int Size { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public string LastUpdatedTime { get; set; }
-
-        [JsonProperty("mediaType")]
-        public string MediaType { get; set; }
-
-        [JsonProperty("isFolder")]
-        public bool IsFolder { get; set; }
-    }
-
     public class GetFileMetadataOutput
     {
         [JsonProperty("name")]
@@ -377,6 +356,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         Fail,
         Skip,
         Overwrite
+    }
+
+    public class WhenFtpFilesAreAddedOrModifiedOutputItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("lastUpdatedTime")]
+        public string LastUpdatedTime { get; set; }
+
+        [JsonProperty("mediaType")]
+        public string MediaType { get; set; }
+
+        [JsonProperty("isFolder")]
+        public bool IsFolder { get; set; }
     }
 }
 

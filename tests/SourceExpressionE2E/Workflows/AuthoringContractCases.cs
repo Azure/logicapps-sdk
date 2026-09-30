@@ -108,7 +108,7 @@ public static class AuthoringContractCases
     public static FlowDefinition ManagedTriggerBodyContract()
     {
         var managedTrigger = WorkflowTriggers.Managed.Azurequeues("connection")
-            .OnMessages(storageAccountName: () => "account", queueName: () => "queue");
+            .OnMessagesV2(storageAccountName: () => "account", queueName: () => "queue");
         var action = WorkflowActions.BuiltIn.Compose<object>(() => managedTrigger.TriggerBody);
         Require((string?)Inputs(action) == "#{triggerBody()}",
             "AUTHORING-contract: managed trigger body is not a JSON-native C# reference.");

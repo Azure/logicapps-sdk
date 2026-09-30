@@ -12,24 +12,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public class DqondemandActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsage> UsageGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
-        {
-            SourceExpression.Validate(startDate, nameof(startDate), required: true);
-            SourceExpression.Validate(endDate, nameof(endDate), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = "/Account/Usage";
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["StartDate"] = SourceExpressionConverter.ConvertO(startDate);
-                callPayload.Queries["EndDate"] = SourceExpressionConverter.ConvertO(endDate);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<GetUsage>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GetPricesOutput> PricingGet()
         {
             ApiConnectionActionInput BuildSourceInput()
@@ -1577,55 +1559,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
             return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        public IBodyWorkflowAction<GetUsageV2> UsageGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<summariseByInput> summariseBy = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: true);
+            SourceExpression.Validate(summariseBy, nameof(summariseBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Account/Usage/v2.0";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StartDate"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["EndDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (summariseBy != null)
+                    callPayload.Queries["SummariseBy"] = SourceExpressionConverter.Convert(summariseBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUsageV2>(BuildSourceInput);
+        }
     }
 
     public class DqondemandTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class GetUsage
-    {
-        [JsonProperty("status")]
-        public int Status { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("data")]
-        public GetUsageDataType Data { get; set; }
-    }
-
-    public class GetUsageDataType
-    {
-        public GetUsageDataTypeFilterCriteriaType FilterCriteria { get; set; }
-        public GetUsageDataTypeResultsTypeItem[] Results { get; set; }
-    }
-
-    public class GetUsageDataTypeFilterCriteriaType
-    {
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("endDate")]
-        public string EndDate { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItem
-    {
-        [JsonProperty("providerName")]
-        public string ProviderName { get; set; }
-
-        [JsonProperty("usage")]
-        public GetUsageDataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItemUsageTypeItem
-    {
-        [JsonProperty("functionName")]
-        public string FunctionName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
     }
 
     public class GetPricesOutput
@@ -3044,6 +3002,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     {
         Start,
         End
+    }
+
+    public class GetUsageV2
+    {
+        [JsonProperty("status")]
+        public int Status { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("data")]
+        public GetUsageV2DataType Data { get; set; }
+    }
+
+    public class GetUsageV2DataType
+    {
+        public GetUsageV2DataTypeFilterCriteriaType FilterCriteria { get; set; }
+        public GetUsageV2DataTypeResultsTypeItem[] Results { get; set; }
+        public GetUsageV2DataTypeSummaryTypeItem[] Summary { get; set; }
+    }
+
+    public class GetUsageV2DataTypeFilterCriteriaType
+    {
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItem
+    {
+        [JsonProperty("providerName")]
+        public string ProviderName { get; set; }
+
+        [JsonProperty("usage")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItem
+    {
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItem
+    {
+        [JsonProperty("periodStart")]
+        public string PeriodStart { get; set; }
+
+        [JsonProperty("periodEnd")]
+        public string PeriodEnd { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    public enum summariseByInput
+    {
+        Day,
+        Month,
+        Year,
+        Quarter
     }
 }
 

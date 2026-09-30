@@ -40,6 +40,234 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<UserListResponse[]> UserGetAll()
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/u";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserListResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<UserResponse> User([WorkflowExpression] Func<string> requestemail, [WorkflowExpression] Func<string> requestfirstName, [WorkflowExpression] Func<string> requestlastName, [WorkflowExpression] Func<bool> requestisAdmin, [WorkflowExpression] Func<bool> requestisReadOnly, [WorkflowExpression] Func<bool> requestisDocumentController, [WorkflowExpression] Func<bool> requestisFolderController, [WorkflowExpression] Func<bool> requestisManagerial, [WorkflowExpression] Func<string> requestcompany = null, [WorkflowExpression] Func<string> requestposition = null, [WorkflowExpression] Func<string> requestphone = null)
+        {
+            SourceExpression.Validate(requestemail, nameof(requestemail), required: true);
+            SourceExpression.Validate(requestfirstName, nameof(requestfirstName), required: true);
+            SourceExpression.Validate(requestlastName, nameof(requestlastName), required: true);
+            SourceExpression.Validate(requestisAdmin, nameof(requestisAdmin), required: true);
+            SourceExpression.Validate(requestisReadOnly, nameof(requestisReadOnly), required: true);
+            SourceExpression.Validate(requestisDocumentController, nameof(requestisDocumentController), required: true);
+            SourceExpression.Validate(requestisFolderController, nameof(requestisFolderController), required: true);
+            SourceExpression.Validate(requestisManagerial, nameof(requestisManagerial), required: true);
+            SourceExpression.Validate(requestcompany, nameof(requestcompany), required: false);
+            SourceExpression.Validate(requestposition, nameof(requestposition), required: false);
+            SourceExpression.Validate(requestphone, nameof(requestphone), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/u";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["Email"] = SourceExpressionConverter.ConvertToken(requestemail);
+                requestpropCount++;
+                request["FirstName"] = SourceExpressionConverter.ConvertToken(requestfirstName);
+                requestpropCount++;
+                request["LastName"] = SourceExpressionConverter.ConvertToken(requestlastName);
+                if (requestcompany != null)
+                {
+                    request["Company"] = SourceExpressionConverter.ConvertToken(requestcompany);
+                    requestpropCount++;
+                }
+
+                if (requestposition != null)
+                {
+                    request["Position"] = SourceExpressionConverter.ConvertToken(requestposition);
+                    requestpropCount++;
+                }
+
+                if (requestphone != null)
+                {
+                    request["Phone"] = SourceExpressionConverter.ConvertToken(requestphone);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+                request["IsAdmin"] = SourceExpressionConverter.ConvertToken(requestisAdmin);
+                requestpropCount++;
+                request["IsReadOnly"] = SourceExpressionConverter.ConvertToken(requestisReadOnly);
+                requestpropCount++;
+                request["IsDocumentController"] = SourceExpressionConverter.ConvertToken(requestisDocumentController);
+                requestpropCount++;
+                request["IsFolderController"] = SourceExpressionConverter.ConvertToken(requestisFolderController);
+                requestpropCount++;
+                request["IsManagerial"] = SourceExpressionConverter.ConvertToken(requestisManagerial);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<UserResponse> UserGet([WorkflowExpression] Func<string> userId)
+        {
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/u/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<UserResponse> UserPost2([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<bool> requestactive)
+        {
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(requestactive, nameof(requestactive), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/u/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["Active"] = SourceExpressionConverter.ConvertToken(requestactive);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataListResponse[]> MetadataGetAll()
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/m";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataListResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataResponse> MetadataGet([WorkflowExpression] Func<string> metadataId)
+        {
+            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataSwitchResponse[]> MetadataGetSwitches([WorkflowExpression] Func<string> metadataId)
+        {
+            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataSwitchResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataSwitchResponse> MetadataPostSwitch([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> requestlabel)
+        {
+            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
+            SourceExpression.Validate(requestlabel, nameof(requestlabel), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["Label"] = SourceExpressionConverter.ConvertToken(requestlabel);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataSwitchResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataSwitchResponse[]> MetadataPutSwitches([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<switchesInputItem[]> switches = null)
+        {
+            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
+            SourceExpression.Validate(switches, nameof(switches), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(switches);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataSwitchResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
+        public IBodyWorkflowAction<MetadataSwitchResponse> MetadataPutSwitch([WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> switchId, [WorkflowExpression] Func<string> requestlabel)
+        {
+            SourceExpression.Validate(metadataId, nameof(metadataId), required: true);
+            SourceExpression.Validate(switchId, nameof(switchId), required: true);
+            SourceExpression.Validate(requestlabel, nameof(requestlabel), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/m/{0}/switch/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(metadataId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(switchId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["Label"] = SourceExpressionConverter.ConvertToken(requestlabel);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MetadataSwitchResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<SearchResponse[]> SearchGet([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<int> take = null)
         {
             SourceExpression.Validate(query, nameof(query), required: true);
@@ -92,10 +320,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object> CasePrint([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyasynchronous = null, [WorkflowExpression] Func<bool> bodyuseCustom = null, [WorkflowExpression] Func<bodydisplayGalleryInput> bodydisplayGallery = null, [WorkflowExpression] Func<bodydisplayTextInput> bodydisplayText = null)
+        public IBodyWorkflowAction<object> CasePrint([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodyuseCustom = null, [WorkflowExpression] Func<bodydisplayGalleryInput> bodydisplayGallery = null, [WorkflowExpression] Func<bodydisplayTextInput> bodydisplayText = null)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(bodyasynchronous, nameof(bodyasynchronous), required: false);
             SourceExpression.Validate(bodyuseCustom, nameof(bodyuseCustom), required: false);
             SourceExpression.Validate(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
             SourceExpression.Validate(bodydisplayText, nameof(bodydisplayText), required: false);
@@ -106,12 +333,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyasynchronous != null)
-                {
-                    body["Asynchronous"] = SourceExpressionConverter.ConvertToken(bodyasynchronous);
-                    bodypropCount++;
-                }
-
                 if (bodyuseCustom != null)
                 {
                     body["UseCustom"] = SourceExpressionConverter.ConvertToken(bodyuseCustom);
@@ -141,22 +362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object> CasePrintGet([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> requestId)
-        {
-            SourceExpression.Validate(id, nameof(id), required: true);
-            SourceExpression.Validate(requestId, nameof(requestId), required: true);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
-                var apiCallHttpMethod = "get";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<object>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet([WorkflowExpression] Func<string> id)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
@@ -172,11 +377,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseReplyResponse> CaseReply([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> bodywithoutNotification, [WorkflowExpression] Func<string> bodymessage = null)
+        public IBodyWorkflowAction<CaseReplyResponse> CaseReply([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodywithoutNotification)
         {
             SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
             SourceExpression.Validate(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
-            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
@@ -184,12 +389,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodymessage != null)
-                {
-                    body["Message"] = SourceExpressionConverter.ConvertToken(bodymessage);
-                    bodypropCount++;
-                }
-
+                bodypropCount++;
+                body["Message"] = SourceExpressionConverter.ConvertToken(bodymessage);
                 bodypropCount++;
                 body["WithoutNotification"] = SourceExpressionConverter.ConvertToken(bodywithoutNotification);
                 if (bodypropCount > 0)
@@ -309,6 +510,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
+
+        public IWorkflowTrigger MetadataCreatedTrigger([WorkflowExpression] Func<string> requestmetadataId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(requestmetadataId, nameof(requestmetadataId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/mt/metadatacreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestmetadataId != null)
+                {
+                    request["MetadataId"] = SourceExpressionConverter.ConvertToken(requestmetadataId);
+                    requestpropCount++;
+                }
+
+                request["Notification"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IWorkflowTrigger MetadataUpdatedTrigger([WorkflowExpression] Func<string> requestmetadataId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(requestmetadataId, nameof(requestmetadataId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/mt/metadataupdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestmetadataId != null)
+                {
+                    request["MetadataId"] = SourceExpressionConverter.ConvertToken(requestmetadataId);
+                    requestpropCount++;
+                }
+
+                request["Notification"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
+        }
     }
 
     public class AccountResponse
@@ -328,12 +585,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Module { get; set; }
     }
 
+    public class UserListResponse
+    {
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public bool Active { get; set; }
+        public bool Pending { get; set; }
+        public bool SsoLogin { get; set; }
+        public string Company { get; set; }
+        public string Position { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public bool IsAdmin { get; set; }
+        public bool IsDocumentController { get; set; }
+        public bool IsFolderController { get; set; }
+        public bool IsManagerial { get; set; }
+        public bool IsReadOnly { get; set; }
+    }
+
+    public class UserResponse
+    {
+        public string Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public bool Active { get; set; }
+        public bool Pending { get; set; }
+        public bool SsoLogin { get; set; }
+        public string Company { get; set; }
+        public string Position { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public bool IsAdmin { get; set; }
+        public bool IsDocumentController { get; set; }
+        public bool IsFolderController { get; set; }
+        public bool IsManagerial { get; set; }
+        public bool IsReadOnly { get; set; }
+        public string ApplicationUrl { get; set; }
+    }
+
+    public class MetadataListResponse
+    {
+        public string MetadataId { get; set; }
+        public string Name { get; set; }
+        public string FieldType { get; set; }
+    }
+
+    public class MetadataResponse
+    {
+        public string MetadataId { get; set; }
+        public string Name { get; set; }
+        public string FieldType { get; set; }
+        public bool Active { get; set; }
+        public bool Analytics { get; set; }
+        public bool Register { get; set; }
+        public string ControlType { get; set; }
+        public MetadataSwitchResponse[] Switches { get; set; }
+        public string ApplicationLink { get; set; }
+    }
+
+    public class MetadataSwitchResponse
+    {
+        public string Id { get; set; }
+        public string Label { get; set; }
+    }
+
+    public class switchesInputItem
+    {
+        public string Id { get; set; }
+        public string Label { get; set; }
+    }
+
     public class SearchResponse
     {
         public string SearchType { get; set; }
         public string ItemId { get; set; }
         public string Text { get; set; }
         public string Link { get; set; }
+        public string ApplicationLink { get; set; }
     }
 
     public enum filterInput
@@ -351,13 +682,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Title { get; set; }
         public string CaseId { get; set; }
         public string Revision { get; set; }
-        public ProjectUserResponse CreatedBy { get; set; }
+        public CaseCreatedByUserResponse CreatedBy { get; set; }
         public string Status { get; set; }
         public string CreatedAtUtc { get; set; }
         public string CreatedAtLocal { get; set; }
+        public string ApplicationLink { get; set; }
     }
 
-    public class ProjectUserResponse
+    public class CaseCreatedByUserResponse
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -401,6 +733,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Message { get; set; }
         public ProjectUserResponse[] RecipientsTo { get; set; }
         public ProjectUserResponse[] RecipientsCc { get; set; }
+    }
+
+    public class ProjectUserResponse
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 
     public enum bodyscopeInput

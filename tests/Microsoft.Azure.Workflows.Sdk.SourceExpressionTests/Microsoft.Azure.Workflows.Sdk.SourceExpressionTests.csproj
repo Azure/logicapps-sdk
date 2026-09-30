@@ -16,6 +16,7 @@
     <Using Include="Xunit" />
     <ProjectReference Include="..\..\src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+    <ProjectReference Include="..\GeneratedConnectorParity\GeneratedConnectorParity.csproj" />
     <None Update="Fixtures\catalog-destinations.schema.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

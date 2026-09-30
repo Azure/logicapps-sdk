@@ -683,11 +683,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ReturnCalculationDetails([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName)
+        public IWorkflowAction ReturnCalculationDetails([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName, [WorkflowExpression] Func<bodyformatInput> bodyformat = null)
         {
             SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
             SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
             SourceExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
+            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/ReturnCalculationDetails";
@@ -699,6 +700,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["returnName"] = SourceExpressionConverter.ConvertToken(bodyreturnName);
+                if (bodyformat != null)
+                {
+                    if (bodyformat != null)
+                    {
+                        body["format"] = SourceExpressionConverter.Convert(bodyformat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["format"] = "JSON";
+                    bodypropCount++;
+                }
+
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -842,6 +859,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     {
         Xml,
         Pdf
+    }
+
+    public enum bodyformatInput
+    {
+        JSON,
+        CSV
     }
 }
 

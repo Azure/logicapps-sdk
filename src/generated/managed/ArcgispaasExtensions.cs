@@ -12,6 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken> FeatureLayerApplyEdits([WorkflowExpression] Func<string> appLayer, [WorkflowExpression] Func<object> data = null)
+        {
+            SourceExpression.Validate(appLayer, nameof(appLayer), required: true);
+            SourceExpression.Validate(data, nameof(data), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/featureLayer/applyEdits";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = SourceExpressionConverter.ConvertO(appLayer);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(data);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken> GetFeatureLayerInfo([WorkflowExpression] Func<string> appLayer)
+        {
+            SourceExpression.Validate(appLayer, nameof(appLayer), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/featureLayer/information";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = SourceExpressionConverter.ConvertO(appLayer);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
         public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null, [WorkflowExpression] Func<locationTypeInput> locationType = null)
         {
             SourceExpression.Validate(x, nameof(x), required: true);

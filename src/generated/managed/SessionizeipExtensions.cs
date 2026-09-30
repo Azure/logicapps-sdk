@@ -12,12 +12,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
     public class SessionizeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions([WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers([WorkflowExpression] Func<string> iD)
+        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers([WorkflowExpression] Func<string> id)
         {
-            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return callPayload;

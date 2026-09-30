@@ -701,57 +701,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         }
     }
 
-    public class WhenABlobIsAddedOrModifiedOutput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("containerInfo")]
-        public WhenABlobIsAddedOrModifiedOutputContainerInfoType ContainerInfo { get; set; }
-
-        [JsonProperty("properties")]
-        public WhenABlobIsAddedOrModifiedOutputPropertiesType Properties { get; set; }
-
-        [JsonProperty("metadata")]
-        public JToken Metadata { get; set; }
-    }
-
-    public class WhenABlobIsAddedOrModifiedOutputContainerInfoType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("properties")]
-        public string Properties { get; set; }
-    }
-
-    public class WhenABlobIsAddedOrModifiedOutputPropertiesType
-    {
-        [JsonProperty("creationTime")]
-        public string CreationTime { get; set; }
-
-        [JsonProperty("blobType")]
-        public string BlobType { get; set; }
-
-        [JsonProperty("blobFullPathWithContainer")]
-        public string BlobFullPathWithContainer { get; set; }
-
-        [JsonProperty("contentDisposition")]
-        public string ContentDisposition { get; set; }
-
-        [JsonProperty("contentMD5")]
-        public string ContentMD5 { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("contentLanguage")]
-        public string ContentLanguage { get; set; }
-
-        [JsonProperty("eTag")]
-        public string ETag { get; set; }
-    }
-
     public class BlobExistsOutput
     {
         [JsonProperty("isBlobExists")]
@@ -996,6 +945,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
     }
 
     public class ListBlobsFromUriOutput
@@ -1035,6 +987,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
     }
 
     public class ListBlobDirectoriesOutput
@@ -1395,6 +1350,57 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         Fail,
         Skip,
         Overwrite
+    }
+
+    public class WhenABlobIsAddedOrModifiedOutput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("containerInfo")]
+        public WhenABlobIsAddedOrModifiedOutputContainerInfoType ContainerInfo { get; set; }
+
+        [JsonProperty("properties")]
+        public WhenABlobIsAddedOrModifiedOutputPropertiesType Properties { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+    }
+
+    public class WhenABlobIsAddedOrModifiedOutputContainerInfoType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("properties")]
+        public string Properties { get; set; }
+    }
+
+    public class WhenABlobIsAddedOrModifiedOutputPropertiesType
+    {
+        [JsonProperty("creationTime")]
+        public string CreationTime { get; set; }
+
+        [JsonProperty("blobType")]
+        public string BlobType { get; set; }
+
+        [JsonProperty("blobFullPathWithContainer")]
+        public string BlobFullPathWithContainer { get; set; }
+
+        [JsonProperty("contentDisposition")]
+        public string ContentDisposition { get; set; }
+
+        [JsonProperty("contentMD5")]
+        public string ContentMD5 { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("contentLanguage")]
+        public string ContentLanguage { get; set; }
+
+        [JsonProperty("eTag")]
+        public string ETag { get; set; }
     }
 }
 

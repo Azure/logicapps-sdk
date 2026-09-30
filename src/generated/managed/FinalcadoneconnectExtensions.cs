@@ -78,10 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitResponse> Init([WorkflowExpression] Func<string> bodyorganizationID = null, [WorkflowExpression] Func<string> bodyprojectID = null)
+        public IBodyWorkflowAction<InitResponse> Init([WorkflowExpression] Func<string> bodyorganizationId = null, [WorkflowExpression] Func<string> bodyprojectId = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: false);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: false);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/init";
@@ -89,15 +89,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                if (bodyorganizationID != null)
+                if (bodyorganizationId != null)
                 {
-                    body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                    body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                     bodypropCount++;
                 }
 
-                if (bodyprojectID != null)
+                if (bodyprojectId != null)
                 {
-                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                     bodypropCount++;
                 }
 
@@ -114,10 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ThenObsCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsCreated([WorkflowExpression] Func<string> bodyorganizationId, [WorkflowExpression] Func<string> bodyprojectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/ev/201";
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -141,10 +141,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenObsUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsUpdated([WorkflowExpression] Func<string> bodyorganizationId, [WorkflowExpression] Func<string> bodyprojectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/ev/202";
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenFormCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormCreated([WorkflowExpression] Func<string> bodyorganizationId, [WorkflowExpression] Func<string> bodyprojectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/ev/301";
@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -195,10 +195,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenFormUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormUpdated([WorkflowExpression] Func<string> bodyorganizationId, [WorkflowExpression] Func<string> bodyprojectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/ev/302";
@@ -207,9 +207,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
@@ -222,10 +222,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenDocumentCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenDocumentCreated([WorkflowExpression] Func<string> bodyorganizationId, [WorkflowExpression] Func<string> bodyprojectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            SourceExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
-            SourceExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
+            SourceExpression.Validate(bodyorganizationId, nameof(bodyorganizationId), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/webhooks/ev/401";
@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
+                body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationId);
                 bodypropCount++;
-                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
+                body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
                 body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)

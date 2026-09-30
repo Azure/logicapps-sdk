@@ -41,6 +41,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<AdvisorChatMessageResponse> SendAdvisorChatMessage([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyconversationId = null)
+        {
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyconversationId, nameof(bodyconversationId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/analytics/advisor/chat/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodyconversationId != null)
+                {
+                    body["conversationId"] = SourceExpressionConverter.ConvertToken(bodyconversationId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AdvisorChatMessageResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> GetRecommendations([WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
@@ -162,6 +194,178 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<RoleAssignmentResponse> ListEnvironmentGroupRoleAssignments([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RoleAssignmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<RoleAssignmentResponse> CreateEnvironmentGroupRoleAssignment([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
+        {
+            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
+            SourceExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
+            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            SourceExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprincipalObjectId != null)
+                {
+                    body["principalObjectId"] = SourceExpressionConverter.ConvertToken(bodyprincipalObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodyroleDefinitionId != null)
+                {
+                    body["roleDefinitionId"] = SourceExpressionConverter.ConvertToken(bodyroleDefinitionId);
+                    bodypropCount++;
+                }
+
+                if (bodyscope != null)
+                {
+                    body["scope"] = SourceExpressionConverter.ConvertToken(bodyscope);
+                    bodypropCount++;
+                }
+
+                if (bodyprincipalType != null)
+                {
+                    body["principalType"] = SourceExpressionConverter.ConvertToken(bodyprincipalType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RoleAssignmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteEnvironmentGroupRoleAssignment([WorkflowExpression] Func<string> environmentGroupId, [WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentGroupId, nameof(environmentGroupId), required: true);
+            SourceExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environmentGroups/{0}/roleAssignments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleAssignmentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<RoleAssignmentResponse> ListEnvironmentRoleAssignments([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RoleAssignmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<RoleAssignmentResponse> CreateEnvironmentRoleAssignment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyprincipalObjectId = null, [WorkflowExpression] Func<string> bodyroleDefinitionId = null, [WorkflowExpression] Func<string> bodyscope = null, [WorkflowExpression] Func<string> bodyprincipalType = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
+            SourceExpression.Validate(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
+            SourceExpression.Validate(bodyscope, nameof(bodyscope), required: false);
+            SourceExpression.Validate(bodyprincipalType, nameof(bodyprincipalType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprincipalObjectId != null)
+                {
+                    body["principalObjectId"] = SourceExpressionConverter.ConvertToken(bodyprincipalObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodyroleDefinitionId != null)
+                {
+                    body["roleDefinitionId"] = SourceExpressionConverter.ConvertToken(bodyroleDefinitionId);
+                    bodypropCount++;
+                }
+
+                if (bodyscope != null)
+                {
+                    body["scope"] = SourceExpressionConverter.ConvertToken(bodyscope);
+                    bodypropCount++;
+                }
+
+                if (bodyprincipalType != null)
+                {
+                    body["principalType"] = SourceExpressionConverter.ConvertToken(bodyprincipalType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RoleAssignmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteEnvironmentRoleAssignment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> roleAssignmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(roleAssignmentId, nameof(roleAssignmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/authorization/environments/{0}/roleAssignments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roleAssignmentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> ListRoleAssignments([WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
@@ -261,6 +465,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<ListConnectionsResponse> ListConnections([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListConnectionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListConnectorsResponse> ListConnectors([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
@@ -297,6 +518,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             }
 
             return new ApiConnectionAction<GetConnectorByIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<string> DownloadAgentChannelManifest([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> channelName, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> includeAgentSchema = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(agentId, nameof(agentId), required: true);
+            SourceExpression.Validate(channelName, nameof(channelName), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(includeAgentSchema, nameof(includeAgentSchema), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/agents/{1}/channels/{2}/download", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(channelName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeAgentSchema"] = Convert.ToString(false);
+                if (includeAgentSchema != null)
+                    callPayload.Queries["includeAgentSchema"] = SourceExpressionConverter.ConvertO(includeAgentSchema);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteCopilotAgent([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botAdminOperations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction ReassignCopilotAgent([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodynewOwnerAadUserId)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodynewOwnerAadUserId, nameof(bodynewOwnerAadUserId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botAdminOperations/reassign", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["NewOwnerAadUserId"] = SourceExpressionConverter.ConvertToken(bodynewOwnerAadUserId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -354,186 +643,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentBackup([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> backupId, [WorkflowExpression] Func<string> apiVersion)
+        public IBodyWorkflowAction<ConnectorConsentBypassResponse> GetConnectorConsentBypass([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(backupId, nameof(backupId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/backups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(backupId, 1));
-                var apiCallHttpMethod = "delete";
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/connectorConsentBypass", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
+            return new ApiConnectionAction<ConnectorConsentBypassResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DisableEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<string> bodyreason = null)
+        public IBodyWorkflowAction<ConnectorConsentBypassResponse> SetConnectorConsentBypass([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> bodyadminConsentBypass)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            SourceExpression.Validate(bodyadminConsentBypass, nameof(bodyadminConsentBypass), required: true);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Disable", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/connectorConsentBypass", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodyreason != null)
-                {
-                    body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> DisableDisasterRecovery([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disableDisasterRecovery", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<OperationExecutionResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> PerformDRDrill([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disasterRecoveryDrill", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<OperationExecutionResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> EnableEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<string> bodyreason = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Enable", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodyreason != null)
-                {
-                    body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> EnableDisasterRecovery([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/enableDisasterRecovery", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<OperationExecutionResult>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<OperationExecutionResult> PerformForceFailover([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodylastSyncTime, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodylastSyncTime, nameof(bodylastSyncTime), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/forceFailover", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
                 bodypropCount++;
-                body["lastSyncTime"] = SourceExpressionConverter.ConvertToken(bodylastSyncTime);
+                body["adminConsentBypass"] = SourceExpressionConverter.ConvertToken(bodyadminConsentBypass);
                 if (bodypropCount > 0)
                 {
                     callPayload.Body = body;
@@ -541,94 +684,152 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 return callPayload;
             }
 
-            return new ApiConnectionAction<OperationExecutionResult>(BuildSourceInput);
+            return new ApiConnectionAction<ConnectorConsentBypassResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> RecoverEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
+        public IBodyWorkflowAction<TestRunCollection> ListMakerEvaluationTestRuns([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/recover", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "post";
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 return callPayload;
             }
 
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
+            return new ApiConnectionAction<TestRunCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> CopyEnvironment([WorkflowExpression] Func<string> targetEnvironmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodysourceEnvironmentId, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<bodycopyTypeInput> bodycopyType = null, [WorkflowExpression] Func<string> bodycopyOptionsenvironmentNameToOverride = null, [WorkflowExpression] Func<string> bodycopyOptionssecurityGroupIdToOverride = null, [WorkflowExpression] Func<bool> bodycopyOptionsskipAuditData = null, [WorkflowExpression] Func<bool> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
+        public IBodyWorkflowAction<TestRun> GetMakerEvaluationTestRun([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testRunId, [WorkflowExpression] Func<string> apiVersion)
         {
-            SourceExpression.Validate(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(testRunId, nameof(testRunId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            SourceExpression.Validate(bodycopyType, nameof(bodycopyType), required: false);
-            SourceExpression.Validate(bodycopyOptionsenvironmentNameToOverride, nameof(bodycopyOptionsenvironmentNameToOverride), required: false);
-            SourceExpression.Validate(bodycopyOptionssecurityGroupIdToOverride, nameof(bodycopyOptionssecurityGroupIdToOverride), required: false);
-            SourceExpression.Validate(bodycopyOptionsskipAuditData, nameof(bodycopyOptionsskipAuditData), required: false);
-            SourceExpression.Validate(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations, nameof(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetEnvironmentId, 1));
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testRunId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TestRun>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<string> DownloadMakerEvaluationSnapshot([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testRunId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(testRunId, nameof(testRunId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testruns/{2}/snapshot", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testRunId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TestSetCollection> ListMakerEvaluationTestSets([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TestSetCollection>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TestSet> GetMakerEvaluationTestSet([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testSetId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(testSetId, nameof(testSetId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testSetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TestSet>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<RunStatusResponse> RunMakerEvaluationTestSet([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> testSetId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyevaluationRunName = null, [WorkflowExpression] Func<string> bodymcsConnectionId = null, [WorkflowExpression] Func<bool> bodyrunOnPublishedBot = null, [WorkflowExpression] Func<ToolsConnections[]> bodytoolsConnections = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(botId, nameof(botId), required: true);
+            SourceExpression.Validate(testSetId, nameof(testSetId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyevaluationRunName, nameof(bodyevaluationRunName), required: false);
+            SourceExpression.Validate(bodymcsConnectionId, nameof(bodymcsConnectionId), required: false);
+            SourceExpression.Validate(bodyrunOnPublishedBot, nameof(bodyrunOnPublishedBot), required: false);
+            SourceExpression.Validate(bodytoolsConnections, nameof(bodytoolsConnections), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/makerevaluation/testsets/{2}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(botId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testSetId, 1));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
-                bodypropCount++;
-                body["sourceEnvironmentId"] = SourceExpressionConverter.ConvertToken(bodysourceEnvironmentId);
-                if (bodycopyType != null)
+                if (bodyevaluationRunName != null)
                 {
-                    body["copyType"] = SourceExpressionConverter.Convert(bodycopyType);
+                    body["evaluationRunName"] = SourceExpressionConverter.ConvertToken(bodyevaluationRunName);
                     bodypropCount++;
                 }
 
-                var copyOptionsObject = new JObject();
-                var copyOptionsObjectpropCount = 0;
-                if (bodycopyOptionsenvironmentNameToOverride != null)
+                if (bodymcsConnectionId != null)
                 {
-                    copyOptionsObject["environmentNameToOverride"] = SourceExpressionConverter.ConvertToken(bodycopyOptionsenvironmentNameToOverride);
-                    copyOptionsObjectpropCount++;
+                    body["mcsConnectionId"] = SourceExpressionConverter.ConvertToken(bodymcsConnectionId);
+                    bodypropCount++;
                 }
 
-                if (bodycopyOptionssecurityGroupIdToOverride != null)
+                if (bodyrunOnPublishedBot != null)
                 {
-                    copyOptionsObject["securityGroupIdToOverride"] = SourceExpressionConverter.ConvertToken(bodycopyOptionssecurityGroupIdToOverride);
-                    copyOptionsObjectpropCount++;
+                    if (bodyrunOnPublishedBot != null)
+                    {
+                        body["runOnPublishedBot"] = SourceExpressionConverter.ConvertToken(bodyrunOnPublishedBot);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["runOnPublishedBot"] = false;
+                    bodypropCount++;
                 }
 
-                if (bodycopyOptionsskipAuditData != null)
+                if (bodytoolsConnections != null)
                 {
-                    copyOptionsObject["skipAuditData"] = SourceExpressionConverter.ConvertToken(bodycopyOptionsskipAuditData);
-                    copyOptionsObjectpropCount++;
-                }
-
-                if (bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations != null)
-                {
-                    copyOptionsObject["executeAdvancedCopyForFinanceAndOperations"] = SourceExpressionConverter.ConvertToken(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations);
-                    copyOptionsObjectpropCount++;
-                }
-
-                if (copyOptionsObjectpropCount > 0)
-                {
-                    body["copyOptions"] = copyOptionsObject;
+                    body["toolsConnections"] = SourceExpressionConverter.ConvertToken(bodytoolsConnections);
                     bodypropCount++;
                 }
 
@@ -639,49 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 return callPayload;
             }
 
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> RestoreEnvironment([WorkflowExpression] Func<string> targetEnvironmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyrestorePointDateTime, [WorkflowExpression] Func<string> bodysourceEnvironmentId, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null, [WorkflowExpression] Func<bool> bodyskipAuditData = null)
-        {
-            SourceExpression.Validate(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodyrestorePointDateTime, nameof(bodyrestorePointDateTime), required: true);
-            SourceExpression.Validate(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            SourceExpression.Validate(bodyskipAuditData, nameof(bodyskipAuditData), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetEnvironmentId, 1));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["restorePointDateTime"] = SourceExpressionConverter.ConvertToken(bodyrestorePointDateTime);
-                if (bodyskipAuditData != null)
-                {
-                    body["skipAuditData"] = SourceExpressionConverter.ConvertToken(bodyskipAuditData);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["sourceEnvironmentId"] = SourceExpressionConverter.ConvertToken(bodysourceEnvironmentId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
+            return new ApiConnectionAction<RunStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -755,14 +914,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser([WorkflowExpression] Func<string> apiVersion)
+        public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> orderby = null)
         {
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = "/environmentmanagement/environments";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 return callPayload;
             }
@@ -771,43 +945,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> select = null)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(select, nameof(select), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 return callPayload;
             }
 
             return new ApiConnectionAction<EnvironmentResponse>(BuildSourceInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentByID([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> validateOnly = null, [WorkflowExpression] Func<string> validateProperties = null)
-        {
-            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
-            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(validateOnly, nameof(validateOnly), required: false);
-            SourceExpression.Validate(validateProperties, nameof(validateProperties), required: false);
-            ApiConnectionActionInput BuildSourceInput()
-            {
-                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
-                var apiCallHttpMethod = "delete";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (validateOnly != null)
-                    callPayload.Queries["ValidateOnly"] = SourceExpressionConverter.ConvertO(validateOnly);
-                if (validateProperties != null)
-                    callPayload.Queries["ValidateProperties"] = SourceExpressionConverter.ConvertO(validateProperties);
-                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
-                return callPayload;
-            }
-
-            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -863,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<Policy> GetRuleBasedPolicyByID([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion)
+        public IBodyWorkflowAction<Policy> GetRuleBasedPolicyById([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(policyId, nameof(policyId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
@@ -880,7 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyByID([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
+        public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyById([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
         {
             SourceExpression.Validate(policyId, nameof(policyId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
@@ -917,6 +1071,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<Policy> PatchRuleBasedPolicy([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
+        {
+            SourceExpression.Validate(policyId, nameof(policyId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyruleSets != null)
+                {
+                    body["ruleSets"] = SourceExpressionConverter.ConvertToken(bodyruleSets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Policy>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByPolicyId([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<bool> includeRuleSetCounts, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(policyId, nameof(policyId), required: true);
@@ -933,6 +1124,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             }
 
             return new ApiConnectionAction<RuleAssignmentsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<Policy> RemoveRuleFromRuleBasedPolicy([WorkflowExpression] Func<string> policyId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<RuleSet[]> bodyruleSets = null)
+        {
+            SourceExpression.Validate(policyId, nameof(policyId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyruleSets, nameof(bodyruleSets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/removeRule", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(policyId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyruleSets != null)
+                {
+                    body["ruleSets"] = SourceExpressionConverter.ConvertToken(bodyruleSets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Policy>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1025,49 +1253,299 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodytableName, [WorkflowExpression] Func<Clause[]> bodyclauses, [WorkflowExpression] Func<int> bodyoptionstop = null, [WorkflowExpression] Func<int> bodyoptionsskip = null, [WorkflowExpression] Func<string> bodyoptionsskipToken = null)
+        public IBodyWorkflowAction<TenantEntitlementResponseModel> GetEntitlement([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> apiVersion)
         {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
             SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
-            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: true);
-            SourceExpression.Validate(bodyclauses, nameof(bodyclauses), required: true);
-            SourceExpression.Validate(bodyoptionstop, nameof(bodyoptionstop), required: false);
-            SourceExpression.Validate(bodyoptionsskip, nameof(bodyoptionsskip), required: false);
-            SourceExpression.Validate(bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
             ApiConnectionActionInput BuildSourceInput()
             {
-                var apiCallPath = "/resourcequery/resources/query";
-                var apiCallHttpMethod = "post";
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantEntitlementResponseModel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<EnvironmentEntitlementSnapshotResponseModelPagedResponse> GetEnvironmentResources([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> includeFields = null, [WorkflowExpression] Func<string> orderbyConsumed = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
+            SourceExpression.Validate(includeFields, nameof(includeFields), required: false);
+            SourceExpression.Validate(orderbyConsumed, nameof(orderbyConsumed), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/environments/{1}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                if (searchRequest != null)
+                    callPayload.Queries["searchRequest"] = SourceExpressionConverter.ConvertO(searchRequest);
+                if (includeFields != null)
+                    callPayload.Queries["includeFields"] = SourceExpressionConverter.ConvertO(includeFields);
+                if (orderbyConsumed != null)
+                    callPayload.Queries["orderbyConsumed"] = SourceExpressionConverter.ConvertO(orderbyConsumed);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EnvironmentEntitlementSnapshotResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TenantEntitlementLicenseTrendResponseModelPagedResponse> GetTenantLicenseTrends([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/licenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantEntitlementLicenseTrendResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TenantEnvironmentResourceSnapshotResponseModelPagedResponse> GetTenantResourcesAcrossEnvironments([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantEnvironmentResourceSnapshotResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TenantUserResponseModelPagedResponse> GetTenantUserConsumptionByResource([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> resourceId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(resourceId, nameof(resourceId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resources/{1}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (searchRequest != null)
+                    callPayload.Queries["searchRequest"] = SourceExpressionConverter.ConvertO(searchRequest);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantUserResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<ResourceThresholdModel[]> GetAllResourceThresholds([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/resourceThresholds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResourceThresholdModel[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TenantUserResponseModelPagedResponse> GetTenantUsers([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> orderbyConsumed = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
+            SourceExpression.Validate(orderbyConsumed, nameof(orderbyConsumed), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (searchRequest != null)
+                    callPayload.Queries["searchRequest"] = SourceExpressionConverter.ConvertO(searchRequest);
+                if (orderbyConsumed != null)
+                    callPayload.Queries["orderbyConsumed"] = SourceExpressionConverter.ConvertO(orderbyConsumed);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantUserResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<TenantResourceResponseModelPagedResponse> GetTenantResourceConsumptionByUser([WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> fromDate, [WorkflowExpression] Func<string> toDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> searchRequest = null, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(fromDate, nameof(fromDate), required: true);
+            SourceExpression.Validate(toDate, nameof(toDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(searchRequest, nameof(searchRequest), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/entitlements/{0}/users/{1}/resources", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fromDate"] = SourceExpressionConverter.ConvertO(fromDate);
+                callPayload.Queries["toDate"] = SourceExpressionConverter.ConvertO(toDate);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (searchRequest != null)
+                    callPayload.Queries["searchRequest"] = SourceExpressionConverter.ConvertO(searchRequest);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TenantResourceResponseModelPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<EnvironmentEntitlementResponseModel[]> GetManyEnvironmentEntitlements([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/entitlements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EnvironmentEntitlementResponseModel[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<ResourceThresholdModel> UpsertResourceThreshold([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> entitlementId, [WorkflowExpression] Func<string> resourceId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<bool> bodystopResource = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<bool> bodystopIfOverCapacity = null, [WorkflowExpression] Func<bool> bodynotifyIfOverCapacity = null, [WorkflowExpression] Func<int> bodynotificationThreshold = null, [WorkflowExpression] Func<double> bodyresourceConsumption = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(entitlementId, nameof(entitlementId), required: true);
+            SourceExpression.Validate(resourceId, nameof(resourceId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodystopResource, nameof(bodystopResource), required: false);
+            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            SourceExpression.Validate(bodystopIfOverCapacity, nameof(bodystopIfOverCapacity), required: false);
+            SourceExpression.Validate(bodynotifyIfOverCapacity, nameof(bodynotifyIfOverCapacity), required: false);
+            SourceExpression.Validate(bodynotificationThreshold, nameof(bodynotificationThreshold), required: false);
+            SourceExpression.Validate(bodyresourceConsumption, nameof(bodyresourceConsumption), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/entitlements/{1}/resources/{2}/threshold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entitlementId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceId, 1));
+                var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 var body = new JObject();
                 var bodypropCount = 0;
-                bodypropCount++;
-                body["TableName"] = SourceExpressionConverter.ConvertToken(bodytableName);
-                bodypropCount++;
-                body["Clauses"] = SourceExpressionConverter.ConvertToken(bodyclauses);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (bodyoptionstop != null)
+                if (bodystopResource != null)
                 {
-                    optionsObject["Top"] = SourceExpressionConverter.ConvertToken(bodyoptionstop);
-                    optionsObjectpropCount++;
+                    body["stopResource"] = SourceExpressionConverter.ConvertToken(bodystopResource);
+                    bodypropCount++;
                 }
 
-                if (bodyoptionsskip != null)
+                if (bodylimit != null)
                 {
-                    optionsObject["Skip"] = SourceExpressionConverter.ConvertToken(bodyoptionsskip);
-                    optionsObjectpropCount++;
+                    body["limit"] = SourceExpressionConverter.ConvertToken(bodylimit);
+                    bodypropCount++;
                 }
 
-                if (bodyoptionsskipToken != null)
+                if (bodystopIfOverCapacity != null)
                 {
-                    optionsObject["SkipToken"] = SourceExpressionConverter.ConvertToken(bodyoptionsskipToken);
-                    optionsObjectpropCount++;
+                    body["stopIfOverCapacity"] = SourceExpressionConverter.ConvertToken(bodystopIfOverCapacity);
+                    bodypropCount++;
                 }
 
-                if (optionsObjectpropCount > 0)
+                if (bodynotifyIfOverCapacity != null)
                 {
-                    body["Options"] = optionsObject;
+                    body["notifyIfOverCapacity"] = SourceExpressionConverter.ConvertToken(bodynotifyIfOverCapacity);
+                    bodypropCount++;
+                }
+
+                if (bodynotificationThreshold != null)
+                {
+                    body["notificationThreshold"] = SourceExpressionConverter.ConvertToken(bodynotificationThreshold);
+                    bodypropCount++;
+                }
+
+                if (bodyresourceConsumption != null)
+                {
+                    body["resourceConsumption"] = SourceExpressionConverter.ConvertToken(bodyresourceConsumption);
                     bodypropCount++;
                 }
 
@@ -1078,7 +1556,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 return callPayload;
             }
 
-            return new ApiConnectionAction<ResourceQueryResponse>(BuildSourceInput);
+            return new ApiConnectionAction<ResourceThresholdModel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<AllocationByEnvironmentModel[]> ListAllocationsByEnvironment([WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/allocationsByEnvironment";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllocationByEnvironmentModel[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<AllocationByEnvironmentModel> UpdateAllocationsByEnvironment([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyenvironmentId = null, [WorkflowExpression] Func<CurrencyAllocationModel[]> bodycurrencyAllocations = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyenvironmentId, nameof(bodyenvironmentId), required: false);
+            SourceExpression.Validate(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/allocationsByEnvironment";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyenvironmentId != null)
+                {
+                    body["environmentId"] = SourceExpressionConverter.ConvertToken(bodyenvironmentId);
+                    bodypropCount++;
+                }
+
+                if (bodycurrencyAllocations != null)
+                {
+                    body["currencyAllocations"] = SourceExpressionConverter.ConvertToken(bodycurrencyAllocations);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllocationByEnvironmentModel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<AllocationByEnvironmentModel> GetAllocationsByEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/allocationsByEnvironment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllocationByEnvironmentModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
@@ -1747,6 +2294,204 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceRecord> GetUserPerFlowCapacitySource([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<string> flowContext = null, [WorkflowExpression] Func<string> flowLicenseCategorization = null, [WorkflowExpression] Func<string> resourceId = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(userId, nameof(userId), required: false);
+            SourceExpression.Validate(flowContext, nameof(flowContext), required: false);
+            SourceExpression.Validate(flowLicenseCategorization, nameof(flowLicenseCategorization), required: false);
+            SourceExpression.Validate(resourceId, nameof(resourceId), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/UserPerFlowCapacitySource";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["pageNumber"] = Convert.ToString(1);
+                if (pageNumber != null)
+                    callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (userId != null)
+                    callPayload.Queries["userId"] = SourceExpressionConverter.ConvertO(userId);
+                if (flowContext != null)
+                    callPayload.Queries["flowContext"] = SourceExpressionConverter.ConvertO(flowContext);
+                if (flowLicenseCategorization != null)
+                    callPayload.Queries["flowLicenseCategorization"] = SourceExpressionConverter.ConvertO(flowLicenseCategorization);
+                if (resourceId != null)
+                    callPayload.Queries["resourceId"] = SourceExpressionConverter.ConvertO(resourceId);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceRecord>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord> GetUserPerFlowCapacitySourceFlowContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/UserPerFlowCapacitySource/FlowContextSummary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["pageNumber"] = Convert.ToString(1);
+                if (pageNumber != null)
+                    callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord> GetUserPerFlowCapacitySourceFlowContextSummaryForUserId([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/UserPerFlowCapacitySource/FlowContextSummary/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["pageNumber"] = Convert.ToString(1);
+                if (pageNumber != null)
+                    callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<UserPerFlowCapacitySourceTenantContextSummaryRecord[]> GetUserPerFlowCapacitySourceTenantContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/UserPerFlowCapacitySource/TenantContextSummary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserPerFlowCapacitySourceTenantContextSummaryRecord[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord> GetUserPerFlowCapacitySourceUserContextSummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/UserPerFlowCapacitySource/UserContextSummary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["pageNumber"] = Convert.ToString(1);
+                if (pageNumber != null)
+                    callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord> GetUserPerFlowCapacitySourceUserContextSummaryForUserId([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> pageNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> environmentId = null)
+        {
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(pageNumber, nameof(pageNumber), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/licensing/UserPerFlowCapacitySource/UserContextSummary/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["pageNumber"] = Convert.ToString(1);
+                if (pageNumber != null)
+                    callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["pageSize"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (environmentId != null)
+                    callPayload.Queries["environmentId"] = SourceExpressionConverter.ConvertO(environmentId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceArrayPowerApp> GetAdminApps([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
@@ -1789,6 +2534,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<ResourceQueryResponse> QueryResources([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodytableName, [WorkflowExpression] Func<Clause[]> bodyclauses, [WorkflowExpression] Func<int> bodyoptionstop = null, [WorkflowExpression] Func<int> bodyoptionsskip = null, [WorkflowExpression] Func<string> bodyoptionsskipToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: true);
+            SourceExpression.Validate(bodyclauses, nameof(bodyclauses), required: true);
+            SourceExpression.Validate(bodyoptionstop, nameof(bodyoptionstop), required: false);
+            SourceExpression.Validate(bodyoptionsskip, nameof(bodyoptionsskip), required: false);
+            SourceExpression.Validate(bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/resourcequery/resources/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["TableName"] = SourceExpressionConverter.ConvertToken(bodytableName);
+                bodypropCount++;
+                body["Clauses"] = SourceExpressionConverter.ConvertToken(bodyclauses);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (bodyoptionstop != null)
+                {
+                    optionsObject["Top"] = SourceExpressionConverter.ConvertToken(bodyoptionstop);
+                    optionsObjectpropCount++;
+                }
+
+                if (bodyoptionsskip != null)
+                {
+                    optionsObject["Skip"] = SourceExpressionConverter.ConvertToken(bodyoptionsskip);
+                    optionsObjectpropCount++;
+                }
+
+                if (bodyoptionsskipToken != null)
+                {
+                    optionsObject["SkipToken"] = SourceExpressionConverter.ConvertToken(bodyoptionsskipToken);
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    body["Options"] = optionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResourceQueryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction ApplyAdminRole([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion)
         {
             SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
@@ -1797,6 +2599,316 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
             {
                 var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
                 var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrFlowRunsResponse> GetFlowRunActionsForDsr([WorkflowExpression] Func<string> aiFlowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> continuationToken = null)
+        {
+            SourceExpression.Validate(aiFlowId, nameof(aiFlowId), required: true);
+            SourceExpression.Validate(runId, nameof(runId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/aiFlows/{0}/runs/{1}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiFlowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrFlowRunsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetApprovals([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflowsagent/approvals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteApproval([WorkflowExpression] Func<string> approvalId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(approvalId, nameof(approvalId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/approvals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetConnections([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflowsagent/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteConnection([WorkflowExpression] Func<string> connectionIdentifier, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(connectionIdentifier, nameof(connectionIdentifier), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/connections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectionIdentifier, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrConversationTranscriptsResponse> GetConversationTranscriptsForDsr([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflowsagent/conversationTranscripts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrConversationTranscriptsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrFlowRunsResponse> GetFlowRunActionsWithEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> aiFlowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<int> continuationToken = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(aiFlowId, nameof(aiFlowId), required: true);
+            SourceExpression.Validate(runId, nameof(runId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/aiFlows/{1}/runs/{2}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aiFlowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrFlowRunsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrConversationTranscriptsResponse> GetConversationTranscriptsWithEnvironment([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/conversationTranscripts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrConversationTranscriptsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetFlowRunsNonSingleton([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(flowId, nameof(flowId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/flows/{1}/flowRuns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetRunHistoryDataNonSingleton([WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(flowId, nameof(flowId), required: true);
+            SourceExpression.Validate(runId, nameof(runId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/environments/{0}/flows/{1}/runs/{2}/runHistoryData", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetFlows([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflowsagent/flows";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeleteFlow([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(flowId, nameof(flowId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetFlowRunsSingleton([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(flowId, nameof(flowId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}/flowRuns", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetRunHistoryData([WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(flowId, nameof(flowId), required: true);
+            SourceExpression.Validate(runId, nameof(runId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/flows/{0}/runs/{1}/runHistoryData", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(flowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<DsrPagedResponse> GetPrompts([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> continuationToken = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflowsagent/prompts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DsrPagedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IWorkflowAction DeletePrompt([WorkflowExpression] Func<string> promptId, [WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(promptId, nameof(promptId), required: true);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflowsagent/prompts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(promptId, 1));
+                var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
                 return callPayload;
@@ -1872,6 +2984,207 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
             return new ApiConnectionAction<MCPQueryResponse>(BuildSourceInput);
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<MCPQueryResponse> McpGovernance([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
+        {
+            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            SourceExpression.Validate(sessionId, nameof(sessionId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mcp/Governance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = SourceExpressionConverter.ConvertToken(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = SourceExpressionConverter.ConvertToken(queryRequestid);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = SourceExpressionConverter.ConvertToken(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
+
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
+
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
+
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MCPQueryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<AllocationAvailabilityResponseModel> GetAllocationsAvailability([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/allocationsV2/availability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllocationAvailabilityResponseModel>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<FinOpsLicenseSummaryV2Response> GetFinOpsLicenseSummary([WorkflowExpression] Func<string> apiVersion)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/FinOpsLicensing/GetLicenseSummaryV2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FinOpsLicenseSummaryV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<EntitlementReservedResponseModel[]> GetManyEntitlementsReserved([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/allocationsV2/entitlements/reserved";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntitlementReservedResponseModel[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
+        public IBodyWorkflowAction<NeptuneOperationResult> PutAllocations([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> bodyscopetenantId = null, [WorkflowExpression] Func<string> bodyscopeenvironmentGroupId = null, [WorkflowExpression] Func<string> bodyscopeenvironmentId = null, [WorkflowExpression] Func<string> bodyscoperesourceId = null, [WorkflowExpression] Func<string> bodyscopeuserId = null, [WorkflowExpression] Func<string> bodyscopeuserGroupId = null, [WorkflowExpression] Func<EntitlementAllocationModel[]> bodyallocatedEntitlements = null)
+        {
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(bodyscopetenantId, nameof(bodyscopetenantId), required: false);
+            SourceExpression.Validate(bodyscopeenvironmentGroupId, nameof(bodyscopeenvironmentGroupId), required: false);
+            SourceExpression.Validate(bodyscopeenvironmentId, nameof(bodyscopeenvironmentId), required: false);
+            SourceExpression.Validate(bodyscoperesourceId, nameof(bodyscoperesourceId), required: false);
+            SourceExpression.Validate(bodyscopeuserId, nameof(bodyscopeuserId), required: false);
+            SourceExpression.Validate(bodyscopeuserGroupId, nameof(bodyscopeuserGroupId), required: false);
+            SourceExpression.Validate(bodyallocatedEntitlements, nameof(bodyallocatedEntitlements), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/licensing/allocationsV2";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var scopeObject = new JObject();
+                var scopeObjectpropCount = 0;
+                if (bodyscopetenantId != null)
+                {
+                    scopeObject["tenantId"] = SourceExpressionConverter.ConvertToken(bodyscopetenantId);
+                    scopeObjectpropCount++;
+                }
+
+                if (bodyscopeenvironmentGroupId != null)
+                {
+                    scopeObject["environmentGroupId"] = SourceExpressionConverter.ConvertToken(bodyscopeenvironmentGroupId);
+                    scopeObjectpropCount++;
+                }
+
+                if (bodyscopeenvironmentId != null)
+                {
+                    scopeObject["environmentId"] = SourceExpressionConverter.ConvertToken(bodyscopeenvironmentId);
+                    scopeObjectpropCount++;
+                }
+
+                if (bodyscoperesourceId != null)
+                {
+                    scopeObject["resourceId"] = SourceExpressionConverter.ConvertToken(bodyscoperesourceId);
+                    scopeObjectpropCount++;
+                }
+
+                if (bodyscopeuserId != null)
+                {
+                    scopeObject["userId"] = SourceExpressionConverter.ConvertToken(bodyscopeuserId);
+                    scopeObjectpropCount++;
+                }
+
+                if (bodyscopeuserGroupId != null)
+                {
+                    scopeObject["userGroupId"] = SourceExpressionConverter.ConvertToken(bodyscopeuserGroupId);
+                    scopeObjectpropCount++;
+                }
+
+                if (scopeObjectpropCount > 0)
+                {
+                    body["scope"] = scopeObject;
+                    bodypropCount++;
+                }
+
+                if (bodyallocatedEntitlements != null)
+                {
+                    body["allocatedEntitlements"] = SourceExpressionConverter.ConvertToken(bodyallocatedEntitlements);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NeptuneOperationResult>(BuildSourceInput);
+        }
     }
 
     public class Powerplatformadminv2Triggers([ConnectionName] string connectionId)
@@ -1900,6 +3213,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
         [JsonProperty("error")]
         public string ErrorMessage { get; set; }
+    }
+
+    public class AdvisorChatMessageResponse
+    {
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("role")]
+        public string Role { get; set; }
+
+        [JsonProperty("executionTimeMs")]
+        public int ExecutionTimeMs { get; set; }
+
+        [JsonProperty("conversationId")]
+        public string ConversationID { get; set; }
     }
 
     public class AdvisorRecommendationIEnumerableResponseWithContinuation
@@ -2332,6 +3660,150 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string[] Permissions { get; set; }
     }
 
+    public class ListConnectionsResponse
+    {
+        [JsonProperty("value")]
+        public Connection[] Value { get; set; }
+    }
+
+    public class Connection
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("properties")]
+        public ConnectionPropertiesType Properties { get; set; }
+    }
+
+    public class ConnectionPropertiesType
+    {
+        [JsonProperty("apiId")]
+        public string ApiId { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("iconUri")]
+        public string IconUri { get; set; }
+
+        [JsonProperty("statuses")]
+        public ConnectionStatus[] Statuses { get; set; }
+
+        [JsonProperty("connectionParametersSet")]
+        public ConnectionPropertiesTypeConnectionParametersSetType ConnectionParametersSet { get; set; }
+
+        [JsonProperty("connectionParameters")]
+        public JToken ConnectionParameters { get; set; }
+
+        [JsonProperty("keywordsRemaining")]
+        public int KeywordsRemaining { get; set; }
+
+        [JsonProperty("isSsoConnection")]
+        public bool IsSsoConnection { get; set; }
+
+        [JsonProperty("createdBy")]
+        public ConnectionCreatedBy CreatedBy { get; set; }
+
+        [JsonProperty("createdTime")]
+        public string CreatedTime { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
+
+        [JsonProperty("expirationTime")]
+        public string ExpirationTime { get; set; }
+
+        [JsonProperty("testLinks")]
+        public ConnectionPropertiesTypeTestLinksTypeItem[] TestLinks { get; set; }
+
+        [JsonProperty("environment")]
+        public ConnectionPropertiesTypeEnvironmentType Environment { get; set; }
+
+        [JsonProperty("accountName")]
+        public string AccountName { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("allowSharing")]
+        public bool AllowSharing { get; set; }
+    }
+
+    public class ConnectionStatus
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("target")]
+        public string Target { get; set; }
+
+        [JsonProperty("error")]
+        public ConnectionStatusErrorType Error { get; set; }
+    }
+
+    public class ConnectionStatusErrorType
+    {
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+    }
+
+    public class ConnectionPropertiesTypeConnectionParametersSetType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public JToken Values { get; set; }
+    }
+
+    public class ConnectionCreatedBy
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("userPrincipalName")]
+        public string UserPrincipalName { get; set; }
+    }
+
+    public class ConnectionPropertiesTypeTestLinksTypeItem
+    {
+        [JsonProperty("requestUri")]
+        public string RequestUri { get; set; }
+
+        [JsonProperty("method")]
+        public string Method { get; set; }
+    }
+
+    public class ConnectionPropertiesTypeEnvironmentType
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
     public class ListConnectorsResponse
     {
         [JsonProperty("value")]
@@ -2452,108 +3924,263 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string LastUpdateTimeUtc { get; set; }
     }
 
-    public class ValidationResponse
+    public class ConnectorConsentBypassResponse
     {
-        [JsonProperty("errorDetail")]
-        public ErrorInfo ErrorDetail { get; set; }
+        [JsonProperty("adminConsentBypass")]
+        public bool AdminConsentBypass { get; set; }
     }
 
-    public class ErrorInfo
+    public class TestRunCollection
     {
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("fieldErrors")]
-        public JToken FieldErrors { get; set; }
+        [JsonProperty("value")]
+        public TestRun[] Value { get; set; }
     }
 
-    public class OperationExecutionResult
+    public class TestRun
     {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("status")]
-        public OperationStatus Status { get; set; }
-
-        [JsonProperty("operationId")]
-        public string OperationId { get; set; }
-
-        [JsonProperty("startTime")]
-        public string StartTime { get; set; }
+        [JsonProperty("cdsBotId")]
+        public string CdsBotId { get; set; }
 
         [JsonProperty("endTime")]
         public string EndTime { get; set; }
 
-        [JsonProperty("updatedEnvironment")]
-        public Environment UpdatedEnvironment { get; set; }
-
-        [JsonProperty("requestedBy")]
-        public UserIdentity RequestedBy { get; set; }
-
-        [JsonProperty("errorDetail")]
-        public ErrorInfo ErrorDetail { get; set; }
-
-        [JsonProperty("stageStatuses")]
-        public StageStatus[] StageStatuses { get; set; }
-    }
-
-    public enum OperationStatus
-    {
-        Queued,
-        InProgress,
-        Succeeded,
-        ValidationFailed,
-        Failed,
-        NoOperation,
-        ValidationPassed
-    }
-
-    public class Environment
-    {
         [JsonProperty("environmentId")]
         public string EnvironmentId { get; set; }
 
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
 
-        [JsonProperty("dataverseOrganizationUrl")]
-        public string DataverseOrganizationUrl { get; set; }
-    }
+        [JsonProperty("mcsConnectionId")]
+        public string McsConnectionId { get; set; }
 
-    public class UserIdentity
-    {
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("tenantId")]
-        public string TenantId { get; set; }
-    }
-
-    public class StageStatus
-    {
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        [JsonProperty("ownerId")]
+        public string OwnerId { get; set; }
 
         [JsonProperty("startTime")]
         public string StartTime { get; set; }
 
-        [JsonProperty("endTime")]
-        public string EndTime { get; set; }
+        [JsonProperty("state")]
+        public EvaluationRunState State { get; set; }
 
-        [JsonProperty("errorDetail")]
-        public ErrorInfo ErrorDetail { get; set; }
+        [JsonProperty("testCasesResults")]
+        public TestCaseResult[] TestCasesResults { get; set; }
+
+        [JsonProperty("testSetId")]
+        public string TestSetId { get; set; }
+
+        [JsonProperty("totalTestCases")]
+        public int TotalTestCases { get; set; }
     }
 
-    public enum bodycopyTypeInput
+    public enum EvaluationRunState
     {
-        Minimal,
-        Full
+        Abandoned,
+        Cancelled,
+        Completed,
+        Deleted,
+        Failed,
+        InProgress,
+        Queued,
+        Unknown
+    }
+
+    public class TestCaseResult
+    {
+        [JsonProperty("metricsResults")]
+        public Metric[] MetricsResults { get; set; }
+
+        [JsonProperty("state")]
+        public TestCaseState State { get; set; }
+
+        [JsonProperty("testCaseId")]
+        public string TestCaseId { get; set; }
+    }
+
+    public class Metric
+    {
+        [JsonProperty("result")]
+        public MetricResult Result { get; set; }
+
+        [JsonProperty("type")]
+        public MetricType Type { get; set; }
+    }
+
+    public class MetricResult
+    {
+        [JsonProperty("aiResultReason")]
+        public string AiResultReason { get; set; }
+
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
+
+        [JsonProperty("errorReason")]
+        public MetricErrorReason ErrorReason { get; set; }
+
+        [JsonProperty("status")]
+        public MetricStatus Status { get; set; }
+    }
+
+    public enum MetricErrorReason
+    {
+        AgentResponseIsNullOrEmpty,
+        EmptyOrInvalidModelResponse,
+        ExpectedInvocationStepsAreNullOrEmpty,
+        ExpectedKeywordsAreNullOrEmpty,
+        ExpectedOutputIsNullOrEmpty,
+        GraderCreationFailed,
+        InputOutputCountMismatch,
+        IntentMatchInvalidMatchType,
+        ModelLabelGraderInvalidLabel,
+        QueryIsNullOrEmpty,
+        RequestTokenLimitExceeded,
+        RetrievedKnowledgeSourcesTextsAreEmpty,
+        RetrievedKnowledgeTokenLimitExceeded,
+        UnexpectedInternalError
+    }
+
+    public enum MetricStatus
+    {
+        Error,
+        Fail,
+        Pass,
+        Unknown
+    }
+
+    public enum MetricType
+    {
+        AllKeywordMatch,
+        AnyKeywordMatch,
+        CapabilityUse,
+        CompareMeaning,
+        CustomLabels,
+        ExactMatch,
+        GeneralQuality,
+        TextSimilarity,
+        Unknown
+    }
+
+    public enum TestCaseState
+    {
+        Cancelled,
+        Completed,
+        Error,
+        Running,
+        Unknown
+    }
+
+    public class TestSetCollection
+    {
+        [JsonProperty("value")]
+        public TestSet[] Value { get; set; }
+    }
+
+    public class TestSet
+    {
+        [JsonProperty("auditInfo")]
+        public AuditInfo AuditInfo { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("state")]
+        public StateCode State { get; set; }
+
+        [JsonProperty("totalTestCases")]
+        public int TotalTestCases { get; set; }
+    }
+
+    public class AuditInfo
+    {
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("createdTimeUtc")]
+        public string CreatedTimeUtc { get; set; }
+
+        [JsonProperty("modifiedBy")]
+        public string ModifiedBy { get; set; }
+
+        [JsonProperty("modifiedTimeUtc")]
+        public string ModifiedTimeUtc { get; set; }
+    }
+
+    public enum StateCode
+    {
+        Active,
+        Inactive,
+        Unknown
+    }
+
+    public class RunStatusResponse
+    {
+        [JsonProperty("callbackUri")]
+        public string CallbackUri { get; set; }
+
+        [JsonProperty("executionState")]
+        public ExecutionState ExecutionState { get; set; }
+
+        [JsonProperty("lastUpdatedAt")]
+        public string LastUpdatedAt { get; set; }
+
+        [JsonProperty("runId")]
+        public string RunId { get; set; }
+
+        [JsonProperty("state")]
+        public EvaluationRunState State { get; set; }
+
+        [JsonProperty("testCasesProcessed")]
+        public int TestCasesProcessed { get; set; }
+
+        [JsonProperty("totalTestCases")]
+        public int TotalTestCases { get; set; }
+    }
+
+    public enum ExecutionState
+    {
+        Abandoned,
+        Cancelled,
+        Completed,
+        CreatingRunContent,
+        Deleted,
+        EvaluatingRun,
+        Failed,
+        Initializing,
+        ProcessingRunContent,
+        Queued,
+        Unknown
+    }
+
+    public class ToolsConnections
+    {
+        [JsonProperty("botId")]
+        public string BotId { get; set; }
+
+        [JsonProperty("botSchemaName")]
+        public string BotSchemaName { get; set; }
+
+        [JsonProperty("connections")]
+        public MakerEvaluationConnection[] Connections { get; set; }
+    }
+
+    public class MakerEvaluationConnection
+    {
+        [JsonProperty("connectionId")]
+        public string ConnectionId { get; set; }
+
+        [JsonProperty("connectionReferenceName")]
+        public string ConnectionReferenceName { get; set; }
+
+        [JsonProperty("connectorId")]
+        public string ConnectorId { get; set; }
     }
 
     public class ProblemDetails
@@ -2581,6 +4208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     {
         [JsonProperty("value")]
         public EnvironmentResponse[] Value { get; set; }
+
+        [JsonProperty("@odata.nextlink")]
+        public string Nextlink { get; set; }
     }
 
     public class EnvironmentResponse
@@ -2606,6 +4236,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [JsonProperty("azureRegion")]
         public string AzureRegion { get; set; }
 
+        [JsonProperty("clusterCategory")]
+        public string ClusterCategory { get; set; }
+
+        [JsonProperty("createdBy")]
+        public EnvironmentPrincipal CreatedBy { get; set; }
+
+        [JsonProperty("createdFor")]
+        public EnvironmentPrincipal CreatedFor { get; set; }
+
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
 
@@ -2624,6 +4263,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [JsonProperty("domainName")]
         public string DomainName { get; set; }
 
+        [JsonProperty("securityGroupId")]
+        public string SecurityGroupId { get; set; }
+
+        [JsonProperty("connectedGroupId")]
+        public string ConnectedGroupId { get; set; }
+
         [JsonProperty("state")]
         public string State { get; set; }
 
@@ -2638,6 +4283,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
         [JsonProperty("retentionDetails")]
         public EnvironmentResponseRetentionDetailsType RetentionDetails { get; set; }
+
+        [JsonProperty("finOpsMetadata")]
+        public FinOpsMetadata FinOpsMetadata { get; set; }
+
+        [JsonProperty("enterprisePolicies")]
+        public EnterprisePolicies EnterprisePolicies { get; set; }
+
+        [JsonProperty("scenarioName")]
+        public string ScenarioName { get; set; }
+    }
+
+    public class EnvironmentPrincipal
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 
     public class EnvironmentResponseRetentionDetailsType
@@ -2647,6 +4310,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
         [JsonProperty("availableFromDateTime")]
         public string AvailableFromDateTime { get; set; }
+    }
+
+    public class FinOpsMetadata
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class EnterprisePolicies
+    {
+        [JsonProperty("encryption")]
+        public EnterprisePolicyLink Encryption { get; set; }
+
+        [JsonProperty("identity")]
+        public EnterprisePolicyLink Identity { get; set; }
+
+        [JsonProperty("networkInjection")]
+        public EnterprisePolicyLink NetworkInjection { get; set; }
+
+        [JsonProperty("privateEndpoint")]
+        public EnterprisePolicyLink PrivateEndpoint { get; set; }
+    }
+
+    public class EnterprisePolicyLink
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("status")]
+        public EnterprisePolicyLinkStatus Status { get; set; }
+
+        [JsonProperty("error")]
+        public string Error { get; set; }
+    }
+
+    public enum EnterprisePolicyLinkStatus
+    {
+        Linking,
+        Unlinking,
+        Linked,
+        Failed,
+        LinkingOnline,
+        UnlinkingOnline
     }
 
     public class Policy
@@ -2778,127 +4493,729 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         Outbound
     }
 
-    public class ResourceQueryResponse
+    public class TenantEntitlementResponseModel
     {
-        [JsonProperty("totalRecords")]
-        public int TotalRecords { get; set; }
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
 
-        [JsonProperty("count")]
+        [JsonProperty("productCategories")]
+        public ProductCategory[] ProductCategories { get; set; }
+
+        [JsonProperty("entitlement")]
+        public TenantEntitlementDetailServiceModel Entitlement { get; set; }
+    }
+
+    public enum ProductCategory
+    {
+        NotSpecified,
+        D365Apps,
+        Dataverse,
+        Fno,
+        PowerApps,
+        PowerAutomate,
+        PowerPages,
+        PowerVirtualAgent,
+        CopilotStudio,
+        PowerPlatform,
+        Project,
+        W365,
+        D365CustomerInsights,
+        D365ContactCenter,
+        Teams,
+        CloudForSustainability,
+        CoWork,
+        M365,
+        ManagedApps
+    }
+
+    public class TenantEntitlementDetailServiceModel
+    {
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+
+        [JsonProperty("capacity")]
+        public CapacityEntitlementModel Capacity { get; set; }
+
+        [JsonProperty("payGo")]
+        public CatalogPayGoEntitlementModel PayGo { get; set; }
+
+        [JsonProperty("licensedPolicy")]
+        public LicensedPolicyModel LicensedPolicy { get; set; }
+    }
+
+    public enum EntitlementUnit
+    {
+        NotSpecified,
+        MB,
+        Count,
+        Hour
+    }
+
+    public class CapacityEntitlementModel
+    {
+        [JsonProperty("entitled")]
+        public EntitlementEntitledModel Entitled { get; set; }
+
+        [JsonProperty("consumed")]
+        public EntitlementConsumedModel Consumed { get; set; }
+
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+
+        [JsonProperty("allocated")]
+        public EntitlementAllocationModelV2 Allocated { get; set; }
+
+        [JsonProperty("availableQuantity")]
+        public double AvailableQuantity { get; set; }
+
+        [JsonProperty("status")]
+        public OverageStatus Status { get; set; }
+
+        [JsonProperty("licenses")]
+        public CapacityLicenseModel[] Licenses { get; set; }
+    }
+
+    public class EntitlementEntitledModel
+    {
+        [JsonProperty("value")]
+        public double Value { get; set; }
+    }
+
+    public class EntitlementConsumedModel
+    {
+        [JsonProperty("value")]
+        public double Value { get; set; }
+
+        [JsonProperty("consumptionType")]
+        public EntitlementConsumptionType ConsumptionType { get; set; }
+
+        [JsonProperty("lastUpdatedOn")]
+        public string LastUpdatedOn { get; set; }
+
+        [JsonProperty("writeOff")]
+        public double WriteOff { get; set; }
+    }
+
+    public enum EntitlementConsumptionType
+    {
+        NotSpecified,
+        Snapshot,
+        MonthToDate
+    }
+
+    public class EntitlementAllocationModelV2
+    {
+        [JsonProperty("value")]
+        public double Value { get; set; }
+
+        [JsonProperty("autoAllocated")]
+        public double AutoAllocated { get; set; }
+    }
+
+    public enum OverageStatus
+    {
+        NotSpecified,
+        WithinCapacity,
+        Overage,
+        CoveredOverage
+    }
+
+    public class CapacityLicenseModel
+    {
+        [JsonProperty("skuId")]
+        public string SkuId { get; set; }
+
+        [JsonProperty("productName")]
+        public string ProductName { get; set; }
+
+        [JsonProperty("licenseQuantity")]
+        public int LicenseQuantity { get; set; }
+
+        [JsonProperty("entitled")]
+        public EntitlementEntitledModel Entitled { get; set; }
+
+        [JsonProperty("licenseTier")]
+        public LicenseTier LicenseTier { get; set; }
+
+        [JsonProperty("licenseStatus")]
+        public string LicenseStatus { get; set; }
+
+        [JsonProperty("nextLifecycleStatus")]
+        public string NextLifecycleStatus { get; set; }
+
+        [JsonProperty("nextLifecycleDate")]
+        public string NextLifecycleDate { get; set; }
+
+        [JsonProperty("licenseId")]
+        public string LicenseId { get; set; }
+
+        [JsonProperty("licenseSource")]
+        public LicenseSource LicenseSource { get; set; }
+
+        [JsonProperty("isUnlimited")]
+        public bool IsUnlimited { get; set; }
+    }
+
+    public enum LicenseTier
+    {
+        NotSpecified,
+        Paid,
+        Trial,
+        Internal
+    }
+
+    public enum LicenseSource
+    {
+        NotSpecified,
+        CommerceService,
+        AppSource,
+        Internal,
+        PayAsYouGo
+    }
+
+    public class CatalogPayGoEntitlementModel
+    {
+        [JsonProperty("entitled")]
+        public EntitlementEntitledModel Entitled { get; set; }
+
+        [JsonProperty("consumed")]
+        public EntitlementConsumedModel Consumed { get; set; }
+    }
+
+    public class LicensedPolicyModel
+    {
+        [JsonProperty("entitled")]
+        public bool Entitled { get; set; }
+    }
+
+    public class EnvironmentEntitlementSnapshotResponseModelPagedResponse
+    {
+        [JsonProperty("value")]
+        public EnvironmentEntitlementSnapshotResponseModel[] Value { get; set; }
+
+        [JsonProperty("@odata.count")]
         public int Count { get; set; }
 
-        [JsonProperty("resultTruncated")]
-        public ResourceQueryResponseResultTruncatedType ResultTruncated { get; set; }
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
 
-        [JsonProperty("skipToken")]
-        public string SkipToken { get; set; }
-
-        [JsonProperty("data")]
-        public ResourceItem[] Data { get; set; }
+        [JsonProperty("continuationtoken")]
+        public string Continuationtoken { get; set; }
     }
 
-    public enum ResourceQueryResponseResultTruncatedType
+    public class EnvironmentEntitlementSnapshotResponseModel
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        [JsonProperty("resources")]
+        public EnvironmentResourceEntitlementSnapshotResponseModel[] Resources { get; set; }
     }
 
-    public class ResourceItem
+    public class EnvironmentResourceEntitlementSnapshotResponseModel
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
 
-        [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonProperty("consumed")]
+        public double Consumed { get; set; }
 
-        [JsonProperty("type")]
-        public string Type { get; set; }
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
 
+        [JsonProperty("lastRefreshedDate")]
+        public string LastRefreshedDate { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+    }
+
+    public class TenantEntitlementLicenseTrendResponseModelPagedResponse
+    {
+        [JsonProperty("value")]
+        public TenantEntitlementLicenseTrendResponseModel[] Value { get; set; }
+
+        [JsonProperty("@odata.count")]
+        public int Count { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+
+        [JsonProperty("continuationtoken")]
+        public string Continuationtoken { get; set; }
+    }
+
+    public class TenantEntitlementLicenseTrendResponseModel
+    {
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("licenseModelType")]
+        public LicenseModelType LicenseModelType { get; set; }
+
+        [JsonProperty("licenses")]
+        public TenantEntitlementLicenseModel[] Licenses { get; set; }
+    }
+
+    public enum LicenseModelType
+    {
+        NotSpecified,
+        Usl,
+        Capacity,
+        PayGo,
+        TenantLicense
+    }
+
+    public class TenantEntitlementLicenseModel
+    {
+        [JsonProperty("licenseId")]
+        public string LicenseId { get; set; }
+
+        [JsonProperty("skuId")]
+        public string SkuId { get; set; }
+
+        [JsonProperty("productName")]
+        public string ProductName { get; set; }
+
+        [JsonProperty("licenseQuantity")]
+        public int LicenseQuantity { get; set; }
+
+        [JsonProperty("entitled")]
+        public double Entitled { get; set; }
+
+        [JsonProperty("licenseTier")]
+        public LicenseTier LicenseTier { get; set; }
+
+        [JsonProperty("licenseStatus")]
+        public string LicenseStatus { get; set; }
+    }
+
+    public class TenantEnvironmentResourceSnapshotResponseModelPagedResponse
+    {
+        [JsonProperty("value")]
+        public TenantEnvironmentResourceSnapshotResponseModel[] Value { get; set; }
+
+        [JsonProperty("@odata.count")]
+        public int Count { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+
+        [JsonProperty("continuationtoken")]
+        public string Continuationtoken { get; set; }
+    }
+
+    public class TenantEnvironmentResourceSnapshotResponseModel
+    {
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("consumed")]
+        public double Consumed { get; set; }
+
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+
+        [JsonProperty("lastRefreshedDate")]
+        public string LastRefreshedDate { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+    }
+
+    public class TenantUserResponseModelPagedResponse
+    {
+        [JsonProperty("value")]
+        public TenantUserResponseModel[] Value { get; set; }
+
+        [JsonProperty("@odata.count")]
+        public int Count { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+
+        [JsonProperty("continuationtoken")]
+        public string Continuationtoken { get; set; }
+    }
+
+    public class TenantUserResponseModel
+    {
+        [JsonProperty("users")]
+        public TenantCapacityConsumptionUserSnapshotResponseModel[] Users { get; set; }
+    }
+
+    public class TenantCapacityConsumptionUserSnapshotResponseModel
+    {
         [JsonProperty("tenantId")]
         public string TenantId { get; set; }
-
-        [JsonProperty("kind")]
-        public string Kind { get; set; }
-
-        [JsonProperty("location")]
-        public string Location { get; set; }
-
-        [JsonProperty("resourceGroup")]
-        public string ResourceGroup { get; set; }
-
-        [JsonProperty("subscriptionId")]
-        public string SubscriptionId { get; set; }
-
-        [JsonProperty("managedBy")]
-        public string ManagedBy { get; set; }
-
-        [JsonProperty("sku")]
-        public JToken Sku { get; set; }
-
-        [JsonProperty("plan")]
-        public JToken Plan { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-
-        [JsonProperty("tags")]
-        public JToken Tags { get; set; }
-
-        [JsonProperty("identity")]
-        public JToken Identity { get; set; }
-
-        [JsonProperty("zones")]
-        public JToken Zones { get; set; }
-
-        [JsonProperty("extendedLocation")]
-        public JToken ExtendedLocation { get; set; }
 
         [JsonProperty("environmentId")]
         public string EnvironmentId { get; set; }
 
-        [JsonProperty("environmentId1")]
-        public string EnvironmentId1 { get; set; }
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("consumed")]
+        public double Consumed { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("asOfDate")]
+        public string AsOfDate { get; set; }
+    }
+
+    public class ResourceThresholdModel
+    {
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("stopResource")]
+        public bool StopResource { get; set; }
+
+        [JsonProperty("limit")]
+        public double Limit { get; set; }
+
+        [JsonProperty("stopIfOverCapacity")]
+        public bool StopIfOverCapacity { get; set; }
+
+        [JsonProperty("notifyIfOverCapacity")]
+        public bool NotifyIfOverCapacity { get; set; }
+
+        [JsonProperty("notificationThreshold")]
+        public int NotificationThreshold { get; set; }
+
+        [JsonProperty("resourceConsumption")]
+        public double ResourceConsumption { get; set; }
+
+        [JsonProperty("createdOn")]
+        public string CreatedOn { get; set; }
+    }
+
+    public class TenantResourceResponseModelPagedResponse
+    {
+        [JsonProperty("value")]
+        public TenantResourceResponseModel[] Value { get; set; }
+
+        [JsonProperty("@odata.count")]
+        public int Count { get; set; }
+
+        [JsonProperty("@odata.nextLink")]
+        public string NextLink { get; set; }
+
+        [JsonProperty("continuationtoken")]
+        public string Continuationtoken { get; set; }
+    }
+
+    public class TenantResourceResponseModel
+    {
+        [JsonProperty("resources")]
+        public TenantCapacityConsumptionSnapshotResponseModel[] Resources { get; set; }
+    }
+
+    public class TenantCapacityConsumptionSnapshotResponseModel
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("consumed")]
+        public double Consumed { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("asOfDate")]
+        public string AsOfDate { get; set; }
+    }
+
+    public class EnvironmentEntitlementResponseModel
+    {
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
+
+        [JsonProperty("productCategories")]
+        public ProductCategory[] ProductCategories { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("environmentType")]
+        public EnvironmentType EnvironmentType { get; set; }
 
         [JsonProperty("environmentName")]
         public string EnvironmentName { get; set; }
 
-        [JsonProperty("environmentRegion")]
-        public string EnvironmentRegion { get; set; }
-
-        [JsonProperty("environmentType")]
-        public string EnvironmentType { get; set; }
-
         [JsonProperty("isManagedEnvironment")]
         public bool IsManagedEnvironment { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("scenario")]
+        public EnvironmentScenario Scenario { get; set; }
+
+        [JsonProperty("disasterRecoveryState")]
+        public EnvironmentDisasterRecoveryState DisasterRecoveryState { get; set; }
+
+        [JsonProperty("disasterRecoveryLocation")]
+        public EnvironmentDisasterRecoveryLocation DisasterRecoveryLocation { get; set; }
+
+        [JsonProperty("entitlement")]
+        public EnvironmentEntitlementDetailServiceModel Entitlement { get; set; }
+
+        [JsonProperty("addons")]
+        public EnvironmentAddonResponseModel[] Addons { get; set; }
+
+        [JsonProperty("permissions")]
+        public EnvironmentPermissionResponseModel[] Permissions { get; set; }
+
+        [JsonProperty("cleanupOpportunitySize")]
+        public int CleanupOpportunitySize { get; set; }
+
+        [JsonProperty("recommendationCount")]
+        public int RecommendationCount { get; set; }
     }
 
-    public class Clause
+    public enum EnvironmentType
     {
-        [JsonProperty("$type")]
-        public ClauseTypeType Type { get; set; }
+        None,
+        Production,
+        Sandbox,
+        Support,
+        Preview,
+        Trial,
+        Default,
+        Developer,
+        SubscriptionBasedTrial,
+        Teams,
+        NotSpecified,
+        Platform
     }
 
-    public enum ClauseTypeType
+    public enum EnvironmentScenario
     {
-        [EnumMember(Value = "where")]
-        Where,
-        [EnumMember(Value = "project")]
-        Project,
-        [EnumMember(Value = "take")]
-        Take,
-        [EnumMember(Value = "orderby")]
-        Orderby,
-        [EnumMember(Value = "distinct")]
-        Distinct,
-        [EnumMember(Value = "count")]
-        Count,
-        [EnumMember(Value = "summarize")]
-        Summarize,
-        [EnumMember(Value = "extend")]
-        Extend,
-        [EnumMember(Value = "join")]
-        Join
+        None,
+        OfficeAi,
+        M365CopilotChat,
+        M365CompliantContainer
+    }
+
+    public enum EnvironmentDisasterRecoveryState
+    {
+        NotSpecified,
+        Enabled,
+        Ready,
+        Disabled,
+        Unavailable
+    }
+
+    public enum EnvironmentDisasterRecoveryLocation
+    {
+        NotSpecified,
+        NearCopy,
+        FarCopy
+    }
+
+    public class EnvironmentEntitlementDetailServiceModel
+    {
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+
+        [JsonProperty("capacity")]
+        public EnvironmentCapacityEntitlementModel Capacity { get; set; }
+
+        [JsonProperty("payGo")]
+        public CatalogPayGoEntitlementModel PayGo { get; set; }
+    }
+
+    public class EnvironmentCapacityEntitlementModel
+    {
+        [JsonProperty("allocated")]
+        public EntitlementAllocationModelV2 Allocated { get; set; }
+
+        [JsonProperty("enforcementRules")]
+        public AllocationEnforcementRule[] EnforcementRules { get; set; }
+
+        [JsonProperty("consumed")]
+        public EntitlementConsumedModel Consumed { get; set; }
+
+        [JsonProperty("availableQuantity")]
+        public double AvailableQuantity { get; set; }
+
+        [JsonProperty("status")]
+        public OverageStatus Status { get; set; }
+    }
+
+    public class AllocationEnforcementRule
+    {
+        [JsonProperty("ruleType")]
+        public AllocationEnforcementRuleTypes RuleType { get; set; }
+
+        [JsonProperty("enabled")]
+        public bool Enabled { get; set; }
+    }
+
+    public enum AllocationEnforcementRuleTypes
+    {
+        NotSpecified,
+        Alert,
+        PayGo,
+        TenantPool,
+        Deny,
+        Throttle
+    }
+
+    public class EnvironmentAddonResponseModel
+    {
+        [JsonProperty("addonType")]
+        public CurrencyType AddonType { get; set; }
+
+        [JsonProperty("allocated")]
+        public double Allocated { get; set; }
+
+        [JsonProperty("addonUnit")]
+        public string AddonUnit { get; set; }
+    }
+
+    public enum CurrencyType
+    {
+        None,
+        AppPass,
+        AI,
+        PortalLogins,
+        PortalViews,
+        PerFlowPlan,
+        ApiCalls,
+        VAConversations,
+        AppPassForTeams,
+        PAUnattendedRPA,
+        PowerPagesAuthenticated,
+        PowerPagesAnonymous,
+        PAHostedRPA,
+        Invoice,
+        PortalAddOns,
+        PowerAutomatePerProcess,
+        MCSSessions,
+        MCSMessages,
+        SCMessages,
+        ProcessMiningDataStorage,
+        W365APAYGO,
+        [EnumMember(Value = "Internal_AI_BC")]
+        InternalAIBC,
+        [EnumMember(Value = "Internal_ISV_DataverseUserSync")]
+        InternalISVDataverseUserSync,
+        [EnumMember(Value = "Internal_AI_TemporaryCapacity")]
+        InternalAITemporaryCapacity,
+        [EnumMember(Value = "Internal_OmniChannelRecordRouting")]
+        InternalOmniChannelRecordRouting,
+        [EnumMember(Value = "Internal_OmniChannelVoice")]
+        InternalOmniChannelVoice,
+        [EnumMember(Value = "Internal_OmniChannelLiveChat")]
+        InternalOmniChannelLiveChat,
+        [EnumMember(Value = "Internal_OmniChannelDigitalMessaging")]
+        InternalOmniChannelDigitalMessaging,
+        [EnumMember(Value = "PowerPagesMigration_PortalAddOns_Authenticated")]
+        PowerPagesMigrationPortalAddOnsAuthenticated,
+        [EnumMember(Value = "PowerPagesMigration_PortalAddOns_Anonymous")]
+        PowerPagesMigrationPortalAddOnsAnonymous,
+        [EnumMember(Value = "PowerPagesMigration_PortalLogins")]
+        PowerPagesMigrationPortalLogins,
+        [EnumMember(Value = "PowerPagesMigration_PortalViews")]
+        PowerPagesMigrationPortalViews,
+        MCSMessagesStandard,
+        MCSMessagesGenAI,
+        MCSMessagesUnbillable,
+        TenantM365Copilot
+    }
+
+    public class EnvironmentPermissionResponseModel
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+    }
+
+    public class AllocationByEnvironmentModel
+    {
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("currencyAllocations")]
+        public CurrencyAllocationModel[] CurrencyAllocations { get; set; }
+    }
+
+    public class CurrencyAllocationModel
+    {
+        [JsonProperty("currencyType")]
+        public ExternalCurrencyType CurrencyType { get; set; }
+
+        [JsonProperty("allocated")]
+        public int Allocated { get; set; }
+
+        [JsonProperty("autoAllocated")]
+        public double AutoAllocated { get; set; }
+
+        [JsonProperty("enforcementRules")]
+        public EnforcementRule[] EnforcementRules { get; set; }
+    }
+
+    public enum ExternalCurrencyType
+    {
+        AI,
+        AppPass,
+        AppPassForTeams,
+        Invoice,
+        MCSSessions,
+        MCSMessages,
+        PAHostedRPA,
+        PAUnattendedRPA,
+        PerFlowPlan,
+        PortalAddOns,
+        PortalLogins,
+        PortalViews,
+        PowerPagesAuthenticated,
+        PowerPagesAnonymous,
+        PowerAutomatePerProcess,
+        ProcessMiningDataStorage,
+        SCMessages,
+        VAConversations
+    }
+
+    public class EnforcementRule
+    {
+        [JsonProperty("ruleType")]
+        public EnforcementRuleTypes RuleType { get; set; }
+
+        [JsonProperty("enabled")]
+        public bool Enabled { get; set; }
+    }
+
+    public enum EnforcementRuleTypes
+    {
+        Alert,
+        PayGo,
+        TenantPool,
+        Deny
     }
 
     public class BillingPolicyResponseModelResponseWithOdataContinuation
@@ -2931,13 +5248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string CreatedOn { get; set; }
 
         [JsonProperty("createdBy")]
-        public Principal CreatedBy { get; set; }
+        public LicensingPrincipal CreatedBy { get; set; }
 
         [JsonProperty("lastModifiedOn")]
         public string LastModifiedOn { get; set; }
 
         [JsonProperty("lastModifiedBy")]
-        public Principal LastModifiedBy { get; set; }
+        public LicensingPrincipal LastModifiedBy { get; set; }
     }
 
     public enum BillingPolicyStatus
@@ -2958,25 +5275,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string Id { get; set; }
     }
 
-    public class Principal
+    public class LicensingPrincipal
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
         [JsonProperty("type")]
-        public string Type { get; set; }
+        public PrincipalType Type { get; set; }
+    }
 
-        [JsonProperty("tenantId")]
-        public string TenantId { get; set; }
-
-        [JsonProperty("userPrincipalName")]
-        public string UserPrincipalName { get; set; }
+    public enum PrincipalType
+    {
+        None,
+        Application,
+        User,
+        DelegatedAdmin
     }
 
     public enum bodystatusInput
@@ -3019,28 +5332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
         [JsonProperty("allocated")]
         public int Allocated { get; set; }
-    }
-
-    public enum ExternalCurrencyType
-    {
-        AI,
-        AppPass,
-        AppPassForTeams,
-        Invoice,
-        MCSSessions,
-        MCSMessages,
-        PAHostedRPA,
-        PAUnattendedRPA,
-        PerFlowPlan,
-        PortalAddOns,
-        PortalLogins,
-        PortalViews,
-        PowerPagesAuthenticated,
-        PowerPagesAnonymous,
-        PowerAutomatePerProcess,
-        ProcessMiningDataStorage,
-        SCMessages,
-        VAConversations
     }
 
     public class CurrencyAllocationRequestModelV1
@@ -3091,13 +5382,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string CreatedOn { get; set; }
 
         [JsonProperty("createdBy")]
-        public Principal CreatedBy { get; set; }
+        public LicensingPrincipal CreatedBy { get; set; }
 
         [JsonProperty("lastModifiedOn")]
         public string LastModifiedOn { get; set; }
 
         [JsonProperty("lastModifiedBy")]
-        public Principal LastModifiedBy { get; set; }
+        public LicensingPrincipal LastModifiedBy { get; set; }
     }
 
     public class ConsumerIdentityModel
@@ -3475,6 +5766,135 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string LastUpdatedDay { get; set; }
     }
 
+    public class PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceRecord
+    {
+        [JsonProperty("currentPage")]
+        public int CurrentPage { get; set; }
+
+        [JsonProperty("records")]
+        public UserPerFlowCapacitySourceRecord[] Records { get; set; }
+    }
+
+    public class UserPerFlowCapacitySourceRecord
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("flowContext")]
+        public string FlowContext { get; set; }
+
+        [JsonProperty("flowLicenseCategorization")]
+        public string FlowLicenseCategorization { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("consumptionUnits")]
+        public int ConsumptionUnits { get; set; }
+
+        [JsonProperty("consumptionDate")]
+        public string ConsumptionDate { get; set; }
+    }
+
+    public class PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceFlowContextRecord
+    {
+        [JsonProperty("currentPage")]
+        public int CurrentPage { get; set; }
+
+        [JsonProperty("records")]
+        public UserPerFlowCapacitySourceFlowContextRecord[] Records { get; set; }
+    }
+
+    public class UserPerFlowCapacitySourceFlowContextRecord
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("flowContext")]
+        public string FlowContext { get; set; }
+
+        [JsonProperty("flowLicenseCategorization")]
+        public string FlowLicenseCategorization { get; set; }
+
+        [JsonProperty("consumptionDate")]
+        public string ConsumptionDate { get; set; }
+
+        [JsonProperty("totalConsumption")]
+        public int TotalConsumption { get; set; }
+
+        [JsonProperty("flowId")]
+        public string FlowId { get; set; }
+    }
+
+    public class UserPerFlowCapacitySourceTenantContextSummaryRecord
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("flowContext")]
+        public string FlowContext { get; set; }
+
+        [JsonProperty("countOfUsersInCompliance")]
+        public int CountOfUsersInCompliance { get; set; }
+
+        [JsonProperty("countOfUsersExceedingCapacity")]
+        public int CountOfUsersExceedingCapacity { get; set; }
+
+        [JsonProperty("countOfUsersWithoutALicense")]
+        public int CountOfUsersWithoutALicense { get; set; }
+
+        [JsonProperty("countOfUsersWithoutPremiumLicenseUsingPremiumFeatures")]
+        public int CountOfUsersWithoutPremiumLicenseUsingPremiumFeatures { get; set; }
+    }
+
+    public class PowerPlatformRequestSnapshotResultWithoutPagesUserPerFlowCapacitySourceUserContextRecord
+    {
+        [JsonProperty("currentPage")]
+        public int CurrentPage { get; set; }
+
+        [JsonProperty("records")]
+        public UserPerFlowCapacitySourceUserContextRecord[] Records { get; set; }
+    }
+
+    public class UserPerFlowCapacitySourceUserContextRecord
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("flowContext")]
+        public string FlowContext { get; set; }
+
+        [JsonProperty("flowLicenseCategorization")]
+        public string FlowLicenseCategorization { get; set; }
+
+        [JsonProperty("consumptionDate")]
+        public string ConsumptionDate { get; set; }
+
+        [JsonProperty("totalConsumption")]
+        public int TotalConsumption { get; set; }
+
+        [JsonProperty("totalCapacity")]
+        public int TotalCapacity { get; set; }
+
+        [JsonProperty("totalFlows")]
+        public int TotalFlows { get; set; }
+    }
+
     public class ResourceArrayPowerApp
     {
         [JsonProperty("value")]
@@ -3787,6 +6207,319 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string MinimumRequiredApiVersion { get; set; }
     }
 
+    public class ResourceQueryResponse
+    {
+        [JsonProperty("totalRecords")]
+        public int TotalRecords { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("resultTruncated")]
+        public ResourceQueryResponseResultTruncatedType ResultTruncated { get; set; }
+
+        [JsonProperty("skipToken")]
+        public string SkipToken { get; set; }
+
+        [JsonProperty("data")]
+        public ResourceItem[] Data { get; set; }
+    }
+
+    public enum ResourceQueryResponseResultTruncatedType
+    {
+        _0 = 0,
+        _1 = 1
+    }
+
+    public class ResourceItem
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("kind")]
+        public string Kind { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("resourceGroup")]
+        public string ResourceGroup { get; set; }
+
+        [JsonProperty("subscriptionId")]
+        public string SubscriptionId { get; set; }
+
+        [JsonProperty("managedBy")]
+        public string ManagedBy { get; set; }
+
+        [JsonProperty("sku")]
+        public JToken Sku { get; set; }
+
+        [JsonProperty("plan")]
+        public JToken Plan { get; set; }
+
+        [JsonProperty("properties")]
+        public JToken Properties { get; set; }
+
+        [JsonProperty("tags")]
+        public JToken Tags { get; set; }
+
+        [JsonProperty("identity")]
+        public JToken Identity { get; set; }
+
+        [JsonProperty("zones")]
+        public JToken Zones { get; set; }
+
+        [JsonProperty("extendedLocation")]
+        public JToken ExtendedLocation { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("environmentId1")]
+        public string EnvironmentId1 { get; set; }
+
+        [JsonProperty("environmentName")]
+        public string EnvironmentName { get; set; }
+
+        [JsonProperty("environmentRegion")]
+        public string EnvironmentRegion { get; set; }
+
+        [JsonProperty("environmentType")]
+        public string EnvironmentType { get; set; }
+
+        [JsonProperty("isManagedEnvironment")]
+        public bool IsManagedEnvironment { get; set; }
+    }
+
+    public class Clause
+    {
+        [JsonProperty("$type")]
+        public ClauseTypeType Type { get; set; }
+    }
+
+    public enum ClauseTypeType
+    {
+        [EnumMember(Value = "where")]
+        Where,
+        [EnumMember(Value = "project")]
+        Project,
+        [EnumMember(Value = "take")]
+        Take,
+        [EnumMember(Value = "orderby")]
+        Orderby,
+        [EnumMember(Value = "distinct")]
+        Distinct,
+        [EnumMember(Value = "count")]
+        Count,
+        [EnumMember(Value = "summarize")]
+        Summarize,
+        [EnumMember(Value = "extend")]
+        Extend,
+        [EnumMember(Value = "join")]
+        Join
+    }
+
+    public class DsrFlowRunsResponse
+    {
+        [JsonProperty("flowId")]
+        public string FlowId { get; set; }
+
+        [JsonProperty("value")]
+        public DsrFlowRunData[] Value { get; set; }
+
+        [JsonProperty("nextLink")]
+        public string NextLink { get; set; }
+    }
+
+    public class DsrFlowRunData
+    {
+        [JsonProperty("runId")]
+        public string RunId { get; set; }
+
+        [JsonProperty("actionEvents")]
+        public ActionEvent[] ActionEvents { get; set; }
+    }
+
+    public class ActionEvent
+    {
+        [JsonProperty("type")]
+        public ActionEventType Type { get; set; }
+    }
+
+    public enum ActionEventType
+    {
+        NotSpecified,
+        Trigger,
+        Thought,
+        ConnectorActionStart,
+        ConnectorActionEnd,
+        ActionValidationResponse,
+        ActionSuggestionRequest,
+        Output
+    }
+
+    public class DsrPagedResponse
+    {
+        [JsonProperty("value")]
+        public JToken[] Value { get; set; }
+
+        [JsonProperty("nextLink")]
+        public string NextLink { get; set; }
+    }
+
+    public class DsrConversationTranscriptsResponse
+    {
+        [JsonProperty("value")]
+        public ConversationTranscript[] Value { get; set; }
+
+        [JsonProperty("nextLink")]
+        public string NextLink { get; set; }
+    }
+
+    public class ConversationTranscript
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("objectId")]
+        public string ObjectId { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("serviceRequestCorrelationId")]
+        public string ServiceRequestCorrelationId { get; set; }
+
+        [JsonProperty("requestCorrelationId")]
+        public string RequestCorrelationId { get; set; }
+
+        [JsonProperty("systemMetadata")]
+        public ConversationTranscriptSystemMetadata SystemMetadata { get; set; }
+
+        [JsonProperty("request")]
+        public ConversationTranscriptRequest Request { get; set; }
+
+        [JsonProperty("response")]
+        public ConversationTranscriptResponse Response { get; set; }
+    }
+
+    public class ConversationTranscriptSystemMetadata
+    {
+        [JsonProperty("scenario")]
+        public ConversationTranscriptScenario Scenario { get; set; }
+    }
+
+    public enum ConversationTranscriptScenario
+    {
+        WorkflowsAgentRuntime,
+        WorkflowsAgentAuthoring
+    }
+
+    public class ConversationTranscriptRequest
+    {
+        [JsonProperty("messages")]
+        public ConversationTranscriptMessage[] Messages { get; set; }
+
+        [JsonProperty("tools")]
+        public ConversationTranscriptTool[] Tools { get; set; }
+
+        [JsonProperty("toolChoice")]
+        public string ToolChoice { get; set; }
+    }
+
+    public class ConversationTranscriptMessage
+    {
+        [JsonProperty("role")]
+        public string Role { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("isCustomerContent")]
+        public bool IsCustomerContent { get; set; }
+
+        [JsonProperty("toolCalls")]
+        public ConversationTranscriptToolCall[] ToolCalls { get; set; }
+
+        [JsonProperty("toolCallId")]
+        public string ToolCallId { get; set; }
+    }
+
+    public class ConversationTranscriptToolCall
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("function")]
+        public ConversationTranscriptFunction Function { get; set; }
+    }
+
+    public class ConversationTranscriptFunction
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("arguments")]
+        public string Arguments { get; set; }
+    }
+
+    public class ConversationTranscriptTool
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("function")]
+        public ConversationTranscriptToolFunction Function { get; set; }
+    }
+
+    public class ConversationTranscriptToolFunction
+    {
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken Parameters { get; set; }
+    }
+
+    public class ConversationTranscriptResponse
+    {
+        [JsonProperty("completions")]
+        public ConversationTranscriptCompletion[] Completions { get; set; }
+
+        [JsonProperty("succeeded")]
+        public bool Succeeded { get; set; }
+    }
+
+    public class ConversationTranscriptCompletion
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("finishReason")]
+        public string FinishReason { get; set; }
+
+        [JsonProperty("toolCalls")]
+        public ConversationTranscriptToolCall[] ToolCalls { get; set; }
+    }
+
     public class MCPQueryResponse
     {
         [JsonProperty("jsonrpc")]
@@ -3806,6 +6539,240 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
 
         [JsonProperty("error")]
         public JToken Error { get; set; }
+    }
+
+    public class AllocationAvailabilityResponseModel
+    {
+        [JsonProperty("scope")]
+        public ScopeModel Scope { get; set; }
+
+        [JsonProperty("entitlementAllocationsAvailable")]
+        public EntitlementAllocationAvailabilityModel[] EntitlementAllocationsAvailable { get; set; }
+    }
+
+    public class ScopeModel
+    {
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("environmentGroupId")]
+        public string EnvironmentGroupId { get; set; }
+
+        [JsonProperty("environmentId")]
+        public string EnvironmentId { get; set; }
+
+        [JsonProperty("resourceId")]
+        public string ResourceId { get; set; }
+
+        [JsonProperty("userId")]
+        public string UserId { get; set; }
+
+        [JsonProperty("userGroupId")]
+        public string UserGroupId { get; set; }
+    }
+
+    public class EntitlementAllocationAvailabilityModel
+    {
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
+
+        [JsonProperty("availableQuantity")]
+        public double AvailableQuantity { get; set; }
+
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+    }
+
+    public class FinOpsLicenseSummaryV2Response
+    {
+        [JsonProperty("lastReportRefreshTime")]
+        public string LastReportRefreshTime { get; set; }
+
+        [JsonProperty("tenantId")]
+        public string TenantId { get; set; }
+
+        [JsonProperty("allUsersCount")]
+        public int AllUsersCount { get; set; }
+
+        [JsonProperty("usersWithoutLicensesCount")]
+        public int UsersWithoutLicensesCount { get; set; }
+
+        [JsonProperty("underLicensedUsersCount")]
+        public int UnderLicensedUsersCount { get; set; }
+
+        [JsonProperty("overLicensedUsersCount")]
+        public int OverLicensedUsersCount { get; set; }
+
+        [JsonProperty("licensesConsumption")]
+        public FinOpsLicensesConsumption LicensesConsumption { get; set; }
+    }
+
+    public class FinOpsLicensesConsumption
+    {
+        [JsonProperty("supplyChainManagement")]
+        public FinOpsProductLicenseConsumption SupplyChainManagement { get; set; }
+
+        [JsonProperty("finance")]
+        public FinOpsProductLicenseConsumption Finance { get; set; }
+
+        [JsonProperty("commerce")]
+        public FinOpsProductLicenseConsumption Commerce { get; set; }
+
+        [JsonProperty("projectOperations")]
+        public FinOpsProductLicenseConsumption ProjectOperations { get; set; }
+
+        [JsonProperty("humanResources")]
+        public FinOpsProductLicenseConsumption HumanResources { get; set; }
+
+        [JsonProperty("operations")]
+        public FinOpsOperationsLicenseConsumption Operations { get; set; }
+
+        [JsonProperty("activity")]
+        public FinOpsSimpleLicenseConsumption Activity { get; set; }
+
+        [JsonProperty("teamMember")]
+        public FinOpsSimpleLicenseConsumption TeamMember { get; set; }
+
+        [JsonProperty("selfService")]
+        public FinOpsSimpleLicenseConsumption SelfService { get; set; }
+
+        [JsonProperty("supplyChainManagementOrFinanceOrCommerce")]
+        public FinOpsSupplyChainManagementOrFinanceOrCommerceLicenseConsumption SupplyChainManagementOrFinanceOrCommerce { get; set; }
+
+        [JsonProperty("projectOperationsOrHumanResources")]
+        public FinOpsProjectOperationsOrHumanResourcesLicenseConsumption ProjectOperationsOrHumanResources { get; set; }
+    }
+
+    public class FinOpsProductLicenseConsumption
+    {
+        [JsonProperty("licenseRequirements")]
+        public FinOpsLicenseRequirements LicenseRequirements { get; set; }
+
+        [JsonProperty("baseConsumption")]
+        public FinOpsBaseLicenseConsumption BaseConsumption { get; set; }
+
+        [JsonProperty("attachConsumption")]
+        public FinOpsAttachLicenseConsumption AttachConsumption { get; set; }
+    }
+
+    public class FinOpsLicenseRequirements
+    {
+        [JsonProperty("usersNeedingLicenseCount")]
+        public int UsersNeedingLicenseCount { get; set; }
+    }
+
+    public class FinOpsBaseLicenseConsumption
+    {
+        [JsonProperty("purchasedBaseUnassignedCount")]
+        public int PurchasedBaseUnassignedCount { get; set; }
+
+        [JsonProperty("purchasedBaseAssignedCount")]
+        public int PurchasedBaseAssignedCount { get; set; }
+    }
+
+    public class FinOpsAttachLicenseConsumption
+    {
+        [JsonProperty("purchasedAttachUnassignedCount")]
+        public int PurchasedAttachUnassignedCount { get; set; }
+
+        [JsonProperty("purchasedAttachAssignedCount")]
+        public int PurchasedAttachAssignedCount { get; set; }
+    }
+
+    public class FinOpsOperationsLicenseConsumption
+    {
+        [JsonProperty("licenseRequirements")]
+        public FinOpsLicenseRequirements LicenseRequirements { get; set; }
+
+        [JsonProperty("baseConsumption")]
+        public FinOpsBaseLicenseConsumption BaseConsumption { get; set; }
+    }
+
+    public class FinOpsSimpleLicenseConsumption
+    {
+        [JsonProperty("licenseRequirements")]
+        public FinOpsLicenseRequirements LicenseRequirements { get; set; }
+
+        [JsonProperty("baseConsumption")]
+        public FinOpsBaseLicenseConsumption BaseConsumption { get; set; }
+    }
+
+    public class FinOpsSupplyChainManagementOrFinanceOrCommerceLicenseConsumption
+    {
+        [JsonProperty("licenseRequirements")]
+        public FinOpsLicenseRequirements LicenseRequirements { get; set; }
+
+        [JsonProperty("supplyChainManagementConsumption")]
+        public FinOpsBaseLicenseConsumption SupplyChainManagementConsumption { get; set; }
+
+        [JsonProperty("financeConsumption")]
+        public FinOpsBaseLicenseConsumption FinanceConsumption { get; set; }
+
+        [JsonProperty("commerceConsumption")]
+        public FinOpsBaseLicenseConsumption CommerceConsumption { get; set; }
+    }
+
+    public class FinOpsProjectOperationsOrHumanResourcesLicenseConsumption
+    {
+        [JsonProperty("licenseRequirements")]
+        public FinOpsLicenseRequirements LicenseRequirements { get; set; }
+
+        [JsonProperty("projectOperationsConsumption")]
+        public FinOpsBaseLicenseConsumption ProjectOperationsConsumption { get; set; }
+
+        [JsonProperty("humanResourcesConsumption")]
+        public FinOpsBaseLicenseConsumption HumanResourcesConsumption { get; set; }
+    }
+
+    public class EntitlementReservedResponseModel
+    {
+        [JsonProperty("reserved")]
+        public ReservedModel Reserved { get; set; }
+
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
+    }
+
+    public class ReservedModel
+    {
+        [JsonProperty("quantity")]
+        public double Quantity { get; set; }
+
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
+    }
+
+    public class NeptuneOperationResult
+    {
+        [JsonProperty("statusCode")]
+        public int StatusCode { get; set; }
+
+        [JsonProperty("isErrorResult")]
+        public bool IsErrorResult { get; set; }
+    }
+
+    public class EntitlementAllocationModel
+    {
+        [JsonProperty("allocation")]
+        public AllocationModel Allocation { get; set; }
+
+        [JsonProperty("entitlementId")]
+        public string EntitlementId { get; set; }
+
+        [JsonProperty("enforcementRules")]
+        public AllocationEnforcementRule[] EnforcementRules { get; set; }
+    }
+
+    public class AllocationModel
+    {
+        [JsonProperty("quantity")]
+        public double Quantity { get; set; }
+
+        [JsonProperty("autoAllocated")]
+        public double AutoAllocated { get; set; }
+
+        [JsonProperty("unit")]
+        public EntitlementUnit Unit { get; set; }
     }
 }
 

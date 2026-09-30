@@ -354,60 +354,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         }
     }
 
-    public class WhenFilesAreAddedOutputItem
-    {
-        [JsonProperty("name")]
-        public JToken Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("etag")]
-        public string Etag { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("isFolder")]
-        public string IsFolder { get; set; }
-
-        [JsonProperty("lastModifiedDateTime")]
-        public string LastModifiedDateTime { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("fileSize")]
-        public string FileSize { get; set; }
-    }
-
-    public class WhenFilesAreAddedOrModifiedOutputItem
-    {
-        [JsonProperty("name")]
-        public JToken Name { get; set; }
-
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("etag")]
-        public string Etag { get; set; }
-
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
-
-        [JsonProperty("isFolder")]
-        public string IsFolder { get; set; }
-
-        [JsonProperty("lastModifiedDateTime")]
-        public string LastModifiedDateTime { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("fileSize")]
-        public string FileSize { get; set; }
-    }
-
     public class CopyFileOutput
     {
         [JsonProperty("name")]
@@ -573,6 +519,60 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
     }
 
     public class UpdateFileOutput
+    {
+        [JsonProperty("name")]
+        public JToken Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("etag")]
+        public string Etag { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("isFolder")]
+        public string IsFolder { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedDateTime { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("fileSize")]
+        public string FileSize { get; set; }
+    }
+
+    public class WhenFilesAreAddedOutputItem
+    {
+        [JsonProperty("name")]
+        public JToken Name { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("etag")]
+        public string Etag { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("isFolder")]
+        public string IsFolder { get; set; }
+
+        [JsonProperty("lastModifiedDateTime")]
+        public string LastModifiedDateTime { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("fileSize")]
+        public string FileSize { get; set; }
+    }
+
+    public class WhenFilesAreAddedOrModifiedOutputItem
     {
         [JsonProperty("name")]
         public JToken Name { get; set; }

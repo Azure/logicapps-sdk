@@ -751,18 +751,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 
     public enum skipInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "100")]
-        _100
+        _0 = 0,
+        _5 = 5,
+        _15 = 15,
+        _30 = 30,
+        _50 = 50,
+        _100 = 100
     }
 
     public class CreateUserResponse
