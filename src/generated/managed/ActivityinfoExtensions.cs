@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 
     public class ActivityinfoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> AddRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> AddRecordTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/resources/powerautomate/v1/forms/{0}/automation/add", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var actionObjectpropCount = 0;
             actionObject["type"] = "WEBHOOK";
             actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
+            actionObject["url"] = "#{listCallbackUrl()}";
             actionObjectpropCount++;
             if (actionObjectpropCount > 0)
             {
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> EditRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> EditRecordTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/resources/powerautomate/v1/forms/{0}/automation/edit", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var actionObjectpropCount = 0;
             actionObject["type"] = "WEBHOOK";
             actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
+            actionObject["url"] = "#{listCallbackUrl()}";
             actionObjectpropCount++;
             if (actionObjectpropCount > 0)
             {
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/resources/powerautomate/v1/forms/{0}/automation/delete", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             var actionObjectpropCount = 0;
             actionObject["type"] = "WEBHOOK";
             actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
+            actionObject["url"] = "#{listCallbackUrl()}";
             actionObjectpropCount++;
             if (actionObjectpropCount > 0)
             {

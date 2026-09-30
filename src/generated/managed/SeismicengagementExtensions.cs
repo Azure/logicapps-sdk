@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     public class SeismicengagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions(Expression<Func<bool>> enabled = null)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions([WorkflowExpression] Func<bool> enabled = null)
         {
             var apiCallPath = "/delivery";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deliveryOptionId)
         {
             var apiCallPath = String.Format("/customDelivery/{0}", ExpressionConverter.ConvertWithUrlEncoding(deliveryOptionId, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IWorkflowAction DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
+        public IWorkflowAction DeliverViaCustomDelivery([WorkflowExpression] Func<string> bodydeliveryOption = null, [WorkflowExpression] Func<string> bodydeliveryOptionId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryAdHocInput[]> bodyadHocInput = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryContent[]> bodycontent = null)
         {
             var apiCallPath = "/customDelivery";
             var apiCallHttpMethod = "post";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace([WorkflowExpression] Func<string> bodyworkspaceOptionsworkspaceFolderId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDelContent[]> bodycontent = null)
         {
             var apiCallPath = "/saveToWorkspace";
             var apiCallHttpMethod = "post";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink([WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodysettingsexpiresAt = null, [WorkflowExpression] Func<string> bodysettingspassword = null, [WorkflowExpression] Func<bool> bodysettingsallowDownload = null, [WorkflowExpression] Func<string> bodysettingsnotificationType = null, [WorkflowExpression] Func<bool> bodysettingssingleView = null, [WorkflowExpression] Func<SeismicLiveSendLiveSendLinkContent[]> bodycontent = null)
         {
             var apiCallPath = "/liveSend/links";
             var apiCallHttpMethod = "post";

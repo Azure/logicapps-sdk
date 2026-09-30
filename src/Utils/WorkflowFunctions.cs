@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk;
 using Newtonsoft.Json.Linq;
 
 /// <summary>
-/// These functions are meant to be used inside an expression tree for conversion to a Logic App expression string.
+/// These functions are rewritten into runtime workflow function calls by the SDK source generator.
 /// </summary>
 public static class WorkflowFunctions
 {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
     public class HubspotconversationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetConversationsInboxesResponse> GetConversationsInboxes(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
+        public IBodyWorkflowAction<GetConversationsInboxesResponse> GetConversationsInboxes([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
             var apiCallPath = "/conversations/v3/conversations/inboxes";
             var apiCallHttpMethod = "get";
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<string> ArchivesAThread(Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<string> ArchivesAThread([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "delete";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyarchived = null)
+        public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bool> bodyarchived = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "patch";
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread(Expression<Func<string>> threadId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetChannelAccountsResponse> GetChannelAccounts(Expression<Func<string>> channelId = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
+        public IBodyWorkflowAction<GetChannelAccountsResponse> GetChannelAccounts([WorkflowExpression] Func<string> channelId = null, [WorkflowExpression] Func<string> inboxId = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
             var apiCallPath = "/conversations/v3/conversations/channel-accounts";
             var apiCallHttpMethod = "get";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel(Expression<Func<string>> channelId)
+        public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> channelId)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/channels/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
             var apiCallHttpMethod = "get";
@@ -141,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetChannelsResponse> GetChannels(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
+        public IBodyWorkflowAction<GetChannelsResponse> GetChannels([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> defaultPageLength = null)
         {
             var apiCallPath = "/conversations/v3/conversations/channels";
             var apiCallHttpMethod = "get";
@@ -169,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor(Expression<Func<string>> actorId, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> actorId, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/actors/{0}", ExpressionConverter.ConvertWithUrlEncoding(actorId, 1));
             var apiCallHttpMethod = "get";
@@ -180,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetThreadsResponse> GetThreads(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> associatedContactId = null, Expression<Func<string>> threadStatus = null, Expression<Func<string>> latestMessageTimestampAfter = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
+        public IBodyWorkflowAction<GetThreadsResponse> GetThreads([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> inboxId = null, [WorkflowExpression] Func<string> associatedContactId = null, [WorkflowExpression] Func<string> threadStatus = null, [WorkflowExpression] Func<string> latestMessageTimestampAfter = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> property = null)
         {
             var apiCallPath = "/conversations/v3/conversations/threads";
             var apiCallHttpMethod = "get";
@@ -207,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount(Expression<Func<string>> channelAccountId)
+        public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> channelAccountId)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/channel-accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(channelAccountId, 1));
             var apiCallHttpMethod = "get";
@@ -216,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox(Expression<Func<string>> inboxId)
+        public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> inboxId)
         {
             var apiCallPath = String.Format("/conversations/v3/conversations/inboxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(inboxId, 1));
             var apiCallHttpMethod = "get";

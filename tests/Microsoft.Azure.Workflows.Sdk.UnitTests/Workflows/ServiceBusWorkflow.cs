@@ -17,8 +17,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public FlowDefinition[] GetWorkflows()
         {
             var trigger = WorkflowTriggers.Managed.Servicebus("servicebus").GetMessageFromQueue(
-                queueName: () => "my-queue",
-                triggerName: "When_a_message_is_received_in_a_queue");
+                queueName: () => "my-queue")
+                .WithName("When_a_message_is_received_in_a_queue");
 
             var processMessage = WorkflowActions.BuiltIn.Compose(() => new
             {

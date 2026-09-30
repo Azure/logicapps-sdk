@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<bool> isSandbox, [WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> onBehalfOf = null, [WorkflowExpression] Func<int> expiryDays = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<bool> hideDocumentId = null, [WorkflowExpression] Func<bool> enablePrintAndSign = null, [WorkflowExpression] Func<bool> enableReassign = null, [WorkflowExpression] Func<bool> enableAutoReminder = null, [WorkflowExpression] Func<object> signers = null)
         {
             var apiCallPath = "/v1/template/send";
             var apiCallHttpMethod = "post";
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadDocument(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction DownloadDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
             var apiCallPath = "/v1/document/download";
             var apiCallHttpMethod = "get";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadAuditTrail(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction DownloadAuditTrail([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
             var apiCallPath = "/v1/document/downloadAuditLog";
             var apiCallHttpMethod = "get";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus(Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus([WorkflowExpression] Func<string> documentId)
         {
             var apiCallPath = "/v1/document/properties";
             var apiCallHttpMethod = "get";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks([WorkflowExpression] Func<eventsInput> events, [WorkflowExpression] Func<bool> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
             var apiCallHttpMethod = "post";
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
             bodypropCount++;
             body["events"] = "Sent";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["environment"] = "Live";
             bodypropCount++;

@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using System.Net;
     using Newtonsoft.Json.Linq;
 
@@ -17,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <remarks>
     /// Access this class through <c>WorkflowActions.BuiltIn</c>. Available action types include:
     /// <list type="bullet">
-    ///   <item><description><see cref="Compose(System.Linq.Expressions.Expression{Func{string}})"/> — Transforms and combines data.</description></item>
+    ///   <item><description><see cref="Compose(Func{string})"/> — Transforms and combines data.</description></item>
     ///   <item><description><see cref="HttpAction"/> — Sends HTTP requests to external endpoints.</description></item>
     ///   <item><description><see cref="Response"/> — Returns an HTTP response (for HTTP-triggered workflows).</description></item>
     ///   <item><description><see cref="CustomCode{T}"/> — Executes a C# callback function inline.</description></item>
@@ -45,23 +44,24 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="requestBody">The request body to send to the workflow (optional).</param>
         /// <param name="headers">The request headers to include in the workflow call (optional).</param>
         public IBodyWorkflowAction<JToken> NestedWorkflow(
-            Expression<Func<string>> workflowReferenceName,
-            Expression<Func<object>> requestBody = null,
-            Expression<Func<Dictionary<string, string>>> headers = null)
+            [WorkflowExpression] Func<string> workflowReferenceName,
+            [WorkflowExpression] Func<object> requestBody = null,
+            [WorkflowExpression] Func<Dictionary<string, string>> headers = null)
         {
            return new NestedWorkflowAction<JToken>(
-                ExpressionConverter.Convert(workflowReferenceName),
-                requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+                ExpressionConverter.ConvertGenerated(workflowReferenceName),
+                requestBody != null ? ExpressionConverter.ConvertGeneratedO(requestBody) : null,
+                headers != null ? ExpressionConverter.ConvertGeneratedO(headers) : null);
         }
 
         /// <summary>
         /// Creates a compose action that combines inputs into a single output.
         /// </summary>
         /// <param name="inputs">The inputs to compose.</param>
-        public IOutputWorkflowAction<JToken> Compose(Expression<Func<string>> inputs)
+        public IOutputWorkflowAction<JToken> Compose(
+            [WorkflowExpression] Func<string> inputs)
         {
-            return new ComposeAction<JToken>(ExpressionConverter.Convert(inputs));
+            return new ComposeAction<JToken>(ExpressionConverter.ConvertGenerated(inputs));
         }
 
         /// <summary>
@@ -69,9 +69,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The input to compose.</param>
         /// <typeparam name="T">The type of the composed output.</typeparam>
-        public IOutputWorkflowAction<T> Compose<T>(Expression<Func<T>> input)
+        public IOutputWorkflowAction<T> Compose<T>(
+            [WorkflowExpression] Func<T> input)
         {
-            var jt = ExpressionConverter.ConvertO<T>(input);
+            var jt = ExpressionConverter.ConvertGeneratedO(input);
             return new ComposeAction<T>(jt);
         }
 
@@ -99,18 +100,18 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="queries">An expression for the query parameters (optional).</param>
         /// <param name="headers">An expression for the request headers (optional).</param>
         public IBodyWorkflowAction<JToken> HttpAction(
-            Expression<Func<Uri>> uri,
-            Expression<Func<HttpMethod>> method,
-            Expression<Func<object>> requestBody = null,
-            Expression<Func<Dictionary<string, string>>> queries = null,
-            Expression<Func<Dictionary<string, string>>> headers = null)
+            [WorkflowExpression] Func<Uri> uri,
+            [WorkflowExpression] Func<HttpMethod> method,
+            [WorkflowExpression] Func<object> requestBody = null,
+            [WorkflowExpression] Func<Dictionary<string, string>> queries = null,
+            [WorkflowExpression] Func<Dictionary<string, string>> headers = null)
         {
             return new HttpAction<JToken>(
-                ExpressionConverter.Convert(uri),
-                ExpressionConverter.Convert(method),
-                requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null,
-                queries != null ? ExpressionConverter.ConvertObject(queries) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+                ExpressionConverter.ConvertGenerated(uri),
+                ExpressionConverter.ConvertGenerated(method),
+                requestBody != null ? ExpressionConverter.ConvertGeneratedO(requestBody) : null,
+                queries != null ? ExpressionConverter.ConvertGeneratedO(queries) : null,
+                headers != null ? ExpressionConverter.ConvertGeneratedO(headers) : null);
         }
 
         /// <summary>
@@ -121,16 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="headers">An expression for the response headers (optional).</param>
         /// <param name="schema">An expression for the response schema (optional).</param>
         public IBodyWorkflowAction<JToken> Response(
-            Expression<Func<HttpStatusCode>> statusCode = null,
-            Expression<Func<object>> responseBody = null,
-            Expression<Func<Dictionary<string, string>>> headers = null,
-            Expression<Func<JToken>> schema = null)
+            Func<HttpStatusCode> statusCode = null,
+            [WorkflowExpression] Func<object> responseBody = null,
+            [WorkflowExpression] Func<Dictionary<string, string>> headers = null,
+            [WorkflowExpression] Func<JToken> schema = null)
         {
             return new ResponseAction<JToken>(
-                statusCode != null ? ExpressionConverter.ConvertObject(statusCode) : HttpStatusCode.OK,
-                responseBody != null ? ExpressionConverter.ConvertO(responseBody) : null,
-                headers != null ? ExpressionConverter.ConvertObject(headers) : null,
-                schema != null ? ExpressionConverter.ConvertObject(schema) : null);
+                statusCode?.Invoke() ?? HttpStatusCode.OK,
+                responseBody != null ? ExpressionConverter.ConvertGeneratedO(responseBody) : null,
+                headers != null ? ExpressionConverter.ConvertGeneratedO(headers) : null,
+                schema != null ? ExpressionConverter.ConvertGeneratedO(schema) : null);
         }
 
         public AgentAction Agent(
@@ -138,14 +139,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             string deploymentId,
             AgentModelSettings agentModelSettings,
             string connectionName,
-            Expression<Func<AgentPromptMessage[]>> messages)
+            Func<AgentPromptMessage[]> messages)
         {
             return new AgentAction(
                 agentModelType: agentModelType,
                 deploymentId: deploymentId,
                 agentModelSettings: agentModelSettings,
                 connectionName: connectionName,
-                messages: messages != null ? ExpressionConverter.ConvertO(messages)?.ToObject<AgentPromptMessage[]>() : null);
+                messages: messages?.Invoke());
         }
     }
 }

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
     public class PappersActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<CompanyFormat> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
+        public IBodyWorkflowAction<CompanyFormat> CompanyGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<fieldsInput> fields = null)
         {
             var apiCallPath = "/company";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<SearchResponse> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SearchResponse> SearchGet([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
-        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet(Expression<Func<string>> token)
+        public IBodyWorkflowAction<DocumentGetResponse> DocumentGet([WorkflowExpression] Func<string> token)
         {
             var apiCallPath = "/download-file";
             var apiCallHttpMethod = "get";

@@ -43,7 +43,7 @@ public class ApiConnectionActionInput(string path, string method, string connect
     /// Gets or sets the path for the request.
     /// </summary>
     [JsonProperty(Required = Required.Always)]
-    public string Path { get; set; } = path;
+    public string Path { get; set; } = WorkflowStringExpressionComposer.Compose(path);
 
     /// <summary>
     /// Gets or sets the host.
@@ -240,7 +240,7 @@ public class ApiConnectionTriggerInput : ApiConnectionActionInput
         : base(path, method, connectionId)
     {
         this.Recurrence = recurrence.ToJToken();
-        this.SplitOn = "@triggerOutputs()?['body']";
+        this.SplitOn = "#{triggerOutputs()?[\"body\"]}";
     }
 
     /// <summary>
@@ -327,7 +327,7 @@ internal class CodefulConnectorOperationResult
     public int StatusCode { get; set; }
 }
 
-public class ServiceProviderActionInput
+public class ServiceProviderOperationInput
 {
     public ServiceProviderConfiguration ServiceProviderConfiguration { get; set; }
     public object Parameters { get; set; }

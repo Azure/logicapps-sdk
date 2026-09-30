@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
     public class DomaintoolsirisinvesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseIP(Expression<Func<string>> ip, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> ReverseIP([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/reverse-ip/";
             var apiCallHttpMethod = "post";
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP(Expression<Func<string>> nameserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP([WorkflowExpression] Func<string> nameserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/nameserver-ip";
             var apiCallHttpMethod = "post";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain(Expression<Func<string>> domain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/investigate_domain";
             var apiCallHttpMethod = "post";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotMXIP(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotMXIP([WorkflowExpression] Func<string> mailserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/mx-ip";
             var apiCallHttpMethod = "post";
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseEmail(Expression<Func<string>> email, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> ReverseEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/reverse-email";
             var apiCallHttpMethod = "post";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash(Expression<Func<string>> searchHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash([WorkflowExpression] Func<string> searchHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/search-hash";
             var apiCallHttpMethod = "post";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash([WorkflowExpression] Func<string> sslHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/ssl-hash";
             var apiCallHttpMethod = "post";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg(Expression<Func<string>> registrantOrg, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg([WorkflowExpression] Func<string> registrantOrg, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/registrant-org";
             var apiCallHttpMethod = "post";
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName(Expression<Func<string>> registrant, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName([WorkflowExpression] Func<string> registrant, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/registrant";
             var apiCallHttpMethod = "post";
@@ -156,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain(Expression<Func<string>> emailDomain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain([WorkflowExpression] Func<string> emailDomain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/email-domain";
             var apiCallHttpMethod = "post";
@@ -172,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail([WorkflowExpression] Func<string> sslEmail, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/ssl-email/";
             var apiCallHttpMethod = "post";
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost(Expression<Func<string>> nameserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost([WorkflowExpression] Func<string> nameserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/nameserver-host/";
             var apiCallHttpMethod = "post";
@@ -204,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotMXHost(Expression<Func<string>> mailserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> PivotMXHost([WorkflowExpression] Func<string> mailserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/mailserver-host/";
             var apiCallHttpMethod = "post";
@@ -220,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny(Expression<Func<string>> taggedWithAny, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny([WorkflowExpression] Func<string> taggedWithAny, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/tagged-any/";
             var apiCallHttpMethod = "post";
@@ -236,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll(Expression<Func<string>> taggedWithAll, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll([WorkflowExpression] Func<string> taggedWithAll, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
             var apiCallPath = "/iris-investigate/tagged-all/";
             var apiCallHttpMethod = "post";

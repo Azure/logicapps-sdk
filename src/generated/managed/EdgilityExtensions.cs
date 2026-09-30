@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagefrom = null, [WorkflowExpression] Func<string> messagebody = null, [WorkflowExpression] Func<string> messagecampaign = null, [WorkflowExpression] Func<string> messagereference = null, [WorkflowExpression] Func<string> messagedate = null)
         {
             var apiCallPath = "/v2/integrations/power-automate/send";
             var apiCallHttpMethod = "post";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/integrations/power-automate/subscribe";
             var apiCallHttpMethod = "post";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
                 configpropCount++;
             }
 
-            config["destination_url"] = "@listCallbackUrl()";
+            config["destination_url"] = "#{listCallbackUrl()}";
             configpropCount++;
             if (configpropCount > 0)
             {

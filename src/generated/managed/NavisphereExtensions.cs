@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
     public class NavisphereActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction CreateOrder(Expression<Func<string>> body = null)
+        public IWorkflowAction CreateOrder([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/v1/orders";
             var apiCallHttpMethod = "post";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction RatingRequest(Expression<Func<string>> body = null)
+        public IWorkflowAction RatingRequest([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/v1/quotes";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction EventsCallback(Expression<Func<string>> body = null)
+        public IWorkflowAction EventsCallback([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/events/callback/here";
             var apiCallHttpMethod = "post";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
-        public IWorkflowAction GenerateLabel(Expression<Func<string>> body = null)
+        public IWorkflowAction GenerateLabel([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/v1/labels";
             var apiCallHttpMethod = "post";

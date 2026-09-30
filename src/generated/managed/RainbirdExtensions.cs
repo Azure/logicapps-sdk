@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
     public class RainbirdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<StartResponse> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmID)
+        public IBodyWorkflowAction<StartResponse> Start([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression] Func<string> kmID)
         {
             var apiCallPath = String.Format("/start/{0}", ExpressionConverter.ConvertWithUrlEncoding(kmID, 1));
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<InjectResponse> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<InjectResponse> Inject([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
             var apiCallPath = String.Format("/{0}/inject", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
+        public IBodyWorkflowAction<JToken> Query([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<string> bodyrelationship, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyObject = null)
         {
             var apiCallPath = String.Format("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
+        public IBodyWorkflowAction<JToken> Response([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID, [WorkflowExpression] Func<bodyanswersInputItem[]> bodyanswers = null)
         {
             var apiCallPath = String.Format("/{0}/response", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
@@ -87,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID)
+        public IBodyWorkflowAction<JToken> Undo([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression] Func<string> sessionID)
         {
             var apiCallPath = String.Format("/{0}/undo", ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "post";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<EvidenceResponse> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factID, Expression<Func<string>> sessionID)
+        public IBodyWorkflowAction<EvidenceResponse> Evidence([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<environmentInput> environment, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> factID, [WorkflowExpression] Func<string> sessionID)
         {
             var apiCallPath = String.Format("/analysis/evidence/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(factID, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionID, 1));
             var apiCallHttpMethod = "get";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<string> Version(Expression<Func<environmentInput>> environment)
+        public IBodyWorkflowAction<string> Version([WorkflowExpression] Func<environmentInput> environment)
         {
             var apiCallPath = "/version";
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     public class BufferActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> createUpdateProfileId, Expression<Func<string>> createUpdateText)
+        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> createUpdateProfileId, [WorkflowExpression] Func<string> createUpdateText)
         {
             var apiCallPath = "/1/updates/create.json";
             var apiCallHttpMethod = "post";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
-        public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
+        public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> profileId, [WorkflowExpression] Func<string> udpateId)
         {
             var apiCallPath = String.Format("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(udpateId, 1));
             var apiCallHttpMethod = "post";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
     public class BufferTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
             return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";

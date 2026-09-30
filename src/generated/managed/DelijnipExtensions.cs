@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
     public class DelijnipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<HaltesHits> SearchStops([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
             var apiCallPath = String.Format("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";
@@ -29,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LijnRichtingHits> SearchLines([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
             var apiCallPath = String.Format("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LocatiesHits> SearchLocations([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
             var apiCallPath = String.Format("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
             var apiCallHttpMethod = "get";

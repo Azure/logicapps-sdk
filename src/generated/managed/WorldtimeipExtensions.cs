@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
     public class WorldtimeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp(Expression<Func<string>> ipv4)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> ipv4)
         {
             var apiCallPath = String.Format("/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(ipv4, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<string[]> GetAreaTimezones(Expression<Func<string>> area)
+        public IBodyWorkflowAction<string[]> GetAreaTimezones([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> area)
         {
             var apiCallPath = String.Format("/timezone/{0}", ExpressionConverter.ConvertWithUrlEncoding(area, 1));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone(Expression<Func<string>> area, Expression<Func<string>> location)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> area, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location)
         {
             var apiCallPath = String.Format("/timezone/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(area, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone(Expression<Func<string>> area, Expression<Func<string>> location, Expression<Func<string>> region)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> area, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<string> region)
         {
             var apiCallPath = String.Format("/timezone/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(area, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1), ExpressionConverter.ConvertWithUrlEncoding(region, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip
     public class LoripsumipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loripsumip")]
-        public IBodyWorkflowAction<string> GetText(Expression<Func<string>> parameters)
+        public IBodyWorkflowAction<string> GetText([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> parameters)
         {
             var apiCallPath = String.Format("/api/{0}", ExpressionConverter.ConvertWithUrlEncoding(parameters, 1));
             var apiCallHttpMethod = "get";

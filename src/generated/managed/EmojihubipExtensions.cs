@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<categoryNameInput> categoryName)
         {
             var apiCallPath = String.Format("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<groupNameInput> groupName)
         {
             var apiCallPath = String.Format("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<categoryNameInput> categoryName)
         {
             var apiCallPath = String.Format("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
             var apiCallHttpMethod = "get";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<groupNameInput> groupName)
         {
             var apiCallPath = String.Format("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
             var apiCallHttpMethod = "get";

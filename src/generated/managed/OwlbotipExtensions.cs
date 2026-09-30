@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
     public class OwlbotipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "owlbotip")]
-        public IBodyWorkflowAction<DefResponse> Def(Expression<Func<string>> word)
+        public IBodyWorkflowAction<DefResponse> Def([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> word)
         {
             var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(word, 1));
             var apiCallHttpMethod = "get";

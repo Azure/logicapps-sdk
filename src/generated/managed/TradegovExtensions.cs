@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
     public class TradegovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> itaOffices = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/business_service_providers/v1/search";
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<fuzzyNameInput> fuzzyName = null, [WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> fullAddress = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/consolidated_screening_list/v1/search";
             var apiCallHttpMethod = "get";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList(Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList([WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/de_minimis/v1/list";
             var apiCallHttpMethod = "get";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch(Expression<Func<string>> countryCodes = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch([WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/de_minimis/v1/search";
             var apiCallHttpMethod = "get";
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> assignedZipCodes = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/ita_office_locations/v1/search";
             var apiCallHttpMethod = "get";
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch(Expression<Func<string>> sources = null, Expression<Func<string>> countries = null, Expression<Func<string>> eventTypes = null, Expression<Func<string>> industries = null, Expression<Func<string>> states = null, Expression<Func<string>> q = null, Expression<Func<string>> startDateRangeFrom = null, Expression<Func<string>> startDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> eventTypes = null, [WorkflowExpression] Func<string> industries = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> startDateRangeFrom = null, [WorkflowExpression] Func<string> startDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/trade_events/v1/search";
             var apiCallHttpMethod = "get";
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> tenderStartDateRangeFrom = null, Expression<Func<string>> tenderStartDateRangeTo = null, Expression<Func<string>> contractStartDateRangeFrom = null, Expression<Func<string>> contractStartDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> tenderStartDateRangeFrom = null, [WorkflowExpression] Func<string> tenderStartDateRangeTo = null, [WorkflowExpression] Func<string> contractStartDateRangeFrom = null, [WorkflowExpression] Func<string> contractStartDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/trade_leads/v1/search";
             var apiCallHttpMethod = "get";

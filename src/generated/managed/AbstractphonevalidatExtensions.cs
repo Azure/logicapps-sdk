@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
     public class AbstractphonevalidatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractphonevalidat")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> phone)
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> phone)
         {
             var apiCallPath = "/v1/";
             var apiCallHttpMethod = "get";

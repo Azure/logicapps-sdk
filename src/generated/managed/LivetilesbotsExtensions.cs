@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     public class LivetilesbotsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptString(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptString([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
             var apiCallPath = "/flowCallback/String";
             var apiCallHttpMethod = "post";
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptNumber([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
             var apiCallPath = "/flowCallback/Number";
             var apiCallHttpMethod = "post";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<bodyformFieldsInputItem[]>> bodyformFields, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodytitle = null)
+        public IWorkflowAction PromptForm([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<bodyformFieldsInputItem[]> bodyformFields, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
             var apiCallPath = "/flowCallback/Form";
             var apiCallHttpMethod = "post";
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodytitle != null)
             {
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptBoolean([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
             var apiCallPath = "/flowCallback/Bool";
             var apiCallHttpMethod = "post";
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyoptionsInputItem[]>> bodyoptions = null)
+        public IWorkflowAction PromptChoice([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyoptionsInputItem[]> bodyoptions = null)
         {
             var apiCallPath = "/flowCallback/Choice";
             var apiCallHttpMethod = "post";
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<string[]>> bodycontentTypes = null)
+        public IWorkflowAction PromptFile([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string[]> bodycontentTypes = null)
         {
             var apiCallPath = "/flowCallback/File";
             var apiCallHttpMethod = "post";
@@ -171,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 bodypropCount++;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
+            body["callbackUri"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodymessage = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IWorkflowAction PostMessage([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
             var apiCallPath = "/flowCallback/Message";
             var apiCallHttpMethod = "post";
@@ -211,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction FlowComplete(Expression<Func<string>> resumptionToken)
+        public IWorkflowAction FlowComplete([WorkflowExpression] Func<string> resumptionToken)
         {
             var apiCallPath = "/flowCallback/Done";
             var apiCallHttpMethod = "post";
@@ -223,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot, [WorkflowExpression] Func<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flows/subscribe";
             var apiCallHttpMethod = "post";
@@ -234,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
             subscription["bot"] = ExpressionConverter.ConvertO(subscriptionbot);
             subscriptionpropCount++;
             subscription["key"] = ExpressionConverter.ConvertO(subscriptionflow);
-            subscription["callbackUri"] = "@listCallbackUrl()";
+            subscription["callbackUri"] = "#{listCallbackUrl()}";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
     public class IntentionaldatasourcesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        public IBodyWorkflowAction<SingleEntity> SingleEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
+        public IBodyWorkflowAction<SingleEntity> SingleEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> token, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
         {
             var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
             var apiCallHttpMethod = "get";
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        public IBodyWorkflowAction<SingleEntity> SingleEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
+        public IBodyWorkflowAction<SingleEntity> SingleEntityById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> token, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
         {
             var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        public IBodyWorkflowAction<ListEntity> ListEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
+        public IBodyWorkflowAction<ListEntity> ListEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> token, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> oDataQuery = null)
         {
             var apiCallPath = String.Format("/{0}/{1}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
             var apiCallHttpMethod = "get";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
-        public IBodyWorkflowAction<ListEntity> ListEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
+        public IBodyWorkflowAction<ListEntity> ListEntityById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> token, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> oDataQuery = null)
         {
             var apiCallPath = String.Format("/{0}/{1}/{2}/list", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(entity, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

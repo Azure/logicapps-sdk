@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
-        public IBodyWorkflowAction<string> DeleteAnOrder(Expression<Func<string>> orderid)
+        public IBodyWorkflowAction<string> DeleteAnOrder([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> orderid)
         {
             var apiCallPath = String.Format("/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(orderid, 1));
             var apiCallHttpMethod = "delete";

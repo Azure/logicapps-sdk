@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     public class EmigoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> type)
+        public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> type)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetFeeds(Expression<Func<string>> endpoint)
+        public IBodyWorkflowAction<FeedList> GetFeeds([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> endpoint)
         {
             var apiCallPath = String.Format("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> type, Expression<Func<string>> table)
+        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> type, [WorkflowExpression] Func<string> table)
         {
             var apiCallPath = String.Format("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(type, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetODataItems(Expression<Func<string>> endpoint, Expression<Func<string>> feed)
+        public IBodyWorkflowAction<FeedList> GetODataItems([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> endpoint, [WorkflowExpression] Func<string> feed)
         {
             var apiCallPath = String.Format("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProductList> GetProductList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetProductList> GetProductList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = "/Product/GetList";
             var apiCallHttpMethod = "get";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProduct> GetProductItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetProduct> GetProductItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = "/Product/GetItem";
             var apiCallHttpMethod = "get";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = "/OperationalUnit/GetList";
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = "/OperationalUnit/GetItem";
             var apiCallHttpMethod = "get";
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
+        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit([WorkflowExpression] Func<int> sendMessageidOperationalUnit, [WorkflowExpression] Func<string> sendMessagemessage)
         {
             var apiCallPath = "/OperationalUnit/SendMessage";
             var apiCallHttpMethod = "post";
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> endpoint, [WorkflowExpression] Func<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
             var apiCallHttpMethod = "post";
@@ -129,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var requestBodyOfWebhookpropCount = 0;
             var configObject = new JObject();
             var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
+            configObject["url"] = "#{listCallbackUrl()}";
             configObjectpropCount++;
             if (configObjectpropCount > 0)
             {

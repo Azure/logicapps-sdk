@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
     public class OpenbrewerydbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery> GetBrewery(Expression<Func<string>> obdbId)
+        public IBodyWorkflowAction<RefBrewery> GetBrewery([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> obdbId)
         {
             var apiCallPath = String.Format("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(obdbId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<RefBrewery[]> ListBreweries([WorkflowExpression] Func<string> byCity = null, [WorkflowExpression] Func<string> byCountry = null, [WorkflowExpression] Func<string> byDist = null, [WorkflowExpression] Func<string> byName = null, [WorkflowExpression] Func<string> byState = null, [WorkflowExpression] Func<string> byPostal = null, [WorkflowExpression] Func<byTypeInput> byType = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
             var apiCallPath = "/v1/breweries";
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> GetRandom(Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<RefBrewery[]> GetRandom([WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/v1/breweries/random";
             var apiCallHttpMethod = "get";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<RefBrewery[]> SearchBreweries(Expression<Func<string>> query)
+        public IBodyWorkflowAction<RefBrewery[]> SearchBreweries([WorkflowExpression] Func<string> query)
         {
             var apiCallPath = "/v1/breweries/search";
             var apiCallHttpMethod = "get";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
-        public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
+        public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries([WorkflowExpression] Func<string> byCity = null, [WorkflowExpression] Func<string> byCountry = null, [WorkflowExpression] Func<string> byName = null, [WorkflowExpression] Func<string> byState = null, [WorkflowExpression] Func<string> byPostal = null, [WorkflowExpression] Func<byTypeInput> byType = null)
         {
             var apiCallPath = "/v1/breweries/meta";
             var apiCallHttpMethod = "get";

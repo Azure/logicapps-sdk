@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
     public class TdoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction ProductImport(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction ProductImport([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
             var apiCallPath = "/api/Products/Import/";
             var apiCallHttpMethod = "post";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction CustomerImport(Expression<Func<bodyInputItem2[]>> body = null)
+        public IWorkflowAction CustomerImport([WorkflowExpression] Func<bodyInputItem2[]> body = null)
         {
             var apiCallPath = "/api/Customers/Import/";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction ListImport(Expression<Func<bodyInputItem22[]>> body = null)
+        public IWorkflowAction ListImport([WorkflowExpression] Func<bodyInputItem22[]> body = null)
         {
             var apiCallPath = "/api/ListItems/Import/";
             var apiCallHttpMethod = "post";

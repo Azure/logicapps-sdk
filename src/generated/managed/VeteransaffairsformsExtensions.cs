@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
     public class VeteransaffairsformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<ListFormsResponse> ListForms([WorkflowExpression] Func<string> query = null)
         {
             var apiCallPath = "/forms";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
+        public IBodyWorkflowAction<FormShow> GetFormByName([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formName)
         {
             var apiCallPath = String.Format("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formName, 1));
             var apiCallHttpMethod = "get";

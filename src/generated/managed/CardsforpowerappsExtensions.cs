@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
     public class CardsforpowerappsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
+        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cardId, [WorkflowExpression] Func<object> cardRequestinputs = null)
         {
             var apiCallPath = String.Format("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cardId)
         {
             var apiCallPath = String.Format("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
             var apiCallHttpMethod = "get";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
+        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard([WorkflowExpression] Func<CardAction[]> generateCardRequestactions = null, [WorkflowExpression] Func<string> generateCardRequestdescription = null)
         {
             var apiCallPath = "/cards/generate/card";
             var apiCallHttpMethod = "post";

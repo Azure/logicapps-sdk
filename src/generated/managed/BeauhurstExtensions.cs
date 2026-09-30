@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
     public class BeauhurstActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid(Expression<Func<string>> names)
+        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid([WorkflowExpression] Func<string> names)
         {
             var apiCallPath = "/_api/v1/companies/search";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
+        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fID)
         {
             var apiCallPath = String.Format("/_api/v1/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(fID, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
+        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID([WorkflowExpression] Func<string> companyIds, [WorkflowExpression] Func<includesInput> includes)
         {
             var apiCallPath = "/_api/v1/transactions/company";
             var apiCallHttpMethod = "get";

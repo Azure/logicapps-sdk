@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
     public class DadjokesioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<RandomResponse> Random(Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<RandomResponse> Random([WorkflowExpression] Func<int> count = null)
         {
             var apiCallPath = "/random/joke";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<JokeIDResponse> JokeID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JokeIDResponse> JokeID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<JokeTypeResponse> JokeType(Expression<Func<string>> type, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JokeTypeResponse> JokeType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> type, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = String.Format("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
             var apiCallHttpMethod = "get";
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
-        public IBodyWorkflowAction<JokeSearchResponse> JokeSearch(Expression<Func<string>> term = null)
+        public IBodyWorkflowAction<JokeSearchResponse> JokeSearch([WorkflowExpression] Func<string> term = null)
         {
             var apiCallPath = "/joke/search";
             var apiCallHttpMethod = "get";

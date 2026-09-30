@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     public class EventbriteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        public IBodyWorkflowAction<CreateEventResponse> CreateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> eventNameHtml, Expression<Func<string>> eventDescriptionHtml, Expression<Func<string>> eventStartUtc, Expression<Func<string>> eventEndUtc, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse> CreateEvent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organizationId, [WorkflowExpression] Func<string> eventNameHtml, [WorkflowExpression] Func<string> eventDescriptionHtml, [WorkflowExpression] Func<string> eventStartUtc, [WorkflowExpression] Func<string> eventEndUtc, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
         {
             var apiCallPath = String.Format("/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
             var apiCallHttpMethod = "post";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventbrite")]
-        public IBodyWorkflowAction<CreateEventResponse> UpdateEvent(Expression<Func<string>> organizationId, Expression<Func<string>> id, Expression<Func<eventStartTimezoneInput>> eventStartTimezone, Expression<Func<eventEndTimezoneInput>> eventEndTimezone, Expression<Func<eventCurrencyInput>> eventCurrency, Expression<Func<string>> eventNameHtml = null, Expression<Func<string>> eventDescriptionHtml = null, Expression<Func<string>> eventStartUtc = null, Expression<Func<string>> eventEndUtc = null, Expression<Func<string>> eventOrganizerId = null, Expression<Func<string>> eventVenueId = null, Expression<Func<string>> eventCategoryId = null, Expression<Func<string>> eventPassword = null, Expression<Func<string>> eventCapacity = null, Expression<Func<bool>> eventShareable = null, Expression<Func<bool>> eventInviteOnly = null, Expression<Func<bool>> eventOnlineEvent = null, Expression<Func<bool>> eventListed = null, Expression<Func<bool>> eventHideStartDate = null, Expression<Func<bool>> eventHideEndDate = null, Expression<Func<bool>> eventShowRemaining = null)
+        public IBodyWorkflowAction<CreateEventResponse> UpdateEvent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organizationId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<eventStartTimezoneInput> eventStartTimezone, [WorkflowExpression] Func<eventEndTimezoneInput> eventEndTimezone, [WorkflowExpression] Func<eventCurrencyInput> eventCurrency, [WorkflowExpression] Func<string> eventNameHtml = null, [WorkflowExpression] Func<string> eventDescriptionHtml = null, [WorkflowExpression] Func<string> eventStartUtc = null, [WorkflowExpression] Func<string> eventEndUtc = null, [WorkflowExpression] Func<string> eventOrganizerId = null, [WorkflowExpression] Func<string> eventVenueId = null, [WorkflowExpression] Func<string> eventCategoryId = null, [WorkflowExpression] Func<string> eventPassword = null, [WorkflowExpression] Func<string> eventCapacity = null, [WorkflowExpression] Func<bool> eventShareable = null, [WorkflowExpression] Func<bool> eventInviteOnly = null, [WorkflowExpression] Func<bool> eventOnlineEvent = null, [WorkflowExpression] Func<bool> eventListed = null, [WorkflowExpression] Func<bool> eventHideStartDate = null, [WorkflowExpression] Func<bool> eventHideEndDate = null, [WorkflowExpression] Func<bool> eventShowRemaining = null)
         {
             var apiCallPath = String.Format("/v2/v3/events/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
 
     public class EventbriteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent(Expression<Func<string>> organizationId, Expression<Func<string>> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organizationId, [WorkflowExpression] Func<string> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v2/trigger/v3/organizations/{0}/events/", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
             var apiCallHttpMethod = "get";
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
             return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged(Expression<Func<string>> organizationId, Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organizationId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v2/trigger/v3/events/{0}/orders/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

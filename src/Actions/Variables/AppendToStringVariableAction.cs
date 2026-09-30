@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public string VariableName => this.variableName;
 
         /// <summary>
-        /// Gets the variable value placeholder for use in expression trees.
+        /// Gets the variable value placeholder for use in workflow expressions.
         /// </summary>
         public JToken Value => this.value;
 

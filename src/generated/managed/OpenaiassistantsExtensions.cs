@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<AssistantsGetResponse> AssistantsGet(Expression<Func<string>> openAIBeta)
+        public IBodyWorkflowAction<AssistantsGetResponse> AssistantsGet([WorkflowExpression] Func<string> openAIBeta)
         {
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "get";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<AssistantPostResponse> Assistant(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<string[]>> bodyfileIds = null)
+        public IBodyWorkflowAction<AssistantPostResponse> Assistant([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null, [WorkflowExpression] Func<string[]> bodyfileIds = null)
         {
             var apiCallPath = "/assistants";
             var apiCallHttpMethod = "post";
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<AssistantGetResponse> AssistantGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
+        public IBodyWorkflowAction<AssistantGetResponse> AssistantGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
             var apiCallPath = String.Format("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "get";
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<AssistantDeleteResponse> AssistantDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
+        public IBodyWorkflowAction<AssistantDeleteResponse> AssistantDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
             var apiCallPath = String.Format("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "delete";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FilesGetResponse> FilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
+        public IBodyWorkflowAction<FilesGetResponse> FilesGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId)
         {
             var apiCallPath = String.Format("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "get";
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> bodyfileId)
+        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> assistantId, [WorkflowExpression] Func<string> bodyfileId)
         {
             var apiCallPath = String.Format("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1));
             var apiCallHttpMethod = "post";
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FileGetResponse> FileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<FileGetResponse> FileGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> assistantId, [WorkflowExpression] Func<string> fileId)
         {
             var apiCallPath = String.Format("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<FileDeleteResponse> FileDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> assistantId, [WorkflowExpression] Func<string> fileId)
         {
             var apiCallPath = String.Format("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "delete";
@@ -157,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> openAIBeta, Expression<Func<bodymessagesInputItem[]>> bodymessages)
+        public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
         {
             var apiCallPath = "/threads";
             var apiCallHttpMethod = "post";
@@ -176,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadGetResponse> ThreadGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ThreadGetResponse> ThreadGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
@@ -186,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "delete";
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessagesGetResponse> MessagesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<MessagesGetResponse> MessagesGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
             var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> messageId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "post";
@@ -274,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessageFileGetResponse> MessageFileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<MessageFileGetResponse> MessageFileGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> fileId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages/{1}/files/{2}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
@@ -284,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<MessageFilesGetResponse> MessageFilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageFilesGetResponse> MessageFilesGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> messageId)
         {
             var apiCallPath = String.Format("/threads/{0}/messages/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -294,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunsGetResponse> RunsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<RunsGetResponse> RunsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "get";
@@ -312,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunPostResponse> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyassistantId = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
+        public IBodyWorkflowAction<RunPostResponse> Run([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyassistantId = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
             var apiCallHttpMethod = "post";
@@ -357,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunGetResponse> RunGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<RunGetResponse> RunGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";
@@ -367,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunModifyPostResponse> RunModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<RunModifyPostResponse> RunModify([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<bodytoolOutputsInputItem[]>> bodytoolOutputs = null)
+        public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<bodytoolOutputsInputItem[]> bodytoolOutputs = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/submit_tool_outputs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -415,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunCancelPostResponse> RunCancel(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<RunCancelPostResponse> RunCancel([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/cancel", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "post";
@@ -425,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRun(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodyassistantId = null, Expression<Func<bodythreadmessagesInputItem[]>> bodythreadmessages = null, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
+        public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRun([WorkflowExpression] Func<string> openAIBeta, [WorkflowExpression] Func<string> bodyassistantId = null, [WorkflowExpression] Func<bodythreadmessagesInputItem[]> bodythreadmessages = null, [WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string> bodyinstructions = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null)
         {
             var apiCallPath = "/threads/runs";
             var apiCallHttpMethod = "post";
@@ -488,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunStepGetResponse> RunStepGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<string>> stepId)
+        public IBodyWorkflowAction<RunStepGetResponse> RunStepGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<string> stepId)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/steps/{2}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1), ExpressionConverter.ConvertWithUrlEncoding(stepId, 1));
             var apiCallHttpMethod = "get";
@@ -498,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
-        public IBodyWorkflowAction<RunStepsGetResponse> RunStepsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<RunStepsGetResponse> RunStepsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> openAIBeta, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> threadId, [WorkflowExpression] Func<string> runId, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
             var apiCallPath = String.Format("/threads/{0}/runs/{1}/steps", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";

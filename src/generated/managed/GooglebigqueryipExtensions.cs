@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
     public class GooglebigqueryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
-        public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
+        public IBodyWorkflowAction<GetDatasetResponse> GetDataset([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> projectId, [WorkflowExpression] Func<string> datasetId)
         {
             var apiCallPath = String.Format("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetId, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     public class PushcutActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
+        public IWorkflowAction SendNotification([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> notificationName, [WorkflowExpression] Func<string> bodydynamicText = null, [WorkflowExpression] Func<string> bodydynamicTitle = null, [WorkflowExpression] Func<string> bodyinputParameter = null, [WorkflowExpression] Func<string[]> bodydevices = null)
         {
             var apiCallPath = String.Format("/notifications/{0}", ExpressionConverter.ConvertWithUrlEncoding(notificationName, 1));
             var apiCallHttpMethod = "post";
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscriptions";
             var apiCallHttpMethod = "post";
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
             var bodypropCount = 0;
             bodypropCount++;
             body["actionName"] = ExpressionConverter.ConvertO(bodyactionName);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

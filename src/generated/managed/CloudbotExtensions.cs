@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     public class CloudbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<string>> fileContents = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> xCbotFilename, [WorkflowExpression] Func<string> fileContents = null)
         {
             var apiCallPath = String.Format("/{0}/services/files/temp", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1));
             var apiCallHttpMethod = "post";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<string> DownloadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> @ref)
+        public IBodyWorkflowAction<string> DownloadFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> publicId, [WorkflowExpression] Func<string> @ref)
         {
             var apiCallPath = String.Format("/{0}/services/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(@ref, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<ExecuteBotResponse> ExecuteBot(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, Expression<Func<bool>> bodyasync, Expression<Func<string>> bodydata1 = null, Expression<Func<string>> bodydata2 = null, Expression<Func<string>> bodydata3 = null, Expression<Func<string>> bodydata4 = null, Expression<Func<string>> bodydata5 = null, Expression<Func<string>> bodydata6 = null, Expression<Func<string>> bodydata7 = null, Expression<Func<string>> bodydata8 = null, Expression<Func<string>> bodydata9 = null, Expression<Func<string>> bodydata10 = null, Expression<Func<string>> bodyaPIParameters = null)
+        public IBodyWorkflowAction<ExecuteBotResponse> ExecuteBot([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> publicId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<bool> bodyasync, [WorkflowExpression] Func<string> bodydata1 = null, [WorkflowExpression] Func<string> bodydata2 = null, [WorkflowExpression] Func<string> bodydata3 = null, [WorkflowExpression] Func<string> bodydata4 = null, [WorkflowExpression] Func<string> bodydata5 = null, [WorkflowExpression] Func<string> bodydata6 = null, [WorkflowExpression] Func<string> bodydata7 = null, [WorkflowExpression] Func<string> bodydata8 = null, [WorkflowExpression] Func<string> bodydata9 = null, [WorkflowExpression] Func<string> bodydata10 = null, [WorkflowExpression] Func<string> bodyaPIParameters = null)
         {
             var apiCallPath = String.Format("/{0}/bots/{1}/jobs", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class CloudbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BotDoneResponse> BotDone(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse> BotDone([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> publicId, [WorkflowExpression] Func<string> botId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/bots/{1}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(publicId, 1), ExpressionConverter.ConvertWithUrlEncoding(botId, 1));
             var apiCallHttpMethod = "post";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var bodypropCount = 0;
             body["event"] = "onended";
             bodypropCount++;
-            body["callback_endpoint"] = "@listCallbackUrl()";
+            body["callback_endpoint"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

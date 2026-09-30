@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     public class TalxisdatafeedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IWorkflowAction CompanyLogo(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
+        public IWorkflowAction CompanyLogo([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<jurisdictionCodeInput> jurisdictionCode, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}/logo", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> GetCompany(Expression<Func<string>> jurisdictionCode, Expression<Func<string>> companyNumber, Expression<Func<string>> language = null)
+        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> GetCompany([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> jurisdictionCode, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber, [WorkflowExpression] Func<string> language = null)
         {
             var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> GetCompanyFinace(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> GetCompanyFinace([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<jurisdictionCodeInput> jurisdictionCode, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}/finance", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<GetWeekOfYearResponse> GetWeekOfYear(Expression<Func<string>> time, Expression<Func<ruleInput>> rule, Expression<Func<firstDayOfWeekInput>> firstDayOfWeek)
+        public IBodyWorkflowAction<GetWeekOfYearResponse> GetWeekOfYear([WorkflowExpression] Func<string> time, [WorkflowExpression] Func<ruleInput> rule, [WorkflowExpression] Func<firstDayOfWeekInput> firstDayOfWeek)
         {
             var apiCallPath = "/v1.0/DateTime/GetWeekOfYear";
             var apiCallHttpMethod = "get";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> AddressGeocode(Expression<Func<string>> query, Expression<Func<string>> language = null, Expression<Func<string>> region = null)
+        public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> AddressGeocode([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> region = null)
         {
             var apiCallPath = "/v1.0/Geospatial/address/geocode";
             var apiCallHttpMethod = "get";
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<string> GetSalutation(Expression<Func<languageInput>> language, Expression<Func<string>> surname, Expression<Func<genderInput>> gender, Expression<Func<string>> title = null, Expression<Func<string>> suffix = null)
+        public IBodyWorkflowAction<string> GetSalutation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<languageInput> language, [WorkflowExpression] Func<string> surname, [WorkflowExpression] Func<genderInput> gender, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> suffix = null)
         {
             var apiCallPath = String.Format("/v1.0/Salutations/{0}/", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
             var apiCallHttpMethod = "get";
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> GetHolidays(Expression<Func<string>> countryIsoCode, Expression<Func<string>> year)
+        public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> GetHolidays([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> countryIsoCode, [WorkflowExpression] Func<string> year)
         {
             var apiCallPath = String.Format("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", ExpressionConverter.ConvertWithUrlEncoding(countryIsoCode, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
     public class UnsplashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Users> UserGet(Expression<Func<string>> username, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
+        public IBodyWorkflowAction<Users> UserGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username, [WorkflowExpression] Func<int> w = null, [WorkflowExpression] Func<int> h = null)
         {
             var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[]> UserGetPhotos(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> UserGetPhotos([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
             var apiCallPath = String.Format("/users/{0}/photos", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[]> UserGetLiked(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> UserGetLiked([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
             var apiCallPath = String.Format("/users/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Collections[]> UserGetCollections(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<Collections[]> UserGetCollections([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
             var apiCallPath = String.Format("/users/{0}/collections", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[]> PhotoGetPage(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<Photos[]> PhotoGetPage([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<string> orderBy = null)
         {
             var apiCallPath = "/photos";
             var apiCallHttpMethod = "get";
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photos[]> PhotoSearch(Expression<Func<string>> query, Expression<Func<string>> category)
+        public IBodyWorkflowAction<Photos[]> PhotoSearch([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> category)
         {
             var apiCallPath = "/photos/search";
             var apiCallHttpMethod = "get";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photo> PhotoGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Photo> PhotoGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/photos/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
-        public IBodyWorkflowAction<Photo> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<orientationInput>> orientation = null, Expression<Func<contentFilterInput>> contentFilter = null)
+        public IBodyWorkflowAction<Photo> PhotoGetRandom([WorkflowExpression] Func<string> collections = null, [WorkflowExpression] Func<string> topics = null, [WorkflowExpression] Func<string> username = null, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<orientationInput> orientation = null, [WorkflowExpression] Func<contentFilterInput> contentFilter = null)
         {
             var apiCallPath = "/photos/random";
             var apiCallHttpMethod = "get";

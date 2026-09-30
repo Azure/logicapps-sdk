@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     public class EsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> bodybase64, Expression<Func<string>> bodytitle)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> bodybase64, [WorkflowExpression] Func<string> bodytitle)
         {
             var apiCallPath = "/v3/pa_uploads";
             var apiCallHttpMethod = "post";
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IWorkflowAction CreateEnvelopeFromTemplate(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytemplateTitle = null, Expression<Func<string>> bodyuploadFile = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodysignersInputItem[]>> bodysigners = null)
+        public IWorkflowAction CreateEnvelopeFromTemplate([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytemplateTitle = null, [WorkflowExpression] Func<string> bodyuploadFile = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners = null)
         {
             var apiCallPath = "/v3/pa_envelopes";
             var apiCallHttpMethod = "post";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyenvelopeOptionssignInSequentialOrder = null, [WorkflowExpression] Func<bodycarbonCopiesInputItem[]> bodycarbonCopies = null)
         {
             var apiCallPath = "/v3/pa_send_envelope";
             var apiCallHttpMethod = "post";
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
+            body["target_url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["event"] = "document_signed";
             bodypropCount++;
@@ -167,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
+            body["target_url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["event"] = "envelope_created";
             bodypropCount++;
@@ -186,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
+            body["target_url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["event"] = "envelope_completed";
             bodypropCount++;

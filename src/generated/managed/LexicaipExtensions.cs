@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexicaip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexicaip
     public class LexicaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexicaip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q)
         {
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";

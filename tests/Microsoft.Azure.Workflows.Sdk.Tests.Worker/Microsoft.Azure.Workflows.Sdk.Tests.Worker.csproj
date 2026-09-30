@@ -5,6 +5,7 @@
     <OutputType>Exe</OutputType>
     <ImplicitUsings>enable</ImplicitUsings>
     <LogicAppFolderToPublish>$(MSBuildProjectDirectory)\lib\codeful</LogicAppFolderToPublish>
+    <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
@@ -12,6 +13,9 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.1" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="1.19.0" />
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.Generators\Microsoft.Azure.Workflows.Sdk.Generators.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
   <ItemGroup>
     <!-- Link to shared Workflows from UnitTests project -->

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
     public class AirtableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<ListRecordsResponse> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
+        public IBodyWorkflowAction<ListRecordsResponse> ListRecords([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> baseID, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> table, [WorkflowExpression] Func<string> filterByFormula = null, [WorkflowExpression] Func<int> maxRecords = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> view = null, [WorkflowExpression] Func<string> cellFormat = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<string> userLocale = null)
         {
             var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "get";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
+        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> baseID, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> table)
         {
             var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1));
             var apiCallHttpMethod = "post";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
+        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> baseID, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> table, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> recordID)
         {
             var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "get";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
+        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> baseID, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> table, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> recordID)
         {
             var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "delete";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> baseID, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> table, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> recordID, [WorkflowExpression] Func<string> contentType = null)
         {
             var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(table, 1), ExpressionConverter.ConvertWithUrlEncoding(recordID, 1));
             var apiCallHttpMethod = "patch";

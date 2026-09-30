@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
     public class SessionizeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iD)
         {
             var apiCallPath = String.Format("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iD)
         {
             var apiCallPath = String.Format("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";

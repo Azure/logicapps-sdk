@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
     public class DadjokesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
-        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet(Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet([WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/v1/dadjokes";
             var apiCallHttpMethod = "get";

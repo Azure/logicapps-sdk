@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     public class AlvaoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
             var apiCallPath = "/v1/objects";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
             var apiCallPath = "/v1/users";
             var apiCallHttpMethod = "get";
@@ -49,14 +48,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName, [WorkflowExpression] Func<string> bodyticketStatusName, [WorkflowExpression] Func<string> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/tickettransitionstostatus";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["process"] = ExpressionConverter.ConvertO(bodyprocessName);

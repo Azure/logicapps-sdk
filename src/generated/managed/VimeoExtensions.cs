@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
             return new ApiConnectionTrigger<Video[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/channels/videos";
             var apiCallHttpMethod = "get";

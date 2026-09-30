@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
     public class ShieldsioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeCreate(Expression<Func<string>> label = null, Expression<Func<string>> labelColor = null, Expression<Func<string>> message = null, Expression<Func<string>> color = null, Expression<Func<string>> style = null, Expression<Func<string>> logo = null, Expression<Func<string>> logoColor = null, Expression<Func<int>> logoWidth = null, Expression<Func<string>> link = null, Expression<Func<int>> cacheSeconds = null)
+        public IBodyWorkflowAction<JToken> BadgeCreate([WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> labelColor = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<string> style = null, [WorkflowExpression] Func<string> logo = null, [WorkflowExpression] Func<string> logoColor = null, [WorkflowExpression] Func<int> logoWidth = null, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<int> cacheSeconds = null)
         {
             var apiCallPath = "/static/v1";
             var apiCallHttpMethod = "get";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeGet(Expression<Func<string>> parameters)
+        public IBodyWorkflowAction<JToken> BadgeGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> parameters)
         {
             var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(parameters, 1));
             var apiCallHttpMethod = "get";

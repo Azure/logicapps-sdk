@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
+        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery([WorkflowExpression] Func<bool> bodyincludeValues = null, [WorkflowExpression] Func<bool> bodyincludeMetadata = null, [WorkflowExpression] Func<int[]> bodysparseVectorindices = null, [WorkflowExpression] Func<int[]> bodysparseVectorvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<int[]> bodyvector = null, [WorkflowExpression] Func<string> bodyid = null)
         {
             var apiCallPath = "/query";
             var apiCallHttpMethod = "post";
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorDelete(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorDelete([WorkflowExpression] Func<bool> bodydeleteAll = null, [WorkflowExpression] Func<string[]> bodyids = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/delete";
             var apiCallHttpMethod = "post";
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet(Expression<Func<string>> ids, Expression<Func<string>> @namespace = null)
+        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> @namespace = null)
         {
             var apiCallPath = "/fetch";
             var apiCallHttpMethod = "get";
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double[]> bodyvalues = null, [WorkflowExpression] Func<int[]> bodysparseValuesindices = null, [WorkflowExpression] Func<double[]> bodysparseValuesvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/update";
             var apiCallHttpMethod = "post";
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert([WorkflowExpression] Func<bodyvectorsInputItem[]> bodyvectors = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
             var apiCallPath = "/vectors/upsert";
             var apiCallHttpMethod = "post";
@@ -226,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysource)
+        public IBodyWorkflowAction<string> CollectionCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysource)
         {
             var apiCallPath = "/collections";
             var apiCallHttpMethod = "post";
@@ -246,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> collectionName)
         {
             var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
             var apiCallHttpMethod = "get";
@@ -255,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionDelete(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<string> CollectionDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> collectionName)
         {
             var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionName, 1));
             var apiCallHttpMethod = "delete";
@@ -273,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> Index(Expression<Func<string>> bodyname, Expression<Func<int>> bodydimension, Expression<Func<string>> bodymetric = null, Expression<Func<int>> bodypods = null, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null, Expression<Func<string>> bodysourceCollection = null)
+        public IBodyWorkflowAction<string> Index([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodydimension, [WorkflowExpression] Func<string> bodymetric = null, [WorkflowExpression] Func<int> bodypods = null, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null, [WorkflowExpression] Func<string> bodysourceCollection = null)
         {
             var apiCallPath = "/databases";
             var apiCallHttpMethod = "post";
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<IndexGetResponse> IndexGet(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<IndexGetResponse> IndexGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> indexName)
         {
             var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "get";
@@ -332,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexDelete(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<string> IndexDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> indexName)
         {
             var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "delete";
@@ -341,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
+        public IBodyWorkflowAction<string> IndexPatch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> indexName, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null)
         {
             var apiCallPath = String.Format("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(indexName, 1));
             var apiCallHttpMethod = "patch";

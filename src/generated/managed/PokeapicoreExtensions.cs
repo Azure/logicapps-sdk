@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
     public class PokeapicoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListAbilities(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListAbilities([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/ability/";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetAbilityResponse> GetAbility(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetAbilityResponse> GetAbility([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/ability/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListCharacteristics(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListCharacteristics([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/characteristic/";
             var apiCallHttpMethod = "get";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetCharacteristicsResponse> GetCharacteristics(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetCharacteristicsResponse> GetCharacteristics([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/api/v2/characteristic/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListGenders(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListGenders([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/gender/";
             var apiCallHttpMethod = "get";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListGrowthRates(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListGrowthRates([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/growth-rate/";
             var apiCallHttpMethod = "get";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetGenderResponse> GetGender(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetGenderResponse> GetGender([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/gender/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetGrowthRatesResponse> GetGrowthRates(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetGrowthRatesResponse> GetGrowthRates([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/growth-rate/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListPokemon(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListPokemon([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/pokemon/";
             var apiCallHttpMethod = "get";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetPokemonResponse> GetPokemon(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetPokemonResponse> GetPokemon([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/pokemon/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListTypes(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListTypes([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/type/";
             var apiCallHttpMethod = "get";
@@ -135,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetTypeResponse> GetType(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetTypeResponse> GetType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/type/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -144,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListEvolutionChains(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEvolutionChains([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/evolution-chain/";
             var apiCallHttpMethod = "get";
@@ -157,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetEvolutionChainResponse> GetEvolutionChain(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetEvolutionChainResponse> GetEvolutionChain([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/api/v2/evolution-chain/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<ListResults> ListEvolutionTriggers(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEvolutionTriggers([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/evolution-trigger/";
             var apiCallHttpMethod = "get";
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapicore
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapicore")]
-        public IBodyWorkflowAction<GetEvolutionTriggerResponse> GetEvolutionTrigger(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetEvolutionTriggerResponse> GetEvolutionTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/evolution-trigger/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
     public class RescuegroupsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedResponse> Breed(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BreedResponse> Breed([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/public/animals/breeds/";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedIDResponse> BreedID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BreedIDResponse> BreedID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies(Expression<Func<string>> species, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> species, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
             var apiCallHttpMethod = "get";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationResponse> Organization(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<OrganizationResponse> Organization([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/public/orgs/";
             var apiCallHttpMethod = "get";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalResponse> Animal(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<AnimalResponse> Animal([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/public/animals/";
             var apiCallHttpMethod = "get";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus(Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(status, 1));
             var apiCallHttpMethod = "get";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalIDResponse> AnimalID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<AnimalIDResponse> AnimalID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus(Expression<Func<string>> id, Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     public class AmazonsqsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
+        public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue([WorkflowExpression] Func<int> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, [WorkflowExpression] Func<string> sendMessageOperationInputmessageContent = null)
         {
             var apiCallPath = "/message";
             var apiCallHttpMethod = "put";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IWorkflowAction DeleteMessageFromQueue(Expression<Func<string>> messageReceiptHandle)
+        public IWorkflowAction DeleteMessageFromQueue([WorkflowExpression] Func<string> messageReceiptHandle)
         {
             var apiCallPath = "/message";
             var apiCallHttpMethod = "delete";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
     public class AmazonsqsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue([WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/message";
             var apiCallHttpMethod = "get";
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
             return new ApiConnectionTrigger<QueueMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<int> maximumNumberOfMessages = null, [WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/messages";
             var apiCallHttpMethod = "get";

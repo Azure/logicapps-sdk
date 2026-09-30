@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
     public class CommondataserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<EntityItemList> ListRecords(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> expand = null, Expression<Func<string>> fetchXml = null, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> partitionId = null)
+        public IBodyWorkflowAction<EntityItemList> ListRecords([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> fetchXml = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> partitionId = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken> CreateRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression] Func<string> entityName, [WorkflowExpression] Func<object> item = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "post";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<JToken> GetItemCodeless(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> partitionId = null)
+        public IBodyWorkflowAction<JToken> GetItemCodeless([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> partitionId = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "get";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IWorkflowAction DeleteRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> partitionId = null)
+        public IWorkflowAction DeleteRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> partitionId = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "delete";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken> UpdateRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> item = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2));
             var apiCallHttpMethod = "patch";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IWorkflowAction UpdateEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> xMsFileName, Expression<Func<string>> item = null)
+        public IWorkflowAction UpdateEntityFileImageFieldContent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> fileImageFieldName, [WorkflowExpression] Func<string> xMsFileName, [WorkflowExpression] Func<string> item = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(fileImageFieldName, 2));
             var apiCallHttpMethod = "put";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<string> GetEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> size = null)
+        public IBodyWorkflowAction<string> GetEntityFileImageFieldContent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> fileImageFieldName, [WorkflowExpression] Func<string> size = null)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$value", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(fileImageFieldName, 2));
             var apiCallHttpMethod = "get";
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<JToken> PerformUnboundAction(Expression<Func<string>> organization, Expression<Func<string>> actionName, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken> PerformUnboundAction([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression] Func<string> actionName, [WorkflowExpression] Func<object> item = null)
         {
             var apiCallPath = String.Format("/api/data/v9.2/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionName, 2));
             var apiCallHttpMethod = "post";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<JToken> PerformBoundAction(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> actionName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<JToken> PerformBoundAction([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> actionName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> item = null)
         {
             var apiCallPath = String.Format("/api/data/v9.2/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(actionName, 2));
             var apiCallHttpMethod = "post";
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IWorkflowAction AssociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> itemrelateWith)
+        public IWorkflowAction AssociateEntities([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> associationEntityRelationship, [WorkflowExpression] Func<string> itemrelateWith)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(associationEntityRelationship, 1));
             var apiCallHttpMethod = "post";
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IWorkflowAction DisassociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> id)
+        public IWorkflowAction DisassociateEntities([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> organization, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<string> associationEntityRelationship, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(associationEntityRelationship, 1));
             var apiCallHttpMethod = "delete";
@@ -173,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
-        public IBodyWorkflowAction<SearchOutput> GetRelevantRows(Expression<Func<string>> organization, Expression<Func<string>> searchRequestsearchTerm, Expression<Func<string>> searchRequestsearchType = null, Expression<Func<string>> searchRequestsearchMode = null, Expression<Func<int>> searchRequestrowCount = null, Expression<Func<string>> searchRequestrowFilter = null, Expression<Func<string[]>> searchRequesttableFilter = null, Expression<Func<string[]>> searchRequestsortBy = null, Expression<Func<string[]>> searchRequestfacetQuery = null, Expression<Func<int>> searchRequestskipRows = null, Expression<Func<bool>> searchRequestreturnRowCount = null)
+        public IBodyWorkflowAction<SearchOutput> GetRelevantRows([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> searchRequestsearchTerm, [WorkflowExpression] Func<string> searchRequestsearchType = null, [WorkflowExpression] Func<string> searchRequestsearchMode = null, [WorkflowExpression] Func<int> searchRequestrowCount = null, [WorkflowExpression] Func<string> searchRequestrowFilter = null, [WorkflowExpression] Func<string[]> searchRequesttableFilter = null, [WorkflowExpression] Func<string[]> searchRequestsortBy = null, [WorkflowExpression] Func<string[]> searchRequestfacetQuery = null, [WorkflowExpression] Func<int> searchRequestskipRows = null, [WorkflowExpression] Func<bool> searchRequestreturnRowCount = null)
         {
             var apiCallPath = "/api/search/v1.0/query";
             var apiCallHttpMethod = "post";
@@ -257,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
 
     public class CommondataserviceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeWebhookTrigger(Expression<Func<string>> organization, Expression<Func<string>> subscriptionRequesttableName, Expression<Func<int>> subscriptionRequestchangeType, Expression<Func<int>> subscriptionRequestscope, Expression<Func<string>> subscriptionRequestselectColumns = null, Expression<Func<string>> subscriptionRequestfilterRows = null, Expression<Func<string>> subscriptionRequestdelayUntil = null, Expression<Func<int>> subscriptionRequestrunAs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeWebhookTrigger([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> subscriptionRequesttableName, [WorkflowExpression] Func<int> subscriptionRequestchangeType, [WorkflowExpression] Func<int> subscriptionRequestscope, [WorkflowExpression] Func<string> subscriptionRequestselectColumns = null, [WorkflowExpression] Func<string> subscriptionRequestfilterRows = null, [WorkflowExpression] Func<string> subscriptionRequestdelayUntil = null, [WorkflowExpression] Func<int> subscriptionRequestrunAs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/data/v9.1/callbackregistrations";
             var apiCallHttpMethod = "post";
@@ -270,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var subscriptionRequestpropCount = 0;
             subscriptionRequest["version"] = 1;
             subscriptionRequestpropCount++;
-            subscriptionRequest["url"] = "@listCallbackUrl()";
+            subscriptionRequest["url"] = "#{listCallbackUrl()}";
             subscriptionRequestpropCount++;
             subscriptionRequestpropCount++;
             subscriptionRequest["entityname"] = ExpressionConverter.ConvertO(subscriptionRequesttableName);
@@ -310,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BusinessEventsTrigger(Expression<Func<string>> organization, Expression<Func<string>> catalog, Expression<Func<string>> category, Expression<Func<string>> subscriptionRequesttableName, Expression<Func<string>> subscriptionRequestactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BusinessEventsTrigger([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> catalog, [WorkflowExpression] Func<string> category, [WorkflowExpression] Func<string> subscriptionRequesttableName, [WorkflowExpression] Func<string> subscriptionRequestactionName, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/data/v9.2/callbackregistrations";
             var apiCallHttpMethod = "post";
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
             var subscriptionRequestpropCount = 0;
             subscriptionRequest["version"] = 3;
             subscriptionRequestpropCount++;
-            subscriptionRequest["url"] = "@listCallbackUrl()";
+            subscriptionRequest["url"] = "#{listCallbackUrl()}";
             subscriptionRequestpropCount++;
             subscriptionRequest["scope"] = 4;
             subscriptionRequestpropCount++;

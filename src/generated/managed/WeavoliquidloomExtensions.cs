@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
     public class WeavoliquidloomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> CsvToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> CsvToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/CsvToJson";
             var apiCallHttpMethod = "post";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> CsvToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<string> CsvToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/CsvToText";
             var apiCallHttpMethod = "post";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> CsvToXml(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> CsvToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/CsvToXml";
             var apiCallHttpMethod = "post";
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> ExcelToJson(Expression<Func<string>> liquidTemplate = null, Expression<Func<string>> excelFile = null)
+        public IBodyWorkflowAction<JToken> ExcelToJson([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
             var apiCallPath = "/api/ExcelToJsonV2";
             var apiCallHttpMethod = "post";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> ExcelToText(Expression<Func<string>> liquidTemplate = null, Expression<Func<string>> excelFile = null)
+        public IBodyWorkflowAction<string> ExcelToText([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
             var apiCallPath = "/api/ExcelToText";
             var apiCallHttpMethod = "post";
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> ExcelToXml(Expression<Func<string>> liquidTemplate = null, Expression<Func<string>> excelFile = null)
+        public IBodyWorkflowAction<JToken> ExcelToXml([WorkflowExpression] Func<string> liquidTemplate = null, [WorkflowExpression] Func<string> excelFile = null)
         {
             var apiCallPath = "/api/ExcelToXml";
             var apiCallHttpMethod = "post";
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> JsonToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> JsonToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/JsonToJson";
             var apiCallHttpMethod = "post";
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> JsonToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<string> JsonToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/JsonToText";
             var apiCallHttpMethod = "post";
@@ -198,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> JsonToXml(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> JsonToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/JsonToXml";
             var apiCallHttpMethod = "post";
@@ -228,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> XmlToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/XmlToJson";
             var apiCallHttpMethod = "post";
@@ -258,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> XmlToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<string> XmlToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/XmlToText";
             var apiCallHttpMethod = "post";
@@ -288,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> XmlToXml(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate = null, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/XmlToXml";
             var apiCallHttpMethod = "post";
@@ -318,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> EdiToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/EdiToJson";
             var apiCallHttpMethod = "post";
@@ -344,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string> EdiToText(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<string> EdiToText([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/EdiToText";
             var apiCallHttpMethod = "post";
@@ -370,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken> XmlToXml11(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToXml11([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
             var apiCallPath = "/api/EdiToXml";
             var apiCallHttpMethod = "post";

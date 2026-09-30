@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     public class FluxxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<object> DownloadDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<object> DownloadDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/api/rest/v2/model_document_download/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<JToken> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken> CustomAction([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> endpoint, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = String.Format("/custom_action/{0}", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
             var apiCallHttpMethod = "post";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<object> content, [WorkflowExpression] Func<string> dataOwnerModelModelType, [WorkflowExpression] Func<int> dataOwnerModelId, [WorkflowExpression] Func<string> dataContentType, [WorkflowExpression] Func<int> dataCreatedById)
         {
             var apiCallPath = "/api/rest/v2/model_document";
             var apiCallHttpMethod = "post";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse> CreateRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null)
         {
             var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "post";
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse> FindRecords([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
             var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "put";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
             var apiCallPath = String.Format("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1));
             var apiCallHttpMethod = "patch";
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ModelResponse> FindRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> typeId, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse> UpdateRecord([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> typeId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> bodydata = null)
         {
             var apiCallPath = String.Format("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";

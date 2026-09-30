@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
     public class SigninghubwebhooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
-        public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
+        public IWorkflowAction UnsubscribeWebhook([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId)
         {
             var apiCallPath = String.Format("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "delete";
@@ -23,14 +22,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookSubscribeTrigger([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/powerautomate/webhook/subscribe";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);

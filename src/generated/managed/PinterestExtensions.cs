@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     public class PinterestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
+        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> board)
         {
             var apiCallPath = String.Format("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<BoardResponseData> CreateBoard(Expression<Func<string>> name, Expression<Func<string>> description = null)
+        public IBodyWorkflowAction<BoardResponseData> CreateBoard([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> description = null)
         {
             var apiCallPath = "/boards";
             var apiCallHttpMethod = "put";
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponseData> CreatePin(Expression<Func<string>> boardId, Expression<Func<string>> description, Expression<Func<string>> imageUrl, Expression<Func<string>> sourceUrl = null)
+        public IBodyWorkflowAction<PinResponseData> CreatePin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> imageUrl, [WorkflowExpression] Func<string> sourceUrl = null)
         {
             var apiCallPath = "/pins";
             var apiCallHttpMethod = "put";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
+        public IBodyWorkflowAction<PinResponseData> EditPin([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> boardId, [WorkflowExpression] Func<string> pin, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<string> secondBoard = null)
         {
             var apiCallPath = String.Format("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(pin, 1));
             var apiCallHttpMethod = "post";
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
             return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
             var apiCallHttpMethod = "get";

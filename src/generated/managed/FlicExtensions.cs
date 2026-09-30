@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,14 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
     public class FlicTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> buttonUuid, [WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(buttonUuid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookevents != null)
             {
@@ -48,14 +47,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskUuid, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookpropCount > 0)
             {

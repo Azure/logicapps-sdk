@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
     public class AsiteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asite")]
-        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
+        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL([WorkflowExpression] Func<string> downloadUrl)
         {
             var apiCallPath = "/downloadFileByUrl";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asite")]
-        public IBodyWorkflowAction<string> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
+        public IBodyWorkflowAction<string> SETFILEMETADATA([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> items = null)
         {
             var apiCallPath = "/saveMetadataForUpload";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asite")]
-        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
+        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> fileBinary = null)
         {
             var apiCallPath = "/uploadFileFromExternalSystem";
             var apiCallHttpMethod = "post";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
 
     public class AsiteTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/asitePullDataWebhook";
             var apiCallHttpMethod = "post";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/asitePullAppFormDataWebhook";
             var apiCallHttpMethod = "post";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asite
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);

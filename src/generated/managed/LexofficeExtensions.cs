@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     public class LexofficeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles(Expression<Func<string>> articleNumber = null, Expression<Func<string>> gtin = null, Expression<Func<string>> type = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles([WorkflowExpression] Func<string> articleNumber = null, [WorkflowExpression] Func<string> gtin = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/articles";
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle(Expression<Func<string>> bodyarticleNumber = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<string>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyunitName = null)
+        public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle([WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<string> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyunitName = null)
         {
             var apiCallPath = "/articles";
             var apiCallHttpMethod = "post";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction DeleteAnArticle(Expression<Func<string>> id)
+        public IWorkflowAction DeleteAnArticle([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyunitName, [WorkflowExpression] Func<int> bodyversion, [WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<string> bodygtin = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<bodypriceleadingPriceInput> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
             var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -218,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts(Expression<Func<int>> number = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<bool>> vendor = null, Expression<Func<bool>> customer = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts([WorkflowExpression] Func<int> number = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> vendor = null, [WorkflowExpression] Func<bool> customer = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/contacts";
             var apiCallHttpMethod = "get";
@@ -264,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -274,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -302,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
             var apiCallPath = "/credit-notes";
             var apiCallHttpMethod = "post";
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/credit-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -333,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/credit-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -343,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
             var apiCallPath = "/delivery-notes";
             var apiCallHttpMethod = "post";
@@ -363,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument(Expression<Func<string>> deliveryNoteid)
+        public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deliveryNoteid)
         {
             var apiCallPath = String.Format("/delivery-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(deliveryNoteid, 1));
             var apiCallHttpMethod = "get";
@@ -373,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/delivery-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -383,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/down-payment-invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -394,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
             var apiCallPath = "/dunnings";
             var apiCallHttpMethod = "post";
@@ -414,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning(Expression<Func<string>> dunningsid)
+        public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> dunningsid)
         {
             var apiCallPath = String.Format("/dunnings/{0}", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
             var apiCallHttpMethod = "get";
@@ -424,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument(Expression<Func<string>> dunningsid)
+        public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> dunningsid)
         {
             var apiCallPath = String.Format("/dunnings/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
             var apiCallHttpMethod = "get";
@@ -444,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId)
         {
             var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "get";
@@ -454,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction DeleteEventSubscription(Expression<Func<string>> subscriptionId)
+        public IWorkflowAction DeleteEventSubscription([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId)
         {
             var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "delete";
@@ -464,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice(Expression<Func<object>> file, Expression<Func<string>> type)
+        public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> type)
         {
             var apiCallPath = "/files";
             var apiCallHttpMethod = "post";
@@ -473,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<object> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<acceptInput>> accept = null)
+        public IBodyWorkflowAction<object> DownloadFileLexoffice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fileId, [WorkflowExpression] Func<acceptInput> accept = null)
         {
             var apiCallPath = String.Format("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
@@ -485,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
             var apiCallPath = "/invoices";
             var apiCallHttpMethod = "post";
@@ -506,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -517,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/invoices/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -527,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation(Expression<Func<string>> precedingSalesVoucherId = null)
+        public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
             var apiCallPath = "/order-confirmations";
             var apiCallHttpMethod = "post";
@@ -547,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/order-confirmations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -557,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/order-confirmations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -577,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation(Expression<Func<string>> voucherId)
+        public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> voucherId)
         {
             var apiCallPath = String.Format("/payments/{0}", ExpressionConverter.ConvertWithUrlEncoding(voucherId, 1));
             var apiCallHttpMethod = "get";
@@ -607,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation(Expression<Func<bool>> finalize)
+        public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation([WorkflowExpression] Func<bool> finalize)
         {
             var apiCallPath = "/quotations";
             var apiCallHttpMethod = "post";
@@ -626,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/quotations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -637,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/quotations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -647,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates(Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/recurring-templates";
             var apiCallHttpMethod = "get";
@@ -663,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/recurring-templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -674,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist(Expression<Func<voucherTypeInput>> voucherType, Expression<Func<voucherStatusInput>> voucherStatus, Expression<Func<bool>> archived = null, Expression<Func<string>> contactId = null, Expression<Func<string>> voucherDateFrom = null, Expression<Func<string>> voucherDateTo = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> updatedDateFrom = null, Expression<Func<string>> updatedDateTo = null, Expression<Func<string>> voucherNumber = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist([WorkflowExpression] Func<voucherTypeInput> voucherType, [WorkflowExpression] Func<voucherStatusInput> voucherStatus, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> contactId = null, [WorkflowExpression] Func<string> voucherDateFrom = null, [WorkflowExpression] Func<string> voucherDateTo = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> updatedDateFrom = null, [WorkflowExpression] Func<string> updatedDateTo = null, [WorkflowExpression] Func<string> voucherNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/voucherlist";
             var apiCallHttpMethod = "get";
@@ -713,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher([WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
             var apiCallPath = "/vouchers";
             var apiCallHttpMethod = "post";
@@ -797,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -807,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string[]> bodyfiles = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
         {
             var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -903,7 +902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction UploadFileVoucherLexoffice(Expression<Func<string>> id, Expression<Func<object>> file)
+        public IWorkflowAction UploadFileVoucherLexoffice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = String.Format("/vouchers/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -914,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class LexofficeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice(Expression<Func<bodyeventTypeInput>> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/event-subscriptions";
             var apiCallHttpMethod = "post";
@@ -923,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);

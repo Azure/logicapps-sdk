@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
+        public IWorkflowAction CreateScheduleTaskRun([WorkflowExpression] Func<string> bodyrobotId, [WorkflowExpression] Func<string> bodytaskFileId)
         {
             var apiCallPath = "/v1/task-schedules";
             var apiCallHttpMethod = "post";

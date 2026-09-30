@@ -28,6 +28,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        internal Dictionary<string,string> Headers { get; set; }
+        internal JToken Headers { get; set; }
     }
 }

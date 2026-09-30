@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     public class ShorturlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl([WorkflowExpression] Func<string> longUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> shortUrl = null, [WorkflowExpression] Func<string> generatedBy = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
             var apiCallPath = "/api/shorturl/create";
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
+        public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey)
         {
             var apiCallPath = "/api/shorturl/delete";
             var apiCallHttpMethod = "delete";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
+        public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls([WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> generatedBy = null)
         {
             var apiCallPath = "/api/shorturl/getall";
             var apiCallHttpMethod = "post";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> newLongUrl = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
             var apiCallPath = "/api/shorturl/modify";
             var apiCallHttpMethod = "patch";

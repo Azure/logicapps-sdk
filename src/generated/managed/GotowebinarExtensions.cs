@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
     public class GotowebinarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        public IBodyWorkflowAction<Webinar> GetWebinar(Expression<Func<string>> webinarKey)
+        public IBodyWorkflowAction<Webinar> GetWebinar([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webinarKey)
         {
             var apiCallPath = String.Format("/organizers/organizerKey/webinars/{0}", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        public IBodyWorkflowAction<RegistrantSummary[]> ListRegistrations(Expression<Func<string>> webinarKey)
+        public IBodyWorkflowAction<RegistrantSummary[]> ListRegistrations([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webinarKey)
         {
             var apiCallPath = String.Format("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        public IBodyWorkflowAction<RegistrationResult> AddRegistrant(Expression<Func<string>> webinarKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        public IBodyWorkflowAction<RegistrationResult> AddRegistrant([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webinarKey, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
             var apiCallPath = String.Format("/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
             var apiCallHttpMethod = "post";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> webinarKey, Expression<Func<string>> registrantKey)
+        public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webinarKey, [WorkflowExpression] Func<string> registrantKey)
         {
             var apiCallPath = String.Format("/organizers/organizerKey/webinars/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1), ExpressionConverter.ConvertWithUrlEncoding(registrantKey, 1));
             var apiCallHttpMethod = "get";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
             return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration(Expression<Func<string>> webinarKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webinarKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
             var apiCallHttpMethod = "get";

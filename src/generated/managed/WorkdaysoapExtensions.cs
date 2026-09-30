@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string> SOAPOperation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<serviceInput> service, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> version, [WorkflowExpression] Func<string> requestBody = null)
         {
             var apiCallPath = String.Format("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(service, 1), ExpressionConverter.ConvertWithUrlEncoding(version, 1));
             var apiCallHttpMethod = "post";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string> RaaSOperation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> reportName, [WorkflowExpression] Func<string> reportInstanceName, [WorkflowExpression] Func<string> requestBody = null)
         {
             var apiCallPath = String.Format("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
     public class CalendarificipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
+        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> day = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> language = null)
         {
             var apiCallPath = "/api/v2/holidays";
             var apiCallHttpMethod = "get";

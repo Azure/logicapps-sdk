@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
     public class CalculateworkingdayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<CombinedResponse> Combined(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<CombinedResponse> Combined([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null, [WorkflowExpression] Func<string> country = null)
         {
             var apiCallPath = "/combined/";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay(Expression<Func<string>> date)
+        public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay([WorkflowExpression] Func<string> date)
         {
             var apiCallPath = "/basicNextWorkingDay/";
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
             var apiCallPath = "/nextWorkingDay/";
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator(Expression<Func<string>> workingDays, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator([WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
             var apiCallPath = "/dateDifferenceCalculator/";
             var apiCallHttpMethod = "get";
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
             var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
             var apiCallHttpMethod = "get";
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
             var apiCallPath = "/isTodayAWorkingDay/";
             var apiCallHttpMethod = "get";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays)
+        public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays)
         {
             var apiCallPath = "/dateInXWorkingDays/";
             var apiCallHttpMethod = "get";

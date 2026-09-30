@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
     public class ElectricitymapsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonForecastResponse> CarbonForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<CarbonForecastResponse> CarbonForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
             var apiCallPath = "/carbon-intensity/forecast";
             var apiCallHttpMethod = "get";
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonHistoryResponse> CarbonHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonHistoryResponse> CarbonHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
             var apiCallPath = "/carbon-intensity/history";
             var apiCallHttpMethod = "get";
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonLatestResponse> CarbonLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonLatestResponse> CarbonLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
             var apiCallPath = "/carbon-intensity/latest";
             var apiCallHttpMethod = "get";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownHistoryResponse> BreakdownHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<BreakdownHistoryResponse> BreakdownHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
             var apiCallPath = "/power-breakdown/history";
             var apiCallHttpMethod = "get";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownLatestResponse> BreakdownLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<BreakdownLatestResponse> BreakdownLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
             var apiCallPath = "/power-breakdown/latest";
             var apiCallHttpMethod = "get";
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<ConsumptionForecastResponse> ConsumptionForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<ConsumptionForecastResponse> ConsumptionForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
             var apiCallPath = "/power-consumption-breakdown/forecast";
             var apiCallHttpMethod = "get";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownForecastResponse> BreakdownForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<BreakdownForecastResponse> BreakdownForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
             var apiCallPath = "/power-production-breakdown/forecast";
             var apiCallHttpMethod = "get";

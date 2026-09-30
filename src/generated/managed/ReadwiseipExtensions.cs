@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
     public class ReadwiseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet(Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<int>> bookId = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> hightlightedAtLt = null, Expression<Func<string>> highlightedAtGt = null)
+        public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> bookId = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> hightlightedAtLt = null, [WorkflowExpression] Func<string> highlightedAtGt = null)
         {
             var apiCallPath = "/highlights/";
             var apiCallHttpMethod = "get";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
+        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave([WorkflowExpression] Func<bodyhighlightsInputItem[]> bodyhighlights)
         {
             var apiCallPath = "/highlights/";
             var apiCallHttpMethod = "post";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet(Expression<Func<string>> updatedAfter = null, Expression<Func<string>> ids = null, Expression<Func<string>> pageCursor = null)
+        public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet([WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> pageCursor = null)
         {
             var apiCallPath = "/export/";
             var apiCallHttpMethod = "get";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet(Expression<Func<string>> highlightId)
+        public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId)
         {
             var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "get";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightDelete(Expression<Func<string>> highlightId)
+        public IBodyWorkflowAction<string> HighlightDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId)
         {
             var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "delete";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodylocation = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycolor = null)
+        public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodylocation = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodycolor = null)
         {
             var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "patch";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet(Expression<Func<string>> highlightId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
         {
             var apiCallPath = String.Format("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "get";
@@ -145,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId, [WorkflowExpression] Func<string> bodyname)
         {
             var apiCallPath = String.Format("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
             var apiCallHttpMethod = "post";
@@ -163,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightTagsDelete(Expression<Func<string>> highlightId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<string> HighlightTagsDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId)
         {
             var apiCallPath = String.Format("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "delete";
@@ -172,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> highlightId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
         {
             var apiCallPath = String.Format("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "patch";
@@ -190,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookListGetResponse> BookListGet(Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<int>> numHighlights = null, Expression<Func<int>> numHighlightsLt = null, Expression<Func<int>> numHighlightsGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> lastHighlightAtLt = null, Expression<Func<string>> lastHighlightGt = null)
+        public IBodyWorkflowAction<BookListGetResponse> BookListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<int> numHighlights = null, [WorkflowExpression] Func<int> numHighlightsLt = null, [WorkflowExpression] Func<int> numHighlightsGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> lastHighlightAtLt = null, [WorkflowExpression] Func<string> lastHighlightGt = null)
         {
             var apiCallPath = "/books/";
             var apiCallHttpMethod = "get";
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> bookId)
+        public IBodyWorkflowAction<BookGetResponse> BookGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> bookId)
         {
             var apiCallPath = String.Format("/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
             var apiCallHttpMethod = "get";
@@ -230,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet(Expression<Func<string>> bookId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> bookId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
         {
             var apiCallPath = String.Format("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
             var apiCallHttpMethod = "get";
@@ -243,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> bookId, [WorkflowExpression] Func<string> bodyname)
         {
             var apiCallPath = String.Format("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
             var apiCallHttpMethod = "post";
@@ -261,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> BookTagsDelete(Expression<Func<string>> bookId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<string> BookTagsDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> bookId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId)
         {
             var apiCallPath = String.Format("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "delete";
@@ -270,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
+        public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> bookId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
         {
             var apiCallPath = String.Format("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "patch";

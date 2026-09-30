@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
     public class WaailaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots(Expression<Func<string>> wauth)
+        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots([WorkflowExpression] Func<string> wauth)
         {
             var apiCallPath = "/v1/depots";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
+        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> depot, [WorkflowExpression] Func<string> testsuite, [WorkflowExpression] Func<string> wauth)
         {
             var apiCallPath = String.Format("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(depot, 1), ExpressionConverter.ConvertWithUrlEncoding(testsuite, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetTokenResponse> GetToken(Expression<Func<string>> bodycode, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<GetTokenResponse> GetToken([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyemail)
         {
             var apiCallPath = "/v1/auth/exchange-api-code";
             var apiCallHttpMethod = "post";

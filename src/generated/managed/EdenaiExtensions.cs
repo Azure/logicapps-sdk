@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
     public class EdenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
+        public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyoption = null, [WorkflowExpression] Func<double> bodyrate = null, [WorkflowExpression] Func<double> bodypitch = null, [WorkflowExpression] Func<double> bodyvolume = null, [WorkflowExpression] Func<string> bodyaudioFormat = null, [WorkflowExpression] Func<double> bodysamplingRate = null)
         {
             var apiCallPath = "/v2/audio/text_to_speech";
             var apiCallHttpMethod = "post";
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/image/explicit_content";
             var apiCallHttpMethod = "post";
@@ -191,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextGenerationResponse> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<TextGenerationResponse> TextGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
         {
             var apiCallPath = "/v2/text/generation";
             var apiCallHttpMethod = "post";
@@ -271,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ChatResponse> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
+        public IBodyWorkflowAction<ChatResponse> Chat([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodychatGlobalAction = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodymaxTokens = null)
         {
             var apiCallPath = "/v2/text/chat";
             var apiCallHttpMethod = "post";
@@ -357,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/text/topic_extraction";
             var apiCallHttpMethod = "post";
@@ -413,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/text/keyword_extraction";
             var apiCallHttpMethod = "post";
@@ -469,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/text/named_entity_recognition";
             var apiCallHttpMethod = "post";
@@ -525,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<AnonymizationResponse> Anonymization(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<AnonymizationResponse> Anonymization([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/image/anonymization";
             var apiCallHttpMethod = "post";
@@ -534,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/image/face_detection";
             var apiCallHttpMethod = "post";
@@ -543,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
+        public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyresolution = null, [WorkflowExpression] Func<double> bodynumImages = null)
         {
             var apiCallPath = "/v2/image/generation";
             var apiCallHttpMethod = "post";
@@ -615,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TranslationResponse> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
+        public IBodyWorkflowAction<TranslationResponse> Translation([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodysourceLanguage = null, [WorkflowExpression] Func<string> bodytargetLanguage = null)
         {
             var apiCallPath = "/v2/translation/automatic_translation";
             var apiCallHttpMethod = "post";
@@ -687,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextModerationResponse> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<TextModerationResponse> TextModeration([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/text/moderation";
             var apiCallHttpMethod = "post";
@@ -743,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
+        public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<double> bodyoutputSentences = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodylanguage = null)
         {
             var apiCallPath = "/v2/text/summarize";
             var apiCallHttpMethod = "post";
@@ -823,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/translation/language_detection";
             var apiCallHttpMethod = "post";
@@ -863,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> bodyproviders = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/v2/text/sentiment_analysis";
             var apiCallHttpMethod = "post";
@@ -919,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
+        public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/ocr/invoice_parser";
             var apiCallHttpMethod = "post";
@@ -928,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ResumeParserResponse> ResumeParser(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ResumeParserResponse> ResumeParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/ocr/resume_parser";
             var apiCallHttpMethod = "post";
@@ -937,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<IdentityParserResponse> IdentityParser(Expression<Func<string>> providers, Expression<Func<object>> file)
+        public IBodyWorkflowAction<IdentityParserResponse> IdentityParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/ocr/identity_parser";
             var apiCallHttpMethod = "post";
@@ -946,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
+        public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser([WorkflowExpression] Func<string> providers, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/v2/ocr/receipt_parser";
             var apiCallHttpMethod = "post";

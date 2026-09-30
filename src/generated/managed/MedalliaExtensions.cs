@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
     public class MedalliaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
+        public IWorkflowAction TriggerInvitation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
             var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
             var apiCallHttpMethod = "post";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
+        public IWorkflowAction SendExperienceSignals([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
             var apiCallPath = String.Format("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
             var apiCallHttpMethod = "post";

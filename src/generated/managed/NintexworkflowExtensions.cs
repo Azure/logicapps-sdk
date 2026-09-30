@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
     public class NintexworkflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
-        public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
+        public IWorkflowAction CreateWorkflowInstance([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workflowId, [WorkflowExpression] Func<object> bodystartData = null)
         {
             var apiCallPath = String.Format("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
                 bodypropCount++;
             }
 
-            body["x-ntx-callbackUrl"] = "@listCallbackUrl()";
+            body["x-ntx-callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class MetataskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateSubscriptionProcessCompleted(Expression<Func<string>> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/oauth/subscription/process_completed";
             var apiCallHttpMethod = "post";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
             var webhookRequestBodypropCount = 0;
             webhookRequestBody["event"] = "PROCESS_COMPLETED";
             webhookRequestBodypropCount++;
-            webhookRequestBody["target_url"] = "@listCallbackUrl()";
+            webhookRequestBody["target_url"] = "#{listCallbackUrl()}";
             webhookRequestBodypropCount++;
             var conditionsObject = new JObject();
             var conditionsObjectpropCount = 0;

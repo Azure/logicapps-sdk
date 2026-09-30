@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
     public class HashtagapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet(Expression<Func<string>> keyword)
+        public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet([WorkflowExpression] Func<string> keyword)
         {
             var apiCallPath = "/tag/predict";
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<PostCountGetResponse> PostCountGet(Expression<Func<string>> tag)
+        public IBodyWorkflowAction<PostCountGetResponse> PostCountGet([WorkflowExpression] Func<string> tag)
         {
             var apiCallPath = "/tag/count";
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags(Expression<Func<string>> bodyimage)
+        public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags([WorkflowExpression] Func<string> bodyimage)
         {
             var apiCallPath = "/tag/generate";
             var apiCallHttpMethod = "post";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
-        public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet(Expression<Func<string>> countryName)
+        public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> countryName)
         {
             var apiCallPath = String.Format("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
             var apiCallHttpMethod = "get";

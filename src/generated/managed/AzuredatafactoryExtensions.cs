@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
     public class AzuredatafactoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null)
+        public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineName, [WorkflowExpression] Func<string> referencePipelineRunId = null)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineName, 1));
             var apiCallHttpMethod = "post";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        public IWorkflowAction CancelPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
+        public IWorkflowAction CancelPipelineRun([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineRunName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
             var apiCallHttpMethod = "post";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        public IBodyWorkflowAction<PipelineRun> GetPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
+        public IBodyWorkflowAction<PipelineRun> GetPipelineRun([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> dataFactoryName, [WorkflowExpression] Func<string> pipelineRunName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(pipelineRunName, 1));
             var apiCallHttpMethod = "get";

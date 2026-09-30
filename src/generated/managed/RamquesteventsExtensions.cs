@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,14 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/register/cce";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
+            body["webHook"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyaction != null)
             {
@@ -38,14 +37,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/register/horizon";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
+            body["webHook"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyaction != null)
             {

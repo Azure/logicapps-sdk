@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
     public class NpstodayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction SendSurvey(Expression<Func<string>> campaign, Expression<Func<string>> bodyrespondentemailAddress = null, Expression<Func<string>> bodyrespondentfirstName = null, Expression<Func<string>> bodyrespondentlastName = null, Expression<Func<string>> bodyrespondentphoneNumber = null)
+        public IWorkflowAction SendSurvey([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> campaign, [WorkflowExpression] Func<string> bodyrespondentemailAddress = null, [WorkflowExpression] Func<string> bodyrespondentfirstName = null, [WorkflowExpression] Func<string> bodyrespondentlastName = null, [WorkflowExpression] Func<string> bodyrespondentphoneNumber = null)
         {
             var apiCallPath = String.Format("/campaigns/{0}/respondent", ExpressionConverter.ConvertWithUrlEncoding(campaign, 1));
             var apiCallHttpMethod = "post";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction AddEmployee(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyteam = null, Expression<Func<string>> bodydivision = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<bool>> bodyactive = null)
+        public IWorkflowAction AddEmployee([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodyteam = null, [WorkflowExpression] Func<string> bodydivision = null, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<bool> bodyactive = null)
         {
             var apiCallPath = "/profile/employees";
             var apiCallHttpMethod = "post";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewResponse(Expression<Func<int>> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscriptions/responses";
             var apiCallHttpMethod = "post";
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 bodypropCount++;
             }
 
-            body["targetUrl"] = "@listCallbackUrl()";
+            body["targetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["eventType"] = "NewResponse";
             bodypropCount++;
@@ -160,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> NewCampaignMember(Expression<Func<int>> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscriptions/campaignmembers";
             var apiCallHttpMethod = "post";
@@ -174,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                 bodypropCount++;
             }
 
-            body["targetUrl"] = "@listCallbackUrl()";
+            body["targetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["eventType"] = "NewCampaignMember";
             bodypropCount++;

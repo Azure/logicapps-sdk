@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
     public class HaveibeenpwnedipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
+        public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> account, [WorkflowExpression] Func<bool> truncateResponse = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<bool> includeUnverified = null)
         {
             var apiCallPath = String.Format("/api/v3/breachedaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<PastesResponseItem[]> Pastes(Expression<Func<string>> account)
+        public IBodyWorkflowAction<PastesResponseItem[]> Pastes([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> account)
         {
             var apiCallPath = String.Format("/api/v3/pasteaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
-        public IBodyWorkflowAction<BreachSingleResponse> BreachSingle(Expression<Func<string>> name)
+        public IBodyWorkflowAction<BreachSingleResponse> BreachSingle([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> name)
         {
             var apiCallPath = String.Format("/api/v3/breach/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
             var apiCallHttpMethod = "get";

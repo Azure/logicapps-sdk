@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
     public class HuddleActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodytextContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytextContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
             var apiCallPath = String.Format("/v2/file/upload/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string> GetFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fileId)
         {
             var apiCallPath = String.Format("/v2/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder(Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> folderId)
         {
             var apiCallPath = String.Format("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "delete";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<Folder> CreateFolder(Expression<Func<string>> folderId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodydescription = null)
+        public IBodyWorkflowAction<Folder> CreateFolder([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodydescription = null)
         {
             var apiCallPath = String.Format("/v2/folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodyfileContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodyfileContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
             var apiCallPath = String.Format("/v2/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "post";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<TaskObject> MarkTaskComplete(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<TaskObject> MarkTaskComplete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> taskId)
         {
             var apiCallPath = String.Format("/v2/task/{0}/markComplete", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
             var apiCallHttpMethod = "post";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddle")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileID = null, Expression<Func<string>> requestBodytaskID = null, Expression<Func<string>> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileID = null, [WorkflowExpression] Func<string> requestBodytaskID = null, [WorkflowExpression] Func<string> requestBodystatus = null)
         {
             var apiCallPath = String.Format("/v2/workspace/{0}/task", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "post";
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
 
     public class HuddleTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/v2/poll/folder/{0}/upload", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
             var apiCallHttpMethod = "get";
@@ -198,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
             return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";

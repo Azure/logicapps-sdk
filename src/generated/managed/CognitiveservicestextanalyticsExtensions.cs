@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytics
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/entities/linking";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
             var apiCallHttpMethod = "post";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/keyPhrases";
             var apiCallHttpMethod = "post";
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<LanguageResultV3> Languages([WorkflowExpression] Func<LanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/languages";
             var apiCallHttpMethod = "post";
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<SentimentResponse> Sentiment([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
             var apiCallPath = "/text/analytics/v3.0/sentiment";
             var apiCallHttpMethod = "post";

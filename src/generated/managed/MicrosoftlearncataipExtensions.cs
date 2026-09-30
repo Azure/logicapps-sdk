@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
     public class MicrosoftlearncataipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
-        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
+        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent([WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> uid = null, [WorkflowExpression] Func<string> lastModified = null, [WorkflowExpression] Func<string> popularity = null, [WorkflowExpression] Func<string> level = null, [WorkflowExpression] Func<string> role = null, [WorkflowExpression] Func<string> product = null, [WorkflowExpression] Func<string> subject = null)
         {
             var apiCallPath = "/";
             var apiCallHttpMethod = "get";

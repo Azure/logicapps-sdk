@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
     public class AzureappserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppStart([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(webAppName, 1));
             var apiCallHttpMethod = "post";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppStop([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(webAppName, 1));
             var apiCallHttpMethod = "post";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppRestart([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(webAppName, 1));
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
     public class VeteransaffairsproviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<LocationBundle> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<LocationBundle> GetLocation([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
             var apiCallPath = "/Location";
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Location> GetLocationById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<OrganizationBundle> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<OrganizationBundle> ListOrganizations([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
             var apiCallPath = "/Organization";
             var apiCallHttpMethod = "get";
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Organization> GetOrganizationById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/Organization/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerBundle> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerBundle> ListPractitioners([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> family = null, [WorkflowExpression] Func<string> given = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
             var apiCallPath = "/Practitioner";
             var apiCallHttpMethod = "get";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Practitioner> GetPractitionerById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> practitionerIdentifier = null, [WorkflowExpression] Func<string> practitionerName = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
             var apiCallPath = "/PractitionerRole";
             var apiCallHttpMethod = "get";
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/PractitionerRole/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

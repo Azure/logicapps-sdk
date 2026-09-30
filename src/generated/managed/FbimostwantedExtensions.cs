@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class FbimostwantedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListWantedResponse> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListWantedResponse> ListWanted([WorkflowExpression] Func<posterClassificationInput> posterClassification = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<fieldOfficesInput> fieldOffices = null, [WorkflowExpression] Func<personClassificationInput> personClassification = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
             var apiCallPath = "/@wanted";
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<WantedPerson> GetWantedPerson(Expression<Func<string>> id)
+        public IBodyWorkflowAction<WantedPerson> GetWantedPerson([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/@wanted-person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> crimeCategory = null, [WorkflowExpression] Func<string> maker = null, [WorkflowExpression] Func<string> referenceNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
             var apiCallPath = "/@artcrimes";
             var apiCallHttpMethod = "get";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ArtCrime> GetArtCrime(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ArtCrime> GetArtCrime([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/@artcrimes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";

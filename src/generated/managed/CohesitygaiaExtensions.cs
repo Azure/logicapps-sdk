@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
-        public IBodyWorkflowAction<QueryResponse> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
+        public IBodyWorkflowAction<QueryResponse> SendQuery([WorkflowExpression] Func<string> bodyllmName, [WorkflowExpression] Func<string> bodyllmId, [WorkflowExpression] Func<string[]> bodydatasetNames, [WorkflowExpression] Func<string> bodyqueryString)
         {
             var apiCallPath = "/mcm/gaia/ask";
             var apiCallHttpMethod = "post";

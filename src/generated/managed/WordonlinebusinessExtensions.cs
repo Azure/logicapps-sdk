@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
     public class WordonlinebusinessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string> CreateFileItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<object>> dynamicFileSchema = null)
+        public IBodyWorkflowAction<string> CreateFileItem([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> file, [WorkflowExpression] Func<object> dynamicFileSchema = null)
         {
             var apiCallPath = "/api/templates/getFile";
             var apiCallHttpMethod = "post";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string> CreateWordFileWithContent(Expression<Func<string>> contentcontent, Expression<Func<string>> fileName = null)
+        public IBodyWorkflowAction<string> CreateWordFileWithContent([WorkflowExpression] Func<string> contentcontent, [WorkflowExpression] Func<string> fileName = null)
         {
             var apiCallPath = "/api/templates/createWordFileWithContent";
             var apiCallHttpMethod = "post";
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string> GetFilePDF(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
+        public IBodyWorkflowAction<string> GetFilePDF([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> drive, [WorkflowExpression] Func<string> file, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<bool> fetchSensitivityLabelMetadata = null)
         {
             var apiCallPath = "/api/templates/convertFile";
             var apiCallHttpMethod = "get";

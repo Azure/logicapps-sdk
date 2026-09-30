@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     public class Calendlyv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
+        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes([WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<string> pageToken = null, [WorkflowExpression] Func<bool> adminManaged = null)
         {
             var apiCallPath = "/event_types";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow([WorkflowExpression] Func<string> bodyinvitee)
         {
             var apiCallPath = "/invitee_no_shows";
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> uuid)
         {
             var apiCallPath = String.Format("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
             var apiCallHttpMethod = "get";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> uuid)
         {
             var apiCallPath = String.Format("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
             var apiCallHttpMethod = "delete";
@@ -68,14 +67,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook_subscriptions";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["events"] = ExpressionConverter.ConvertO(bodyevents);
@@ -89,14 +88,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook_subscriptions/routing_form_submission";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["events"] = ExpressionConverter.ConvertO(bodyevents);

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     public class HipchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
+        public IBodyWorkflowAction<UserList> ListUsers([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> roomId)
         {
             var apiCallPath = String.Format("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
+        public IBodyWorkflowAction<UserResponse> GetUserByID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> userid)
         {
             var apiCallPath = String.Format("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(userid, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<NewMessage> PostMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> roomId, [WorkflowExpression] Func<string> bodymessage)
         {
             var apiCallPath = String.Format("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
+        public IBodyWorkflowAction<string> AddUserToRoom([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> roomId, [WorkflowExpression] Func<string> memberid)
         {
             var apiCallPath = String.Format("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberid, 1));
             var apiCallHttpMethod = "put";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
     public class HipchatTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
             return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
             var apiCallHttpMethod = "get";

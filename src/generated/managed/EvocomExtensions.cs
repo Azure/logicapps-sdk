@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
     public class EvocomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
-        public IBodyWorkflowAction<TeamResponseV2[]> GetTeams(Expression<Func<string>> xEpTenant)
+        public IBodyWorkflowAction<TeamResponseV2[]> GetTeams([WorkflowExpression] Func<string> xEpTenant)
         {
             var apiCallPath = "/api/Teams";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
-        public IBodyWorkflowAction<RouteDefinitionsResponse> GetTemplates(Expression<Func<string>> xEpTenant, Expression<Func<int>> pageIndex = null, Expression<Func<int>> itemsPerPage = null)
+        public IBodyWorkflowAction<RouteDefinitionsResponse> GetTemplates([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> pageIndex = null, [WorkflowExpression] Func<int> itemsPerPage = null)
         {
             var apiCallPath = "/api/Route/Definitions";
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
 
     public class EvocomTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTaskTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodytaskType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Tasks/New";
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodytaskType != null)
             {
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedTaskTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, [WorkflowExpression] Func<int> bodytaskType = null, [WorkflowExpression] Func<int> bodytaskStatus = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Tasks/Change";
             var apiCallHttpMethod = "post";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodytaskType != null)
             {
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTeamTrigger([WorkflowExpression] Func<string> xEpTenant, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Teams/New";
             var apiCallHttpMethod = "post";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedTeamTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Teams/Change";
             var apiCallHttpMethod = "post";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewProcessTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<string> bodydefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Processes/New";
             var apiCallHttpMethod = "post";
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["definitionId"] = ExpressionConverter.ConvertO(bodydefinitionId);
@@ -154,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedProcessTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, [WorkflowExpression] Func<string> bodydefinitionId = null, [WorkflowExpression] Func<string> bodystepId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/Processes/Change";
             var apiCallHttpMethod = "post";
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodydefinitionId != null)
             {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     public class EmaildomaincheckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
+        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<endpointInput> endpoint)
         {
             var apiCallPath = "/checkDomain/";
             var apiCallHttpMethod = "get";

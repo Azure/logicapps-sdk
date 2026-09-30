@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases(Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases([WorkflowExpression] Func<string> country = null)
         {
             var apiCallPath = "/v1/browse/new-releases";
             var apiCallHttpMethod = "get";

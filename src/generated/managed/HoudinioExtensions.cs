@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
     public class HoudinioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResponse> LaunchScan(Expression<Func<string>> bodyartifact, Expression<Func<string[]>> bodyscanOn = null)
+        public IBodyWorkflowAction<ScanResponse> LaunchScan([WorkflowExpression] Func<string> bodyartifact, [WorkflowExpression] Func<string[]> bodyscanOn = null)
         {
             var apiCallPath = "/scan/launch";
             var apiCallHttpMethod = "post";
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResult> RetrieveScan(Expression<Func<string>> scanID)
+        public IBodyWorkflowAction<ScanResult> RetrieveScan([WorkflowExpression] Func<string> scanID)
         {
             var apiCallPath = "/scan/result";
             var apiCallHttpMethod = "get";

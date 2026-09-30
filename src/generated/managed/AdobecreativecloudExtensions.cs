@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
     public class AdobecreativecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/storage/cc/asset";
             var apiCallHttpMethod = "post";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentById(Expression<Func<string>> assetId)
+        public IBodyWorkflowAction<string> GetContentById([WorkflowExpression] Func<string> assetId)
         {
             var apiCallPath = "/storage/cc/asset/id/content";
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataById(Expression<Func<string>> assetId)
+        public IBodyWorkflowAction<AssetMetadata> GetMetadataById([WorkflowExpression] Func<string> assetId)
         {
             var apiCallPath = "/storage/cc/asset/id/metadata";
             var apiCallHttpMethod = "get";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IWorkflowAction DeleteAssetByPath(Expression<Func<string>> path)
+        public IWorkflowAction DeleteAssetByPath([WorkflowExpression] Func<string> path)
         {
             var apiCallPath = "/storage/cc/asset/path";
             var apiCallHttpMethod = "delete";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<string> GetContentByPath([WorkflowExpression] Func<string> path)
         {
             var apiCallPath = "/storage/cc/asset/path/content";
             var apiCallHttpMethod = "get";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath(Expression<Func<string>> path)
+        public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath([WorkflowExpression] Func<string> path)
         {
             var apiCallPath = "/storage/cc/asset/path/metadata";
             var apiCallHttpMethod = "get";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory(Expression<Func<string>> path)
+        public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory([WorkflowExpression] Func<string> path)
         {
             var apiCallPath = "/storage/cc/directory/path/assets";
             var apiCallHttpMethod = "get";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
+        public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset([WorkflowExpression] Func<string> bodysourceAssetPath, [WorkflowExpression] Func<string> bodydestinationAssetPath)
         {
             var apiCallPath = "/storage/cc/op/copy";
             var apiCallHttpMethod = "post";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -131,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

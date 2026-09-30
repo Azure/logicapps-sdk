@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
     public class TwilioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
+        public IBodyWorkflowAction<Message> SendMessage([WorkflowExpression] Func<string> sendMessageRequestfrom, [WorkflowExpression] Func<string> sendMessageRequestto, [WorkflowExpression] Func<string> sendMessageRequestbody, [WorkflowExpression] Func<string[]> sendMessageRequestmediaUrl = null, [WorkflowExpression] Func<string> sendMessageRequeststatusCallback = null, [WorkflowExpression] Func<string> sendMessageRequestmessagingServiceSid = null, [WorkflowExpression] Func<string> sendMessageRequestapplicationSid = null, [WorkflowExpression] Func<string> sendMessageRequestmaxPrice = null, [WorkflowExpression] Func<string> sendMessageRequestvalidityPeriod = null)
         {
             var apiCallPath = "/Messages.json";
             var apiCallHttpMethod = "post";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<Message> GetMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> messageId)
         {
             var apiCallPath = String.Format("/Messages/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<MessageListV2> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MessageListV2> ListMessages([WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> dateSent = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/v2/Messages.json";
             var apiCallHttpMethod = "get";

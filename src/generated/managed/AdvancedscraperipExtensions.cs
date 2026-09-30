@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
     public class AdvancedscraperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
+        public IBodyWorkflowAction<ScrapeResponse> Scrape([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null)
         {
             var apiCallPath = "/scraper";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/scraper";
             var apiCallHttpMethod = "post";

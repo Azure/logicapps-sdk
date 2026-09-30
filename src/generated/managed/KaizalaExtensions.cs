@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
     public class KaizalaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> groupId, Expression<Func<string>> requestmessage, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestmessage, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<SendActionResponse> SendActionReminder([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<object> requestactionId = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<PostReactionResponse> PostReaction(Expression<Func<string>> groupId, Expression<Func<string>> requestsourceGroupId = null, Expression<Func<string>> requestmessageId = null, Expression<Func<requestreactionTypeInput>> requestreactionType = null, Expression<Func<string>> requestcomment = null)
+        public IBodyWorkflowAction<PostReactionResponse> PostReaction([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestsourceGroupId = null, [WorkflowExpression] Func<string> requestmessageId = null, [WorkflowExpression] Func<requestreactionTypeInput> requestreactionType = null, [WorkflowExpression] Func<string> requestcomment = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendMessageResponse> SendReply(Expression<Func<string>> groupId, Expression<Func<string>> requestmessageId, Expression<Func<string>> requestmessage)
+        public IBodyWorkflowAction<SendMessageResponse> SendReply([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestmessageId, [WorkflowExpression] Func<string> requestmessage)
         {
             var apiCallPath = String.Format("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -163,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
         {
             var apiCallPath = "/v1/groups";
             var apiCallHttpMethod = "post";
@@ -207,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
+        public IWorkflowAction AddGroupToGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string[]> requestsubGroups)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
@@ -225,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction CreateSubgroup(Expression<Func<string>> groupId, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
+        public IWorkflowAction CreateSubgroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "post";
@@ -269,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction RemoveGroupFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> subGroupId)
+        public IWorkflowAction RemoveGroupFromGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subGroupId)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(subGroupId, 1));
             var apiCallHttpMethod = "delete";
@@ -278,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestmembers)
+        public IWorkflowAction AddUserToGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestmembers)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
@@ -296,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddSubscriberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestsubscribers)
+        public IWorkflowAction AddSubscriberToGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> requestsubscribers)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "put";
@@ -314,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction RemoveUserFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> memberId)
+        public IWorkflowAction RemoveUserFromGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupId, [WorkflowExpression] Func<string> memberId)
         {
             var apiCallPath = String.Format("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
             var apiCallHttpMethod = "delete";
@@ -323,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent(Expression<Func<object>> fileContent)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent([WorkflowExpression] Func<object> fileContent)
         {
             var apiCallPath = "/v1/media";
             var apiCallHttpMethod = "post";
@@ -332,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL(Expression<Func<string>> mediaUrlmediaUrl)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL([WorkflowExpression] Func<string> mediaUrlmediaUrl)
         {
             var apiCallPath = "/v1/media/url";
             var apiCallHttpMethod = "post";
@@ -374,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction DeleteTrigger(Expression<Func<string>> webhookId)
+        public IWorkflowAction DeleteTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> webhookId)
         {
             var apiCallPath = String.Format("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1));
             var apiCallHttpMethod = "delete";
@@ -385,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
     public class KaizalaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/ActionCreated";
             var apiCallHttpMethod = "post";
@@ -395,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -405,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/Announcement";
             var apiCallHttpMethod = "post";
@@ -413,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -423,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/GroupAdded";
             var apiCallHttpMethod = "post";
@@ -431,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -441,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/GroupRemoved";
             var apiCallHttpMethod = "post";
@@ -449,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -459,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/MemberAdded";
             var apiCallHttpMethod = "post";
@@ -467,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -477,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/MemberRemoved";
             var apiCallHttpMethod = "post";
@@ -485,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -495,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/SurveyCreated";
             var apiCallHttpMethod = "post";
@@ -503,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -513,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
             var apiCallHttpMethod = "post";
@@ -521,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -531,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Action/SurveyResponse";
             var apiCallHttpMethod = "post";
@@ -540,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -550,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
             var apiCallHttpMethod = "post";
@@ -558,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -568,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> actionPackageId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook";
             var apiCallHttpMethod = "post";
@@ -578,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -588,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhook/Group/UserJoined";
             var apiCallHttpMethod = "post";
@@ -596,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {

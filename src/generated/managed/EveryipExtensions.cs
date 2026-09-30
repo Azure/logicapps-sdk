@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
     public class EveryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<BrowseResponse> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BrowseResponse> Browse([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cause, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/browse/{0}", ExpressionConverter.ConvertWithUrlEncoding(cause, 1));
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> term, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<string> cause = null)
         {
             var apiCallPath = String.Format("/search/{0}", ExpressionConverter.ConvertWithUrlEncoding(term, 1));
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<DetailsResponse> Details(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<DetailsResponse> Details([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> identifier)
         {
             var apiCallPath = String.Format("/nonprofit/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
             var apiCallHttpMethod = "get";

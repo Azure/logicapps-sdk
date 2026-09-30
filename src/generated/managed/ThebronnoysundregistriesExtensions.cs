@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
     public class ThebronnoysundregistriesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch(Expression<Func<string>> navn = null, Expression<Func<string>> fraRegistreringsdatoEnhetsregisteret = null, Expression<Func<string>> tilRegistreringsdatoEnhetsregisteret = null, Expression<Func<bool>> konkurs = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch([WorkflowExpression] Func<string> navn = null, [WorkflowExpression] Func<string> fraRegistreringsdatoEnhetsregisteret = null, [WorkflowExpression] Func<string> tilRegistreringsdatoEnhetsregisteret = null, [WorkflowExpression] Func<bool> konkurs = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/enhetsregisteret/api/enheter";
             var apiCallHttpMethod = "get";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> orgnr)
         {
             var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> orgnr)
         {
             var apiCallPath = String.Format("/enhetsregisteret/api/enheter/{0}/roller", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub(Expression<Func<string>> navn = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub([WorkflowExpression] Func<string> navn = null, [WorkflowExpression] Func<string> sort = null)
         {
             var apiCallPath = "/enhetsregisteret/api/underenheter";
             var apiCallHttpMethod = "get";
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
+        public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> orgnr)
         {
             var apiCallPath = String.Format("/enhetsregisteret/api/underenheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(orgnr, 1));
             var apiCallHttpMethod = "get";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
+        public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates([WorkflowExpression] Func<string> dato = null, [WorkflowExpression] Func<int> oppdateringsid = null)
         {
             var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
             var apiCallHttpMethod = "get";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
-        public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
+        public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates([WorkflowExpression] Func<string> dato = null, [WorkflowExpression] Func<int> oppdateringsid = null)
         {
             var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";
             var apiCallHttpMethod = "get";

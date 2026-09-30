@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     public class MsnweatherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<CurrentWeather> CurrentWeather(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<CurrentWeather> CurrentWeather([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
             var apiCallPath = String.Format("/current/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast> TodaysForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast> TodaysForecast([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
             var apiCallPath = String.Format("/forecast/today/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
             var apiCallPath = String.Format("/forecast/tomorrow/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<measureInput> measure, [WorkflowExpression] Func<whenInput> when, [WorkflowExpression] Func<double> target, [WorkflowExpression] Func<string> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/current/weather/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> location, [WorkflowExpression] Func<unitsInput> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/trigger/current/conditions/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";

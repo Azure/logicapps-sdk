@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     public class DocparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> parserId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> remoteId = null)
         {
             var apiCallPath = String.Format("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
+        public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> parserId, [WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> remoteId = null)
         {
             var apiCallPath = String.Format("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
@@ -37,14 +36,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var targetUrl = new JObject();
             var targetUrlpropCount = 0;
-            targetUrl["target_url"] = "@listCallbackUrl()";
+            targetUrl["target_url"] = "#{listCallbackUrl()}";
             targetUrlpropCount++;
             if (targetUrlpropCount > 0)
             {

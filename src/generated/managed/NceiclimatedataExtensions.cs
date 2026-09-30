@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     public class NceiclimatedataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DatasetsGetResponse> DatasetsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DatasetsGetResponse> DatasetsGet([WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/datasets";
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DatasetGetResponse> DatasetGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<DatasetGetResponse> DatasetGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/datasets/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<CatagoriesGetResponse> CatagoriesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<CatagoriesGetResponse> CatagoriesGet([WorkflowExpression] Func<string> datatsetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/datacategories";
             var apiCallHttpMethod = "get";
@@ -79,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CategoryGetResponse> CategoryGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/datacategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<TypesGetResponse> TypesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TypesGetResponse> TypesGet([WorkflowExpression] Func<string> datatsetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/datatypes";
             var apiCallHttpMethod = "get";
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<TypeGetResponse> TypeGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TypeGetResponse> TypeGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/datatypes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationCategoriesGetResponse> LocationCategoriesGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<LocationCategoriesGetResponse> LocationCategoriesGet([WorkflowExpression] Func<string> datasetid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/locationcategories";
             var apiCallHttpMethod = "get";
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationCategoryGetResponse> LocationCategoryGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<LocationCategoryGetResponse> LocationCategoryGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/locationcategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationsGetResponse> LocationsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationcategoryid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<LocationsGetResponse> LocationsGet([WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationcategoryid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/locations";
             var apiCallHttpMethod = "get";
@@ -191,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationGetResponse> LocationGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<LocationGetResponse> LocationGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -200,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationsGetResponse> StationsGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> datatypeid = null, Expression<Func<string>> extent = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<StationsGetResponse> StationsGet([WorkflowExpression] Func<string> datasetid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> datacategoryid = null, [WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> extent = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/cdo-web/api/v2/stations";
             var apiCallHttpMethod = "get";
@@ -233,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationGetResponse> StationGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<StationGetResponse> StationGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/cdo-web/api/v2/stations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -242,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DataGetResponse> DataGet(Expression<Func<string>> datasetid, Expression<Func<string>> startdate, Expression<Func<string>> enddate, Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<unitsInput>> units = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> includemetadata = null)
+        public IBodyWorkflowAction<DataGetResponse> DataGet([WorkflowExpression] Func<string> datasetid, [WorkflowExpression] Func<string> startdate, [WorkflowExpression] Func<string> enddate, [WorkflowExpression] Func<string> datatypeid = null, [WorkflowExpression] Func<string> locationid = null, [WorkflowExpression] Func<string> stationid = null, [WorkflowExpression] Func<unitsInput> units = null, [WorkflowExpression] Func<sortfieldInput> sortfield = null, [WorkflowExpression] Func<sortorderInput> sortorder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> includemetadata = null)
         {
             var apiCallPath = "/cdo-web/api/v2/data";
             var apiCallHttpMethod = "get";
@@ -275,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DatasetsSearchGetResponse> DatasetsSearchGet(Expression<Func<string>> dataset = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> keywords = null, Expression<Func<string>> text = null, Expression<Func<string>> dataTypes = null, Expression<Func<string>> stations = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> available = null)
+        public IBodyWorkflowAction<DatasetsSearchGetResponse> DatasetsSearchGet([WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> boundingBox = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> dataTypes = null, [WorkflowExpression] Func<string> stations = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> available = null)
         {
             var apiCallPath = "/access/services/search/v1/data";
             var apiCallHttpMethod = "get";
@@ -306,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationHistoricalGetResponse> StationHistoricalGet(Expression<Func<string>> stationid, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null)
+        public IBodyWorkflowAction<StationHistoricalGetResponse> StationHistoricalGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> stationid, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> begindate = null, [WorkflowExpression] Func<string> enddate = null)
         {
             var apiCallPath = String.Format("/access/homr/services/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationid, 1));
             var apiCallHttpMethod = "get";
@@ -322,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationHistoricSearchGetResponse> StationHistoricSearchGet(Expression<Func<string>> qid = null, Expression<Func<string>> qidMod = null, Expression<Func<string>> state = null, Expression<Func<string>> county = null, Expression<Func<string>> country = null, Expression<Func<string>> name = null, Expression<Func<string>> nameMod = null, Expression<Func<string>> platform = null, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null, Expression<Func<statusInput>> status = null, Expression<Func<bool>> current = null, Expression<Func<string>> headersOnly = null, Expression<Func<bool>> phrData = null, Expression<Func<bool>> definitions = null)
+        public IBodyWorkflowAction<StationHistoricSearchGetResponse> StationHistoricSearchGet([WorkflowExpression] Func<string> qid = null, [WorkflowExpression] Func<string> qidMod = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> county = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> nameMod = null, [WorkflowExpression] Func<string> platform = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> begindate = null, [WorkflowExpression] Func<string> enddate = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<bool> current = null, [WorkflowExpression] Func<string> headersOnly = null, [WorkflowExpression] Func<bool> phrData = null, [WorkflowExpression] Func<bool> definitions = null)
         {
             var apiCallPath = "/access/homr/services/station/search";
             var apiCallHttpMethod = "get";

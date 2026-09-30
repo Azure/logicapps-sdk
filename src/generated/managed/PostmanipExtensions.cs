@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     public class PostmanipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces(Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces([WorkflowExpression] Func<typeInput> type = null)
         {
             var apiCallPath = "/workspaces";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
+        public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace([WorkflowExpression] Func<string> bodyworkspacename, [WorkflowExpression] Func<bodyworkspacetypeInput> bodyworkspacetype, [WorkflowExpression] Func<string> bodyworkspacedescription = null)
         {
             var apiCallPath = "/workspaces";
             var apiCallHttpMethod = "post";
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workspaceId)
         {
             var apiCallPath = String.Format("/workspaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
             var apiCallHttpMethod = "get";
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments([WorkflowExpression] Func<string> workspace = null)
         {
             var apiCallPath = "/environments";
             var apiCallHttpMethod = "get";
@@ -87,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment(Expression<Func<string>> environmentId)
+        public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> environmentId)
         {
             var apiCallPath = String.Format("/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1));
             var apiCallHttpMethod = "get";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListCollectionsResponse> ListCollections(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ListCollectionsResponse> ListCollections([WorkflowExpression] Func<string> workspace = null)
         {
             var apiCallPath = "/collections";
             var apiCallHttpMethod = "get";
@@ -107,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<GetCollectionResponse> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
+        public IBodyWorkflowAction<GetCollectionResponse> GetCollection([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> collectionId, [WorkflowExpression] Func<string> accessKey = null)
         {
             var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionId, 1));
             var apiCallHttpMethod = "get";
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi(Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi([WorkflowExpression] Func<string> workspace = null)
         {
             var apiCallPath = "/import/openapi";
             var apiCallHttpMethod = "post";

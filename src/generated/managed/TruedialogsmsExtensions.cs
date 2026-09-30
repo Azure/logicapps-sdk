@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     public class TruedialogsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<AccountResponse> AccountGetInfo(Expression<Func<string>> accountId)
+        public IBodyWorkflowAction<AccountResponse> AccountGetInfo([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId)
         {
             var apiCallPath = String.Format("/account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch(Expression<Func<string>> accountId, Expression<Func<string>> phone)
+        public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> phone)
         {
             var apiCallPath = String.Format("/account/{0}/contact-search/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        public IBodyWorkflowAction<ContactResponse> ContactCreate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
             var apiCallPath = String.Format("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        public IBodyWorkflowAction<ContactResponse> ContactUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> contactid, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
             var apiCallPath = String.Format("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
             var apiCallHttpMethod = "put";
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodychannels, Expression<Func<string[]>> bodytargets, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodyexecute, Expression<Func<string[]>> bodycontactListIds = null, Expression<Func<string[]>> bodyexcludeListIds = null, Expression<Func<int>> bodymediaId = null, Expression<Func<bool>> bodyignoreSingleUse = null, Expression<Func<bool>> bodyforceOptIn = null, Expression<Func<string[]>> bodyschedules = null, Expression<Func<bool>> bodyignoreInvalidTargets = null)
+        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, [WorkflowExpression] Func<string[]> bodychannels, [WorkflowExpression] Func<string[]> bodytargets, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodyexecute, [WorkflowExpression] Func<string[]> bodycontactListIds = null, [WorkflowExpression] Func<string[]> bodyexcludeListIds = null, [WorkflowExpression] Func<int> bodymediaId = null, [WorkflowExpression] Func<bool> bodyignoreSingleUse = null, [WorkflowExpression] Func<bool> bodyforceOptIn = null, [WorkflowExpression] Func<string[]> bodyschedules = null, [WorkflowExpression] Func<bool> bodyignoreInvalidTargets = null)
         {
             var apiCallPath = String.Format("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -211,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "post";
@@ -222,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 11;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -234,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -245,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 1;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -257,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -268,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 6;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -280,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -291,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 12;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -303,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
             var apiCallHttpMethod = "put";
@@ -314,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 13;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;

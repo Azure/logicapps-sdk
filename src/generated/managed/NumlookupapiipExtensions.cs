@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
     public class NumlookupapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
-        public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<NumberGetResponse> NumberGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> phoneNumber, [WorkflowExpression] Func<string> countryCode = null)
         {
             var apiCallPath = String.Format("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
             var apiCallHttpMethod = "get";

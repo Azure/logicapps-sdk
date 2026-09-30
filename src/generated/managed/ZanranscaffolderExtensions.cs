@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
     public class ZanranscaffolderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> UploadDocument(Expression<Func<object>> file, Expression<Func<int>> startPage = null, Expression<Func<int>> endPage = null, Expression<Func<string>> coords = null)
+        public IBodyWorkflowAction<string> UploadDocument([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<int> startPage = null, [WorkflowExpression] Func<int> endPage = null, [WorkflowExpression] Func<string> coords = null)
         {
             var apiCallPath = "/api/Upload/UploadFile";
             var apiCallHttpMethod = "post";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> GetStatus(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<string> GetStatus([WorkflowExpression] Func<string> docname)
         {
             var apiCallPath = "/api/DocSearch/GetStatus";
             var apiCallHttpMethod = "post";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> docname)
         {
             var apiCallPath = String.Format("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileAllXml([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> docname)
         {
             var apiCallPath = String.Format("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileZnr([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> docname)
         {
             var apiCallPath = String.Format("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
             var apiCallHttpMethod = "get";

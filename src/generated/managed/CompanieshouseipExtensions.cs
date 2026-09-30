@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
     public class CompanieshouseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListPscResponse> ListPsc([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
+        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pCSId)
         {
             var apiCallPath = String.Format("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> officerId)
         {
             var apiCallPath = String.Format("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
             var apiCallHttpMethod = "get";
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber, [WorkflowExpression] Func<string> transactionId)
         {
             var apiCallPath = String.Format("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
             var apiCallHttpMethod = "get";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> chargeId)
         {
             var apiCallPath = String.Format("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
             var apiCallHttpMethod = "get";
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber, [WorkflowExpression] Func<string> appointmentId)
         {
             var apiCallPath = String.Format("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
             var apiCallHttpMethod = "get";
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> companyNumber)
         {
             var apiCallPath = String.Format("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
             var apiCallHttpMethod = "get";

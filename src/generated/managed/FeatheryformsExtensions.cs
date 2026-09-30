@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
     public class FeatheryformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/form_completion/";
             var apiCallHttpMethod = "get";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/data_received/";
             var apiCallHttpMethod = "get";
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
             return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewFileResponse> NewFile([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/power-automate/poll/file/";
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<AddSystemResponse> AddSystem(Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<AddSystemResponse> AddSystem([WorkflowExpression] Func<string> bodytitle = null)
         {
             var apiCallPath = "/api/external/systems/topics/";
             var apiCallHttpMethod = "post";
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IWorkflowAction AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
+        public IWorkflowAction AddSystemAdvanced([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyfieldssystemNickname = null, [WorkflowExpression] Func<string> bodyfieldssystemOwner = null, [WorkflowExpression] Func<string> bodyfieldssystemAdministrator = null, [WorkflowExpression] Func<string> bodyfieldscostCenter = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystems = null, [WorkflowExpression] Func<string> bodyfieldsdataSystemPurpose = null, [WorkflowExpression] Func<string[]> bodyfieldslinkedSystemProviders = null, [WorkflowExpression] Func<string> bodyfieldspartnerResponsibilityDetails = null)
         {
             var apiCallPath = "/api/external/systems/topics/advanced/";
             var apiCallHttpMethod = "post";

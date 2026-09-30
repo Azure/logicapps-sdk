@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> DeleteCompanySubscription(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> DeleteCompanySubscription([WorkflowExpression] Func<string> subscriptionId)
         {
             var apiCallPath = "/webhook/v1/subscription";
             var apiCallHttpMethod = "delete";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyregistrationId, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodyvalues, Expression<Func<string>> bodycallbackUrl = null)
+        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodyregistrationId, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string[]> bodyvalues, [WorkflowExpression] Func<string> bodycallbackUrl = null)
         {
             var apiCallPath = "/webhook/v1/subscription";
             var apiCallHttpMethod = "post";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> ValidateWebhookNotificationSignature(Expression<Func<string>> messageSignature, Expression<Func<string>> secretKey)
+        public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> ValidateWebhookNotificationSignature([WorkflowExpression] Func<string> messageSignature, [WorkflowExpression] Func<string> secretKey)
         {
             var apiCallPath = "/validatesignature";
             var apiCallHttpMethod = "post";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> DeleteCompanyRegistration(Expression<Func<string>> registrationId = null)
+        public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> DeleteCompanyRegistration([WorkflowExpression] Func<string> registrationId = null)
         {
             var apiCallPath = "/webhook/v1/deleteregistration";
             var apiCallHttpMethod = "delete";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
 
     public class FedexdataworksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodycallbackSignatureSecretKey, Expression<Func<string>> bodycallbackSignatureAlgorithm, Expression<Func<string>> bodycallbackAuthUrl = null, Expression<Func<string>> bodycallbackClientId = null, Expression<Func<string>> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodycallbackSignatureSecretKey, [WorkflowExpression] Func<string> bodycallbackSignatureAlgorithm, [WorkflowExpression] Func<string> bodycallbackAuthUrl = null, [WorkflowExpression] Func<string> bodycallbackClientId = null, [WorkflowExpression] Func<string> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/v1/register";
             var apiCallHttpMethod = "post";
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
                 bodypropCount++;
             }
 
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodycallbackClientId != null)
             {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
     public class AciActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList(Expression<Func<string>> subscriptionId)
+        public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName)
+        public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "get";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> resourceid = null, Expression<Func<string>> resourcename = null, Expression<Func<string>> resourcetype = null, Expression<Func<string>> resourcelocation = null, Expression<Func<string[]>> resourcezones = null)
+        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName, [WorkflowExpression] Func<string> resourceid = null, [WorkflowExpression] Func<string> resourcename = null, [WorkflowExpression] Func<string> resourcetype = null, [WorkflowExpression] Func<string> resourcelocation = null, [WorkflowExpression] Func<string[]> resourcezones = null)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "patch";
@@ -97,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "delete";
@@ -107,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IWorkflowAction ContainerGroupsRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IWorkflowAction ContainerGroupsRestart([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IWorkflowAction ContainerGroupsStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IWorkflowAction ContainerGroupsStop([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IWorkflowAction ContainerGroupsStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IWorkflowAction ContainerGroupsStart([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "post";
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<UsageListResult> LocationListUsage(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
+        public IBodyWorkflowAction<UsageListResult> LocationListUsage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<Logs> ContainerLogsList(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<int>> tail = null)
+        public IBodyWorkflowAction<Logs> ContainerLogsList([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<int> tail = null)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "get";
@@ -159,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<string>> containerExecRequestcommand = null, Expression<Func<int>> containerExecRequestterminalSizerows = null, Expression<Func<int>> containerExecRequestterminalSizecols = null)
+        public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName, [WorkflowExpression] Func<string> containerExecRequestcommand = null, [WorkflowExpression] Func<int> containerExecRequestterminalSizerows = null, [WorkflowExpression] Func<int> containerExecRequestterminalSizecols = null)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "post";
@@ -202,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName)
+        public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> containerGroupName, [WorkflowExpression] Func<string> containerName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
             var apiCallHttpMethod = "post";
@@ -212,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
+        public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -222,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
+        public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression] Func<string> location)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
             var apiCallHttpMethod = "get";
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
+        public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> containerGroupName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
             var apiCallHttpMethod = "get";
@@ -242,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IWorkflowAction SubnetServiceAssociationLinkDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualNetworkName, Expression<Func<string>> subnetName)
+        public IWorkflowAction SubnetServiceAssociationLinkDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> virtualNetworkName, [WorkflowExpression] Func<string> subnetName)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(subnetName, 1));
             var apiCallHttpMethod = "delete";

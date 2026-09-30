@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
     public class AzurespeechpronunciaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurespeechpronuncia")]
-        public IWorkflowAction SpeechRecognitionConversationCognitiveServices(Expression<Func<string>> referenceText, Expression<Func<string>> language, Expression<Func<string>> audioContent = null, Expression<Func<gradingSystemInput>> gradingSystem = null, Expression<Func<granularityInput>> granularity = null, Expression<Func<dimensionInput>> dimension = null, Expression<Func<bool>> enableMiscue = null, Expression<Func<string>> scenarioId = null)
+        public IWorkflowAction SpeechRecognitionConversationCognitiveServices([WorkflowExpression] Func<string> referenceText, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> audioContent = null, [WorkflowExpression] Func<gradingSystemInput> gradingSystem = null, [WorkflowExpression] Func<granularityInput> granularity = null, [WorkflowExpression] Func<dimensionInput> dimension = null, [WorkflowExpression] Func<bool> enableMiscue = null, [WorkflowExpression] Func<string> scenarioId = null)
         {
             var apiCallPath = "/conversation/cognitiveservices/v1";
             var apiCallHttpMethod = "post";

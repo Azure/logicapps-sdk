@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
     public class DynamicsdocsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
-        public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
+        public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> templateToken, [WorkflowExpression] Func<string> docDeliveryType = null, [WorkflowExpression] Func<int> docUrlExpiresIn = null, [WorkflowExpression] Func<string> latexCompiler = null, [WorkflowExpression] Func<int> latexRuns = null, [WorkflowExpression] Func<string> mainFileName = null, [WorkflowExpression] Func<string> docFileName = null, [WorkflowExpression] Func<string> encryptType = null)
         {
             var apiCallPath = String.Format("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(templateToken, 1));
             var apiCallHttpMethod = "post";

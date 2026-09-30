@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// The nested flow action allows calling a workflow within another workflow.
@@ -20,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; }
+        public JToken Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal NestedWorkflowAction(
             string workflowReferenceName,
             object requestBody = null,
-            Dictionary<string, string> headers = null)
+            JToken headers = null)
         {
             this.WorkflowReferenceName = workflowReferenceName;
             this.RequestBody = requestBody;
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal NestedWorkflowAction(
             string workflowReferenceName,
             object requestBody = null,
-            Dictionary<string, string> headers = null)
+            JToken headers = null)
             : base(workflowReferenceName, requestBody, headers)
         {
         }

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
     public class OpenelevationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
-        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> locations)
+        public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> locations)
         {
             var apiCallPath = "/api/v1/lookup";
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
     public class SwaggerconverteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
-        public IBodyWorkflowAction<JToken> ConvertByUrl(Expression<Func<string>> url)
+        public IBodyWorkflowAction<JToken> ConvertByUrl([WorkflowExpression] Func<string> url)
         {
             var apiCallPath = "/convert";
             var apiCallHttpMethod = "get";

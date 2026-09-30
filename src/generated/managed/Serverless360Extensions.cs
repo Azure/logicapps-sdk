@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     public class Serverless360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction ArchiveActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
+        public IWorkflowAction ArchiveActivity([WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<string> sL360StageActivityId)
         {
             var apiCallPath = "/api/ArchiveActivity";
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction LogExceptionActivity(Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360ExceptionMessage, Expression<Func<string>> sL360ExceptionCode, Expression<Func<string>> sL360BusinessProcess)
+        public IWorkflowAction LogExceptionActivity([WorkflowExpression] Func<string> sL360StageActivityId, [WorkflowExpression] Func<string> sL360ExceptionMessage, [WorkflowExpression] Func<string> sL360ExceptionCode, [WorkflowExpression] Func<string> sL360BusinessProcess)
         {
             var apiCallPath = "/api/LogExceptionActivity";
             var apiCallHttpMethod = "post";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IBodyWorkflowAction<StartActivityResponse> StartActivity(Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
+        public IBodyWorkflowAction<StartActivityResponse> StartActivity([WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<string> sL360MainActivityId = null, [WorkflowExpression] Func<string> sL360PreviousStage = null, [WorkflowExpression] Func<sL360ArchiveMessageInput> sL360ArchiveMessage = null, [WorkflowExpression] Func<string> sL360BatchId = null)
         {
             var apiCallPath = "/api/StartActivity";
             var apiCallHttpMethod = "post";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction UpdateActivity(Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
+        public IWorkflowAction UpdateActivity([WorkflowExpression] Func<string> sL360MainActivityId, [WorkflowExpression] Func<string> sL360StageActivityId, [WorkflowExpression] Func<string> sL360BusinessProcess, [WorkflowExpression] Func<string> sL360BusinessTransaction, [WorkflowExpression] Func<string> sL360CurrentStage, [WorkflowExpression] Func<sL360StatusInput> sL360Status = null, [WorkflowExpression] Func<sL360ArchiveMessageInput> sL360ArchiveMessage = null)
         {
             var apiCallPath = "/api/UpdateActivity";
             var apiCallHttpMethod = "post";

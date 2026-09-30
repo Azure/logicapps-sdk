@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     public class ElasticformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<AssignFormResponse> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
+        public IBodyWorkflowAction<AssignFormResponse> AssignForm([WorkflowExpression] Func<string> formAssignBodyuser, [WorkflowExpression] Func<string> formAssignBodyform, [WorkflowExpression] Func<object> formAssignBodyfields = null)
         {
             var apiCallPath = "/api/external/Form";
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<string> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
+        public IBodyWorkflowAction<string> AddData([WorkflowExpression] Func<string> formDataBodyform, [WorkflowExpression] Func<object> formDataBodyfields = null)
         {
             var apiCallPath = "/api/external/FormData";
             var apiCallHttpMethod = "post";
@@ -64,14 +63,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TrigNewResponse([WorkflowExpression] Func<string> requestBodyOfWebhookform, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/external/WebHook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["TriggerUrl"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["TriggerUrl"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(requestBodyOfWebhookform);

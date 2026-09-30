@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
     public class AzureautomationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
-        public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<string> GetJobOutput([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> automationAccount, [WorkflowExpression] Func<string> jobId)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
-        public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> automationAccount, [WorkflowExpression] Func<string> jobId)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> runbookName = null, Expression<Func<object>> bodypropertiesrunbookParameters = null, Expression<Func<string>> bodypropertieshybridAutomationWorkerGroup = null, Expression<Func<bool>> wait = null)
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resourceGroupName, [WorkflowExpression] Func<string> automationAccount, [WorkflowExpression] Func<string> runbookName = null, [WorkflowExpression] Func<object> bodypropertiesrunbookParameters = null, [WorkflowExpression] Func<string> bodypropertieshybridAutomationWorkerGroup = null, [WorkflowExpression] Func<bool> wait = null)
         {
             var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(automationAccount, 1));
             var apiCallHttpMethod = "put";

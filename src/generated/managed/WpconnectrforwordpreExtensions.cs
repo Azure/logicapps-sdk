@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
     public class WpconnectrforwordpreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> GetResourceById(Expression<Func<string>> resource, Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken> GetResourceById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> DeleteResource(Expression<Func<string>> resource, Expression<Func<string>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> DeleteResource([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> UpdateResource(Expression<Func<string>> id, Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> UpdateResource([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken[]> GetItemsByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken[]> GetItemsByResource([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/resources/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> UploadMedia(Expression<Func<object>> file)
+        public IBodyWorkflowAction<JToken> UploadMedia([WorkflowExpression] Func<object> file)
         {
             var apiCallPath = "/resources/media";
             var apiCallHttpMethod = "post";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> CreateResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> CreateResource([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/resources/{0}", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> GetItemByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> GetItemByResource([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/resources/{0}/fetch", ExpressionConverter.ConvertWithUrlEncoding(resource, 1));
             var apiCallHttpMethod = "post";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
 
     public class WpconnectrforwordpreTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> bodyresourceType, Expression<Func<string>> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTrigger([WorkflowExpression] Func<string> bodyresourceType, [WorkflowExpression] Func<string> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/triggers";
             var apiCallHttpMethod = "post";
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
             body["trigger_resource_schema"] = ExpressionConverter.ConvertO(bodyresourceType);
             bodypropCount++;
             body["topic"] = ExpressionConverter.ConvertO(bodytriggerEvent);
-            body["delivery_url"] = "@listCallbackUrl()";
+            body["delivery_url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

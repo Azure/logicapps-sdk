@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/powerauto/run_file";
             var apiCallHttpMethod = "post";
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/powerauto/run_text";
             var apiCallHttpMethod = "post";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/invoices";
             var apiCallHttpMethod = "post";
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/purchase_order";
             var apiCallHttpMethod = "post";
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/bill_of_lading";
             var apiCallHttpMethod = "post";
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/cv";
             var apiCallHttpMethod = "post";
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<doctypeInput> doctype, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = String.Format("/actions/doctype_{0}", ExpressionConverter.ConvertWithUrlEncoding(doctype, 1));
             var apiCallHttpMethod = "post";
@@ -187,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/business_cards";
             var apiCallHttpMethod = "post";
@@ -209,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/qrcodes";
             var apiCallHttpMethod = "post";
@@ -231,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
             var apiCallPath = "/actions/barcodes";
             var apiCallHttpMethod = "post";
@@ -253,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail([WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/actions/cold_response";
             var apiCallHttpMethod = "post";
@@ -275,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO(Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO([WorkflowExpression] Func<string> bodytext = null)
         {
             var apiCallPath = "/actions/haro";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
             var apiCallHttpMethod = "post";
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
                 requestBodyOfWebhookpropCount++;
             }
 
-            requestBodyOfWebhook["callbackURL"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["callbackURL"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookpropCount > 0)
             {

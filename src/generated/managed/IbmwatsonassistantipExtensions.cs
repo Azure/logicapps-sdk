@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
     public class IbmwatsonassistantipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<CreateSessionResponse> CreateSession(Expression<Func<string>> version)
+        public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> version)
         {
             var apiCallPath = "/sessions";
             var apiCallHttpMethod = "post";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
+        public IWorkflowAction DeleteSession([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> session, [WorkflowExpression] Func<string> version = null)
         {
             var apiCallPath = String.Format("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
             var apiCallHttpMethod = "delete";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> session, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
             var apiCallPath = String.Format("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
             var apiCallHttpMethod = "post";
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage([WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
             var apiCallPath = "/message";
             var apiCallHttpMethod = "post";

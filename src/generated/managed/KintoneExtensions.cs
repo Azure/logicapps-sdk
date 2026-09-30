@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     public class KintoneActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction AddRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<object>> requestBodyOfRecordrecord = null)
+        public IWorkflowAction AddRecord([WorkflowExpression] Func<string> requestBodyOfRecordappID, [WorkflowExpression] Func<object> requestBodyOfRecordrecord = null)
         {
             var apiCallPath = "/k/v1/record.json";
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction UpdateRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<string>> requestBodyOfRecordrecordNumber, Expression<Func<object>> requestBodyOfRecordrecord = null)
+        public IWorkflowAction UpdateRecord([WorkflowExpression] Func<string> requestBodyOfRecordappID, [WorkflowExpression] Func<string> requestBodyOfRecordrecordNumber, [WorkflowExpression] Func<object> requestBodyOfRecordrecord = null)
         {
             var apiCallPath = "/k/v1/record.json";
             var apiCallHttpMethod = "put";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class KintoneTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
             var apiCallHttpMethod = "post";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["type"] = "ADD_RECORD";
             requestBodyOfWebhookpropCount++;
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
             var apiCallHttpMethod = "post";
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForDeletingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
             var apiCallHttpMethod = "post";
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForAddingRecordComment([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
             var apiCallHttpMethod = "post";
@@ -148,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingStatus([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";
             var apiCallHttpMethod = "post";
@@ -171,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;

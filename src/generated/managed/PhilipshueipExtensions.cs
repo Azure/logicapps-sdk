@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetLightResponse> GetLight(Expression<Func<string>> deviceId)
+        public IBodyWorkflowAction<GetLightResponse> GetLight([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deviceId)
         {
             var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
+        public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deviceId, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<bool> bodyonon = null, [WorkflowExpression] Func<double> bodydimmingbrightness = null, [WorkflowExpression] Func<int> bodycolorTemperaturemirek = null, [WorkflowExpression] Func<double> bodycolorxyx = null, [WorkflowExpression] Func<double> bodycolorxyy = null, [WorkflowExpression] Func<double> bodydynamicsspeed = null, [WorkflowExpression] Func<int> bodydynamicsduration = null, [WorkflowExpression] Func<string> bodyalertaction = null, [WorkflowExpression] Func<bodygradientpointsInputItem[]> bodygradientpoints = null)
         {
             var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "put";
@@ -198,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetDeviceResponse> GetDevice(Expression<Func<string>> deviceId)
+        public IBodyWorkflowAction<GetDeviceResponse> GetDevice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deviceId)
         {
             var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "get";
@@ -207,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
+        public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> deviceId, [WorkflowExpression] Func<bodymetadataarchetypeInput> bodymetadataarchetype = null, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<string> bodyidentifyaction = null)
         {
             var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
             var apiCallHttpMethod = "put";
@@ -286,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetSceneResponse> GetScene(Expression<Func<string>> sceneId)
+        public IBodyWorkflowAction<GetSceneResponse> GetScene([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sceneId)
         {
             var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
             var apiCallHttpMethod = "get";
@@ -295,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene(Expression<Func<string>> sceneId)
+        public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sceneId)
         {
             var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
             var apiCallHttpMethod = "delete";

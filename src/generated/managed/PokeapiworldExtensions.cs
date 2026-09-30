@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
     public class PokeapiworldActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListMachines(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListMachines([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/machine/";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetMachineResponse> GetMachine(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetMachineResponse> GetMachine([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/api/v2/machine/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListLocations(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListLocations([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/location/";
             var apiCallHttpMethod = "get";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocation(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetLocationResponse> GetLocation([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/location/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListLocationAreas(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListLocationAreas([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/location-area/";
             var apiCallHttpMethod = "get";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/location-area/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListRegions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListRegions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/region/";
             var apiCallHttpMethod = "get";
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetRegionResponse> GetRegion(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetRegionResponse> GetRegion([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/region/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListEncounterMethods(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterMethods([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/encounter-method/";
             var apiCallHttpMethod = "get";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetEncounterResponse> GetEncounter(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetEncounterResponse> GetEncounter([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/encounter-method/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListEncounterConditions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterConditions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/encounter-condition/";
             var apiCallHttpMethod = "get";
@@ -135,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/encounter-condition/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -144,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListEncounterConditionValues(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListEncounterConditionValues([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/encounter-condition-value/";
             var apiCallHttpMethod = "get";
@@ -157,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/encounter-condition-value/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListBerries(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListBerries([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/berry/";
             var apiCallHttpMethod = "get";
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<GetBerryResponse> GetBerry(Expression<Func<string>> idOrName)
+        public IBodyWorkflowAction<GetBerryResponse> GetBerry([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> idOrName)
         {
             var apiCallPath = String.Format("/api/v2/berry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(idOrName, 1));
             var apiCallHttpMethod = "get";
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
-        public IBodyWorkflowAction<ListResults> ListItems(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListResults> ListItems([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/api/v2/item/";
             var apiCallHttpMethod = "get";

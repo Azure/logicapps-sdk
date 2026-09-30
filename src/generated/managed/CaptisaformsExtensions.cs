@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     public class CaptisaformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> CreateEntry(Expression<Func<string>> formID, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> CreateEntry([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formID, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/v1/data/{0}", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
-        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry(Expression<Func<string>> formID, Expression<Func<string>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<FormFieldResponse> UpdateEntry([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formID, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/v1/data/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(formID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
@@ -34,14 +33,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v1/msflow/forms/{0}/c/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
+            body["callbackURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -51,14 +50,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
             return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/v1/msflow/forms/{0}/u/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formID, 1));
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
+            body["callbackURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
     public class CloudmersivedvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ParseAddressResponse> AddressParseString(Expression<Func<string>> inputaddressString = null, Expression<Func<string>> inputcapitalizationMode = null)
+        public IBodyWorkflowAction<ParseAddressResponse> AddressParseString([WorkflowExpression] Func<string> inputaddressString = null, [WorkflowExpression] Func<string> inputcapitalizationMode = null)
         {
             var apiCallPath = "/validate/address/parse";
             var apiCallHttpMethod = "post";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<CheckResponse> DomainCheck(Expression<Func<string>> domain = null)
+        public IBodyWorkflowAction<CheckResponse> DomainCheck([WorkflowExpression] Func<string> domain = null)
         {
             var apiCallPath = "/validate/domain/check";
             var apiCallHttpMethod = "post";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseFull> DomainUrlFull(Expression<Func<string>> requestuRL = null)
+        public IBodyWorkflowAction<ValidateUrlResponseFull> DomainUrlFull([WorkflowExpression] Func<string> requestuRL = null)
         {
             var apiCallPath = "/validate/domain/url/full";
             var apiCallHttpMethod = "post";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> DomainUrlSyntaxOnly(Expression<Func<string>> requestuRL = null)
+        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> DomainUrlSyntaxOnly([WorkflowExpression] Func<string> requestuRL = null)
         {
             var apiCallPath = "/validate/domain/url/syntax-only";
             var apiCallHttpMethod = "post";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<WhoisResponse> Domain(Expression<Func<string>> domain = null)
+        public IBodyWorkflowAction<WhoisResponse> Domain([WorkflowExpression] Func<string> domain = null)
         {
             var apiCallPath = "/validate/domain/whois";
             var apiCallHttpMethod = "post";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullEmailValidationResponse> EmailFullValidation(Expression<Func<string>> email = null)
+        public IBodyWorkflowAction<FullEmailValidationResponse> EmailFullValidation([WorkflowExpression] Func<string> email = null)
         {
             var apiCallPath = "/validate/email/address/full";
             var apiCallHttpMethod = "post";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GeolocateResponse> IPAddress(Expression<Func<string>> value = null)
+        public IBodyWorkflowAction<GeolocateResponse> IPAddress([WorkflowExpression] Func<string> value = null)
         {
             var apiCallPath = "/validate/ip/geolocate";
             var apiCallHttpMethod = "post";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FirstNameValidationResponse> NameValidateFirstName(Expression<Func<string>> inputfirstName = null)
+        public IBodyWorkflowAction<FirstNameValidationResponse> NameValidateFirstName([WorkflowExpression] Func<string> inputfirstName = null)
         {
             var apiCallPath = "/validate/name/first";
             var apiCallHttpMethod = "post";
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullNameValidationResponse> NameValidateFullName(Expression<Func<string>> inputfullNameString = null)
+        public IBodyWorkflowAction<FullNameValidationResponse> NameValidateFullName([WorkflowExpression] Func<string> inputfullNameString = null)
         {
             var apiCallPath = "/validate/name/full-name";
             var apiCallHttpMethod = "post";
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GetGenderResponse> NameGetGender(Expression<Func<string>> inputcountryCode = null, Expression<Func<string>> inputfirstName = null)
+        public IBodyWorkflowAction<GetGenderResponse> NameGetGender([WorkflowExpression] Func<string> inputcountryCode = null, [WorkflowExpression] Func<string> inputfirstName = null)
         {
             var apiCallPath = "/validate/name/get-gender";
             var apiCallHttpMethod = "post";
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateIdentifierResponse> NameIdentifier(Expression<Func<bool>> inputallowHyphens = null, Expression<Func<bool>> inputallowNumbers = null, Expression<Func<bool>> inputallowPeriods = null, Expression<Func<bool>> inputallowUnderscore = null, Expression<Func<bool>> inputallowWhitespace = null, Expression<Func<string>> inputinput = null, Expression<Func<int>> inputmaxLength = null, Expression<Func<int>> inputminLength = null)
+        public IBodyWorkflowAction<ValidateIdentifierResponse> NameIdentifier([WorkflowExpression] Func<bool> inputallowHyphens = null, [WorkflowExpression] Func<bool> inputallowNumbers = null, [WorkflowExpression] Func<bool> inputallowPeriods = null, [WorkflowExpression] Func<bool> inputallowUnderscore = null, [WorkflowExpression] Func<bool> inputallowWhitespace = null, [WorkflowExpression] Func<string> inputinput = null, [WorkflowExpression] Func<int> inputmaxLength = null, [WorkflowExpression] Func<int> inputminLength = null)
         {
             var apiCallPath = "/validate/name/identifier";
             var apiCallHttpMethod = "post";
@@ -260,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<LastNameValidationResponse> NameValidateLastName(Expression<Func<string>> inputlastName = null)
+        public IBodyWorkflowAction<LastNameValidationResponse> NameValidateLastName([WorkflowExpression] Func<string> inputlastName = null)
         {
             var apiCallPath = "/validate/name/last";
             var apiCallHttpMethod = "post";
@@ -282,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<PhoneNumberValidationResponse> PhoneNumberSyntaxOnly(Expression<Func<string>> valuedefaultCountryCode = null, Expression<Func<string>> valuephoneNumber = null)
+        public IBodyWorkflowAction<PhoneNumberValidationResponse> PhoneNumberSyntaxOnly([WorkflowExpression] Func<string> valuedefaultCountryCode = null, [WorkflowExpression] Func<string> valuephoneNumber = null)
         {
             var apiCallPath = "/validate/phonenumber/basic";
             var apiCallHttpMethod = "post";
@@ -310,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<UserAgentValidateResponse> UserAgentParse(Expression<Func<string>> requestuserAgentString = null)
+        public IBodyWorkflowAction<UserAgentValidateResponse> UserAgentParse([WorkflowExpression] Func<string> requestuserAgentString = null)
         {
             var apiCallPath = "/validate/useragent/parse";
             var apiCallHttpMethod = "post";
@@ -332,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<VatLookupResponse> VatVatLookup(Expression<Func<string>> inputvatCode = null)
+        public IBodyWorkflowAction<VatLookupResponse> VatVatLookup([WorkflowExpression] Func<string> inputvatCode = null)
         {
             var apiCallPath = "/validate/vat/lookup";
             var apiCallHttpMethod = "post";

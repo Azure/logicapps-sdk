@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     public class WoodpeckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> activity = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<bool> campaignsDetail = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/prospects";
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<string> ProspectsDelete(Expression<Func<int>> id = null, Expression<Func<int>> campaignsId = null)
+        public IBodyWorkflowAction<string> ProspectsDelete([WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> campaignsId = null)
         {
             var apiCallPath = "/prospects";
             var apiCallHttpMethod = "delete";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsPostResponse> Prospects(Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem[]>> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsPostResponse> Prospects([WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem[]> bodyprospects = null)
         {
             var apiCallPath = "/add_prospects_list";
             var apiCallHttpMethod = "post";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign(Expression<Func<int>> bodycampaigncampaignId = null, Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem2[]>> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign([WorkflowExpression] Func<int> bodycampaigncampaignId = null, [WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem2[]> bodyprospects = null)
         {
             var apiCallPath = "/add_prospects_campaign";
             var apiCallHttpMethod = "post";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> id = null)
         {
             var apiCallPath = "/campaign_list";
             var apiCallHttpMethod = "get";

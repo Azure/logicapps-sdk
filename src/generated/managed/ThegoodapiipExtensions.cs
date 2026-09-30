@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse> Plant([WorkflowExpression] Func<int> bodycount = null)
         {
             var apiCallPath = "/plant/trees";
             var apiCallHttpMethod = "post";

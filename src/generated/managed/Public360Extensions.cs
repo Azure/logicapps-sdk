@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
     public class Public360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateFileResponse> CreateFile(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdocumentNumber = null, Expression<Func<int>> bodyparameterdocumentRecno = null, Expression<Func<string>> bodyparameterformat = null, Expression<Func<string>> bodyparameterbase64Data = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateFileResponse> CreateFile([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparameterdocumentNumber = null, [WorkflowExpression] Func<int> bodyparameterdocumentRecno = null, [WorkflowExpression] Func<string> bodyparameterformat = null, [WorkflowExpression] Func<string> bodyparameterbase64Data = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/FileService/CreateFile";
             var apiCallHttpMethod = "post";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparametercaseNumber = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparametercategory = null, Expression<Func<string>> bodyparameterstatus = null, Expression<Func<string>> bodyparameterarchive = null, Expression<Func<string>> bodyparameternotes = null, Expression<Func<bodyparametercontactsInputItem[]>> bodyparametercontacts = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparametercaseNumber = null, [WorkflowExpression] Func<string> bodyparameterdefaultValueSet = null, [WorkflowExpression] Func<string> bodyparameterunofficialTitle = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonEmail = null, [WorkflowExpression] Func<string> bodyparametercategory = null, [WorkflowExpression] Func<string> bodyparameterstatus = null, [WorkflowExpression] Func<string> bodyparameterarchive = null, [WorkflowExpression] Func<string> bodyparameternotes = null, [WorkflowExpression] Func<bodyparametercontactsInputItem[]> bodyparametercontacts = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/DocumentService/CreateDocument";
             var apiCallHttpMethod = "post";
@@ -164,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateCaseResponse> CreateCase(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparametercaseType = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparameterresponsiblePersonIdNumber = null, Expression<Func<string>> bodyparameterresponsibleEnterpriseNumber = null, Expression<Func<int>> bodyparameterprogressPlanId = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
+        public IBodyWorkflowAction<CreateCaseResponse> CreateCase([WorkflowExpression] Func<string> hosturl, [WorkflowExpression] Func<string> bodyparametertitle = null, [WorkflowExpression] Func<string> bodyparameterdefaultValueSet = null, [WorkflowExpression] Func<string> bodyparameterunofficialTitle = null, [WorkflowExpression] Func<string> bodyparametercaseType = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonEmail = null, [WorkflowExpression] Func<string> bodyparameterresponsiblePersonIdNumber = null, [WorkflowExpression] Func<string> bodyparameterresponsibleEnterpriseNumber = null, [WorkflowExpression] Func<int> bodyparameterprogressPlanId = null, [WorkflowExpression] Func<bodyparameteradditionalFieldsInputItem[]> bodyparameteradditionalFields = null)
         {
             var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/CaseService/CreateCase";
             var apiCallHttpMethod = "post";

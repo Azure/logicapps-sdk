@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     public class KrokiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
-        public IBodyWorkflowAction<DiagramPostResponse> Diagram(Expression<Func<libraryInput>> library, Expression<Func<string>> output, Expression<Func<string>> bodydiagramSource, Expression<Func<string>> bodydiagramOptionskey = null, Expression<Func<string>> bodydiagramOptionsantialias = null, Expression<Func<string>> bodydiagramOptionsnoTransparency = null, Expression<Func<string>> bodydiagramOptionssize = null, Expression<Func<string>> bodydiagramOptionsnoDoctype = null, Expression<Func<string>> bodydiagramOptionstheme = null, Expression<Func<string>> bodydiagramOptionssketch = null, Expression<Func<string>> bodydiagramOptionslayout = null, Expression<Func<int>> bodydiagramOptionsscale = null, Expression<Func<string>> bodydiagramOptionsviewKey = null, Expression<Func<string>> bodydiagramOptionsbackground = null, Expression<Func<string>> bodydiagramOptionsfontFamily = null, Expression<Func<int>> bodydiagramOptionsfontSize = null, Expression<Func<int>> bodydiagramOptionsstrokeWidth = null)
+        public IBodyWorkflowAction<DiagramPostResponse> Diagram([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<libraryInput> library, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> output, [WorkflowExpression] Func<string> bodydiagramSource, [WorkflowExpression] Func<string> bodydiagramOptionskey = null, [WorkflowExpression] Func<string> bodydiagramOptionsantialias = null, [WorkflowExpression] Func<string> bodydiagramOptionsnoTransparency = null, [WorkflowExpression] Func<string> bodydiagramOptionssize = null, [WorkflowExpression] Func<string> bodydiagramOptionsnoDoctype = null, [WorkflowExpression] Func<string> bodydiagramOptionstheme = null, [WorkflowExpression] Func<string> bodydiagramOptionssketch = null, [WorkflowExpression] Func<string> bodydiagramOptionslayout = null, [WorkflowExpression] Func<int> bodydiagramOptionsscale = null, [WorkflowExpression] Func<string> bodydiagramOptionsviewKey = null, [WorkflowExpression] Func<string> bodydiagramOptionsbackground = null, [WorkflowExpression] Func<string> bodydiagramOptionsfontFamily = null, [WorkflowExpression] Func<int> bodydiagramOptionsfontSize = null, [WorkflowExpression] Func<int> bodydiagramOptionsstrokeWidth = null)
         {
             var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(library, 1), ExpressionConverter.ConvertWithUrlEncoding(output, 1));
             var apiCallHttpMethod = "post";

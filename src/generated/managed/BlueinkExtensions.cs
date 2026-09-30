@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     public class BlueinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<JToken[]> ListBundles(Expression<Func<string>> search = null, Expression<Func<statusInput>> status = null, Expression<Func<statusInInput>> statusIn = null, Expression<Func<string>> tag = null, Expression<Func<string>> tagIn = null, Expression<Func<orderingInput>> ordering = null)
+        public IBodyWorkflowAction<JToken[]> ListBundles([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<statusInInput> statusIn = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> tagIn = null, [WorkflowExpression] Func<orderingInput> ordering = null)
         {
             var apiCallPath = "/bundles/";
             var apiCallHttpMethod = "get";
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons(Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ListPersonsResponseItem[]> ListPersons([WorkflowExpression] Func<string> search = null)
         {
             var apiCallPath = "/persons/";
             var apiCallHttpMethod = "get";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks(Expression<Func<bool>> enabled = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhooksResponseItem[]> ListWebhooks([WorkflowExpression] Func<bool> enabled = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
         {
             var apiCallPath = "/webhooks/";
             var apiCallHttpMethod = "get";
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries(Expression<Func<string>> webhook = null, Expression<Func<string>> webhookEvent = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookDeliveriesResponseItem[]> ListWebhookDeliveries([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<string> webhookEvent = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> date = null)
         {
             var apiCallPath = "/webhooks/deliveries/";
             var apiCallHttpMethod = "get";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null, Expression<Func<int>> status = null, Expression<Func<bool>> success = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ListWebhookEventsResponseItem[]> ListWebhookEvents([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<bool> success = null, [WorkflowExpression] Func<string> date = null)
         {
             var apiCallPath = "/webhooks/events/";
             var apiCallHttpMethod = "get";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blueink")]
-        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders(Expression<Func<string>> webhook = null, Expression<Func<eventTypeInput>> eventType = null)
+        public IBodyWorkflowAction<ListWebhookExtraHeadersResponseItem[]> ListWebhookExtraHeaders([WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<eventTypeInput> eventType = null)
         {
             var apiCallPath = "/webhooks/headers/";
             var apiCallHttpMethod = "get";
