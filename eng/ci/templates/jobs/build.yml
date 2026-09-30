@@ -14,6 +14,7 @@ jobs:
     readonly: true
     value: |
         src\Microsoft.Azure.Workflows.Sdk.csproj
+        tools\Microsoft.Azure.Workflows.Sdk.Packager\Microsoft.Azure.Workflows.Sdk.Packager.csproj
 
   templateContext:
     outputParentDirectory: $(Build.ArtifactStagingDirectory)
@@ -46,6 +47,13 @@ jobs:
       inputs:
         command: test
         projects: tests/Microsoft.Azure.Workflows.Sdk.Tests/Microsoft.Azure.Workflows.Sdk.Tests.csproj
+        arguments: -c $(configuration) -v m --no-build --no-restore
+
+    - task: DotNetCoreCLI@2
+      displayName: Test Microsoft.Azure.Workflows.Sdk.Packager.Tests
+      inputs:
+        command: test
+        projects: tests/Microsoft.Azure.Workflows.Sdk.Packager.Tests/Microsoft.Azure.Workflows.Sdk.Packager.Tests.csproj
         arguments: -c $(configuration) -v m --no-build --no-restore
 
     - ${{ if eq(parameters.official, true) }}:
